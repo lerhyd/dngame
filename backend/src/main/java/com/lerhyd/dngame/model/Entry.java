@@ -31,6 +31,9 @@ public class Entry implements Serializable {
 
     @Column(name = "death_time")
     private Time deathTime;
+    
+    @Column(name = "description_id")
+    private String description;
 
     @ManyToOne
     @JoinColumn(name = "reason_id")
@@ -39,10 +42,6 @@ public class Entry implements Serializable {
     @ManyToOne
     @JoinColumn(name = "death_place_id")
     private DeathPlace deathPlace;
-
-    @ManyToOne
-    @JoinColumn(name = "description_id")
-    private Description description;
 
     @ManyToOne
     @JoinColumn(name = "kira_id")

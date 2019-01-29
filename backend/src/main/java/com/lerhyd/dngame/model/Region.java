@@ -44,4 +44,7 @@ public class Region implements Serializable {
     @OneToMany(mappedBy = "distributionRegion")
     private Collection<News> distributionNews;
 
+    @OneToMany(mappedBy = "deathRegion")
+    private Collection<Entry> deathRegions;
+
 }

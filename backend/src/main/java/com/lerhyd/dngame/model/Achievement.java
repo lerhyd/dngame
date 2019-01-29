@@ -27,9 +27,6 @@ public class Achievement implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "is_kiras")
-    private Boolean isKiras;
-
     @ManyToMany(mappedBy = "achievements")
     private Collection<Agent> agents;
 

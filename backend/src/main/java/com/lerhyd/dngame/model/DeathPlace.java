@@ -22,8 +22,8 @@ public class DeathPlace implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "death_place", nullable = true, length = 500, unique = true)
-    private String deathPlace;
+    @Column(name = "death_place", length = 500, unique = true)
+    private String place;
 
     @OneToMany(mappedBy = "deathPlace")
     private Collection<Entry> entries;

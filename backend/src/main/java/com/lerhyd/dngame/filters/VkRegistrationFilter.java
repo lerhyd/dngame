@@ -1,4 +1,4 @@
-package com.lerhyd.dngame.filters;
+/*package com.lerhyd.dngame.filters;
 
 
 import com.lerhyd.dngame.service.impl.AuthServiceImpl;
@@ -88,4 +88,4 @@ public class VkRegistrationFilter extends AbstractAuthenticationProcessingFilter
     public void setAuthService(AuthServiceImpl authService) {
         this.authService = authService;
     }
-}
+}*/

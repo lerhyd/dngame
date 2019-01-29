@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public interface NewsDao extends JpaRepository<News, Integer> {
+public interface NewsDao extends JpaRepository<News, Long> {
 
     @Query("select n from News n where n.kira.id=:kiraId and n.agent.id = :agentId")
     List<News> findAllByKiraAndAgent(@Param("kiraId") Long kiraId, @Param("agentId") Long agentId);
@@ -23,5 +23,9 @@ public interface NewsDao extends JpaRepository<News, Integer> {
     @Modifying
     @Query("delete from News n where n.kira.id = :kiraId and n.agent.id = :agentId")
     void deleteAllByKiraIdAndAgentId(@Param("kiraId") Long kiraId, @Param("agentId") Long agentId);
+
+    News findById(long id);
+
+    News findTopByOrderByIdDesc();
 
 }

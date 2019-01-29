@@ -6,6 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDateTime;
 
 /**
  * Simple JavaBean object that represents role of {@link Entry},
@@ -27,11 +28,8 @@ public class Entry implements Serializable {
     private Integer pageNumber;
 
     @Column(name = "death_date")
-    private Date deathDate;
+    private LocalDateTime deathDataTime;
 
-    @Column(name = "death_time")
-    private Time deathTime;
-    
     @Column(name = "description_id")
     private String description;
 
@@ -42,6 +40,10 @@ public class Entry implements Serializable {
     @ManyToOne
     @JoinColumn(name = "death_place_id")
     private DeathPlace deathPlace;
+
+    @ManyToOne
+    @JoinColumn(name = "death_region_id")
+    private Region deathRegion;
 
     @ManyToOne
     @JoinColumn(name = "kira_id")

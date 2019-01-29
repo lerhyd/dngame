@@ -1,3 +1,4 @@
+/*
 package com.lerhyd.dngame.filters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -97,4 +98,4 @@ public class GoogleOauthFilter extends AbstractAuthenticationProcessingFilter {
         };
         return authenticationManager;
     }
-}
+}*/

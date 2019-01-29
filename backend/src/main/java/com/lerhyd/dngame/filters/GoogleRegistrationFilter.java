@@ -1,4 +1,4 @@
-package com.lerhyd.dngame.filters;
+/*package com.lerhyd.dngame.filters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lerhyd.dngame.service.impl.AuthServiceImpl;
@@ -95,4 +95,4 @@ public class GoogleRegistrationFilter extends AbstractAuthenticationProcessingFi
     public void setAuthService(AuthServiceImpl authService) {
         this.authService = authService;
     }
-}
+}*/

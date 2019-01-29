@@ -9,9 +9,11 @@ import org.springframework.stereotype.Repository;
 import java.util.Collection;
 
 @Repository
-public interface EntryDao extends JpaRepository<Entry, Integer> {
+public interface EntryDao extends JpaRepository<Entry, Long> {
 
     @Query("select e from Entry e WHERE e.kira.id = :kiraId")
     Collection<Entry> openNote(@Param("kiraId") Long kiraId);
+
+    Entry findById(long id);
 
 }

@@ -1,4 +1,4 @@
-package com.lerhyd.dngame.filters;
+/*package com.lerhyd.dngame.filters;
 
 
 import com.lerhyd.dngame.model.User;
@@ -102,4 +102,4 @@ public class VkOauthFilter extends AbstractAuthenticationProcessingFilter {
             throw new UnsupportedOperationException("No authentication should be done with this AuthenticationManager");
         };
     }
-}
+}*/

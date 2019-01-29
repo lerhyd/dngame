@@ -23,7 +23,7 @@ public class DeathReason implements Serializable {
     private Long id;
 
     @Column(name = "death_reason", length = 500, unique = true)
-    private String deathReason;
+    private String reason;
 
     @OneToMany(mappedBy = "deathReason")
     private Collection<Entry> entries;

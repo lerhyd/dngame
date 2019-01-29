@@ -22,5 +22,7 @@ public interface KiraDao extends JpaRepository<Kira, Long> {
     @Query("update Kira k set k.region.id=:regionId where k.id = :kiraId")
     void setRegion(@Param("kiraId") Long kiraId, @Param("regionId") Long regionId);
 
+    Kira findById(long id);
+
 }
 

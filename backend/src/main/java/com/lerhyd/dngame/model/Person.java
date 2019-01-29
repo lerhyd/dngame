@@ -7,6 +7,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Collection;
 
 /**
@@ -34,14 +35,14 @@ public class Person implements Serializable {
     @Column(name = "patronymic", length = 20)
     private String patronymic;
 
-    @Column(name = "sex")
+    @Column(name = "sex")//man = true, woman = false
     private Boolean sex;
 
     @Column(name = "born_date", nullable = false)
-    private Date bornDate;
+    private LocalDateTime bornDate;
 
     @Column(name = "death_date")
-    private Date deathDate;
+    private LocalDateTime deathDate;
 
     @OneToOne(mappedBy = "person")
     @JsonBackReference

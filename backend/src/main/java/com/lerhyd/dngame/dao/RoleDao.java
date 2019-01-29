@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface RoleDao extends JpaRepository<Role, String> {
 
+    Optional<Role> findById(String id);
+
 }

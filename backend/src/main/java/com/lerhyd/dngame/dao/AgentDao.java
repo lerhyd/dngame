@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public interface AgentDao extends JpaRepository<Agent, Integer> {
+public interface AgentDao extends JpaRepository<Agent, Long> {
 
     @Query("select a.points from Agent a where a.id = :id")
     Integer findPointsById(@Param("id")Long id);
@@ -21,4 +21,6 @@ public interface AgentDao extends JpaRepository<Agent, Integer> {
     @Modifying
     @Query("update Agent set region=:regionId where id = :agentId")
     void setRegionByAgentIdAndRegionId(@Param("agentId") Long agentId, @Param("regionId") Long regionId);
+
+    Agent findById(long id);
 }

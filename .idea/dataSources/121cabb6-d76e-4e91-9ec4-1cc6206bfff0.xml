@@ -86,7 +86,7 @@ sequence|table|16521|16523|1
       <Comment>standard public schema</Comment>
       <StateNumber>347</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionTimestamp>2019-01-28.21:14:21.860</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2019-01-29.19:55:01.176</IntrospectionTimestamp>
       <IntrospectionStateNumber>609</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>

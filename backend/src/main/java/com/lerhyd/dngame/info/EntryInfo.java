@@ -16,7 +16,6 @@ public class EntryInfo {
     public String victimSurname;
     public String victimPatr;
     public boolean victimSex;
-    public String victimBornDate;
 
     private EntryInfo(){}
 
@@ -35,6 +34,5 @@ public class EntryInfo {
         victimSurname = victim.getSurname();
         victimPatr = victim.getPatronymic();
         victimSex = victim.getSex();
-        victimBornDate = victim.getBornDate().toLocalDate().toString();
     }
 }

@@ -37,7 +37,7 @@ public class NewsController {
     private PersonDao personDao;
 
     /**
-     * Add news to the world
+     * Add usual news to the world
      * @param publDate publicationDate
      * @param whatDid short description
      * @param actionId id of {@link com.lerhyd.dngame.model.Action}
@@ -65,7 +65,7 @@ public class NewsController {
                         @RequestParam("overWhom") long victimId,
                         @RequestParam("killer") long killerId){
 
-        News news = new News(whatDid, publDate,
+        News news = new News(whatDid, false, publDate,
                     actionDao.findById(actionId),
                     agentDao.findById(agentId),
                     kiraDao.findById(kiraId),
@@ -75,6 +75,17 @@ public class NewsController {
                     personDao.findById(killerId)
                 );
 
+        newsDao.save(news);
+    }
+
+    /**
+     *
+     * @param whatDid short description
+     * @param publDate publicationDate
+     */
+    @PostMapping("news/add/simple")
+    public void addSimpleNews(@RequestParam("whatDid") String whatDid, @RequestParam("publDate") LocalDateTime publDate){
+        News news = new News(whatDid, publDate, true);
         newsDao.save(news);
     }
 

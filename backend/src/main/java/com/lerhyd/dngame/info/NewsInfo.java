@@ -8,6 +8,7 @@ import com.lerhyd.dngame.model.SupposedVictim;
 public class NewsInfo {
 
     public long id;
+    public boolean isSimple;
     public String whatDid;
     public String publDate;
     public String actionDesc;
@@ -20,10 +21,12 @@ public class NewsInfo {
     public String killerSername;
     public String killerPatr;
     public boolean killerSex;
-    public String killlerBornDate;
+
     private NewsInfo(){}
+
     public NewsInfo(News news){
         id = news.getId();
+        isSimple = news.isSimple();
         whatDid = news.getWhatDid();
         publDate = news.getPublicationDateTime().toLocalDate().toString();
         actionDesc = news.getAction().getDescription();
@@ -39,7 +42,6 @@ public class NewsInfo {
         killerSername = killer.getSurname();
         killerPatr = killer.getPatronymic();
         killerSex = killer.getSex();
-        killlerBornDate = killer.getBornDate().toLocalDate().toString();
     }
 
 }

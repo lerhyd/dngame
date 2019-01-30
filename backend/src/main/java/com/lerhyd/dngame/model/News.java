@@ -30,6 +30,9 @@ public class News implements Serializable {
     @Column(name = "publication_date", nullable = false)
     private LocalDateTime publicationDateTime;
 
+    @Column(name = "is_simple", nullable = false)
+    private boolean isSimple;
+
     @OneToOne
     @JoinColumn(name = "action_id")
     private Action action;
@@ -62,8 +65,9 @@ public class News implements Serializable {
 
     }
 
-    public News(String whatDid, LocalDateTime publicationDate, Action action, Agent agent, Kira kira, Region distributionRegion, Region whereDid, SupposedVictim supposedVictim, Person killer) {
+    public News(String whatDid, boolean isSimple, LocalDateTime publicationDate, Action action, Agent agent, Kira kira, Region distributionRegion, Region whereDid, SupposedVictim supposedVictim, Person killer) {
         this.whatDid = whatDid;
+        this.isSimple = isSimple;
         this.publicationDateTime = publicationDate;
         this.action = action;
         this.agent = agent;
@@ -72,5 +76,11 @@ public class News implements Serializable {
         this.whereDid = whereDid;
         this.supposedVictim = supposedVictim;
         this.killer = killer;
+    }
+
+    public News(String whatDid, LocalDateTime publicationDateTime, boolean isSimple) {
+        this.whatDid = whatDid;
+        this.publicationDateTime = publicationDateTime;
+        this.isSimple = isSimple;
     }
 }

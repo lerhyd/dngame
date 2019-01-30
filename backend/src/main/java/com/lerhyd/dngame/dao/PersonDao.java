@@ -8,5 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface PersonDao extends JpaRepository<Person, Long> {
 
     Person findById(long id);
+    boolean existsByNameAndSurnameAndPatronymicAndSex(String name, String surname, String patronymic, boolean sex);
+    Person findByNameAndSurnameAndPatronymicAndSex(String name, String surname, String patronymic, boolean sex);
 
 }

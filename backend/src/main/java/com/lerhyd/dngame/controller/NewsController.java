@@ -4,10 +4,7 @@ import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.NewsInfo;
 import com.lerhyd.dngame.model.News;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.stream.Stream;
@@ -41,18 +38,12 @@ public class NewsController {
      * @param publDate publicationDate
      * @param whatDid short description
      * @param actionId id of {@link com.lerhyd.dngame.model.Action}
-     * @param whereDidId id of {@link com.lerhyd.dngame.model.Region}
-     *                   where action happened
-     * @param distRegionId id of {@link com.lerhyd.dngame.model.Region}
-     *                   where people can see news
-     * @param agentId id of {@link com.lerhyd.dngame.model.Agent}
-     *                   who is the part of current session
-     * @param kiraId id of {@link com.lerhyd.dngame.model.Kira}
-     *                   who is the part of current session
-     * @param victimId id of {@link com.lerhyd.dngame.model.Person}
-     *                   who is victim
-     * @param killerId id of {@link com.lerhyd.dngame.model.Person}
-     *                   who is Killer in the news(Not necessarily)
+     * @param whereDidId id of {@link com.lerhyd.dngame.model.Region} where action happened
+     * @param distRegionId id of {@link com.lerhyd.dngame.model.Region} where people can see news
+     * @param agentId id of {@link com.lerhyd.dngame.model.Agent} who is the part of current session
+     * @param kiraId id of {@link com.lerhyd.dngame.model.Kira} who is the part of current session
+     * @param victimId id of {@link com.lerhyd.dngame.model.Person} who is victim
+     * @param killerId id of {@link com.lerhyd.dngame.model.Person} who is Killer in the news(Not necessarily)
      */
     @PostMapping("/news/add")
     public void addNews(@RequestParam("publDate") LocalDateTime publDate,
@@ -79,7 +70,7 @@ public class NewsController {
     }
 
     /**
-     *
+     * Add simple news to the world
      * @param whatDid short description
      * @param publDate publicationDate
      */
@@ -91,16 +82,24 @@ public class NewsController {
 
     /**
      * Get the last news
-     * @param agentId id of {@link com.lerhyd.dngame.model.Agent}
-     *                   who is the part of current session
-     * @param kiraId id of {@link com.lerhyd.dngame.model.Kira}
-     *                   who is the part of current session
+     * @param agentId id of {@link com.lerhyd.dngame.model.Agent} who is the part of current session
+     * @param kiraId id of {@link com.lerhyd.dngame.model.Kira} who is the part of current session
      * @return Stream of news info
      */
     @GetMapping("/news/last")
     public Stream<NewsInfo> getLastNews(@RequestParam("kiraId") long kiraId, @RequestParam("agentId") long agentId){
         Stream<NewsInfo> infoStream = null;
         return Stream.of(newsDao.findTopByOrderByIdDesc()).map(NewsInfo::new);
+    }
+
+    /**
+     * delete all the news in the world
+     * @param kiraId id of {@link com.lerhyd.dngame.model.Kira}
+     * @param agentId id of {@link com.lerhyd.dngame.model.Agent}
+     */
+    @DeleteMapping("/news")
+    public void deleteNews(@RequestParam("kiraId") long kiraId, @RequestParam("agentId") long agentId){
+        newsDao.deleteAllByKiraIdAndAgentId(kiraId, agentId);
     }
 
 }

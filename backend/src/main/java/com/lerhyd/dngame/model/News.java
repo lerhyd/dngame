@@ -37,6 +37,10 @@ public class News implements Serializable {
     @JoinColumn(name = "action_id")
     private Action action;
 
+    @OneToOne
+    @JoinColumn(name = "victim_id")
+    private Person victim;
+
     @ManyToOne
     @JoinColumn(name = "agent_id")
     private Agent agent;
@@ -50,11 +54,11 @@ public class News implements Serializable {
     private Region distributionRegion;
 
     @ManyToOne
-    @JoinColumn(name = "where")
+    @JoinColumn(name = "where_region_id")
     private Region whereDid;
 
     @OneToOne
-    @JoinColumn(name = "over_whom")
+    @JoinColumn(name = "supposed_victim_id")
     private SupposedVictim supposedVictim;
 
     @ManyToOne

@@ -33,8 +33,19 @@ public class Entry implements Serializable {
     @Column(name = "description_id")
     private String description;
 
+    public Entry(Integer pageNumber, LocalDateTime deathDataTime, String description, DeathReason deathReason, DeathPlace deathPlace, Region deathRegion, Kira kira, Person victim) {
+        this.pageNumber = pageNumber;
+        this.deathDataTime = deathDataTime;
+        this.description = description;
+        this.deathReason = deathReason;
+        this.deathPlace = deathPlace;
+        this.deathRegion = deathRegion;
+        this.kira = kira;
+        this.victim = victim;
+    }
+
     @ManyToOne
-    @JoinColumn(name = "reason_id")
+    @JoinColumn(name = "death_reason_id")
     private DeathReason deathReason;
 
     @ManyToOne

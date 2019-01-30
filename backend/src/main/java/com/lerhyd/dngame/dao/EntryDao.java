@@ -12,7 +12,7 @@ import java.util.Collection;
 public interface EntryDao extends JpaRepository<Entry, Long> {
 
     @Query("select e from Entry e WHERE e.kira.id = :kiraId")
-    Collection<Entry> openNote(@Param("kiraId") Long kiraId);
+    Collection<Entry> findAllByKira(@Param("kiraId") Long kiraId);
 
     Entry findById(long id);
 

@@ -55,6 +55,9 @@ public class Person implements Serializable {
     @OneToOne(mappedBy = "victim")
     private Entry entry;
 
+    @OneToOne(mappedBy = "victim")
+    private News news;
+
     @OneToMany(mappedBy = "killer")
     private Collection<News> newsKiller;
 

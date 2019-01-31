@@ -19,6 +19,8 @@ public interface NewsDao extends JpaRepository<News, Long> {
     @Query("select n from News n where n.agent.id = :agentId")
     List<News> findAllByAgentId(@Param("agentId") Long agentId);
 
+    List<News> findNewsByKiraId(long kiraId);
+
     @Transactional
     @Modifying
     @Query("delete from News n where n.kira.id = :kiraId and n.agent.id = :agentId")

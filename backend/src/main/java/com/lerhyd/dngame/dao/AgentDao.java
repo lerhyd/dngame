@@ -23,4 +23,7 @@ public interface AgentDao extends JpaRepository<Agent, Long> {
     void setRegionByAgentIdAndRegionId(@Param("agentId") Long agentId, @Param("regionId") Long regionId);
 
     Agent findById(long id);
+
+    @Query("select a from Agent a left join a.news ")
+    Agent findAgentByKiraId(long kiraId);
 }

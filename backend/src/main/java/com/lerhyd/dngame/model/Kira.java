@@ -9,6 +9,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -66,7 +67,7 @@ public class Kira implements Serializable {
     private Rank rank;
 
     @OneToMany(mappedBy = "kira", cascade = CascadeType.ALL)
-    private Collection<News> news;
+    private List<News> news;
 
     @OneToOne(mappedBy = "kira")
     private User user;

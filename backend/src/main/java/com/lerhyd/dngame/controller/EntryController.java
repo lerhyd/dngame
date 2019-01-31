@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.stream.Stream;
 
 @RestController
@@ -21,6 +24,9 @@ public class EntryController {
 
     @Autowired
     private KiraDao kiraDao;
+
+    @Autowired
+    private AgentDao agentDao;
 
     @Autowired
     private PersonDao personDao;
@@ -60,6 +66,7 @@ public class EntryController {
             Entry entry = getFormedEntry(pageNum, deathDate, desc, deathReasonId, deathPlaceId, deathRegionId,
                     kiraId, victimName, victimSername, victimPatr, victimSex);
             entryDao.save(entry);
+            newsDao.save(generateNewsFromEntry(entry, kiraId));
             kiraDao.addPoints(5, kiraId);
         } else {
             Entry entry = getFormedEntry(pageNum, deathDate, desc, deathReasonId, deathPlaceId, deathRegionId,
@@ -69,17 +76,30 @@ public class EntryController {
         }
     }
 
-    private News generateNewsFromEntry(Entry entry){
+    private News generateNewsFromEntry(Entry entry, long kiraId){
+        String desc = entry.getDescription();
         Kira kira = entry.getKira();
         ActionPlace actionPlace = entry.getActionPlace();
+        Action action = entry.getAction();
         LocalDateTime dateTime = entry.getDeathDataTime();
         Region region = entry.getDeathRegion();
         Action deathReason = entry.getAction();
         Person victim = entry.getVictim();
 
-        Action action = new Action();
+        News news = new News(
+                desc,
+                action,
+                actionPlace,
+                victim,
+                kira.getNews().get(1).getAgent(),
+                kira,
+                region,
+                region,
+                null,
+                null
+        );
 
-        return null;
+        return news;
     }
 
     private Entry getFormedEntry(int pageNum, String deathDate, String desc,

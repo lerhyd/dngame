@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public interface KiraDao extends JpaRepository<Kira, Long> {
 
     @Query("select k.points from Kira k where k.id = :id")
-    Integer findPointsById(@Param("id") Long id);
+    Integer findPointsById(@Param("id") long id);
 
     @Query("select r.id from Kira k join k.region r where r.country=:country and r.city=:city")
     Long findRegionsIdByCountryAndCity(@Param("country") String country, @Param("city") String city);
@@ -20,9 +20,24 @@ public interface KiraDao extends JpaRepository<Kira, Long> {
     @Transactional
     @Modifying
     @Query("update Kira k set k.region.id=:regionId where k.id = :kiraId")
-    void setRegion(@Param("kiraId") Long kiraId, @Param("regionId") Long regionId);
+    void setRegion(@Param("kiraId") long kiraId, @Param("regionId") long regionId);
 
     Kira findById(long id);
+
+    @Transactional
+    @Modifying
+    @Query("update Kira k set k.lvl = k.lvl + 1 where k.id = :id")
+    void levelup(@Param("id") long kiraId);
+
+    @Transactional
+    @Modifying
+    @Query("update Kira k set k.points= k.points + :points where k.id=:id")
+    void addPoints(@Param("points") int points, @Param("id") long kiraId);
+
+    @Transactional
+    @Modifying
+    @Query("update Kira k set k.points= k.points - :points where k.id=:id")
+    void deletePoints(@Param("points") int points, @Param("id") long kiraId);
 
 }
 

@@ -27,4 +27,10 @@ public class Action implements Serializable {
     @OneToOne(mappedBy = "action", cascade = CascadeType.ALL)
     private News news;
 
+    public Action(){}
+
+    public Action(String description, News news) {
+        this.description = description;
+        this.news = news;
+    }
 }

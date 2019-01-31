@@ -38,6 +38,9 @@ public class Kira implements Serializable {
     @Column(name = "points")
     private Integer points;
 
+    @Column(name = "lvl")
+    private Integer lvl;
+
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "achievements_to_kira",

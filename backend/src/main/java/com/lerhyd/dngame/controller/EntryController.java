@@ -57,18 +57,15 @@ public class EntryController {
     {
         boolean isExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(victimName, victimSername, victimPatr, victimSex);
         if (isExists){
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-            Entry entry = new Entry(
-                    pageNum,
-                    LocalDateTime.parse(deathDate, formatter),
-                    desc,
-                    deathReasonDao.findById(deathReasonId),
-                    deathPlaceDao.findById(deathPlaceId),
-                    regionDao.findById(deathRegionId),
-                    kiraDao.findById(kiraId),
-                    personDao.findByNameAndSurnameAndPatronymicAndSex(victimName, victimSername, victimPatr, victimSex)
-            );
+            Entry entry = getFormedEntry(pageNum, deathDate, desc, deathReasonId, deathPlaceId, deathRegionId,
+                    kiraId, victimName, victimSername, victimPatr, victimSex);
             entryDao.save(entry);
+            kiraDao.addPoints(5, kiraId);
+        } else {
+            Entry entry = getFormedEntry(pageNum, deathDate, desc, deathReasonId, deathPlaceId, deathRegionId,
+                    kiraId, victimName, victimSername, victimPatr, victimSex);
+            entryDao.save(entry);
+            kiraDao.deletePoints(10, kiraId);
         }
     }
 
@@ -80,8 +77,32 @@ public class EntryController {
         DeathReason deathReason = entry.getDeathReason();
         Person victim = entry.getVictim();
 
-        News news = new News();
+        Action action = new Action();
+
         return null;
+    }
+
+    private Entry getFormedEntry(int pageNum, String deathDate, String desc,
+                                long deathReasonId,
+                                long deathPlaceId,
+                                long deathRegionId,
+                                long kiraId,
+                                String victimName,
+                                String victimSername,
+                                String victimPatr,
+                                boolean victimSex){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        Entry entry = new Entry(
+                pageNum,
+                LocalDateTime.parse(deathDate, formatter),
+                desc,
+                deathReasonDao.findById(deathReasonId),
+                deathPlaceDao.findById(deathPlaceId),
+                regionDao.findById(deathRegionId),
+                kiraDao.findById(kiraId),
+                personDao.findByNameAndSurnameAndPatronymicAndSex(victimName, victimSername, victimPatr, victimSex)
+        );
+        return entry;
     }
 
 }

@@ -26,6 +26,9 @@ public class Agent implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
+    @Column(name = "lvl")
+    private Integer lvl;
+
     @OneToOne
     @JoinColumn(name = "person_id", nullable = false)
     @JsonManagedReference

@@ -18,7 +18,6 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "users")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User{
 
     @Id
@@ -26,7 +25,6 @@ public class User{
     @Column(name = "login", nullable = false, length = 30, unique = true)
     private String login;
 
-    @JsonProperty(access = Access.WRITE_ONLY)
     @Column(name = "password", nullable = false)
     private String password;
 
@@ -37,11 +35,9 @@ public class User{
     private Integer vkId;
 
     @Column(name = "registration_date", updatable = false)
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime registrationDate;
 
     @Column(name = "last_visit_timestamp")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime lastVisitTime;
 
     @OneToOne

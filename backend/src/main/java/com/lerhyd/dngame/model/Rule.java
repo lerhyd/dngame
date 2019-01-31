@@ -4,10 +4,10 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Set;
 
 /**
- * Simple JavaBean object that represents role of {@link NoteRule},
+ * Simple JavaBean object that represents role of {@link Rule},
  * describes game rules.
  */
 
@@ -15,7 +15,7 @@ import java.util.Collection;
 @Data
 @Entity
 @Table(name = "note_rules")
-public class NoteRule implements Serializable {
+public class Rule implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +28,10 @@ public class NoteRule implements Serializable {
     @Column(name = "description", unique = true)
     private String description;
 
-    @ManyToMany(mappedBy = "noteRules")
-    private Collection<Kira> kiras;
+    @ManyToMany(mappedBy = "rules")
+    private Set<Kira> kiras;
+
+    @ManyToMany(mappedBy = "rules")
+    private Set<Agent> agents;
 
 }

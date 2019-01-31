@@ -1,6 +1,5 @@
 package com.lerhyd.dngame.info;
-
-import com.lerhyd.dngame.model.NoteRule;
+import com.lerhyd.dngame.model.Rule;
 
 public class RulesInfo {
 
@@ -10,7 +9,7 @@ public class RulesInfo {
 
     private RulesInfo(){}
 
-    public RulesInfo(NoteRule rule){
+    public RulesInfo(Rule rule){
         id = rule.getId();
         desc = rule.getDescription();
         isDefault = rule.isDefault();

@@ -26,17 +26,15 @@ public class Rank implements Serializable {
     private Long id;
 
     @Column(name = "level", nullable = false)
-    private Integer level;
+    private int lvl;
 
     @Column(name = "rank", length = 50)
     private String rank;
 
     @OneToMany(mappedBy = "rank")
-    @JsonBackReference
     private Collection<Agent> agents;
 
     @OneToMany(mappedBy = "rank")
-    @JsonBackReference
     private Collection<Kira> kiras;
 
 }

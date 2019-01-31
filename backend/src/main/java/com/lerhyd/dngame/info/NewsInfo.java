@@ -1,22 +1,22 @@
 package com.lerhyd.dngame.info;
 
+import com.lerhyd.dngame.model.ActionPlace;
 import com.lerhyd.dngame.model.News;
 import com.lerhyd.dngame.model.Person;
 import com.lerhyd.dngame.model.Region;
-import com.lerhyd.dngame.model.SupposedVictim;
 
 public class NewsInfo {
 
     public long id;
-    public boolean isSimple;
-    public String whatDid;
-    public String publDate;
+    public String description;
     public String actionDesc;
+    public String actionPlace;
     public String distCity;
     public String distCountry;
     public String victimName;
     public String victimSername;
     public String victimPatr;
+    public boolean victimSex;
     public String killerName;
     public String killerSername;
     public String killerPatr;
@@ -26,17 +26,17 @@ public class NewsInfo {
 
     public NewsInfo(News news){
         id = news.getId();
-        isSimple = news.isSimple();
-        whatDid = news.getWhatDid();
-        publDate = news.getPublicationDateTime().toLocalDate().toString();
+        description = news.getDescription();
         actionDesc = news.getAction().getDescription();
+        actionPlace = news.getActionPlace().getPlace();
         Region distRegion = news.getDistributionRegion();
         distCity = distRegion.getCity();
         distCountry = distRegion.getCountry();
-        SupposedVictim victim = news.getSupposedVictim();
+        Person victim = news.getVictim();
         victimName = victim.getName();
         victimSername = victim.getSurname();
         victimPatr = victim.getPatronymic();
+        victimSex = victim.getSex();
         Person killer = news.getKiller();
         killerName = killer.getName();
         killerSername = killer.getSurname();

@@ -44,19 +44,20 @@ public class Person implements Serializable {
     @Column(name = "death_date")
     private LocalDateTime deathDate;
 
+    @Column(name = "is_fake")
+    private boolean isFake;
+
     @OneToOne(mappedBy = "person")
-    @JsonBackReference
     private Agent agent;
 
     @OneToOne(mappedBy = "person")
-    @JsonBackReference
     private Kira kira;
 
     @OneToOne(mappedBy = "victim")
     private Entry entry;
 
-    @OneToOne(mappedBy = "victim")
-    private News news;
+    @OneToMany(mappedBy = "victim")
+    private Collection<News> newsVictim;
 
     @OneToMany(mappedBy = "killer")
     private Collection<News> newsKiller;

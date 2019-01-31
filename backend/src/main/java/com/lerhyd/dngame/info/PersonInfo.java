@@ -9,6 +9,7 @@ public class PersonInfo {
     public String surname;
     public String patr;
     public boolean sex;
+    public boolean isFake;
     public String bornDate;
     public String deathDate;
 
@@ -20,6 +21,7 @@ public class PersonInfo {
         surname = p.getSurname();
         patr = p.getPatronymic();
         sex = p.getSex();
+        isFake = p.isFake();
         bornDate = p.getBornDate().toLocalDate().toString();
         deathDate = p.getDeathDate().toLocalDate().toString();
     }

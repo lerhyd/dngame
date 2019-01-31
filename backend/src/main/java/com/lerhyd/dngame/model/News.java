@@ -25,19 +25,17 @@ public class News implements Serializable {
     private Long id;
 
     @Column(name = "what", nullable = false, length = 500)
-    private String whatDid;
+    private String description;
 
-    @Column(name = "publication_date", nullable = false)
-    private LocalDateTime publicationDateTime;
-
-    @Column(name = "is_simple", nullable = false)
-    private boolean isSimple;
-
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "action_id")
     private Action action;
 
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "actionPlace")
+    private ActionPlace actionPlace;
+
+    @ManyToOne
     @JoinColumn(name = "victim_id")
     private Person victim;
 
@@ -54,12 +52,12 @@ public class News implements Serializable {
     private Region distributionRegion;
 
     @ManyToOne
-    @JoinColumn(name = "where_region_id")
-    private Region whereDid;
+    @JoinColumn(name = "common_region_id")
+    private Region commonRegion;
 
     @OneToOne
-    @JoinColumn(name = "supposed_victim_id")
-    private SupposedVictim supposedVictim;
+    @JoinColumn(name = "fake_victim_id")
+    private Person fakeVictim;
 
     @ManyToOne
     @JoinColumn(name = "killer_id")
@@ -69,22 +67,16 @@ public class News implements Serializable {
 
     }
 
-    public News(String whatDid, boolean isSimple, LocalDateTime publicationDate, Action action, Agent agent, Kira kira, Region distributionRegion, Region whereDid, SupposedVictim supposedVictim, Person killer) {
-        this.whatDid = whatDid;
-        this.isSimple = isSimple;
-        this.publicationDateTime = publicationDate;
+    public News(String description, Action action, ActionPlace actionPlace, Person victim, Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person fakeVictim, Person killer) {
+        this.description = description;
         this.action = action;
+        this.actionPlace = actionPlace;
+        this.victim = victim;
         this.agent = agent;
         this.kira = kira;
         this.distributionRegion = distributionRegion;
-        this.whereDid = whereDid;
-        this.supposedVictim = supposedVictim;
+        this.commonRegion = commonRegion;
+        this.fakeVictim = fakeVictim;
         this.killer = killer;
-    }
-
-    public News(String whatDid, LocalDateTime publicationDateTime, boolean isSimple) {
-        this.whatDid = whatDid;
-        this.publicationDateTime = publicationDateTime;
-        this.isSimple = isSimple;
     }
 }

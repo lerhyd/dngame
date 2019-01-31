@@ -1,13 +1,11 @@
 package com.lerhyd.dngame.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * Simple JavaBean object that represents role of {@link Agent},
@@ -24,21 +22,20 @@ public class Agent implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Long id;
+    private long id;
 
     @Column(name = "lvl")
-    private Integer lvl;
+    private int lvl;
 
     @OneToOne
     @JoinColumn(name = "person_id", nullable = false)
-    @JsonManagedReference
     private Person person;
 
     @Column(name = "number_of_caught_killers")
-    private Integer numberOfCaughtKillers;
+    private int numberOfCaughtKillers;
 
     @Column(name = "points")
-    private Integer points;
+    private int points;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
@@ -48,21 +45,26 @@ public class Agent implements Serializable {
     )
     private Collection<Achievement> achievements;
 
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "rule_to_agent",
+            joinColumns = @JoinColumn(name = "agent_id"),
+            inverseJoinColumns = @JoinColumn(name = "rule_id")
+    )
+    private Set<Rule> rules;
+
     @ManyToOne
     @JoinColumn(name = "region_id", nullable = false)
-    @JsonManagedReference
     private Region region;
 
     @ManyToOne
     @JoinColumn(name = "rank_id", nullable = false)
-    @JsonManagedReference
     private Rank rank;
 
     @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL)
     private Collection<News> news;
 
     @OneToOne(mappedBy = "agent", cascade = CascadeType.ALL)
-    @JsonIgnore
     private User user;
 
 }

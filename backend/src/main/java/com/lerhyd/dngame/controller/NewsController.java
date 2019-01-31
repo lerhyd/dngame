@@ -6,7 +6,6 @@ import com.lerhyd.dngame.model.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 @RestController()
@@ -25,58 +24,51 @@ public class NewsController {
     private ActionDao actionDao;
 
     @Autowired
-    private RegionDao regionDao;
+    private ActionPlaceDao actionPlaceDao;
 
     @Autowired
-    private SupposedVictimDao supposedVictimDao;
+    private RegionDao regionDao;
 
     @Autowired
     private PersonDao personDao;
 
     /**
-     * Add usual news to the world
-     * @param publDate publicationDate
-     * @param whatDid short description
+     * Add usual news
+     * @param desc description of news
      * @param actionId id of {@link com.lerhyd.dngame.model.Action}
-     * @param whereDidId id of {@link com.lerhyd.dngame.model.Region} where action happened
-     * @param distRegionId id of {@link com.lerhyd.dngame.model.Region} where people can see news
-     * @param agentId id of {@link com.lerhyd.dngame.model.Agent} who is the part of current session
-     * @param kiraId id of {@link com.lerhyd.dngame.model.Kira} who is the part of current session
-     * @param victimId id of {@link com.lerhyd.dngame.model.Person} who is victim
-     * @param killerId id of {@link com.lerhyd.dngame.model.Person} who is Killer in the news(Not necessarily)
+     * @param actionPlaceId id of {@link com.lerhyd.dngame.model.ActionPlace}
+     * @param commonRegionId id of {@link com.lerhyd.dngame.model.Region}
+     * @param distRegionId id of destination {@link com.lerhyd.dngame.model.Region}
+     * @param agentId id of {@link com.lerhyd.dngame.model.Agent}
+     * @param kiraId id of {@link KiraDao}
+     * @param victimId if of {@link com.lerhyd.dngame.model.Person}
+     * @param fakeVictimId id of fake {@link com.lerhyd.dngame.model.Person}
+     * @param killerId id of killer {@link com.lerhyd.dngame.model.Person}
      */
     @PostMapping("/news/add")
-    public void addNews(@RequestParam("publDate") LocalDateTime publDate,
-                        @RequestParam("whatDid") String whatDid,
-                        @RequestParam("action") long actionId,
-                        @RequestParam("whereDid") long whereDidId,
-                        @RequestParam("distReg") long distRegionId,
-                        @RequestParam("agent") long agentId,
+    public void addNews(@RequestParam("desc") String desc,
+                        @RequestParam("actionId") long actionId,
+                        @RequestParam("actionPlaceId") long actionPlaceId,
+                        @RequestParam("commonRegionId") long commonRegionId,
+                        @RequestParam("distRegId") long distRegionId,
+                        @RequestParam("agentId") long agentId,
                         @RequestParam("kiraId") long kiraId,
-                        @RequestParam("overWhom") long victimId,
-                        @RequestParam("killer") long killerId){
+                        @RequestParam("victimId") long victimId,
+                        @RequestParam("fakeVictimId") long fakeVictimId,
+                        @RequestParam("killerId") long killerId){
 
-        News news = new News(whatDid, false, publDate,
+        News news = new News(desc,
                     actionDao.findById(actionId),
+                    actionPlaceDao.findById(actionPlaceId),
+                    personDao.findById(victimId),
                     agentDao.findById(agentId),
                     kiraDao.findById(kiraId),
                     regionDao.findById(distRegionId),
-                    regionDao.findById(whereDidId),
-                    supposedVictimDao.findById(victimId),
+                    regionDao.findById(commonRegionId),
+                    personDao.findById(fakeVictimId),
                     personDao.findById(killerId)
                 );
 
-        newsDao.save(news);
-    }
-
-    /**
-     * Add simple news to the world
-     * @param whatDid short description
-     * @param publDate publicationDate
-     */
-    @PostMapping("news/add/simple")
-    public void addSimpleNews(@RequestParam("whatDid") String whatDid, @RequestParam("publDate") LocalDateTime publDate){
-        News news = new News(whatDid, publDate, true);
         newsDao.save(news);
     }
 

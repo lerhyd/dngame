@@ -12,7 +12,7 @@ public class RankInfo {
 
     public RankInfo(Rank rank){
         id = rank.getId();
-        level = rank.getLevel();
+        level = rank.getLvl();
         rankDesc = rank.getRank();
     }
 }

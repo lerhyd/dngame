@@ -9,6 +9,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Set;
 
 /**
  * Simple JavaBean object that represents role of {@link Kira},
@@ -27,19 +28,18 @@ public class Kira implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
+    @Column(name = "lvl")
+    private int lvl;
+
     @OneToOne
     @JoinColumn(name = "person_id", nullable = false)
-    @JsonManagedReference
     private Person person;
 
     @Column(name = "number_of_kills")
-    private Integer numberOfKills;
+    private int numberOfKills;
 
     @Column(name = "points")
-    private Integer points;
-
-    @Column(name = "lvl")
-    private Integer lvl;
+    private int points;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
@@ -49,32 +49,29 @@ public class Kira implements Serializable {
     )
     private Collection<Achievement> achievements;
 
-    @OneToMany(mappedBy = "kira")
-    private Collection<Entry> entries;
-
-    @OneToMany(mappedBy = "kira", cascade = CascadeType.ALL)
-    private Collection<News> news;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "rule_to_kira",
+            joinColumns = @JoinColumn(name = "kira_id"),
+            inverseJoinColumns = @JoinColumn(name = "rule_id")
+    )
+    private Set<Rule> rules;
 
     @ManyToOne
     @JoinColumn(name = "region_id", nullable = false)
-    @JsonManagedReference
     private Region region;
 
     @ManyToOne
     @JoinColumn(name = "rank_id", nullable = false)
-    @JsonManagedReference
     private Rank rank;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "note_rule_to_kira",
-            joinColumns = @JoinColumn(name = "kira_id"),
-            inverseJoinColumns = @JoinColumn(name = "rule_id")
-    )
-    private Collection<NoteRule> noteRules;
+    @OneToMany(mappedBy = "kira", cascade = CascadeType.ALL)
+    private Collection<News> news;
 
     @OneToOne(mappedBy = "kira")
-    @JsonIgnore
     private User user;
+
+    @OneToMany(mappedBy = "kira")
+    private Collection<Entry> entries;
 
 }

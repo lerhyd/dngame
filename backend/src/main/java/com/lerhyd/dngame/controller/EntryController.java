@@ -26,10 +26,10 @@ public class EntryController {
     private PersonDao personDao;
 
     @Autowired
-    private DeathReasonDao deathReasonDao;
+    private ActionDao actionDao;
 
     @Autowired
-    private DeathPlaceDao deathPlaceDao;
+    private ActionPlaceDao actionPlaceDao;
 
     @Autowired
     private RegionDao regionDao;
@@ -71,10 +71,10 @@ public class EntryController {
 
     private News generateNewsFromEntry(Entry entry){
         Kira kira = entry.getKira();
-        DeathPlace deathPlace = entry.getDeathPlace();
+        ActionPlace actionPlace = entry.getActionPlace();
         LocalDateTime dateTime = entry.getDeathDataTime();
         Region region = entry.getDeathRegion();
-        DeathReason deathReason = entry.getDeathReason();
+        Action deathReason = entry.getAction();
         Person victim = entry.getVictim();
 
         Action action = new Action();
@@ -83,8 +83,8 @@ public class EntryController {
     }
 
     private Entry getFormedEntry(int pageNum, String deathDate, String desc,
-                                long deathReasonId,
-                                long deathPlaceId,
+                                long actionId,
+                                long actionPlaceId,
                                 long deathRegionId,
                                 long kiraId,
                                 String victimName,
@@ -96,8 +96,8 @@ public class EntryController {
                 pageNum,
                 LocalDateTime.parse(deathDate, formatter),
                 desc,
-                deathReasonDao.findById(deathReasonId),
-                deathPlaceDao.findById(deathPlaceId),
+                actionDao.findById(actionId),
+                actionPlaceDao.findById(actionPlaceId),
                 regionDao.findById(deathRegionId),
                 kiraDao.findById(kiraId),
                 personDao.findByNameAndSurnameAndPatronymicAndSex(victimName, victimSername, victimPatr, victimSex)

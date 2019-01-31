@@ -23,8 +23,8 @@ public class EntryInfo {
         id = entry.getId();
         pageNum = entry.getPageNumber();
         deathDataTime = entry.getDeathDataTime().toString();
-        deathReason = entry.getDeathReason().getReason();
-        deathPlace = entry.getDeathPlace().getPlace();
+        deathReason = entry.getAction().getDescription();
+        deathPlace = entry.getActionPlace().getPlace();
         desc = entry.getDescription();
         Region deathRegion = entry.getDeathRegion();
         deathCity = deathRegion.getCity();

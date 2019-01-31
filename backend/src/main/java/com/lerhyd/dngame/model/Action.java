@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Collection;
 
 /**
  * Simple JavaBean object that represents role of {@link Action},
@@ -21,16 +22,24 @@ public class Action implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "description", length = 55)
+    @Column(name = "description", length = 500)
     private String description;
 
-    @OneToOne(mappedBy = "action", cascade = CascadeType.ALL)
-    private News news;
+    @Column(name = "lvl")
+    private int lvl;
+
+    @OneToMany(mappedBy = "action")
+    private Collection<News> news;
+
+    @OneToMany(mappedBy = "action")
+    private Collection<Entry> entries;
 
     public Action(){}
 
-    public Action(String description, News news) {
+    public Action(String description, int lvl, Collection<News> news, Collection<Entry> entries) {
         this.description = description;
+        this.lvl = lvl;
         this.news = news;
+        this.entries = entries;
     }
 }

@@ -1,13 +1,12 @@
 package com.lerhyd.dngame.dao;
 
-
-import com.lerhyd.dngame.model.DeathReason;
+import com.lerhyd.dngame.model.ActionPlace;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface DeathReasonDao extends JpaRepository<DeathReason, Long> {
+public interface ActionPlaceDao extends JpaRepository<ActionPlace, Long> {
 
-    DeathReason findById(long id);
+    ActionPlace findById(long id);
 
 }

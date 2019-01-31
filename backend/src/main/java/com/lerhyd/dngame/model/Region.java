@@ -31,18 +31,16 @@ public class Region implements Serializable {
     private String city;
 
     @OneToMany(mappedBy = "region")
-    @JsonBackReference
     private Collection<Agent> agents;
 
     @OneToMany(mappedBy = "region")
-    @JsonBackReference
     private Collection<Kira> kiras;
 
-    @OneToMany(mappedBy = "whereDid")
-    private Collection<News> whereNews;
+    @OneToMany(mappedBy = "commonRegion")
+    private Collection<News> commonRegionNews;
 
     @OneToMany(mappedBy = "distributionRegion")
-    private Collection<News> distributionNews;
+    private Collection<News> distributionRegionNews;
 
     @OneToMany(mappedBy = "deathRegion")
     private Collection<Entry> deathRegions;

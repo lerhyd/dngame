@@ -4,8 +4,6 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.sql.Date;
-import java.sql.Time;
 import java.time.LocalDateTime;
 
 /**
@@ -25,7 +23,7 @@ public class Entry implements Serializable {
     private Long id;
 
     @Column(name = "page_number", nullable = false)
-    private Integer pageNumber;
+    private int pageNumber;
 
     @Column(name = "death_date")
     private LocalDateTime deathDataTime;
@@ -33,24 +31,13 @@ public class Entry implements Serializable {
     @Column(name = "description_id")
     private String description;
 
-    public Entry(Integer pageNumber, LocalDateTime deathDataTime, String description, DeathReason deathReason, DeathPlace deathPlace, Region deathRegion, Kira kira, Person victim) {
-        this.pageNumber = pageNumber;
-        this.deathDataTime = deathDataTime;
-        this.description = description;
-        this.deathReason = deathReason;
-        this.deathPlace = deathPlace;
-        this.deathRegion = deathRegion;
-        this.kira = kira;
-        this.victim = victim;
-    }
-
     @ManyToOne
     @JoinColumn(name = "death_reason_id")
-    private DeathReason deathReason;
+    private Action action;
 
     @ManyToOne
     @JoinColumn(name = "death_place_id")
-    private DeathPlace deathPlace;
+    private ActionPlace actionPlace;
 
     @ManyToOne
     @JoinColumn(name = "death_region_id")
@@ -64,4 +51,14 @@ public class Entry implements Serializable {
     @JoinColumn(name = "victim_id")
     private Person victim;
 
+    public Entry(int pageNumber, LocalDateTime deathDataTime, String description, Action action, ActionPlace actionPlace, Region deathRegion, Kira kira, Person victim) {
+        this.pageNumber = pageNumber;
+        this.deathDataTime = deathDataTime;
+        this.description = description;
+        this.action = action;
+        this.actionPlace = actionPlace;
+        this.deathRegion = deathRegion;
+        this.kira = kira;
+        this.victim = victim;
+    }
 }

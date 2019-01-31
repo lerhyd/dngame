@@ -73,16 +73,13 @@ public class EntryController {
         }
     }
 
-    private News generateNewsFromEntry(Entry entry, long kiraId){
+    private News generateNewsFromEntry(Entry entry, PersonDao personDao){
         String desc = entry.getDescription();
         Kira kira = entry.getKira();
         ActionPlace actionPlace = entry.getActionPlace();
         Action action = entry.getAction();
-        LocalDateTime dateTime = entry.getDeathDataTime();
         Region region = entry.getDeathRegion();
-        Action deathReason = entry.getAction();
         Person victim = entry.getVictim();
-
         News news = new News(
                 desc,
                 action,
@@ -95,7 +92,9 @@ public class EntryController {
                 null,
                 null
         );
-
+        Person victimToUpdate = personDao.getOne(victim.getId());
+        victimToUpdate.setDeathDate(entry.getDeathDataTime());
+        personDao.save(victimToUpdate);
         return news;
     }
 

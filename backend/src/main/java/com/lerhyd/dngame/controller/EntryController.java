@@ -63,7 +63,7 @@ public class EntryController {
             Entry entry = getFormedEntry(pageNum, deathDate, desc, deathReasonId, deathPlaceId, deathRegionId,
                     kiraId, victimName, victimSername, victimPatr, victimSex, personDao, false);
             entryDao.save(entry);
-            newsDao.save(generateNewsFromEntry(entry, kiraId));
+            newsDao.save(generateNewsFromEntry(entry, personDao));
             kiraDao.addPoints(5, kiraId);
         } else {
             Entry entry = getFormedEntry(pageNum, deathDate, desc, deathReasonId, deathPlaceId, deathRegionId,

@@ -62,4 +62,18 @@ public class Person implements Serializable {
     @OneToMany(mappedBy = "killer")
     private Collection<News> newsKiller;
 
+    public Person(String name, String surname, String patronymic, Boolean sex, LocalDateTime bornDate, LocalDateTime deathDate, boolean isFake, Agent agent, Kira kira, Entry entry, Collection<News> newsVictim, Collection<News> newsKiller) {
+        this.name = name;
+        this.surname = surname;
+        this.patronymic = patronymic;
+        this.sex = sex;
+        this.bornDate = bornDate;
+        this.deathDate = deathDate;
+        this.isFake = isFake;
+        this.agent = agent;
+        this.kira = kira;
+        this.entry = entry;
+        this.newsVictim = newsVictim;
+        this.newsKiller = newsKiller;
+    }
 }

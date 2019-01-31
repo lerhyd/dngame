@@ -11,9 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
 import java.util.stream.Stream;
 
 @RestController
@@ -64,13 +61,13 @@ public class EntryController {
         boolean isExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(victimName, victimSername, victimPatr, victimSex);
         if (isExists){
             Entry entry = getFormedEntry(pageNum, deathDate, desc, deathReasonId, deathPlaceId, deathRegionId,
-                    kiraId, victimName, victimSername, victimPatr, victimSex);
+                    kiraId, victimName, victimSername, victimPatr, victimSex, personDao, false);
             entryDao.save(entry);
             newsDao.save(generateNewsFromEntry(entry, kiraId));
             kiraDao.addPoints(5, kiraId);
         } else {
             Entry entry = getFormedEntry(pageNum, deathDate, desc, deathReasonId, deathPlaceId, deathRegionId,
-                    kiraId, victimName, victimSername, victimPatr, victimSex);
+                    kiraId, victimName, victimSername, victimPatr, victimSex, personDao, true);
             entryDao.save(entry);
             kiraDao.deletePoints(10, kiraId);
         }
@@ -102,27 +99,55 @@ public class EntryController {
         return news;
     }
 
-    private Entry getFormedEntry(int pageNum, String deathDate, String desc,
-                                long actionId,
-                                long actionPlaceId,
-                                long deathRegionId,
-                                long kiraId,
-                                String victimName,
-                                String victimSername,
-                                String victimPatr,
-                                boolean victimSex){
+    private Entry getFormedEntry(int pageNum, String deathDate, String desc, long actionId, long actionPlaceId, long deathRegionId,
+                                long kiraId, String victimName, String victimSername, String victimPatr, boolean victimSex,
+                                 PersonDao personDao, boolean isUselessEntry){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        Entry entry = new Entry(
-                pageNum,
-                LocalDateTime.parse(deathDate, formatter),
-                desc,
-                actionDao.findById(actionId),
-                actionPlaceDao.findById(actionPlaceId),
-                regionDao.findById(deathRegionId),
-                kiraDao.findById(kiraId),
-                personDao.findByNameAndSurnameAndPatronymicAndSex(victimName, victimSername, victimPatr, victimSex)
-        );
-        return entry;
+        if (!isUselessEntry) {
+            Entry entry = new Entry(
+                    pageNum,
+                    LocalDateTime.parse(deathDate, formatter),
+                    desc,
+                    actionDao.findById(actionId),
+                    actionPlaceDao.findById(actionPlaceId),
+                    regionDao.findById(deathRegionId),
+                    kiraDao.findById(kiraId),
+                    personDao.findByNameAndSurnameAndPatronymicAndSex(victimName, victimSername, victimPatr, victimSex)
+            );
+            return entry;
+        } else {
+            Person unrealVictim = new Person(
+                    victimName,
+                    victimSername,
+                    victimPatr,
+                    victimSex,
+                    LocalDateTime.now(),
+                    LocalDateTime.parse(deathDate, formatter),
+                    true,
+                    null,
+                    null,
+                    null,
+                    null,
+                    null
+                    );
+
+            Entry entry = new Entry(
+                    pageNum,
+                    LocalDateTime.parse(deathDate, formatter),
+                    desc,
+                    actionDao.findById(actionId),
+                    actionPlaceDao.findById(actionPlaceId),
+                    regionDao.findById(deathRegionId),
+                    kiraDao.findById(kiraId),
+                    unrealVictim
+            );
+            unrealVictim.setEntry(entry);
+            personDao.save(unrealVictim);
+            return entry;
+        }
+
     }
+
+
 
 }

@@ -3,11 +3,9 @@ package com.lerhyd.dngame.controller;
 import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.EntryInfo;
 import com.lerhyd.dngame.model.*;
+import com.lerhyd.dngame.request.EntryReq;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -21,9 +19,6 @@ public class EntryController {
 
     @Autowired
     private KiraDao kiraDao;
-
-    @Autowired
-    private AgentDao agentDao;
 
     @Autowired
     private PersonDao personDao;
@@ -46,46 +41,70 @@ public class EntryController {
     }
 
     @PostMapping("/entry/add")
-    public void addEntry(@RequestParam("kiraId") long kiraId,
-                         @RequestParam("pageNum") int pageNum,
-                         @RequestParam("deathReasonId") int deathReasonId,
-                         @RequestParam("victimName") String victimName,
-                         @RequestParam("victimSername") String victimSername,
-                         @RequestParam("victimPatr") String victimPatr,
-                         @RequestParam("victimSex") boolean victimSex,
-                         @RequestParam("desc") String desc,
-                         @RequestParam("deathDate") String deathDate,
-                         @RequestParam("deathPlaceId") long deathPlaceId,
-                         @RequestParam("deathRegionId") long deathRegionId)
+    public void addEntry(@RequestBody EntryReq entryReq)
     {
-        boolean isExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(victimName, victimSername, victimPatr, victimSex);
+        //check if Entry's Person exists
+        boolean isExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
+                                                                                entryReq.getVictimSername(),
+                                                                                entryReq.getVictimPatr(),
+                                                                                entryReq.isVictimSex());
         if (isExists){
-            Entry entry = getFormedEntry(pageNum, deathDate, desc, deathReasonId, deathPlaceId, deathRegionId,
-                    kiraId, victimName, victimSername, victimPatr, victimSex, personDao, false);
+            Entry entry = getFormedEntry(entryReq, false);
             entryDao.save(entry);
-            newsDao.save(generateNewsFromEntry(entry, personDao));
-            kiraDao.addPoints(5, kiraId);
+            newsDao.save(generateNewsFromEntry(entry));
+            boolean isCriminal = personDao.checkPersonIfCriminal(entryReq.getVictimName(),
+                                            entryReq.getVictimSername(),
+                                            entryReq.getVictimPatr(),
+                                            entryReq.isVictimSex());
+            if (isCriminal){
+                kiraDao.deletePoints(10, entryReq.getKiraId());
+            } else {
+                kiraDao.addPoints(10, entryReq.getKiraId());
+            }
+
         } else {
-            Entry entry = getFormedEntry(pageNum, deathDate, desc, deathReasonId, deathPlaceId, deathRegionId,
-                    kiraId, victimName, victimSername, victimPatr, victimSex, personDao, true);
+            Entry entry = getFormedEntry(entryReq, true);
             entryDao.save(entry);
-            kiraDao.deletePoints(10, kiraId);
+            kiraDao.deletePoints(30, entryReq.getKiraId());
         }
     }
 
-    private News generateNewsFromEntry(Entry entry, PersonDao personDao){
+    private boolean checkIfLose(long kiraId){
+        if (kiraDao.findPointsById(kiraId)<=0){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean checkIfWin(long kiraId){
+        if (kiraDao.findKilledCriminalsByKiraId(kiraId) >=25){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private News generateNewsFromEntry(Entry entry){
         String desc = entry.getDescription();
         Kira kira = entry.getKira();
         ActionPlace actionPlace = entry.getActionPlace();
         Action action = entry.getAction();
         Region region = entry.getDeathRegion();
         Person victim = entry.getVictim();
+        boolean isDeathDate = false;
+        LocalDateTime deathDate = entry.getDeathDataTime();
+        LocalDateTime deathWithoutDate = LocalDateTime.now().plusSeconds(40);
+        if (deathDate != null)
+            isDeathDate = true;
+
         News news = new News(
                 desc,
+                isDeathDate ? deathDate : deathWithoutDate,
                 action,
                 actionPlace,
                 victim,
-                kira.getNews().get(1).getAgent(),
+                kira.getNews().get(0).getAgent(),
                 kira,
                 region,
                 region,
@@ -93,36 +112,43 @@ public class EntryController {
                 null
         );
         Person victimToUpdate = personDao.getOne(victim.getId());
-        victimToUpdate.setDeathDate(entry.getDeathDataTime());
+        if (isDeathDate) {
+            victimToUpdate.setDeathDate(deathDate);
+        } else {
+            victimToUpdate.setDeathDate(deathWithoutDate);
+        }
         personDao.save(victimToUpdate);
         return news;
     }
 
-    private Entry getFormedEntry(int pageNum, String deathDate, String desc, long actionId, long actionPlaceId, long deathRegionId,
-                                long kiraId, String victimName, String victimSername, String victimPatr, boolean victimSex,
-                                 PersonDao personDao, boolean isUselessEntry){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private Entry getFormedEntry(EntryReq entryReq,
+                                 boolean isUselessEntry){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         if (!isUselessEntry) {
             Entry entry = new Entry(
-                    pageNum,
-                    LocalDateTime.parse(deathDate, formatter),
-                    desc,
-                    actionDao.findById(actionId),
-                    actionPlaceDao.findById(actionPlaceId),
-                    regionDao.findById(deathRegionId),
-                    kiraDao.findById(kiraId),
-                    personDao.findByNameAndSurnameAndPatronymicAndSex(victimName, victimSername, victimPatr, victimSex)
+                    entryReq.getPageNum(),
+                    LocalDateTime.parse(entryReq.getDeathDate(), formatter),
+                    entryReq.getDesc(),
+                    actionDao.findById(entryReq.getActionId()),
+                    actionPlaceDao.findById(entryReq.getActionPlaceId()),
+                    regionDao.findById(entryReq.getDeathRegionId()),
+                    kiraDao.findById(entryReq.getKiraId()),
+                    personDao.findByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
+                                                                      entryReq.getVictimSername(),
+                                                                      entryReq.getVictimPatr(),
+                                                                      entryReq.isVictimSex())
             );
             return entry;
         } else {
             Person unrealVictim = new Person(
-                    victimName,
-                    victimSername,
-                    victimPatr,
-                    victimSex,
+                    entryReq.getVictimName(),
+                    entryReq.getVictimSername(),
+                    entryReq.getVictimPatr(),
+                    entryReq.isVictimSex(),
                     LocalDateTime.now(),
-                    LocalDateTime.parse(deathDate, formatter),
+                    LocalDateTime.parse(entryReq.getDeathDate(), formatter),
                     true,
+                    false,
                     null,
                     null,
                     null,
@@ -131,13 +157,13 @@ public class EntryController {
                     );
 
             Entry entry = new Entry(
-                    pageNum,
-                    LocalDateTime.parse(deathDate, formatter),
-                    desc,
-                    actionDao.findById(actionId),
-                    actionPlaceDao.findById(actionPlaceId),
-                    regionDao.findById(deathRegionId),
-                    kiraDao.findById(kiraId),
+                    entryReq.getPageNum(),
+                    LocalDateTime.parse(entryReq.getDeathDate(), formatter),
+                    entryReq.getDesc(),
+                    actionDao.findById(entryReq.getActionId()),
+                    actionPlaceDao.findById(entryReq.getActionPlaceId()),
+                    regionDao.findById(entryReq.getDeathRegionId()),
+                    kiraDao.findById(entryReq.getKiraId()),
                     unrealVictim
             );
             unrealVictim.setEntry(entry);

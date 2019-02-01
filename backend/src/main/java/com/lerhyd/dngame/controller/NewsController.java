@@ -6,6 +6,8 @@ import com.lerhyd.dngame.model.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
 
 @RestController()
@@ -35,6 +37,7 @@ public class NewsController {
     /**
      * Add usual news
      * @param desc description of news
+     * @param pubDate the date to publush news
      * @param actionId id of {@link com.lerhyd.dngame.model.Action}
      * @param actionPlaceId id of {@link com.lerhyd.dngame.model.ActionPlace}
      * @param commonRegionId id of {@link com.lerhyd.dngame.model.Region}
@@ -47,6 +50,7 @@ public class NewsController {
      */
     @PostMapping("/news/add")
     public void addNews(@RequestParam("desc") String desc,
+                        @RequestParam("pubDate") String pubDate,
                         @RequestParam("actionId") long actionId,
                         @RequestParam("actionPlaceId") long actionPlaceId,
                         @RequestParam("commonRegionId") long commonRegionId,
@@ -56,8 +60,9 @@ public class NewsController {
                         @RequestParam("victimId") long victimId,
                         @RequestParam("fakeVictimId") long fakeVictimId,
                         @RequestParam("killerId") long killerId){
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         News news = new News(desc,
+                LocalDateTime.parse(pubDate, formatter),
                     actionDao.findById(actionId),
                     actionPlaceDao.findById(actionPlaceId),
                     personDao.findById(victimId),
@@ -89,7 +94,7 @@ public class NewsController {
      * @param kiraId id of {@link com.lerhyd.dngame.model.Kira}
      * @param agentId id of {@link com.lerhyd.dngame.model.Agent}
      */
-    @DeleteMapping("/news")
+    @DeleteMapping("/news/delete")
     public void deleteNews(@RequestParam("kiraId") long kiraId, @RequestParam("agentId") long agentId){
         newsDao.deleteAllByKiraIdAndAgentId(kiraId, agentId);
     }

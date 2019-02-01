@@ -14,15 +14,15 @@ import java.util.Collection;
 
 @Data
 @Entity
-@Table(name = "death_places")
+@Table(name = "action_places")
 public class ActionPlace implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Long id;
+    private long id;
 
-    @Column(name = "death_place", length = 500, unique = true)
+    @Column(name = "action_place", length = 500, unique = true)
     private String place;
 
     @Column(name = "lvl")

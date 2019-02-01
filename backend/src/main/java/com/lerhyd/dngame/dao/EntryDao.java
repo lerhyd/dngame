@@ -14,6 +14,9 @@ public interface EntryDao extends JpaRepository<Entry, Long> {
     @Query("select e from Entry e WHERE e.kira.id = :kiraId")
     Collection<Entry> findAllByKira(@Param("kiraId") Long kiraId);
 
+    @Query("delete from Entry e where e.kira.id = :kiraId")
+    void deleteAllByKiraId(@Param("kiraId") long kiraId);
+
     Entry findById(long id);
 
 }

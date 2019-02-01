@@ -14,16 +14,16 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "note_rules")
+@Table(name = "rules")
 public class Rule implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Long id;
+    private long id;
 
-    @Column(name = "is_default", nullable = false)
-    private boolean isDefault;
+    @Column(name = "def", nullable = false)
+    private boolean def;
 
     @Column(name = "description", unique = true)
     private String description;

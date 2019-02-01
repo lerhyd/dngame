@@ -12,6 +12,6 @@ public class RulesInfo {
     public RulesInfo(Rule rule){
         id = rule.getId();
         desc = rule.getDescription();
-        isDefault = rule.isDefault();
+        isDefault = rule.isDef();
     }
 }

@@ -20,14 +20,14 @@ import java.util.Set;
 
 @Data
 @Entity
-@Table(name = "kira")
+@Table(name = "kiras")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Kira implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Long id;
+    private long id;
 
     @Column(name = "lvl")
     private int lvl;
@@ -38,6 +38,12 @@ public class Kira implements Serializable {
 
     @Column(name = "number_of_kills")
     private int numberOfKills;
+
+    @Column(name = "number_of_wins")
+    private int numberOfWins;
+
+    @Column(name = "number_of_loses")
+    private int numberOfLoses;
 
     @Column(name = "points")
     private int points;
@@ -73,6 +79,6 @@ public class Kira implements Serializable {
     private User user;
 
     @OneToMany(mappedBy = "kira")
-    private Collection<Entry> entries;
+    private List<Entry> entries;
 
 }

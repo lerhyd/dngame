@@ -20,7 +20,7 @@ public class Entry implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Long id;
+    private long id;
 
     @Column(name = "page_number", nullable = false)
     private int pageNumber;
@@ -32,11 +32,11 @@ public class Entry implements Serializable {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "death_reason_id")
+    @JoinColumn(name = "action_id")
     private Action action;
 
     @ManyToOne
-    @JoinColumn(name = "death_place_id")
+    @JoinColumn(name = "action_place_id")
     private ActionPlace actionPlace;
 
     @ManyToOne
@@ -47,7 +47,7 @@ public class Entry implements Serializable {
     @JoinColumn(name = "kira_id")
     private Kira kira;
 
-    @OneToOne
+    @OneToOne()
     @JoinColumn(name = "victim_id")
     private Person victim;
 
@@ -61,4 +61,6 @@ public class Entry implements Serializable {
         this.kira = kira;
         this.victim = victim;
     }
+
+    public Entry(){}
 }

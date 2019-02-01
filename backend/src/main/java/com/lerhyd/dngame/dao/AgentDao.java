@@ -24,6 +24,4 @@ public interface AgentDao extends JpaRepository<Agent, Long> {
 
     Agent findById(long id);
 
-    @Query("select a from Agent a left join a.news ")
-    Agent findAgentByKiraId(long kiraId);
 }

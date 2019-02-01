@@ -22,7 +22,7 @@ public class Region implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Long id;
+    private long id;
 
     @Column(name = "country")
     private String country;

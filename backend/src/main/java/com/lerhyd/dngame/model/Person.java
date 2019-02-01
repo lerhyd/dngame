@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.List;
 
 /**
  * Simple JavaBean object that represents role of {@link Person},
@@ -24,7 +25,7 @@ public class Person implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Long id;
+    private long id;
 
     @Column(name = "name", nullable = false, length = 15)
     private String name;
@@ -45,7 +46,10 @@ public class Person implements Serializable {
     private LocalDateTime deathDate;
 
     @Column(name = "is_fake")
-    private boolean isFake;
+    private boolean fake;
+
+    @Column(name = "is_criminal")
+    private boolean criminal;
 
     @OneToOne(mappedBy = "person")
     private Agent agent;
@@ -53,27 +57,32 @@ public class Person implements Serializable {
     @OneToOne(mappedBy = "person")
     private Kira kira;
 
-    @OneToOne(mappedBy = "victim")
+    @OneToOne(mappedBy = "victim", cascade=CascadeType.ALL)
     private Entry entry;
 
     @OneToMany(mappedBy = "victim")
-    private Collection<News> newsVictim;
+    private List<News> newsVictim;
 
     @OneToMany(mappedBy = "killer")
-    private Collection<News> newsKiller;
+    private List<News> newsKiller;
 
-    public Person(String name, String surname, String patronymic, Boolean sex, LocalDateTime bornDate, LocalDateTime deathDate, boolean isFake, Agent agent, Kira kira, Entry entry, Collection<News> newsVictim, Collection<News> newsKiller) {
+    public Person(String name, String surname, String patronymic, Boolean sex, LocalDateTime bornDate,
+                  LocalDateTime deathDate, boolean fake, boolean criminal, Agent agent, Kira kira, Entry entry,
+                  List<News> newsVictim, List<News> newsKiller) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
         this.sex = sex;
         this.bornDate = bornDate;
         this.deathDate = deathDate;
-        this.isFake = isFake;
+        this.fake = fake;
+        this.criminal = criminal;
         this.agent = agent;
         this.kira = kira;
         this.entry = entry;
         this.newsVictim = newsVictim;
         this.newsKiller = newsKiller;
     }
+
+    public Person(){}
 }

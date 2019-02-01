@@ -1,5 +1,6 @@
 package com.lerhyd.dngame.dao;
 
+import com.lerhyd.dngame.model.Agent;
 import com.lerhyd.dngame.model.Kira;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -23,6 +24,14 @@ public interface KiraDao extends JpaRepository<Kira, Long> {
     void setRegion(@Param("kiraId") long kiraId, @Param("regionId") long regionId);
 
     Kira findById(long id);
+
+    @Query("select k.numberOfKills from Kira k where k.id = :kiraId")
+    int findKilledCriminalsByKiraId(@Param("kiraId") long kiraId);
+
+    @Transactional
+    @Modifying
+    @Query("update Kira k set k.numberOfKills = k.numberOfKills + 1 where k.id = :kiraId")
+    void addKilledCrimianl(@Param("kiraId") long kiraId);
 
     @Transactional
     @Modifying

@@ -4,7 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -34,6 +34,12 @@ public class Agent implements Serializable {
     @Column(name = "number_of_caught_killers")
     private int numberOfCaughtKillers;
 
+    @Column(name = "number_of_wins")
+    private int numberOfWins;
+
+    @Column(name = "number_of_loses")
+    private int numberOfLoses;
+
     @Column(name = "points")
     private int points;
 
@@ -43,7 +49,7 @@ public class Agent implements Serializable {
             joinColumns = @JoinColumn(name = "agent_id"),
             inverseJoinColumns = @JoinColumn(name = "achievements_id")
     )
-    private Collection<Achievement> achievements;
+    private List<Achievement> achievements;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -62,7 +68,7 @@ public class Agent implements Serializable {
     private Rank rank;
 
     @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL)
-    private Collection<News> news;
+    private List<News> news;
 
     @OneToOne(mappedBy = "agent", cascade = CascadeType.ALL)
     private User user;

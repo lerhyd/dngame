@@ -17,13 +17,13 @@ import java.util.Collection;
 
 @Data
 @Entity
-@Table(name = "rank")
+@Table(name = "ranks")
 public class Rank implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
-    private Long id;
+    private long id;
 
     @Column(name = "level", nullable = false)
     private int lvl;

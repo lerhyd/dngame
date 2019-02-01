@@ -8,6 +8,7 @@ import com.lerhyd.dngame.model.Region;
 public class NewsInfo {
 
     public long id;
+    public String pubDate;
     public String description;
     public String actionDesc;
     public String actionPlace;
@@ -26,6 +27,7 @@ public class NewsInfo {
 
     public NewsInfo(News news){
         id = news.getId();
+        pubDate = news.getPublicationDate().toString();
         description = news.getDescription();
         actionDesc = news.getAction().getDescription();
         actionPlace = news.getActionPlace().getPlace();

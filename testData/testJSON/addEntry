@@ -1,0 +1,14 @@
+{
+	"kiraId": 1,
+	"pageNum": 1,
+	"actionId": 1,
+	"victimName": "Pavel",
+	"victimSername": "Durov",
+	"victimPatr": "Valerevich",
+	"victimSex": true,
+	"desc": "rip",
+	"deathDate": "2019-01-01 10:10:10",
+	"actionPlaceId": 1,
+	"deathRegionId": 1
+
+}

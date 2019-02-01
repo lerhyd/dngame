@@ -19,4 +19,7 @@ public interface EntryDao extends JpaRepository<Entry, Long> {
 
     Entry findById(long id);
 
+    @Query("select count(e) from Entry e where e.kira.id =:kiraId and e.pageNumber=:pageNum")
+    int findCntOfEntriesInOnePage(@Param("kiraId") long kiraId, @Param("pageNum") int pageNum);
+
 }

@@ -51,14 +51,11 @@ public class Person implements Serializable {
     @Column(name = "is_criminal")
     private boolean criminal;
 
-    @OneToOne(mappedBy = "person")
-    private Agent agent;
-
-    @OneToOne(mappedBy = "person")
-    private Kira kira;
-
     @OneToOne(mappedBy = "victim", cascade=CascadeType.ALL)
     private Entry entry;
+
+    @OneToOne(mappedBy = "profile")
+    private User user;
 
     @OneToMany(mappedBy = "victim")
     private List<News> newsVictim;
@@ -67,7 +64,7 @@ public class Person implements Serializable {
     private List<News> newsKiller;
 
     public Person(String name, String surname, String patronymic, Boolean sex, LocalDateTime bornDate,
-                  LocalDateTime deathDate, boolean fake, boolean criminal, Agent agent, Kira kira, Entry entry,
+                  LocalDateTime deathDate, boolean fake, boolean criminal, Entry entry,
                   List<News> newsVictim, List<News> newsKiller) {
         this.name = name;
         this.surname = surname;
@@ -77,8 +74,6 @@ public class Person implements Serializable {
         this.deathDate = deathDate;
         this.fake = fake;
         this.criminal = criminal;
-        this.agent = agent;
-        this.kira = kira;
         this.entry = entry;
         this.newsVictim = newsVictim;
         this.newsKiller = newsKiller;

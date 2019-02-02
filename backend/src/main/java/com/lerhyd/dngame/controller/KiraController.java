@@ -27,6 +27,9 @@ public class KiraController {
     @Autowired
     private PersonDao personDao;
 
+    @Autowired
+    private RankDao rankDao;
+
     @PostMapping("/kira/win")
     public void endGame(@RequestParam long kiraId){
         Kira k = kiraDao.getOne(kiraId);
@@ -48,7 +51,7 @@ public class KiraController {
         a.setPoints(0);
         a.setNumberOfCaughtKillers(0);
         a.setNews(null);
-        a.setRank(null);
+        a.setRank(rankDao.findByLvl(0));
 
         k.setNumberOfWins(k.getNumberOfWins() + 1);
         a.setNumberOfLoses(a.getNumberOfLoses() + 1);

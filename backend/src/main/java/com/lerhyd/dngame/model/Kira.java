@@ -32,10 +32,6 @@ public class Kira implements Serializable {
     @Column(name = "lvl")
     private int lvl;
 
-    @OneToOne
-    @JoinColumn(name = "person_id", nullable = false)
-    private Person person;
-
     @Column(name = "number_of_kills")
     private int numberOfKills;
 
@@ -75,7 +71,7 @@ public class Kira implements Serializable {
     @OneToMany(mappedBy = "kira", cascade = CascadeType.ALL)
     private List<News> news;
 
-    @OneToOne(mappedBy = "kira")
+    @OneToOne(mappedBy = "kira", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private User user;
 
     @OneToMany(mappedBy = "kira")

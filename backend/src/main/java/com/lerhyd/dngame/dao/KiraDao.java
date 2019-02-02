@@ -9,6 +9,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Pageable;
+import java.util.List;
+
 @Repository
 public interface KiraDao extends JpaRepository<Kira, Long> {
 
@@ -47,6 +50,12 @@ public interface KiraDao extends JpaRepository<Kira, Long> {
     @Modifying
     @Query("update Kira k set k.points= k.points - :points where k.id=:id")
     void deletePoints(@Param("points") int points, @Param("id") long kiraId);
+
+    @Query("select k from Kira k where k.news is empty")
+    List<Kira> findKirasWithoutNews();
+
+    @Query("select (count(k) > 0) from Kira k where k.id = :kiraId and k.news is not empty")
+    boolean existsWithNewsByKiraId(@Param("kiraId") long kiraId);
 
 }
 

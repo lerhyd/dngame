@@ -25,4 +25,7 @@ public interface PersonDao extends JpaRepository<Person, Long> {
     @Modifying
     @Query("delete from Person p where p.fake = true")
     void deleteAllByFake();
+
+    @Query("select p from Person p where p.user.id = :userLogin")
+    Person findPersonByUser(@Param("userLogin") String userLogin);
 }

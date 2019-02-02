@@ -27,10 +27,6 @@ public class Agent implements Serializable {
     @Column(name = "lvl")
     private int lvl;
 
-    @OneToOne
-    @JoinColumn(name = "person_id", nullable = false)
-    private Person person;
-
     @Column(name = "number_of_caught_killers")
     private int numberOfCaughtKillers;
 
@@ -70,7 +66,7 @@ public class Agent implements Serializable {
     @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL)
     private List<News> news;
 
-    @OneToOne(mappedBy = "agent", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "agent", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 
 }

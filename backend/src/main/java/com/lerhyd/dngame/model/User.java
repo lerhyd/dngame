@@ -40,17 +40,21 @@ public class User{
     @Column(name = "last_visit_timestamp")
     private LocalDateTime lastVisitTime;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "agent_id")
     private Agent agent;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "kira_id")
     private Kira kira;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "login"), inverseJoinColumns = @JoinColumn(name = "role"))
     private Set<Role> roles;
+
+    @OneToOne()
+    @JoinColumn(name = "profile_id")
+    private Person profile;
 
     public User(String login, String password){
         this.login = login;

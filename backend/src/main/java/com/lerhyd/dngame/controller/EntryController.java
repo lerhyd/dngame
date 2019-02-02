@@ -156,8 +156,6 @@ public class EntryController {
                     false,
                     null,
                     null,
-                    null,
-                    null,
                     null
                     );
 

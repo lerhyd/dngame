@@ -27,6 +27,9 @@ public class AgentController {
     @Autowired
     private PersonDao personDao;
 
+    @Autowired
+    private RankDao rankDao;
+
     @PostMapping("/agent/win")
     public void endGame(@RequestParam long agentId){
         Agent a = agentDao.getOne(agentId);
@@ -48,7 +51,7 @@ public class AgentController {
         k.setNumberOfKills(0);
         k.setEntries(null);
         k.setNews(null);
-        k.setRank(null);
+        k.setRank(rankDao.findByLvl(0));
 
         a.setNumberOfWins(a.getNumberOfLoses() + 1);
         k.setNumberOfLoses(k.getNumberOfWins() + 1);

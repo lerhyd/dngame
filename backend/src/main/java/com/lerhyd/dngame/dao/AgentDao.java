@@ -8,6 +8,9 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.awt.print.Pageable;
+import java.util.List;
+
 @Repository
 public interface AgentDao extends JpaRepository<Agent, Long> {
 
@@ -24,4 +27,9 @@ public interface AgentDao extends JpaRepository<Agent, Long> {
 
     Agent findById(long id);
 
+    @Query("select a from Agent a where a.news is empty")
+    List<Agent> findAgentsWithoutNews();
+
+    @Query("select (count(a) > 0) from Agent a where a.id = :agentId and a.news is not empty ")
+    boolean existsWithNewsByAgentId(@Param("agentId") long agentId);
 }

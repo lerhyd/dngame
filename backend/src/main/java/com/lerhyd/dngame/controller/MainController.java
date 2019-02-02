@@ -79,7 +79,7 @@ public class MainController {
             u.setKira(k);
             kiraDao.save(k);
             userDao.save(u);
-            findOpponent(isKira, k.getId());
+            findOpponent(isKira, k.getId(), userLogin);
         } else {
             Agent a = new Agent();
             a.setNumberOfLoses(0);
@@ -94,11 +94,11 @@ public class MainController {
             u.setAgent(a);
             agentDao.save(a);
             userDao.save(u);
-            findOpponent(isKira, a.getId());
+            findOpponent(isKira, a.getId(), userLogin);
         }
     }
 
-    public void findOpponent(boolean isKira, long classId){
+    public void findOpponent(boolean isKira, long classId, String userLogin){
         boolean isFound = false;
 
         while (!isFound){
@@ -111,7 +111,7 @@ public class MainController {
                 if (!agents.isEmpty()){
                     Kira kira = kiraDao.findById(classId);
                     Agent agent = agents.get(0);
-                    createMatch(kira.getId(), agent.getId());
+                    createMatch(kira.getId(), agent.getId(), userLogin);
                     isFound = true;
                 }
             } else {
@@ -123,7 +123,7 @@ public class MainController {
                 if (!kiras.isEmpty()){
                     Agent agent = agentDao.findById(classId);
                     Kira kira = kiras.get(0);
-                    createMatch(kira.getId(), agent.getId());
+                    createMatch(kira.getId(), agent.getId(), userLogin);
                     isFound = true;
                 }
 
@@ -131,13 +131,13 @@ public class MainController {
         }
     }
 
-    public void createMatch(long kiraId, long agentId){
+    public void createMatch(long kiraId, long agentId, String userLogin){
         News news = new News();
         Kira kira = kiraDao.findById(kiraId);
         Agent agent = agentDao.findById(agentId);
         news.setKira(kira);
         news.setAgent(agent);
-        news.setDescription("The world has been created");
+        news.setDescription(userLogin + " has been connected to the world.");
         newsDao.save(news);
         List<News> newsList = newsDao.findAllByKiraAndAgent(kiraId, agentId);
         kira.setNews(newsList);

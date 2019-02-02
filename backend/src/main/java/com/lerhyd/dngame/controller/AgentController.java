@@ -44,7 +44,7 @@ public class AgentController {
         a.setPoints(0);
         a.setNumberOfCaughtKillers(0);
         a.setNews(null);
-        a.setRank(null);
+        a.setRank(rankDao.findByLvl(0));
 
         k.setLvl(0);
         k.setPoints(0);

@@ -1,0 +1,1 @@
+INSERT INTO ranks VALUES (1, 0, 'beginner');

@@ -45,7 +45,7 @@ public class KiraController {
         k.setNumberOfKills(0);
         k.setEntries(null);
         k.setNews(null);
-        k.setRank(null);
+        k.setRank(rankDao.findByLvl(0));
 
         a.setLvl(0);
         a.setPoints(0);

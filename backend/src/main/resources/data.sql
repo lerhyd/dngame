@@ -19,12 +19,12 @@ insert into actions (id, description, lvl) values (9, 'был(-а) избит(-�
 insert into actions (id, description, lvl) values (10, 'был(-а) убит(-а) карандашом', 9);
 insert into actions (id, description, lvl) values (11, 'был(-а) убит(-а) книгой', 10);
 insert into actions (id, description, lvl) values (12, 'был(-а) убит(-а) из огнестрельного оружия', 11);
-insert into actions (id, description, lvl) values (12, 'утопился(-ась)', 11);
-insert into actions (id, description, lvl) values (12, 'умерл(-а) от голода', 11);
-insert into actions (id, description, lvl) values (12, 'спрыгнул(-а) с крыши', 11);
-insert into actions (id, description, lvl) values (12, 'умер(-а) от чумы', 11);
-insert into actions (id, description, lvl) values (12, 'умер(-а) от свинного гриппа', 11);
-insert into actions (id, description, lvl) values (12, 'умер(-а) от холеры', 11);
+insert into actions (id, description, lvl) values (13, 'утопился(-ась)', 11);
+insert into actions (id, description, lvl) values (14, 'умерл(-а) от голода', 11);
+insert into actions (id, description, lvl) values (15, 'спрыгнул(-а) с крыши', 11);
+insert into actions (id, description, lvl) values (16, 'умер(-а) от чумы', 11);
+insert into actions (id, description, lvl) values (17, 'умер(-а) от свинного гриппа', 11);
+insert into actions (id, description, lvl) values (18, 'умер(-а) от холеры', 11);
 
 insert into action_places (id, lvl, action_place) values (1, 0, 'в кабинке туалета');
 insert into action_places (id, lvl, action_place) values (2, 0, 'в спальне');
@@ -33,10 +33,10 @@ insert into action_places (id, lvl, action_place) values (4, 0, 'в музее')
 
 insert into regions (id, city, country) values (1, 'в Москве', 'в России', 'в Европе');
 insert into regions (id, city, country) values (2, 'в Серене', 'в Бельгии', 'в Европе');
-insert into regions (id, city, country) values (2, 'в Серене', 'в Бельгии', 'в Европе');
-insert into regions (id, city, country) values (2, 'в Коге', 'в Японии', 'в Азии');
-insert into regions (id, city, country) values (2, 'в Токио', 'в Японии', 'в Азии');
-insert into regions (id, city, country) values (2, 'в Мати', 'в Филиппинах', 'в Азии');
+insert into regions (id, city, country) values (3, 'в Серене', 'в Бельгии', 'в Европе');
+insert into regions (id, city, country) values (4, 'в Коге', 'в Японии', 'в Азии');
+insert into regions (id, city, country) values (5, 'в Токио', 'в Японии', 'в Азии');
+insert into regions (id, city, country) values (6, 'в Мати', 'в Филиппинах', 'в Азии');
 
 --Criminals
 insert into persons (born_date, is_criminal, death_date, is_fake, name, patronymic, sex, surname)

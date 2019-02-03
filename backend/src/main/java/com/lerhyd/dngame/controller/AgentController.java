@@ -31,7 +31,9 @@ public class AgentController {
     private RankDao rankDao;
 
     @PostMapping("game/agent/win")
-    public void endGame(@RequestParam long id){
+    public int endGame(@RequestParam long id){
+        if (agentDao.findById(id).getLvl() <= 0)
+            return 1;
         Agent a = agentDao.getOne(id);
         long kiraId = a.getNews().get(0).getKira().getId();
         Kira k = kiraDao.getOne(kiraId);
@@ -58,6 +60,7 @@ public class AgentController {
 
         agentDao.save(a);
         kiraDao.save(k);
+        return 0;
     }
 
 }

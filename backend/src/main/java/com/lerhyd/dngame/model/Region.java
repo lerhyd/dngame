@@ -24,11 +24,14 @@ public class Region implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private long id;
 
+    @Column(name = "city")
+    private String city;
+
     @Column(name = "country")
     private String country;
 
-    @Column(name = "city")
-    private String city;
+    @Column(name = "continent")
+    private String continent;
 
     @OneToMany(mappedBy = "region")
     private Collection<Agent> agents;

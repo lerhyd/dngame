@@ -35,35 +35,44 @@ public class EntryController {
     @Autowired
     private NewsDao newsDao;
 
-    @GetMapping("/entry")
+    @GetMapping("/game/entry")
     public Stream<EntryInfo> getEntries(@RequestParam("kiraId") long kiraId){
         return entryDao.findAllByKira(kiraId).stream().map(EntryInfo::new);
     }
 
-    @PostMapping("/entry/add")
-    public boolean addEntry(@RequestBody EntryReq entryReq)
+    @PostMapping("/game/entry/add")
+    public int addEntry(@RequestBody EntryReq entryReq)
     {
         int cntEntriesInPage = entryDao.findCntOfEntriesInOnePage(entryReq.getKiraId(), entryReq.getPageNum());
         if (cntEntriesInPage == 10){
-            return false;
+            return 1;
         }
         if (!kiraDao.existsById(entryReq.getKiraId())){
-            return false;
+            return 2;
         }
 
+        boolean isEntryExists = entryDao.existsEntryByVictim_NameAndVictim_SurnameAndVictim_PatronymicAndVictim_Sex(
+                entryReq.getVictimName(),
+                entryReq.getVictimSername(),
+                entryReq.getVictimPatr(),
+                entryReq.isVictimSex()
+        );
+        if (isEntryExists)
+            return 3;
         //check if Entry's Person exists
-        boolean isExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
+        boolean isPersonExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
                 entryReq.getVictimSername(),
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex());
-        if (isExists) {
+        if (isPersonExists) {
             Entry entry = getFormedEntry(entryReq, false);
             entryDao.save(entry);
             newsDao.save(generateNewsFromEntry(entry));
-            boolean isCriminal = personDao.checkPersonIfCriminal(entryReq.getVictimName(),
+            boolean isCriminal = personDao.findIfCriminal(
+                    entryReq.getVictimName(),
                     entryReq.getVictimSername(),
                     entryReq.getVictimPatr(),
-                    entryReq.isVictimSex());
+                    entryReq.isVictimSex()).orElse(false);
             if (isCriminal) {
                 kiraDao.deletePoints(10, entryReq.getKiraId());
             } else {
@@ -75,7 +84,7 @@ public class EntryController {
             entryDao.save(entry);
             kiraDao.deletePoints(30, entryReq.getKiraId());
         }
-        return true;
+        return 0;
     }
 
     private boolean checkIfLose(long kiraId){

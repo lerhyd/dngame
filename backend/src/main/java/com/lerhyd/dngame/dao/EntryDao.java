@@ -26,4 +26,9 @@ public interface EntryDao extends JpaRepository<Entry, Long> {
     @Query("select count(e) from Entry e where e.kira.id =:kiraId and e.pageNumber=:pageNum")
     int findCntOfEntriesInOnePage(@Param("kiraId") long kiraId, @Param("pageNum") int pageNum);
 
+    boolean existsEntryByVictim_NameAndVictim_SurnameAndVictim_PatronymicAndVictim_Sex(String name,
+                                                                                       String surname,
+                                                                                       String patr,
+                                                                                       boolean sex);
+
 }

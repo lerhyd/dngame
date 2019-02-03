@@ -30,7 +30,7 @@ public interface NewsDao extends JpaRepository<News, Long> {
 
     News findTopByOrderByIdDesc();
 
-    @Query("select (count(n) = 2) from News n where n.kira.id = :kiraId and n.agent.id = :agentId")
-    boolean existsTwoNewsByKiraAndAgent(@Param("kiraId") long kiraId, @Param("agentId") long agentId);
+    @Query("select count(n) from News n where n.kira.id = :kiraId and n.agent.id = :agentId")
+    long cntNewsByKiraAndAgent(@Param("kiraId") long kiraId, @Param("agentId") long agentId);
 
 }

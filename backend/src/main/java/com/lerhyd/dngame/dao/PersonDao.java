@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Repository
 public interface PersonDao extends JpaRepository<Person, Long> {
 
@@ -18,8 +20,8 @@ public interface PersonDao extends JpaRepository<Person, Long> {
     Person findByNameAndSurnameAndPatronymicAndSex(String name, String surname, String patronymic, boolean sex);
 
     @Query("select p.criminal from Person p where p.name=:name and p.surname=:surname and p.patronymic=:patr and p.sex=:sex")
-    boolean checkPersonIfCriminal(@Param("name") String name,@Param("surname") String surname,
-                                  @Param("patr") String patronymic,@Param("sex") boolean sex);
+    Optional<Boolean> findIfCriminal(@Param("name") String name, @Param("surname") String surname,
+                            @Param("patr") String patronymic, @Param("sex") boolean sex);
 
     @Transactional
     @Modifying

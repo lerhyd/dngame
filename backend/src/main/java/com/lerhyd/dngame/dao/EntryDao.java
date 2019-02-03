@@ -31,4 +31,7 @@ public interface EntryDao extends JpaRepository<Entry, Long> {
                                                                                        String patr,
                                                                                        boolean sex);
 
+    @Query("select max(e.pageNumber) from Entry e where e.kira.id = :kiraId")
+    int findMaxNumPageByKiraId(@Param("kiraId") long kiraId);
+
 }

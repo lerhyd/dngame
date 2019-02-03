@@ -47,9 +47,24 @@ public class EntryController {
         if (cntEntriesInPage == 10){
             return 1;
         }
-        if (!kiraDao.existsById(entryReq.getKiraId())){
+
+        int maxPageNum = entryDao.findMaxNumPageByKiraId(entryReq.getKiraId());
+        if ((entryReq.getPageNum() - 1) > maxPageNum)
             return 2;
+        if (!kiraDao.existsById(entryReq.getKiraId())){
+            return 3;
         }
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+
+        if (LocalDateTime.parse(entryReq.getDeathDate(), formatter).isBefore(LocalDateTime.now()))
+            return 4;
+
+        if (kiraDao.getOne(entryReq.getKiraId()).getUser().getProfile() == null)
+            return 5;
+
+        if (kiraDao.getOne(entryReq.getKiraId()).getNews().get(0) == null)
+            return 6;
 
         boolean isEntryExists = entryDao.existsEntryByVictim_NameAndVictim_SurnameAndVictim_PatronymicAndVictim_Sex(
                 entryReq.getVictimName(),
@@ -58,7 +73,7 @@ public class EntryController {
                 entryReq.isVictimSex()
         );
         if (isEntryExists)
-            return 3;
+            return 7;
         //check if Entry's Person exists
         boolean isPersonExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
                 entryReq.getVictimSername(),

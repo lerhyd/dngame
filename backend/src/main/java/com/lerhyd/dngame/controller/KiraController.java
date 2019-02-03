@@ -37,8 +37,8 @@ public class KiraController {
         Agent a = agentDao.getOne(agentId);
 
         newsDao.deleteAllByKiraIdAndAgentId(id, agentId);
-        entryDao.deleteAllByKiraId(id);
         personDao.deleteAllByFake();
+        entryDao.deleteAllByKiraId(id);
 
         k.setLvl(0);
         k.setPoints(0);

@@ -74,7 +74,7 @@ public class EntryController {
         );
         if (isEntryExists)
             return 7;
-        //check if Entry's Person exists
+
         boolean isPersonExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
                 entryReq.getVictimSername(),
                 entryReq.getVictimPatr(),

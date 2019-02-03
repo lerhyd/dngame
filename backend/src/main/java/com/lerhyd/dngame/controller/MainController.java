@@ -96,7 +96,7 @@ public class MainController {
             u.setKira(k);
             kiraDao.save(k);
             userDao.save(u);
-            findOpponent(isKira, k.getId(), userLogin);
+            findOpponent(isKira, k.getId());
         } else {
             Agent a;
             if (u.getAgent() != null)
@@ -116,25 +116,30 @@ public class MainController {
             u.setAgent(a);
             agentDao.save(a);
             userDao.save(u);
-            findOpponent(isKira, a.getId(), userLogin);
+            findOpponent(isKira, a.getId());
         }
         return true;
     }
 
-    public void findOpponent(boolean isKira, long classId, String userLogin){
+    public void findOpponent(boolean isKira, long classId){
         boolean isFound = false;
 
         while (!isFound){
             if (isKira){
                 List<Agent> agents = agentDao.findAgentsWithoutNews();
-
                 if (isMatchCreated(isKira, classId))
                     break;
 
                 if (!agents.isEmpty()){
                     Kira kira = kiraDao.findById(classId);
                     Agent agent = agents.get(0);
-                    createMatch(kira.getId(), agent.getId(), userLogin);
+                    createMatch(kira.getId(), agent.getId());
+                    boolean isTwoNews = newsDao.existsTwoNewsByKiraAndAgent(kira.getId(), agent.getId());
+                    if (isTwoNews){
+                        List<News> news = newsDao.findAllByKiraAndAgent(kira.getId(), agent.getId());
+                        News newsToDelete = news.get(1);
+                        newsDao.delete(newsToDelete);
+                    }
                     isFound = true;
                 }
             } else {
@@ -146,15 +151,22 @@ public class MainController {
                 if (!kiras.isEmpty()){
                     Agent agent = agentDao.findById(classId);
                     Kira kira = kiras.get(0);
-                    createMatch(kira.getId(), agent.getId(), userLogin);
+                    createMatch(kira.getId(), agent.getId());
+                    boolean isTwoNews = newsDao.existsTwoNewsByKiraAndAgent(kira.getId(), agent.getId());
+                    if (isTwoNews){
+                        List<News> news = newsDao.findAllByKiraAndAgent(kira.getId(), agent.getId());
+                        News newsToDelete = news.get(1);
+                        newsDao.delete(newsToDelete);
+                    }
                     isFound = true;
                 }
 
             }
+
         }
     }
 
-    public void createMatch(long kiraId, long agentId, String userLogin){
+    public void createMatch(long kiraId, long agentId){
         News news = new News();
         Kira kira = kiraDao.findById(kiraId);
         Agent agent = agentDao.findById(agentId);

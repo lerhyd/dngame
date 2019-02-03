@@ -36,8 +36,16 @@ public class MainController {
     private RegionDao regionDao;
 
     @PostMapping("/game/profile/create")
-    public void createProfile(@RequestBody PersonReq personReq){
+    public int createProfile(@RequestBody PersonReq personReq){
         User u = userDao.getOne(personReq.getUserLogin());
+        Person personToCheck = u.getProfile();
+        if (personToCheck != null)
+            return 1;
+        if (personDao.existsByNameAndSurnameAndPatronymicAndSex(personReq.getName(),
+                                                                personReq.getSurname(),
+                                                                personReq.getPatr(),
+                                                                personReq.isSex()))
+            return 2;
         Person p = new Person();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         p.setName(personReq.getName());
@@ -47,9 +55,11 @@ public class MainController {
         p.setBornDate(LocalDateTime.parse(personReq.getBornDate(), formatter));
         p.setSex(personReq.isSex());
         p.setFake(false);
+        p.setCriminal(false);
         u.setProfile(p);
         personDao.save(p);
         userDao.save(u);
+        return 0;
     }
 
     @PostMapping("/game/profile/delete")
@@ -61,10 +71,12 @@ public class MainController {
     }
 
     @PostMapping("/game/class/choose")
-    public void setMainClass(@RequestParam("isKira") boolean isKira,
+    public boolean setMainClass(@RequestParam("isKira") boolean isKira,
                              @RequestParam("userLogin") String userLogin,
                              @RequestParam("regionId") long regionId){
         User u = userDao.getOne(userLogin);
+        if (u.getProfile() == null)
+            return false;
         if (isKira){
             Kira k = new Kira();
             k.setNumberOfLoses(0);
@@ -96,6 +108,7 @@ public class MainController {
             userDao.save(u);
             findOpponent(isKira, a.getId(), userLogin);
         }
+        return true;
     }
 
     public void findOpponent(boolean isKira, long classId, String userLogin){

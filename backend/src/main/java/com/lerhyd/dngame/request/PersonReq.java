@@ -9,9 +9,6 @@ public class PersonReq {
     private String surname;
     private String patr;
     private boolean sex;
-    private boolean fake;
-    private boolean criminal;
     private String bornDate;
-    private String deathDate;
     private String userLogin;
 }

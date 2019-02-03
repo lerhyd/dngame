@@ -30,13 +30,13 @@ public class AgentController {
     @Autowired
     private RankDao rankDao;
 
-    @PostMapping("/agent/win")
-    public void endGame(@RequestParam long agentId){
-        Agent a = agentDao.getOne(agentId);
-        long kiraId = a.getNews().get(1).getKira().getId();
+    @PostMapping("game/agent/win")
+    public void endGame(@RequestParam long id){
+        Agent a = agentDao.getOne(id);
+        long kiraId = a.getNews().get(0).getKira().getId();
         Kira k = kiraDao.getOne(kiraId);
 
-        newsDao.deleteAllByKiraIdAndAgentId(kiraId, agentId);
+        newsDao.deleteAllByKiraIdAndAgentId(kiraId, id);
         personDao.deleteAllByFake();
         entryDao.deleteAllByKiraId(kiraId);
 
@@ -53,8 +53,8 @@ public class AgentController {
         k.setNews(null);
         k.setRank(rankDao.findByLvl(0));
 
-        a.setNumberOfWins(a.getNumberOfLoses() + 1);
-        k.setNumberOfLoses(k.getNumberOfWins() + 1);
+        a.setNumberOfWins(a.getNumberOfWins() + 1);
+        k.setNumberOfLoses(k.getNumberOfLoses() + 1);
 
         agentDao.save(a);
         kiraDao.save(k);

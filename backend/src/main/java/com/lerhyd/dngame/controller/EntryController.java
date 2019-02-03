@@ -4,7 +4,6 @@ import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.EntryInfo;
 import com.lerhyd.dngame.model.*;
 import com.lerhyd.dngame.request.EntryReq;
-import com.lerhyd.dngame.validator.RequestValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,34 +43,39 @@ public class EntryController {
     @PostMapping("/entry/add")
     public boolean addEntry(@RequestBody EntryReq entryReq)
     {
-        if (RequestValidator.validateEntryReq(entryReq, entryDao, kiraDao)) {
+        int cntEntriesInPage = entryDao.findCntOfEntriesInOnePage(entryReq.getKiraId(), entryReq.getPageNum());
+        if (cntEntriesInPage == 10){
+            return false;
+        }
+        if (!kiraDao.existsById(entryReq.getKiraId())){
+            return false;
+        }
 
-            //check if Entry's Person exists
-            boolean isExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
+        //check if Entry's Person exists
+        boolean isExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
+                entryReq.getVictimSername(),
+                entryReq.getVictimPatr(),
+                entryReq.isVictimSex());
+        if (isExists) {
+            Entry entry = getFormedEntry(entryReq, false);
+            entryDao.save(entry);
+            newsDao.save(generateNewsFromEntry(entry));
+            boolean isCriminal = personDao.checkPersonIfCriminal(entryReq.getVictimName(),
                     entryReq.getVictimSername(),
                     entryReq.getVictimPatr(),
                     entryReq.isVictimSex());
-            if (isExists) {
-                Entry entry = getFormedEntry(entryReq, false);
-                entryDao.save(entry);
-                newsDao.save(generateNewsFromEntry(entry));
-                boolean isCriminal = personDao.checkPersonIfCriminal(entryReq.getVictimName(),
-                        entryReq.getVictimSername(),
-                        entryReq.getVictimPatr(),
-                        entryReq.isVictimSex());
-                if (isCriminal) {
-                    kiraDao.deletePoints(10, entryReq.getKiraId());
-                } else {
-                    kiraDao.addPoints(10, entryReq.getKiraId());
-                }
-
+            if (isCriminal) {
+                kiraDao.deletePoints(10, entryReq.getKiraId());
             } else {
-                Entry entry = getFormedEntry(entryReq, true);
-                entryDao.save(entry);
-                kiraDao.deletePoints(30, entryReq.getKiraId());
+                kiraDao.addPoints(10, entryReq.getKiraId());
             }
+
+        } else {
+            Entry entry = getFormedEntry(entryReq, true);
+            entryDao.save(entry);
+            kiraDao.deletePoints(30, entryReq.getKiraId());
         }
-        return false;
+        return true;
     }
 
     private boolean checkIfLose(long kiraId){

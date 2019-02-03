@@ -30,15 +30,15 @@ public class KiraController {
     @Autowired
     private RankDao rankDao;
 
-    @PostMapping("/kira/win")
-    public void endGame(@RequestParam long kiraId){
-        Kira k = kiraDao.getOne(kiraId);
-        long agentId = k.getNews().get(1).getAgent().getId();
+    @PostMapping("game/kira/win")
+    public void endGame(@RequestParam long id){
+        Kira k = kiraDao.getOne(id);
+        long agentId = k.getNews().get(0).getAgent().getId();
         Agent a = agentDao.getOne(agentId);
 
-        newsDao.deleteAllByKiraIdAndAgentId(kiraId, agentId);
+        newsDao.deleteAllByKiraIdAndAgentId(id, agentId);
         personDao.deleteAllByFake();
-        entryDao.deleteAllByKiraId(kiraId);
+        entryDao.deleteAllByKiraId(id);
 
         k.setLvl(0);
         k.setPoints(0);

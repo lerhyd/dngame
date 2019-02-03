@@ -1,5 +1,6 @@
 package com.lerhyd.dngame.dao;
 
+import com.lerhyd.dngame.model.Kira;
 import com.lerhyd.dngame.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -30,4 +31,7 @@ public interface UserDao extends JpaRepository<User, String> {
 
     @Query("select u from User u where u.profile.id = :profileId")
     User findUserByProfile(long profileId);
+
+
+
 }

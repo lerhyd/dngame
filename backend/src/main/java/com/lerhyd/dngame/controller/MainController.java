@@ -78,9 +78,14 @@ public class MainController {
         if (u.getProfile() == null)
             return false;
         if (isKira){
-            Kira k = new Kira();
-            k.setNumberOfLoses(0);
-            k.setNumberOfWins(0);
+            Kira k;
+            if (u.getKira() != null)
+                k = kiraDao.getOne(u.getKira().getId());
+            else {
+                k = new Kira();
+                k.setNumberOfLoses(0);
+                k.setNumberOfWins(0);
+            }
             k.setNumberOfKills(0);
             k.setPoints(50);
             k.setLvl(0);
@@ -93,9 +98,14 @@ public class MainController {
             userDao.save(u);
             findOpponent(isKira, k.getId(), userLogin);
         } else {
-            Agent a = new Agent();
-            a.setNumberOfLoses(0);
-            a.setNumberOfWins(0);
+            Agent a;
+            if (u.getAgent() != null)
+                a = agentDao.getOne(u.getAgent().getId());
+            else{
+                a = new Agent();
+                a.setNumberOfLoses(0);
+                a.setNumberOfWins(0);
+            }
             a.setNumberOfCaughtKillers(0);
             a.setPoints(50);
             a.setLvl(0);
@@ -150,7 +160,7 @@ public class MainController {
         Agent agent = agentDao.findById(agentId);
         news.setKira(kira);
         news.setAgent(agent);
-        news.setDescription(userLogin + " has been connected to the world.");
+        news.setDescription("The world has been created");
         newsDao.save(news);
         List<News> newsList = newsDao.findAllByKiraAndAgent(kiraId, agentId);
         kira.setNews(newsList);

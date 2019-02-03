@@ -32,7 +32,7 @@ public class AgentController {
 
     @PostMapping("game/agent/win")
     public int endGame(@RequestParam long id){
-        if (agentDao.findById(id).getLvl() <= 0)
+        if (agentDao.getOne(id).getLvl() <= 0)
             return 1;
         Agent a = agentDao.getOne(id);
         long kiraId = a.getNews().get(0).getKira().getId();

@@ -32,6 +32,8 @@ public class KiraController {
 
     @PostMapping("game/kira/win")
     public int endGame(@RequestParam long id){
+        if (kiraDao.getOne(id).getLvl() <= 0)
+            return 1;
         Kira k = kiraDao.getOne(id);
         long agentId = k.getNews().get(0).getAgent().getId();
         Agent a = agentDao.getOne(agentId);

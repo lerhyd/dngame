@@ -3,6 +3,7 @@ package com.lerhyd.dngame.controller;
 import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.NewsInfo;
 import com.lerhyd.dngame.model.News;
+import com.lerhyd.dngame.request.NewsReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,45 +34,21 @@ public class NewsController {
 
     @Autowired
     private PersonDao personDao;
-
-    /**
-     * Add usual news
-     * @param desc description of news
-     * @param pubDate the date to publush news
-     * @param actionId id of {@link com.lerhyd.dngame.model.Action}
-     * @param actionPlaceId id of {@link com.lerhyd.dngame.model.ActionPlace}
-     * @param commonRegionId id of {@link com.lerhyd.dngame.model.Region}
-     * @param distRegionId id of destination {@link com.lerhyd.dngame.model.Region}
-     * @param agentId id of {@link com.lerhyd.dngame.model.Agent}
-     * @param kiraId id of {@link KiraDao}
-     * @param victimId if of {@link com.lerhyd.dngame.model.Person}
-     * @param fakeVictimId id of fake {@link com.lerhyd.dngame.model.Person}
-     * @param killerId id of killer {@link com.lerhyd.dngame.model.Person}
-     */
+    
     @PostMapping("/news/add")
-    public void addNews(@RequestParam("desc") String desc,
-                        @RequestParam("pubDate") String pubDate,
-                        @RequestParam("actionId") long actionId,
-                        @RequestParam("actionPlaceId") long actionPlaceId,
-                        @RequestParam("commonRegionId") long commonRegionId,
-                        @RequestParam("distRegId") long distRegionId,
-                        @RequestParam("agentId") long agentId,
-                        @RequestParam("kiraId") long kiraId,
-                        @RequestParam("victimId") long victimId,
-                        @RequestParam("fakeVictimId") long fakeVictimId,
-                        @RequestParam("killerId") long killerId){
+    public void addNews(@RequestBody NewsReq newsReq){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        News news = new News(desc,
-                LocalDateTime.parse(pubDate, formatter),
-                    actionDao.findById(actionId),
-                    actionPlaceDao.findById(actionPlaceId),
-                    personDao.findById(victimId),
-                    agentDao.findById(agentId),
-                    kiraDao.findById(kiraId),
-                    regionDao.findById(distRegionId),
-                    regionDao.findById(commonRegionId),
-                    personDao.findById(fakeVictimId),
-                    personDao.findById(killerId)
+        News news = new News(newsReq.getDesc(),
+                LocalDateTime.parse(newsReq.getPubDate(), formatter),
+                    actionDao.findById(newsReq.getActionId()),
+                    actionPlaceDao.findById(newsReq.getActionPlaceId()),
+                    personDao.findById(newsReq.getVictimId()),
+                    agentDao.findById(newsReq.getAgentId()),
+                    kiraDao.findById(newsReq.getKiraId()),
+                    regionDao.findById(newsReq.getDistRegionId()),
+                    regionDao.findById(newsReq.getCommonRegionId()),
+                    personDao.findById(newsReq.getFakeVictimId()),
+                    personDao.findById(newsReq.getKillerId())
                 );
 
         newsDao.save(news);

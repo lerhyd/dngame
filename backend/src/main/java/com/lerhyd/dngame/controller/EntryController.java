@@ -48,7 +48,7 @@ public class EntryController {
             return 1;
         }
 
-        int maxPageNum = entryDao.findMaxNumPageByKiraId(entryReq.getKiraId());
+        int maxPageNum = entryDao.findMaxNumPageByKiraId(entryReq.getKiraId()).orElse(1);
         if ((entryReq.getPageNum() - 1) > maxPageNum)
             return 2;
         if (!kiraDao.existsById(entryReq.getKiraId())){

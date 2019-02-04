@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
+import java.util.Optional;
 
 @Repository
 public interface EntryDao extends JpaRepository<Entry, Long> {
@@ -32,6 +33,6 @@ public interface EntryDao extends JpaRepository<Entry, Long> {
                                                                                        boolean sex);
 
     @Query("select max(e.pageNumber) from Entry e where e.kira.id = :kiraId")
-    int findMaxNumPageByKiraId(@Param("kiraId") long kiraId);
+    Optional<Integer> findMaxNumPageByKiraId(@Param("kiraId") long kiraId);
 
 }

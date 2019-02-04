@@ -34,7 +34,7 @@ public class NewsController {
 
     @Autowired
     private PersonDao personDao;
-    
+
     @PostMapping("/news/add")
     public void addNews(@RequestBody NewsReq newsReq){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

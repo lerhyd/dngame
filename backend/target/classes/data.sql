@@ -31,12 +31,12 @@ insert into action_places (id, lvl, action_place) values (2, 0, 'в спальн
 insert into action_places (id, lvl, action_place) values (3, 0, 'в канализации');
 insert into action_places (id, lvl, action_place) values (4, 0, 'в музее');
 
-insert into regions (id, city, country) values (1, 'в Москве', 'в России', 'в Европе');
-insert into regions (id, city, country) values (2, 'в Серене', 'в Бельгии', 'в Европе');
-insert into regions (id, city, country) values (3, 'в Серене', 'в Бельгии', 'в Европе');
-insert into regions (id, city, country) values (4, 'в Коге', 'в Японии', 'в Азии');
-insert into regions (id, city, country) values (5, 'в Токио', 'в Японии', 'в Азии');
-insert into regions (id, city, country) values (6, 'в Мати', 'в Филиппинах', 'в Азии');
+insert into regions (id, city, country, continent) values (1, 'в Москве', 'в России', 'в Европе');
+insert into regions (id, city, country, continent) values (2, 'в Серене', 'в Бельгии', 'в Европе');
+insert into regions (id, city, country, continent) values (3, 'в Серене', 'в Бельгии', 'в Европе');
+insert into regions (id, city, country, continent) values (4, 'в Коге', 'в Японии', 'в Азии');
+insert into regions (id, city, country, continent) values (5, 'в Токио', 'в Японии', 'в Азии');
+insert into regions (id, city, country, continent) values (6, 'в Мати', 'в Филиппинах', 'в Азии');
 
 --Criminals
 insert into persons (born_date, is_criminal, death_date, is_fake, name, patronymic, sex, surname)

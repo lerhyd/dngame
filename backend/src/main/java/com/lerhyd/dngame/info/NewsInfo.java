@@ -9,27 +9,27 @@ public class NewsInfo {
 
     public long id;
     public String pubDate;
-    public String description;
+    public String victimName;
+    public String victimSername;
+    public String victimPatr;
+    public boolean victimSex;
     public String actionDesc;
     public String actionPlace;
-
-    public String distCity;
-    public String distCountry;
-    public String distContinent;
 
     public String commonCity;
     public String commonCountry;
     public String commonContinent;
 
-    public String victimName;
-    public String victimSername;
-    public String victimPatr;
-    public boolean victimSex;
+    public String distCity;
+    public String distCountry;
+    public String distContinent;
 
     public String killerName;
     public String killerSername;
     public String killerPatr;
     public boolean killerSex;
+
+    public String description;
 
     private NewsInfo(){}
 

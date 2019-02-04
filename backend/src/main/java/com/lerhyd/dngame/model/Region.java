@@ -33,6 +33,9 @@ public class Region implements Serializable {
     @Column(name = "continent")
     private String continent;
 
+    @Column(name = "planet")
+    private String planet;
+
     @OneToMany(mappedBy = "region")
     private Collection<Agent> agents;
 

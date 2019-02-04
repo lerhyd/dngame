@@ -60,12 +60,12 @@ public class Person implements Serializable {
     @OneToMany(mappedBy = "victim")
     private List<News> newsVictim;
 
-    @OneToMany(mappedBy = "killer")
-    private List<News> newsKiller;
+    @OneToMany(mappedBy = "guiltyPerson")
+    private List<News> newsGuiltyPerson;
 
     public Person(String name, String surname, String patronymic, Boolean sex, LocalDateTime bornDate,
                   LocalDateTime deathDate, boolean fake, boolean criminal, Entry entry,
-                  List<News> newsVictim, List<News> newsKiller) {
+                  List<News> newsVictim, List<News> newsGuiltyPerson) {
         this.name = name;
         this.surname = surname;
         this.patronymic = patronymic;
@@ -76,7 +76,7 @@ public class Person implements Serializable {
         this.criminal = criminal;
         this.entry = entry;
         this.newsVictim = newsVictim;
-        this.newsKiller = newsKiller;
+        this.newsGuiltyPerson = newsGuiltyPerson;
     }
 
     public Person(){}

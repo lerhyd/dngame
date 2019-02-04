@@ -48,8 +48,7 @@ public class NewsController {
                     kiraDao.findById(newsReq.getKiraId()),
                     regionDao.findById(newsReq.getDistRegionId()),
                     regionDao.findById(newsReq.getCommonRegionId()),
-                    personDao.findById(newsReq.getFakeVictimId()),
-                    personDao.findById(newsReq.getKillerId())
+                    personDao.findById(newsReq.getGuiltyPersonId())
                 );
 
         newsDao.save(news);

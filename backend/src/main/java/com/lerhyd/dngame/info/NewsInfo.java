@@ -1,6 +1,5 @@
 package com.lerhyd.dngame.info;
 
-import com.lerhyd.dngame.model.ActionPlace;
 import com.lerhyd.dngame.model.News;
 import com.lerhyd.dngame.model.Person;
 import com.lerhyd.dngame.model.Region;
@@ -24,10 +23,10 @@ public class NewsInfo {
     public String distCountry;
     public String distContinent;
 
-    public String killerName;
-    public String killerSername;
-    public String killerPatr;
-    public boolean killerSex;
+    public String guiltyPersonName;
+    public String guiltyPersonSername;
+    public String guiltyPersonPatr;
+    public boolean guiltyPersonSex;
 
     public String description;
 
@@ -65,12 +64,12 @@ public class NewsInfo {
         }
 
 
-        Person killer = news.getKiller();
-        if (killer != null){
-            killerName = killer.getName();
-            killerSername = killer.getSurname();
-            killerPatr = killer.getPatronymic();
-            killerSex = killer.getSex();
+        Person guiltyPerson = news.getGuiltyPerson();
+        if (guiltyPerson != null){
+            guiltyPersonName = guiltyPerson.getName();
+            guiltyPersonSername = guiltyPerson.getSurname();
+            guiltyPersonPatr = guiltyPerson.getPatronymic();
+            guiltyPersonSex = guiltyPerson.getSex();
         }
     }
 

@@ -56,20 +56,16 @@ public class News implements Serializable {
     @JoinColumn(name = "common_region_id")
     private Region commonRegion;
 
-    @OneToOne
-    @JoinColumn(name = "fake_victim_id")
-    private Person fakeVictim;
-
     @ManyToOne
-    @JoinColumn(name = "killer_id")
-    private Person killer;
+    @JoinColumn(name = "guilty_person_id")
+    private Person guiltyPerson;
 
     public News(){
 
     }
 
     public News(String description, LocalDateTime publicationDate, Action action, ActionPlace actionPlace, Person victim,
-                Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person fakeVictim, Person killer) {
+                Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person guiltyPerson) {
         this.description = description;
         this.publicationDate = publicationDate;
         this.action = action;
@@ -79,7 +75,6 @@ public class News implements Serializable {
         this.kira = kira;
         this.distributionRegion = distributionRegion;
         this.commonRegion = commonRegion;
-        this.fakeVictim = fakeVictim;
-        this.killer = killer;
+        this.guiltyPerson = guiltyPerson;
     }
 }

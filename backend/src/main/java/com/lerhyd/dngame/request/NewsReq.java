@@ -14,7 +14,6 @@ public class NewsReq {
     private long agentId;
     private long kiraId;
     private long victimId;
-    private long fakeVictimId;
-    private long killerId;
+    private long guiltyPersonId;
 
 }

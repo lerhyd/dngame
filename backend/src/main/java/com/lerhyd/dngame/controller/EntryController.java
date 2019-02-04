@@ -141,7 +141,6 @@ public class EntryController {
                 kira,
                 region,
                 region,
-                null,
                 null
         );
         Person victimToUpdate = personDao.getOne(victim.getId());

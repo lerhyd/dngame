@@ -31,12 +31,12 @@ insert into action_places (id, lvl, action_place) values (2, 0, 'в спальн
 insert into action_places (id, lvl, action_place) values (3, 0, 'в канализации');
 insert into action_places (id, lvl, action_place) values (4, 0, 'в музее');
 
-insert into regions (id, city, country, continent, is_earth) values (1, 'в Москве', 'в России', 'в Европе');
-insert into regions (id, city, country, continent, is_earth) values (2, 'в Серене', 'в Бельгии', 'в Европе');
-insert into regions (id, city, country, continent, is_earth) values (3, 'в Серене', 'в Бельгии', 'в Европе');
-insert into regions (id, city, country, continent, is_earth) values (4, 'в Коге', 'в Японии', 'в Азии');
-insert into regions (id, city, country, continent, is_earth) values (5, 'в Токио', 'в Японии', 'в Азии');
-insert into regions (id, city, country, continent, is_earth) values (6, 'в Мати', 'в Филиппинах', 'в Азии');
+insert into regions (id, city, country, continent, planet) values (1, 'в Москве', 'в России', 'в Европе', 'в мире');
+insert into regions (id, city, country, continent, planet) values (2, 'в Серене', 'в Бельгии', 'в Европе', 'в мире');
+insert into regions (id, city, country, continent, planet) values (3, 'в Серене', 'в Бельгии', 'в Европе', 'в мире');
+insert into regions (id, city, country, continent, planet) values (4, 'в Коге', 'в Японии', 'в Азии', 'в мире');
+insert into regions (id, city, country, continent, planet) values (5, 'в Токио', 'в Японии', 'в Азии', 'в мире');
+insert into regions (id, city, country, continent, planet) values (6, 'в Мати', 'в Филиппинах', 'в Азии', 'в мире');
 
 --Criminals
 insert into persons (born_date, is_criminal, death_date, is_fake, name, patronymic, sex, surname)

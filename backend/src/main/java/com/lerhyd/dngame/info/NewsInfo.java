@@ -12,12 +12,20 @@ public class NewsInfo {
     public String description;
     public String actionDesc;
     public String actionPlace;
+
     public String distCity;
     public String distCountry;
+    public String distContinent;
+
+    public String commonCity;
+    public String commonCountry;
+    public String commonContinent;
+
     public String victimName;
     public String victimSername;
     public String victimPatr;
     public boolean victimSex;
+
     public String killerName;
     public String killerSername;
     public String killerPatr;
@@ -31,19 +39,39 @@ public class NewsInfo {
         description = news.getDescription();
         actionDesc = news.getAction().getDescription();
         actionPlace = news.getActionPlace().getPlace();
+
+
         Region distRegion = news.getDistributionRegion();
-        distCity = distRegion.getCity();
-        distCountry = distRegion.getCountry();
+        if (distRegion != null){
+            distCity = distRegion.getCity();
+            distCountry = distRegion.getCountry();
+            distContinent = distRegion.getContinent();
+        }
+
+
+        Region commonRegion = news.getCommonRegion();
+        if (commonRegion!= null){
+            commonCity = commonRegion.getCity();
+            commonCountry = commonRegion.getCountry();
+            commonContinent = commonRegion.getContinent();
+        }
+
         Person victim = news.getVictim();
-        victimName = victim.getName();
-        victimSername = victim.getSurname();
-        victimPatr = victim.getPatronymic();
-        victimSex = victim.getSex();
+        if (victim !=null){
+            victimName = victim.getName();
+            victimSername = victim.getSurname();
+            victimPatr = victim.getPatronymic();
+            victimSex = victim.getSex();
+        }
+
+
         Person killer = news.getKiller();
-        killerName = killer.getName();
-        killerSername = killer.getSurname();
-        killerPatr = killer.getPatronymic();
-        killerSex = killer.getSex();
+        if (killer != null){
+            killerName = killer.getName();
+            killerSername = killer.getSurname();
+            killerPatr = killer.getPatronymic();
+            killerSex = killer.getSex();
+        }
     }
 
 }

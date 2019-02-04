@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.stream.Stream;
 
 @RestController()
@@ -60,10 +61,9 @@ public class NewsController {
      * @param kiraId id of {@link com.lerhyd.dngame.model.Kira} who is the part of current session
      * @return Stream of news info
      */
-    @GetMapping("/news/last")
-    public Stream<NewsInfo> getLastNews(@RequestParam("kiraId") long kiraId, @RequestParam("agentId") long agentId){
-        Stream<NewsInfo> infoStream = null;
-        return Stream.of(newsDao.findTopByOrderByIdDesc()).map(NewsInfo::new);
+    @GetMapping("/news/get")
+    public Stream<NewsInfo> getNewsToPublish(@RequestParam("kiraId") long kiraId, @RequestParam("agentId") long agentId){
+        return newsDao.findAllNewsByAgent_IdAndKira_Id(kiraId, agentId).stream().map(NewsInfo::new);
     }
 
     /**

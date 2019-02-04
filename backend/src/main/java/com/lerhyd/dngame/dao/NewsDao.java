@@ -8,6 +8,8 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 @Repository
@@ -28,7 +30,8 @@ public interface NewsDao extends JpaRepository<News, Long> {
 
     News findById(long id);
 
-    News findTopByOrderByIdDesc();
+    @Query("select n from News n where n.publicationDate <= current_timestamp and n.kira.id=:kiraId and n.agent.id=:agentId")
+    List<News> findAllNewsByAgent_IdAndKira_Id(@Param("kiraId") long kiraId, @Param("agentId") long agentId);
 
     @Query("select count(n) from News n where n.kira.id = :kiraId and n.agent.id = :agentId")
     long cntNewsByKiraAndAgent(@Param("kiraId") long kiraId, @Param("agentId") long agentId);

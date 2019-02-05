@@ -22,6 +22,9 @@ public class News implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private long id;
 
+    @Column(name = "victim_exists")
+    private boolean victimExists;
+
     @Column(name = "what", nullable = false, length = 500)
     private String description;
 
@@ -64,8 +67,8 @@ public class News implements Serializable {
 
     }
 
-    public News(String description, LocalDateTime publicationDate, Action action, ActionPlace actionPlace, Person victim,
-                Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person guiltyPerson) {
+    public News(boolean victimExists, String description, LocalDateTime publicationDate, Action action, ActionPlace actionPlace, Person victim, Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person guiltyPerson) {
+        this.victimExists = victimExists;
         this.description = description;
         this.publicationDate = publicationDate;
         this.action = action;

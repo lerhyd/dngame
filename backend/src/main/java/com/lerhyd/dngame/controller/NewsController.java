@@ -37,9 +37,19 @@ public class NewsController {
     private PersonDao personDao;
 
     @PostMapping("/news/add")
-    public void addNews(@RequestBody NewsReq newsReq){
+    public int addNews(@RequestBody NewsReq newsReq){
+        if (agentDao.getOne(newsReq.getAgentId()) == null)
+            return 1;
+        if (agentDao.getOne(newsReq.getAgentId()).getUser() == null)
+            return 2;
+        if (agentDao.getOne(newsReq.getAgentId()).getUser().getProfile() == null)
+            return 3;
+        if (agentDao.getOne(newsReq.getAgentId()).getNews().get(0).getKira() == null)
+            return 4;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        News news = new News(newsReq.getDesc(),
+        boolean victimExists = personDao.getOne(newsReq.getVictimId()) != null ? true : false;
+        News news = new News(victimExists,
+                newsReq.getDesc(),
                 LocalDateTime.parse(newsReq.getPubDate(), formatter),
                     actionDao.findById(newsReq.getActionId()),
                     actionPlaceDao.findById(newsReq.getActionPlaceId()),
@@ -52,6 +62,7 @@ public class NewsController {
                 );
 
         newsDao.save(news);
+        return 0;
     }
 
     /**

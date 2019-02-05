@@ -31,6 +31,9 @@ public class Rank implements Serializable {
     @Column(name = "rank", length = 50)
     private String rank;
 
+    @Column(name="is_kira")
+    private boolean kira;
+
     @OneToMany(mappedBy = "rank")
     private Collection<Agent> agents;
 

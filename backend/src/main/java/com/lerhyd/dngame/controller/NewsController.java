@@ -3,6 +3,7 @@ package com.lerhyd.dngame.controller;
 import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.NewsInfo;
 import com.lerhyd.dngame.model.News;
+import com.lerhyd.dngame.model.Person;
 import com.lerhyd.dngame.request.NewsReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -48,12 +49,18 @@ public class NewsController {
             return 4;
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         boolean victimExists = personDao.getOne(newsReq.getVictimId()) != null ? true : false;
+        Person victim = null;
+        if (victimExists){
+            victim = personDao.findById(newsReq.getVictimId());
+        }
         News news = new News(victimExists,
+                true,
+                newsReq.isDie(),
                 newsReq.getDesc(),
                 LocalDateTime.parse(newsReq.getPubDate(), formatter),
                     actionDao.findById(newsReq.getActionId()),
                     actionPlaceDao.findById(newsReq.getActionPlaceId()),
-                    personDao.findById(newsReq.getVictimId()),
+                    victim,
                     agentDao.findById(newsReq.getAgentId()),
                     kiraDao.findById(newsReq.getKiraId()),
                     regionDao.findById(newsReq.getDistRegionId()),

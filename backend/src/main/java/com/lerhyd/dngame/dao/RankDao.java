@@ -17,7 +17,7 @@ public interface RankDao extends JpaRepository<Rank, Long> {
 
     Rank findById(long id);
 
-    @Query("select r from Rank r where r.lvl = :lvl")
-    Rank findByLvl(int lvl);
+    @Query("select r from Rank r where r.lvl = :lvl and r.kira=:isKira")
+    Rank findByLvl(@Param("lvl") int lvl,@Param("isKira") boolean isKira);
 
 }

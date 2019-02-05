@@ -36,4 +36,10 @@ public interface NewsDao extends JpaRepository<News, Long> {
     @Query("select count(n) from News n where n.kira.id = :kiraId and n.agent.id = :agentId")
     long cntNewsByKiraAndAgent(@Param("kiraId") long kiraId, @Param("agentId") long agentId);
 
+    @Query("select n from News n where n.kira is empty and n.agent is empty and n.id = :id")
+    News findRandomNewsTemplate(@Param("id") long randomId);
+
+    @Query("select count(n) from News n where n.kira is empty and n.agent is empty")
+    long cntNewsTemplate();
+
 }

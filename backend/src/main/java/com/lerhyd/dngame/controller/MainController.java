@@ -1,6 +1,7 @@
 package com.lerhyd.dngame.controller;
 
 import com.lerhyd.dngame.dao.*;
+import com.lerhyd.dngame.generators.NewsGenerator;
 import com.lerhyd.dngame.model.*;
 import com.lerhyd.dngame.request.PersonReq;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings("Duplicates")
 @RestController
@@ -66,20 +68,25 @@ public class MainController {
     }
 
     @PostMapping("/game/profile/delete")
-    public void deleteProfile(@RequestParam("profileId") long profileId){
+    public int deleteProfile(@RequestParam("profileId") long profileId){
+        if (personDao.getOne(profileId) == null)
+            return 1;
         User user = userDao.findUserByProfile(profileId);
         user.setProfile(null);
         userDao.save(user);
         personDao.deleteById(profileId);
+        return 0;
     }
 
     @PostMapping("/game/class/choose")
     public int setMainClass(@RequestParam("isKira") boolean isKira,
                              @RequestParam("userLogin") String userLogin,
                              @RequestParam("regionId") long regionId){
+        if (userDao.getOne(userLogin) == null)
+            return 1;
         User u = userDao.getOne(userLogin);
         if (u.getProfile() == null)
-            return 1;
+            return 2;
         if (isKira){
             Kira k;
             if (u.getKira() != null)
@@ -94,7 +101,7 @@ public class MainController {
             k.setLvl(0);
             k.setUser(u);
             k.setNews(null);
-            k.setRank(rankDao.findByLvl(k.getLvl()));
+            k.setRank(rankDao.findByLvl(k.getLvl(), true));
             k.setRegion(regionDao.findById(regionId));
             u.setKira(k);
             kiraDao.save(k);
@@ -114,7 +121,7 @@ public class MainController {
             a.setLvl(0);
             a.setUser(u);
             a.setNews(null);
-            a.setRank(rankDao.findByLvl(a.getLvl()));
+            a.setRank(rankDao.findByLvl(a.getLvl(), false));
             a.setRegion(regionDao.findById(regionId));
             u.setAgent(a);
             agentDao.save(a);
@@ -179,5 +186,7 @@ public class MainController {
             return agentDao.existsWithNewsByAgentId(classId);
         }
     }
+
+
 
 }

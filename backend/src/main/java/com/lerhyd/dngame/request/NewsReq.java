@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class NewsReq {
 
+    private boolean die;
     private String desc;
     private String pubDate;
     private long actionId;

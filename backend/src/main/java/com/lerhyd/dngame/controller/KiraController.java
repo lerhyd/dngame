@@ -32,6 +32,14 @@ public class KiraController {
 
     @PostMapping("game/kira/win")
     public int endGame(@RequestParam long id){
+        if (kiraDao.getOne(id) == null)
+            return 1;
+        if (kiraDao.getOne(id).getNews().get(0).getAgent() == null)
+            return 2;
+        if (kiraDao.getOne(id).getUser() == null)
+            return 3;
+        if (kiraDao.getOne(id).getUser().getProfile() == null)
+            return 4;
         if (kiraDao.getOne(id).getLvl() <= 0)
             return 1;
         Kira k = kiraDao.getOne(id);
@@ -47,13 +55,13 @@ public class KiraController {
         k.setNumberOfKills(0);
         k.setEntries(null);
         k.setNews(null);
-        k.setRank(rankDao.findByLvl(0));
+        k.setRank(rankDao.findByLvl(0, true));
 
         a.setLvl(0);
         a.setPoints(0);
         a.setNumberOfCaughtKillers(0);
         a.setNews(null);
-        a.setRank(rankDao.findByLvl(0));
+        a.setRank(rankDao.findByLvl(0, false));
 
         k.setNumberOfWins(k.getNumberOfWins() + 1);
         a.setNumberOfLoses(a.getNumberOfLoses() + 1);

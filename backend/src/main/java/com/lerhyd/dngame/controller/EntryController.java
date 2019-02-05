@@ -133,6 +133,8 @@ public class EntryController {
 
         News news = new News(
                 false,
+                false,
+                true,
                 desc,
                 isDeathDate ? deathDate : deathWithoutDate,
                 action,

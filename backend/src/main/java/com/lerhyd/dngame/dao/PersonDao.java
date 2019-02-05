@@ -30,4 +30,13 @@ public interface PersonDao extends JpaRepository<Person, Long> {
 
     @Query("select p from Person p where p.user.id = :userLogin")
     Person findPersonByUser(@Param("userLogin") String userLogin);
+
+    @Query("select p.id from Person p where p.id=:randId and p.criminal=:criminal")
+    long findPersonByIdAndCriminal(@Param("randId") long randId, @Param("criminal") boolean isCriminal);
+
+    @Query("select count(p) from Person p where p.criminal=true")
+    long cntCriminalPersons();
+
+    @Query("select count(p) from Person p where p.criminal=false ")
+    long cntNonCriminalPersons();
 }

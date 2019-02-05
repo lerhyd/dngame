@@ -132,6 +132,7 @@ public class EntryController {
             isDeathDate = true;
 
         News news = new News(
+                false,
                 desc,
                 isDeathDate ? deathDate : deathWithoutDate,
                 action,

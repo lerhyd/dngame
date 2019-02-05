@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ed83755-631a-4913-a5dc-d28486f05d84" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0/storage_v2/_src_/database/dndb.iB4vAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0/storage_v2/_src_/database/dndb.iB4vAA/schema/public.abK9xQ.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/Rank.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/Rank.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/data.sql" afterDir="false" />
-    </list>
+    <list default="true" id="1ed83755-631a-4913-a5dc-d28486f05d84" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/backend/target/" />
     <ignored path="$PROJECT_DIR$/frontend/target/" />
@@ -71,6 +63,16 @@
         <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
         <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="dndb@localhost" type="feb32156:DbDataSourceImpl" />
+        <item name="databases" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="dndb: database" type="162271b6:PgImplModel$Database" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="public: schema" type="983ebcf7:PgImplModel$Schema" />
+        <item name="tables" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="users: table" type="69fad909:PgImplModel$LocalTable" />
+      </path>
     </expand>
     <select />
   </component>
@@ -96,8 +98,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+            <state relative-caret-position="-144">
+              <caret line="41" column="21" lean-forward="true" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -123,8 +125,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="72" column="251" selection-start-line="72" selection-start-column="251" selection-end-line="72" selection-end-column="251" />
+            <state relative-caret-position="500">
+              <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -242,10 +244,10 @@
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/EntryController.java" />
         <option value="$PROJECT_DIR$/frontend/build/dndb_public_persons.sql" />
         <option value="$PROJECT_DIR$/backend/src/main/resources/data.sql" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/request/NewsReq.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/Rank.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java" />
       </list>
     </option>
   </component>
@@ -439,7 +441,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549371199065" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549371460889" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend/build" />
@@ -548,18 +550,17 @@
       <workItem from="1549225117471" duration="8766000" />
       <workItem from="1549236806147" duration="7619000" />
       <workItem from="1549305935318" duration="1137000" />
-      <workItem from="1549367255064" duration="3737000" />
+      <workItem from="1549367255064" duration="4063000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149009000" />
+    <option name="totallyTimeSpent" value="149335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1602" height="868" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26379976" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26379976" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="Image Layers" order="3" />
@@ -591,7 +592,7 @@
       <window_info anchor="right" id="Maven" order="5" weight="0.3292683" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Database" order="8" visible="true" weight="0.18292683" />
+      <window_info active="true" anchor="right" id="Database" order="8" visible="true" weight="0.18292683" />
       <window_info anchor="right" id="JSF" order="9" />
       <window_info anchor="right" id="CDI" order="10" />
       <window_info anchor="right" id="Bean Validation" order="11" />
@@ -896,13 +897,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="72" column="251" selection-start-line="72" selection-start-column="251" selection-end-line="72" selection-end-column="251" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://121cabb6-d76e-4e91-9ec4-1cc6206bfff0/database/dndb/schema/public/table/persons">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -924,10 +918,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="69" column="38" selection-start-line="69" selection-start-column="38" selection-end-line="69" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
+        <state relative-caret-position="-144">
+          <caret line="41" column="21" lean-forward="true" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
         </state>
       </provider>
     </entry>

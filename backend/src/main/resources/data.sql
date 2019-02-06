@@ -100,13 +100,13 @@ insert into action_places (id, lvl, action_place) values (32, 10, 'в музее
 insert into action_places (id, lvl, action_place) values (33, 10, 'в музее');
 
 --Regions
-insert into regions (id, city, country, continent, planet) values (1, null, null, null, 'в мире');
-insert into regions (id, city, country, continent, planet) values (2, null, null, 'в Европе', 'в мире');
-insert into regions (id, city, country, continent, planet) values (3, null, null, 'в Азии', 'в мире');
-insert into regions (id, city, country, continent, planet) values (4, 'в Серене', 'в Бельгии', 'в Европе', 'в мире');
-insert into regions (id, city, country, continent, planet) values (5, 'в Коге', 'в Японии', 'в Азии', 'в мире');
-insert into regions (id, city, country, continent, planet) values (6, 'в Токио', 'в Японии', 'в Азии', 'в мире');
-insert into regions (id, city, country, continent, planet) values (7, 'в Мати', 'в Филиппинах', 'в Азии', 'в мире');
+insert into regions (id, city, country, continent, planet) values (1, null, null, null, 'мир');
+insert into regions (id, city, country, continent, planet) values (2, null, null, 'в Европе', 'мир');
+insert into regions (id, city, country, continent, planet) values (3, null, null, 'в Азии', 'мир');
+insert into regions (id, city, country, continent, planet) values (4, 'в Серене', 'в Бельгии', 'в Европе', 'мир');
+insert into regions (id, city, country, continent, planet) values (5, 'в Коге', 'в Японии', 'в Азии', 'мир');
+insert into regions (id, city, country, continent, planet) values (6, 'в Токио', 'в Японии', 'в Азии', 'мир');
+insert into regions (id, city, country, continent, planet) values (7, 'в Мати', 'в Филиппинах', 'в Азии', 'мир');
 
 --Persons
 INSERT INTO public.persons (id, born_date, is_criminal, death_date, is_fake, name, patronymic, sex, surname) VALUES (1, '1983-01-04 06:06:06.000000', true, null, false, 'Вася', null, true, 'Пупкин');

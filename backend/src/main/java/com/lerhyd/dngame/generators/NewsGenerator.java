@@ -1,14 +1,9 @@
 package com.lerhyd.dngame.generators;
 
-import com.lerhyd.dngame.dao.AgentDao;
-import com.lerhyd.dngame.dao.KiraDao;
-import com.lerhyd.dngame.dao.NewsDao;
-import com.lerhyd.dngame.dao.PersonDao;
+import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.model.News;
-import com.lerhyd.dngame.model.Person;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 @SuppressWarnings("Duplicates")
@@ -18,12 +13,14 @@ public class NewsGenerator {
     private static Random random = new Random();
     private static int maxTimeInSeconds = 50;
     private static int maxLevel = 10;
+    private final static long worldRegionId = 1;
 
     public static boolean generateRandomNews(long kiraId, long agentId,
                                              NewsDao newsDao,
                                              KiraDao kiraDao,
                                              AgentDao agentDao,
-                                             PersonDao personDao){
+                                             PersonDao personDao,
+                                             RegionDao regionDao){
         news = newsDao.findRandomNewsTemplate(getRandomNewsId(newsDao));
         news.setKira(kiraDao.getOne(kiraId));
         news.setAgent(agentDao.getOne(agentId));
@@ -34,6 +31,9 @@ public class NewsGenerator {
         news.setGuiltyPerson(personDao.getOne(getRandomGuiltyPersonId(personDao, news.isFake())));
         int timeToReadInSeconds = maxTimeInSeconds - kiraDao.getOne(kiraId).getLvl()*(maxTimeInSeconds/maxLevel);
         news.setPublicationDate(LocalDateTime.now().plusSeconds(1).plusSeconds(timeToReadInSeconds));
+
+        news.setDistributionRegion(regionDao.getOne(worldRegionId));
+        news.setCommonRegion(regionDao.getOne(getRandomCommonRegionId(regionDao)));
         if (news.isDie() == true)
             news.getVictim().setDeathDate(LocalDateTime.now());
         return true;
@@ -77,6 +77,16 @@ public class NewsGenerator {
             long i = random.nextLong() % n;
             return cntMinimum + i;
         }
+    }
+
+    private static long getRandomCommonRegionId(RegionDao regionDao){
+        long cntRegions = regionDao.count();
+        if (cntRegions == 0)
+            return 0;
+        long cntMinimum = 1;
+        long n = cntRegions - cntMinimum + 1;
+        long i = random.nextLong() % n;
+        return cntMinimum + i;
     }
 
 }

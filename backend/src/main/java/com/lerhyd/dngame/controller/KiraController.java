@@ -62,6 +62,7 @@ public class KiraController {
         a.setNumberOfCaughtKillers(0);
         a.setNews(null);
         a.setRank(null);
+        a.setRequests(null);
 
         k.setNumberOfWins(k.getNumberOfWins() + 1);
         a.setNumberOfLoses(a.getNumberOfLoses() + 1);

@@ -56,6 +56,7 @@ public class AgentController {
         a.setNumberOfCaughtKillers(0);
         a.setNews(null);
         a.setRank(null);
+        a.setRequests(null);
 
         k.setLvl(0);
         k.setPoints(0);

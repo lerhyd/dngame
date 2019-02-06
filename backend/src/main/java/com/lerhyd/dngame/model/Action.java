@@ -34,6 +34,9 @@ public class Action implements Serializable {
     @OneToMany(mappedBy = "action")
     private Collection<Entry> entries;
 
+    @OneToMany(mappedBy = "action")
+    private Collection<Request> requests;
+
     public Action(){}
 
     public Action(String description, int lvl, Collection<News> news, Collection<Entry> entries) {

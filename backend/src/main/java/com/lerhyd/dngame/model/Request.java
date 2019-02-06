@@ -17,6 +17,13 @@ public class Request {
     @Column(name = "page_number", nullable = false)
     private int pageNum;
 
+    @Column(name = "is_success")
+    private boolean success;
+
+    @ManyToOne
+    @JoinColumn(name = "action_id")
+    private Action action;
+
     @ManyToOne
     @JoinColumn(name = "crime_region_id")
     private Region crimeRegion;
@@ -28,4 +35,15 @@ public class Request {
     @OneToOne
     @JoinColumn(name = "crime_person_id")
     private Person crimePerson;
+
+    public Request(){}
+
+    public Request(int pageNum, boolean success, Action action, Region crimeRegion, Agent agent, Person crimePerson) {
+        this.pageNum = pageNum;
+        this.success = success;
+        this.action = action;
+        this.crimeRegion = crimeRegion;
+        this.agent = agent;
+        this.crimePerson = crimePerson;
+    }
 }

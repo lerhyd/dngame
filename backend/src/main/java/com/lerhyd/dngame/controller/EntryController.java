@@ -43,7 +43,7 @@ public class EntryController {
     @PostMapping("/game/entry/add")
     public int addEntry(@RequestBody EntryReq entryReq)
     {
-        int cntEntriesInPage = entryDao.findCntOfEntriesInOnePage(entryReq.getKiraId(), entryReq.getPageNum());
+        long cntEntriesInPage = entryDao.findCntOfEntriesInOnePage(entryReq.getKiraId(), entryReq.getPageNum());
         if (cntEntriesInPage == 10){
             return 1;
         }
@@ -66,13 +66,13 @@ public class EntryController {
         if (kiraDao.getOne(entryReq.getKiraId()).getNews().get(0) == null)
             return 6;
 
-        boolean isEntryExists = entryDao.existsEntryByVictim_NameAndVictim_SurnameAndVictim_PatronymicAndVictim_Sex(
+        boolean isEntryVictimExists = entryDao.existsEntryByVictim_NameAndVictim_SurnameAndVictim_PatronymicAndVictim_Sex(
                 entryReq.getVictimName(),
                 entryReq.getVictimSername(),
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex()
         );
-        if (isEntryExists)
+        if (isEntryVictimExists)
             return 7;
 
         boolean isPersonExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),

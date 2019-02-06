@@ -25,8 +25,8 @@ public class Rank implements Serializable {
     @Column(name = "id", nullable = false, unique = true)
     private long id;
 
-    @Column(name = "level", nullable = false)
-    private int lvl;
+    @Column(name = "points", nullable = false)
+    private int points;
 
     @Column(name = "rank", length = 50)
     private String rank;

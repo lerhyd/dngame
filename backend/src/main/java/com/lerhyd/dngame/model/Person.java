@@ -54,6 +54,9 @@ public class Person implements Serializable {
     @OneToOne(mappedBy = "victim", cascade=CascadeType.ALL)
     private Entry entry;
 
+    @OneToOne(mappedBy = "crimePerson", cascade=CascadeType.ALL)
+    private Request request;
+
     @OneToOne(mappedBy = "profile")
     private User user;
 

@@ -34,6 +34,8 @@ public class NewsGenerator {
         news.setGuiltyPerson(personDao.getOne(getRandomGuiltyPersonId(personDao, news.isFake())));
         int timeToReadInSeconds = maxTimeInSeconds - kiraDao.getOne(kiraId).getLvl()*(maxTimeInSeconds/maxLevel);
         news.setPublicationDate(LocalDateTime.now().plusSeconds(1).plusSeconds(timeToReadInSeconds));
+        if (news.isDie() == true)
+            news.getVictim().setDeathDate(LocalDateTime.now());
         return true;
     }
 

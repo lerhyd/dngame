@@ -55,13 +55,13 @@ public class KiraController {
         k.setNumberOfKills(0);
         k.setEntries(null);
         k.setNews(null);
-        k.setRank(rankDao.findByLvl(0, true));
+        k.setRank(null);
 
         a.setLvl(0);
         a.setPoints(0);
         a.setNumberOfCaughtKillers(0);
         a.setNews(null);
-        a.setRank(rankDao.findByLvl(0, false));
+        a.setRank(null);
 
         k.setNumberOfWins(k.getNumberOfWins() + 1);
         a.setNumberOfLoses(a.getNumberOfLoses() + 1);

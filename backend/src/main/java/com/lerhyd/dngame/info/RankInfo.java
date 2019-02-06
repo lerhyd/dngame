@@ -5,14 +5,14 @@ import com.lerhyd.dngame.model.Rank;
 public class RankInfo {
 
     public long id;
-    public int level;
+    public int points;
     public String rankDesc;
 
     private RankInfo(){}
 
     public RankInfo(Rank rank){
         id = rank.getId();
-        level = rank.getLvl();
+        points = rank.getPoints();
         rankDesc = rank.getRank();
     }
 }

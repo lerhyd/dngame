@@ -7,44 +7,97 @@ insert into users
 values ('tiran', 'tiran@tiran.com', null, '12121212', null, null, null, null, null);
 
 --Base data
---News templates
 
 --Ranks
---Kira's
-insert into ranks (id, level, rank, is_kira) values (1, 0, 'Beginner', true);
-insert into ranks (id, level, rank, is_kira) values (2, 2, 'Novice', true);
-insert into ranks (id, level, rank, is_kira) values (3, 5, 'Graduate', true);
-insert into ranks (id, level, rank, is_kira) values (4, 8, 'Expert', true);
-insert into ranks (id, level, rank, is_kira) values (5, 12, 'Master', true);
-insert into ranks (id, level, rank, is_kira) values (6, 17, 'Grand Master', true);
-insert into ranks (id, level, rank, is_kira) values (7, 22, 'Legend', true);
-insert into ranks (id, level, rank, is_kira) values (8, 27, 'Psycho', true);
+----Kira's
+insert into ranks (id, points, rank, is_kira) values (1, 30, 'Новичок', true);
+insert into ranks (id, points, rank, is_kira) values (2, 35, 'Плут', true);
+insert into ranks (id, points, rank, is_kira) values (3, 40, 'Делец', true);
+insert into ranks (id, points, rank, is_kira) values (4, 50, 'Любитель', true);
+insert into ranks (id, points, rank, is_kira) values (5, 80, 'Убийца', true);
+insert into ranks (id, points, rank, is_kira) values (6, 100, 'Каратель', true);
+insert into ranks (id, points, rank, is_kira) values (7, 170, 'Профессионал', true);
+insert into ranks (id, points, rank, is_kira) values (8, 256, 'Псих', true);
+----Agent's
+insert into ranks (id, points, rank, is_kira) values (1, 30, 'Новичок', false);
+insert into ranks (id, points, rank, is_kira) values (2, 35, 'Искатель истины', false);
+insert into ranks (id, points, rank, is_kira) values (3, 40, 'Защитник', false);
+insert into ranks (id, points, rank, is_kira) values (4, 50, 'Любитель', false);
+insert into ranks (id, points, rank, is_kira) values (5, 80, 'Следователь', false);
+insert into ranks (id, points, rank, is_kira) values (6, 100, 'Сыщик', false);
+insert into ranks (id, points, rank, is_kira) values (7, 170, 'Детекив', false);
+insert into ranks (id, points, rank, is_kira) values (8, 256, 'Шерлок Холмс', false);
 
 --Actions
-insert into actions (id, description, lvl) values (1, 'был(-а) убит(-а)', 0);
-insert into actions (id, description, lvl) values (2, 'был(-а) ограблен(-а)', 1);
-insert into actions (id, description, lvl) values (3, 'был(-а) зарезан(-а)', 2);
-insert into actions (id, description, lvl) values (4, 'был(-а) изнасилован(-а)', 3);
-insert into actions (id, description, lvl) values (5, 'был(-а) ограблен(-а)', 4);
-insert into actions (id, description, lvl) values (6, 'был(-а) подвергнут(-а) нападению', 5);
-insert into actions (id, description, lvl) values (7, 'был(-а) отравлен(-а)', 6);
-insert into actions (id, description, lvl) values (8, 'был(-а) поддожен(-а)', 7);
-insert into actions (id, description, lvl) values (9, 'был(-а) избит(-а) тетрадью', 8);
-insert into actions (id, description, lvl) values (10, 'был(-а) убит(-а) карандашом', 9);
-insert into actions (id, description, lvl) values (11, 'был(-а) убит(-а) книгой', 10);
-insert into actions (id, description, lvl) values (12, 'был(-а) убит(-а) из огнестрельного оружия', 11);
-insert into actions (id, description, lvl) values (13, 'утопился(-ась)', 11);
-insert into actions (id, description, lvl) values (14, 'умерл(-а) от голода', 11);
-insert into actions (id, description, lvl) values (15, 'спрыгнул(-а) с крыши', 11);
-insert into actions (id, description, lvl) values (16, 'умер(-а) от чумы', 11);
-insert into actions (id, description, lvl) values (17, 'умер(-а) от свинного гриппа', 11);
-insert into actions (id, description, lvl) values (18, 'умер(-а) от холеры', 11);
+insert into actions (id, description, lvl) values (1, 'был(-а) пойман(-а) полицией', 0);
+insert into actions (id, description, lvl) values (2, 'был(-а) убит(-а)', 0);
+insert into actions (id, description, lvl) values (3, 'был(-а) ограблен(-а)', 0);
+insert into actions (id, description, lvl) values (4, 'был(-а) зарезан(-а)', 0);
+insert into actions (id, description, lvl) values (5, 'был(-а) изнасилован(-а)', 1);
+insert into actions (id, description, lvl) values (6, 'был(-а) ограблен(-а)', 1);
+insert into actions (id, description, lvl) values (7, 'был(-а) подвергнут(-а) нападению', 1);
+insert into actions (id, description, lvl) values (8, 'был(-а) отравлен(-а)', 2);
+insert into actions (id, description, lvl) values (9, 'был(-а) поддожен(-а)', 2);
+insert into actions (id, description, lvl) values (10, 'был(-а) избит(-а) тетрадью', 2);
+insert into actions (id, description, lvl) values (11, 'был(-а) убит(-а) карандашом', 3);
+insert into actions (id, description, lvl) values (12, 'был(-а) убит(-а) книгой', 3);
+insert into actions (id, description, lvl) values (13, 'был(-а) убит(-а) из огнестрельного оружия', 3);
+insert into actions (id, description, lvl) values (14, 'утопился(-ась)', 4);
+insert into actions (id, description, lvl) values (15, 'умерл(-а) от голода', 4);
+insert into actions (id, description, lvl) values (16, 'спрыгнул(-а) с крыши', 4);
+insert into actions (id, description, lvl) values (17, 'умер(-а) от чумы', 5);
+insert into actions (id, description, lvl) values (18, 'умер(-а) от свинного гриппа', 5);
+insert into actions (id, description, lvl) values (19, 'умер(-а) от холеры', 5);
+insert into actions (id, description, lvl) values (20, 'умер(-а) от болевого шока', 6);
+insert into actions (id, description, lvl) values (21, 'был(-а) убит(-а) собакой', 6);
+insert into actions (id, description, lvl) values (22, 'был(-а) убит(-а) медведем', 6);
+insert into actions (id, description, lvl) values (23, 'был(-а) убит(-а) злым духом', 7);
+insert into actions (id, description, lvl) values (24, 'замёрз(-ла) до смерти', 7);
+insert into actions (id, description, lvl) values (25, 'умер(-ла) от передозировки наркотиков', 7);
+insert into actions (id, description, lvl) values (26, 'подавился(-ась) едой', 8);
+insert into actions (id, description, lvl) values (27, 'программировал на 1C', 8);
+insert into actions (id, description, lvl) values (28, 'был(-а) избит(-а) тетрадью', 8);
+insert into actions (id, description, lvl) values (29, 'был(-а) убит(-а) роботом', 9);
+insert into actions (id, description, lvl) values (30, 'умер(-а) от углекислого газа', 9);
+insert into actions (id, description, lvl) values (31, 'пытался(-ась) призвать сатану', 9);
+insert into actions (id, description, lvl) values (32, 'был(-а) убит(-а) молнией', 10);
+insert into actions (id, description, lvl) values (33, 'умерл(-а) от смеха', 10);
+insert into actions (id, description, lvl) values (34, 'убил(-а) собаку Джона Уика', 10);
 
 --Action Places
 insert into action_places (id, lvl, action_place) values (1, 0, 'в кабинке туалета');
 insert into action_places (id, lvl, action_place) values (2, 0, 'в спальне');
 insert into action_places (id, lvl, action_place) values (3, 0, 'в канализации');
-insert into action_places (id, lvl, action_place) values (4, 0, 'в музее');
+insert into action_places (id, lvl, action_place) values (4, 1, 'в музее');
+insert into action_places (id, lvl, action_place) values (5, 1, 'в музее');
+insert into action_places (id, lvl, action_place) values (6, 1, 'в музее');
+insert into action_places (id, lvl, action_place) values (7, 2, 'в музее');
+insert into action_places (id, lvl, action_place) values (8, 2, 'в музее');
+insert into action_places (id, lvl, action_place) values (9, 2, 'в музее');
+insert into action_places (id, lvl, action_place) values (10, 3, 'в музее');
+insert into action_places (id, lvl, action_place) values (11, 3, 'в музее');
+insert into action_places (id, lvl, action_place) values (12, 3, 'в музее');
+insert into action_places (id, lvl, action_place) values (13, 4, 'в музее');
+insert into action_places (id, lvl, action_place) values (14, 4, 'в музее');
+insert into action_places (id, lvl, action_place) values (15, 4, 'в музее');
+insert into action_places (id, lvl, action_place) values (16, 5, 'в музее');
+insert into action_places (id, lvl, action_place) values (17, 5, 'в музее');
+insert into action_places (id, lvl, action_place) values (18, 5, 'в музее');
+insert into action_places (id, lvl, action_place) values (19, 6, 'в музее');
+insert into action_places (id, lvl, action_place) values (20, 6, 'в музее');
+insert into action_places (id, lvl, action_place) values (21, 6, 'в музее');
+insert into action_places (id, lvl, action_place) values (22, 7, 'в музее');
+insert into action_places (id, lvl, action_place) values (23, 7, 'в музее');
+insert into action_places (id, lvl, action_place) values (24, 7, 'в музее');
+insert into action_places (id, lvl, action_place) values (25, 8, 'в музее');
+insert into action_places (id, lvl, action_place) values (26, 8, 'в музее');
+insert into action_places (id, lvl, action_place) values (27, 8, 'в музее');
+insert into action_places (id, lvl, action_place) values (28, 9, 'в музее');
+insert into action_places (id, lvl, action_place) values (29, 9, 'в музее');
+insert into action_places (id, lvl, action_place) values (30, 9, 'в музее');
+insert into action_places (id, lvl, action_place) values (31, 10, 'в музее');
+insert into action_places (id, lvl, action_place) values (32, 10, 'в музее');
+insert into action_places (id, lvl, action_place) values (33, 10, 'в музее');
 
 --Regions
 insert into regions (id, city, country, continent, planet) values (1, null, null, null, 'в мире');

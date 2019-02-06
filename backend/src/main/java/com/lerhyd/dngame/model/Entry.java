@@ -47,7 +47,7 @@ public class Entry implements Serializable {
     @JoinColumn(name = "kira_id")
     private Kira kira;
 
-    @OneToOne()
+    @OneToOne
     @JoinColumn(name = "victim_id")
     private Person victim;
 

@@ -97,11 +97,11 @@ public class MainController {
                 k.setNumberOfWins(0);
             }
             k.setNumberOfKills(0);
-            k.setPoints(50);
+            k.setPoints(30);
             k.setLvl(0);
             k.setUser(u);
             k.setNews(null);
-            k.setRank(rankDao.findByLvl(k.getLvl(), true));
+            k.setRank(rankDao.findByPoints(k.getPoints(), true));
             k.setRegion(regionDao.findById(regionId));
             u.setKira(k);
             kiraDao.save(k);
@@ -117,11 +117,11 @@ public class MainController {
                 a.setNumberOfWins(0);
             }
             a.setNumberOfCaughtKillers(0);
-            a.setPoints(50);
+            a.setPoints(30);
             a.setLvl(0);
             a.setUser(u);
             a.setNews(null);
-            a.setRank(rankDao.findByLvl(a.getLvl(), false));
+            a.setRank(rankDao.findByPoints(a.getPoints(), false));
             a.setRegion(regionDao.findById(regionId));
             u.setAgent(a);
             agentDao.save(a);

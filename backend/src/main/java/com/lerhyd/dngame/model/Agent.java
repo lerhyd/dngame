@@ -66,6 +66,9 @@ public class Agent implements Serializable {
     @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL)
     private List<News> news;
 
+    @OneToMany(mappedBy = "agent")
+    private List<Request> requests;
+
     @OneToOne(mappedBy = "agent", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private User user;
 

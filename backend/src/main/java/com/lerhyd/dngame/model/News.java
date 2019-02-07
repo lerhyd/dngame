@@ -22,8 +22,8 @@ public class News implements Serializable {
     @Column(name = "id", nullable = false, unique = true, columnDefinition = "serial")
     private int id;
 
-    @Column(name = "victim_exists")
-    private boolean victimExists;
+    @Column(name = "guilty_person_exists")
+    private boolean guiltyPersonExists;
 
     @Column(name = "is_fake")
     private boolean fake;
@@ -79,8 +79,8 @@ public class News implements Serializable {
 
     }
 
-    public News(boolean published, boolean victimExists, boolean fake, boolean agentGenerated, boolean die, String description, LocalDateTime publicationDate, Action action, ActionPlace actionPlace, Person victim, Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person guiltyPerson) {
-        this.victimExists = victimExists;
+    public News(boolean published, boolean guiltyPersonExists, boolean fake, boolean agentGenerated, boolean die, String description, LocalDateTime publicationDate, Action action, ActionPlace actionPlace, Person victim, Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person guiltyPerson) {
+        this.guiltyPersonExists = guiltyPersonExists;
         this.fake = fake;
         this.agentGenerated = agentGenerated;
         this.die = die;

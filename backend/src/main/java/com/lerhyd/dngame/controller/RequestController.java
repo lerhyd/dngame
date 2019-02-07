@@ -118,7 +118,7 @@ public class RequestController {
         news.setKira(request.getAgent().getNews().get(0).getKira());
         news.setDie(false);
         news.setFake(false);
-        news.setVictimExists(false);
+        news.setGuiltyPersonExists(true);
         news.setVictim(null);
         news.setDescription("Police Department News");
         return news;

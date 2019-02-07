@@ -1,6 +1,7 @@
 package com.lerhyd.dngame.controller;
 
 import com.lerhyd.dngame.dao.*;
+import com.lerhyd.dngame.generators.NewsGenerator;
 import com.lerhyd.dngame.info.NewsInfo;
 import com.lerhyd.dngame.model.Agent;
 import com.lerhyd.dngame.model.News;
@@ -48,8 +49,10 @@ public class NewsController {
             return 2;
         if (agentDao.getOne(newsReq.getAgentId()).getUser().getProfile() == null)
             return 3;
-        if (agentDao.getOne(newsReq.getAgentId()).getNews().get(0).getKira() == null)
+        if (kiraDao.getOne(newsReq.getKiraId()) == null)
             return 4;
+        if (agentDao.getOne(newsReq.getAgentId()).getNews().get(0).getKira() == null)
+            return 5;
         agentDao.deletePoints(40, newsReq.getAgentId());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         boolean victimExists = personDao.getOne(newsReq.getVictimId()) != null ? true : false;
@@ -103,6 +106,7 @@ public class NewsController {
     public Stream<NewsInfo> getNewsByAgent(@RequestParam("id") int agentId){
         Region homeRegion = agentDao.findById(agentId).getRegion();
         int kiraId = agentDao.findById(agentId).getNews().get(0).getAgent().getId();
+        NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
         while (true){
             List<News> newsList = newsDao.findNotPublishedNewsByKiraIdAndAgentId(kiraId, agentId);
             for (News news: newsList){

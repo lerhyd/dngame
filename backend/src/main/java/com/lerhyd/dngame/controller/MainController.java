@@ -42,15 +42,17 @@ public class MainController {
 
     @PostMapping("/game/profile/create")
     public int createProfile(@RequestBody PersonReq personReq){
+        if (userDao.getOne(personReq.getUserLogin()) == null)
+            return 1;
         User u = userDao.getOne(personReq.getUserLogin());
         Person personToCheck = u.getProfile();
         if (personToCheck != null)
-            return 1;
+            return 2;
         if (personDao.existsByNameAndSurnameAndPatronymicAndSex(personReq.getName(),
                                                                 personReq.getSurname(),
                                                                 personReq.getPatr(),
                                                                 personReq.isSex()))
-            return 2;
+            return 3;
         Person p = new Person();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         p.setName(personReq.getName());

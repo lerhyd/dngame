@@ -109,6 +109,8 @@ public class MainController {
             kiraDao.save(k);
             userDao.save(u);
             findOpponent(isKira, k.getId());
+            int agentId = k.getNews().get(0).getAgent().getId();
+            NewsGenerator.generateRandomNews(k.getId(), agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
         } else {
             Agent a;
             if (u.getAgent() != null)

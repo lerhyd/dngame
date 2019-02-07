@@ -106,6 +106,7 @@
     <orderEntry type="library" name="Maven: com.sun.istack:istack-commons-runtime:3.0.7" level="project" />
     <orderEntry type="library" name="Maven: org.jvnet.staxex:stax-ex:1.8" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.fastinfoset:FastInfoset:1.2.15" level="project" />
+    <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.6" level="project" />
     <orderEntry type="library" name="Maven: com.google.collections:google-collections:1.0-rc2" level="project" />
     <orderEntry type="library" name="Maven: com.rabbitmq.jms:rabbitmq-jms:1.11.2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.geronimo.specs:geronimo-jms_1.1_spec:1.1.1" level="project" />

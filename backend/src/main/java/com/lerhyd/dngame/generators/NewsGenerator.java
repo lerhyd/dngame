@@ -3,6 +3,7 @@ package com.lerhyd.dngame.generators;
 import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.model.News;
 import com.lerhyd.dngame.model.Person;
+import org.apache.commons.lang.SerializationUtils;
 
 import java.time.LocalDateTime;
 import java.util.Random;
@@ -11,18 +12,34 @@ import java.util.Random;
 public class NewsGenerator {
 
     private static News news = null;
-    private static Random random = new Random();
     private static int maxTimeInSeconds = 50;
     private static int maxLevel = 10;
     private final static int worldRegionId = 1;
 
-    public static boolean generateRandomNews(int kiraId, int agentId,
+    public static void generateRandomNews(int kiraId, int agentId,
                                              NewsDao newsDao,
                                              KiraDao kiraDao,
                                              AgentDao agentDao,
                                              PersonDao personDao,
                                              RegionDao regionDao){
-        news = newsDao.findAllTempleteNewsInRandomOrder().get(0);
+        News templateNews = newsDao.findAllTempleteNewsInRandomOrder().get(0);
+        news = new News(
+                templateNews.isPublished(),
+                templateNews.isGuiltyPersonExists(),
+                templateNews.isFake(),
+                templateNews.isAgentGenerated(),
+                templateNews.isDie(),
+                templateNews.getDescription(),
+                templateNews.getPublicationDate(),
+                templateNews.getAction(),
+                templateNews.getActionPlace(),
+                templateNews.getVictim(),
+                templateNews.getAgent(),
+                templateNews.getKira(),
+                templateNews.getDistributionRegion(),
+                templateNews.getCommonRegion(),
+                templateNews.getGuiltyPerson()
+        );
         news.setKira(kiraDao.getOne(kiraId));
         news.setAgent(agentDao.getOne(agentId));
         if (news.isGuiltyPersonExists())
@@ -43,8 +60,8 @@ public class NewsGenerator {
         news.setPublicationDate(LocalDateTime.now().plusSeconds(1).plusSeconds(timeToReadInSeconds));
         news.setDistributionRegion(regionDao.findById(worldRegionId));
         news.setCommonRegion(regionDao.findAllRegionsInRandomOrder().get(0));
+        System.out.println(news.getPublicationDate().toString());
         newsDao.save(news);
-        return true;
     }
 
 }

@@ -106,13 +106,13 @@ public class NewsController {
     public Stream<NewsInfo> getNewsByAgent(@RequestParam("id") int agentId){
         Region homeRegion = agentDao.findById(agentId).getRegion();
         int kiraId = agentDao.findById(agentId).getNews().get(0).getAgent().getId();
-        NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
         while (true){
             List<News> newsList = newsDao.findNotPublishedNewsByKiraIdAndAgentId(kiraId, agentId);
             for (News news: newsList){
                 if (news.getPublicationDate().isBefore(LocalDateTime.now()) || news.getPublicationDate().isEqual(LocalDateTime.now())){
                     news.setPublished(true);
                     newsDao.save(news);
+                    NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
                     return Stream.of(news).map(NewsInfo::new);
                 }
             }

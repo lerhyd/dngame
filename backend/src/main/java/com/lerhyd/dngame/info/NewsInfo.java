@@ -6,7 +6,7 @@ import com.lerhyd.dngame.model.Region;
 
 public class NewsInfo {
 
-    public long id;
+    public int id;
     public String pubDate;
     public String victimName;
     public String victimSername;

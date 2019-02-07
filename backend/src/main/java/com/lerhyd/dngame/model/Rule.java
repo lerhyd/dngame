@@ -18,9 +18,9 @@ import java.util.Set;
 public class Rule implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, unique = true)
-    private long id;
+    private int id;
 
     @Column(name = "def", nullable = false)
     private boolean def;

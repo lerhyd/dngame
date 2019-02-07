@@ -10,19 +10,18 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface RequestDao extends JpaRepository<Request, Long> {
+public interface RequestDao extends JpaRepository<Request, Integer> {
 
-    List<Request> findAllByAgent_Id(long agentId);
+    List<Request> findAllByAgent_Id(int agentId);
 
-    @Query("select count(r) from Request r where r.agent.id =:agentId and r.pageNum=:pageNum")
-    int findCntOfRequestInOnePage(@Param("agentId") long agentId, @Param("pageNum") int pageNum);
-
-    @Query("select max(r.pageNumber) from Request r where r.agent.id = :agentd")
-    Optional<Integer> findMaxNumPageByAgentId(@Param("agentId") long agentId);
+    @Query("select count(r) from Request r where r.agent.id =:agentId and r.pageNumber=:pageNumber")
+    int findCntOfRequestInOnePage(@Param("agentId") int agentId, @Param("pageNumber") int pageNumber);
 
     boolean existsRequestByCrimePerson_NameAndCrimePerson_SurnameAndCrimePerson_PatronymicAndCrimePerson_Sex(String name,
                                                                                        String surname,
                                                                                        String patr,
                                                                                        boolean sex);
 
+    @Query("select max(r.pageNumber) from Request r where r.agent.id = :agentId")
+    Optional<Integer> findMaxNumPageByAgentId(@Param("agentId") int agentId);
 }

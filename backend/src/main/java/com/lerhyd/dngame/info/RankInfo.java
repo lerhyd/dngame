@@ -4,7 +4,7 @@ import com.lerhyd.dngame.model.Rank;
 
 public class RankInfo {
 
-    public long id;
+    public int id;
     public int points;
     public String rankDesc;
 

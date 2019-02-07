@@ -4,7 +4,7 @@ import com.lerhyd.dngame.model.Action;
 
 public class ActionInfo {
 
-    public long id;
+    public int id;
     public String desc;
 
     private ActionInfo(){}

@@ -12,20 +12,20 @@ import java.util.Collection;
 import java.util.Optional;
 
 @Repository
-public interface EntryDao extends JpaRepository<Entry, Long> {
+public interface EntryDao extends JpaRepository<Entry, Integer> {
 
     @Query("select e from Entry e WHERE e.kira.id = :kiraId")
-    Collection<Entry> findAllByKira(@Param("kiraId") Long kiraId);
+    Collection<Entry> findAllByKira(@Param("kiraId") int kiraId);
 
     @Transactional
     @Modifying
     @Query("delete from Entry e where e.kira.id = :kiraId")
-    void deleteAllByKiraId(@Param("kiraId") long kiraId);
+    void deleteAllByKiraId(@Param("kiraId") int kiraId);
 
-    Entry findById(long id);
+    Entry findById(int id);
 
     @Query("select count(e) from Entry e where e.kira.id =:kiraId and e.pageNumber=:pageNum")
-    long findCntOfEntriesInOnePage(@Param("kiraId") long kiraId, @Param("pageNum") int pageNum);
+    int findCntOfEntriesInOnePage(@Param("kiraId") int kiraId, @Param("pageNum") int pageNum);
 
     boolean existsEntryByVictim_NameAndVictim_SurnameAndVictim_PatronymicAndVictim_Sex(String name,
                                                                                        String surname,
@@ -33,6 +33,6 @@ public interface EntryDao extends JpaRepository<Entry, Long> {
                                                                                        boolean sex);
 
     @Query("select max(e.pageNumber) from Entry e where e.kira.id = :kiraId")
-    Optional<Integer> findMaxNumPageByKiraId(@Param("kiraId") long kiraId);
+    Optional<Integer> findMaxNumPageByKiraId(@Param("kiraId") int kiraId);
 
 }

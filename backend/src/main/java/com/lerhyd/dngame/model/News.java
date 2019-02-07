@@ -18,15 +18,19 @@ import java.time.LocalDateTime;
 public class News implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "news_seq", sequenceName = "news_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "news_seq")
     @Column(name = "id", nullable = false, unique = true)
-    private long id;
+    private int id;
 
     @Column(name = "victim_exists")
     private boolean victimExists;
 
     @Column(name = "is_fake")
     private boolean fake;
+
+    @Column(name = "is_agent")
+    private boolean agentGenerated;
 
     @Column(name = "is_die")
     private boolean die;
@@ -73,9 +77,10 @@ public class News implements Serializable {
 
     }
 
-    public News(boolean victimExists, boolean fake, boolean die, String description, LocalDateTime publicationDate, Action action, ActionPlace actionPlace, Person victim, Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person guiltyPerson) {
+    public News(boolean victimExists, boolean fake, boolean agentGenerated, boolean die, String description, LocalDateTime publicationDate, Action action, ActionPlace actionPlace, Person victim, Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person guiltyPerson) {
         this.victimExists = victimExists;
         this.fake = fake;
+        this.agentGenerated = agentGenerated;
         this.die = die;
         this.description = description;
         this.publicationDate = publicationDate;

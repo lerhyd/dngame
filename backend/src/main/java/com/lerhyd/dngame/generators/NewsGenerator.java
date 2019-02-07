@@ -13,9 +13,9 @@ public class NewsGenerator {
     private static Random random = new Random();
     private static int maxTimeInSeconds = 50;
     private static int maxLevel = 10;
-    private final static long worldRegionId = 1;
+    private final static int worldRegionId = 1;
 
-    public static boolean generateRandomNews(long kiraId, long agentId,
+    public static boolean generateRandomNews(int kiraId, int agentId,
                                              NewsDao newsDao,
                                              KiraDao kiraDao,
                                              AgentDao agentDao,
@@ -36,56 +36,57 @@ public class NewsGenerator {
         news.setCommonRegion(regionDao.getOne(getRandomCommonRegionId(regionDao)));
         if (news.isDie() == true)
             news.getVictim().setDeathDate(LocalDateTime.now());
+        newsDao.save(news);
         return true;
     }
 
-    private static long getRandomNewsId(NewsDao newsDao){
-        long cntNewsTemplate = newsDao.cntNewsTemplate();
+    private static int getRandomNewsId(NewsDao newsDao){
+        int cntNewsTemplate = newsDao.cntNewsTemplate();
         if (cntNewsTemplate == 0)
             return 0;
-        long cntMinimum = 1;
-        long n = cntNewsTemplate - cntMinimum + 1;
-        long i = random.nextLong() % n;
+        int cntMinimum = 1;
+        int n = cntNewsTemplate - cntMinimum + 1;
+        int i = random.nextInt() % n;
         return cntMinimum + i;
     }
 
-    private static long getRandomVictimId(PersonDao personDao){
-        long cntVictim = personDao.count();
+    private static int getRandomVictimId(PersonDao personDao){
+        int cntVictim = (int)personDao.count();
         if (cntVictim == 0)
             return 0;
-        long cntMinimum = 1;
-        long n = cntVictim - cntMinimum + 1;
-        long i = random.nextLong() % n;
+        int cntMinimum = 1;
+        int n = cntVictim - cntMinimum + 1;
+        int i = random.nextInt() % n;
         return cntMinimum + i;
     }
 
-    private static long getRandomGuiltyPersonId(PersonDao personDao, boolean isFake){
+    private static int getRandomGuiltyPersonId(PersonDao personDao, boolean isFake){
         if (isFake){
-            long cntNonGuiltyPersons = personDao.cntNonCriminalPersons();
+            int cntNonGuiltyPersons = personDao.cntNonCriminalPersons();
             if (cntNonGuiltyPersons == 0)
                 return 0;
-            long cntMinimum = 1;
-            long n = cntNonGuiltyPersons - cntMinimum + 1;
-            long i = random.nextLong() % n;
+            int cntMinimum = 1;
+            int n = cntNonGuiltyPersons - cntMinimum + 1;
+            int i = random.nextInt() % n;
             return cntMinimum + i;
         } else {
-            long cntGuiltyPersons = personDao.cntCriminalPersons();
+            int cntGuiltyPersons = personDao.cntCriminalPersons();
             if (cntGuiltyPersons == 0)
                 return 0;
-            long cntMinimum = 1;
-            long n = cntGuiltyPersons - cntMinimum + 1;
-            long i = random.nextLong() % n;
+            int cntMinimum = 1;
+            int n = cntGuiltyPersons - cntMinimum + 1;
+            int i = random.nextInt() % n;
             return cntMinimum + i;
         }
     }
 
-    private static long getRandomCommonRegionId(RegionDao regionDao){
-        long cntRegions = regionDao.count();
+    private static int getRandomCommonRegionId(RegionDao regionDao){
+        int cntRegions = (int)regionDao.count();
         if (cntRegions == 0)
             return 0;
-        long cntMinimum = 1;
-        long n = cntRegions - cntMinimum + 1;
-        long i = random.nextLong() % n;
+        int cntMinimum = 1;
+        int n = cntRegions - cntMinimum + 1;
+        int i = random.nextInt() % n;
         return cntMinimum + i;
     }
 

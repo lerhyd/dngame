@@ -11,10 +11,10 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Repository
-public interface PersonDao extends JpaRepository<Person, Long> {
+public interface PersonDao extends JpaRepository<Person, Integer> {
 
-    Person findById(long id);
-
+    Person findById(int id);
+    
     boolean existsByNameAndSurnameAndPatronymicAndSex(String name, String surname, String patronymic, boolean sex);
 
     Person findByNameAndSurnameAndPatronymicAndSex(String name, String surname, String patronymic, boolean sex);
@@ -32,11 +32,14 @@ public interface PersonDao extends JpaRepository<Person, Long> {
     Person findPersonByUser(@Param("userLogin") String userLogin);
 
     @Query("select p.id from Person p where p.id=:randId and p.criminal=:criminal")
-    long findPersonByIdAndCriminal(@Param("randId") long randId, @Param("criminal") boolean isCriminal);
+    int findPersonByIdAndCriminal(@Param("randId") int randId, @Param("criminal") boolean isCriminal);
 
     @Query("select count(p) from Person p where p.criminal=true")
-    long cntCriminalPersons();
+    int cntCriminalPersons();
 
     @Query("select count(p) from Person p where p.criminal=false ")
-    long cntNonCriminalPersons();
+    int cntNonCriminalPersons();
+
+    @Query("update Person p set p.deathDate=null")
+    void setDeathDateToNull();
 }

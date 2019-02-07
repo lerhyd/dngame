@@ -4,7 +4,7 @@ import com.lerhyd.dngame.model.*;
 
 public class EntryInfo {
 
-    public long id;
+    public int id;
     public int pageNum;
     public String victimName;
     public String victimSurname;

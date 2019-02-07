@@ -68,7 +68,7 @@ public class MainController {
     }
 
     @PostMapping("/game/profile/delete")
-    public int deleteProfile(@RequestParam("profileId") long profileId){
+    public int deleteProfile(@RequestParam("profileId") int profileId){
         if (personDao.getOne(profileId) == null)
             return 1;
         User user = userDao.findUserByProfile(profileId);
@@ -81,7 +81,7 @@ public class MainController {
     @PostMapping("/game/class/choose")
     public int setMainClass(@RequestParam("isKira") boolean isKira,
                              @RequestParam("userLogin") String userLogin,
-                             @RequestParam("regionId") long regionId){
+                             @RequestParam("regionId") int regionId){
         if (userDao.getOne(userLogin) == null)
             return 1;
         User u = userDao.getOne(userLogin);
@@ -131,7 +131,7 @@ public class MainController {
         return 0;
     }
 
-    public void findOpponent(boolean isKira, long classId){
+    public void findOpponent(boolean isKira, int classId){
         boolean isFound = false;
 
         while (!isFound){
@@ -164,13 +164,14 @@ public class MainController {
         }
     }
 
-    public void createMatch(long kiraId, long agentId){
+    public void createMatch(int kiraId, int agentId){
         News news = new News();
         Kira kira = kiraDao.findById(kiraId);
         Agent agent = agentDao.findById(agentId);
         news.setKira(kira);
         news.setAgent(agent);
-        news.setDescription("The world has been created");
+        news.setDescription(kira.getUser().getLogin() + " and " + agent.getUser().getLogin() + " has been connected");
+        news.setAgentGenerated(false);
         newsDao.save(news);
         List<News> newsList = newsDao.findAllByKiraAndAgent(kiraId, agentId);
         kira.setNews(newsList);
@@ -179,7 +180,7 @@ public class MainController {
         agentDao.save(agent);
     }
 
-    public boolean isMatchCreated(boolean isKira, long classId){
+    public boolean isMatchCreated(boolean isKira, int classId){
         if (isKira){
             return kiraDao.existsWithNewsByKiraId(classId);
         } else {

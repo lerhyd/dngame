@@ -13,49 +13,49 @@ import java.awt.print.Pageable;
 import java.util.List;
 
 @Repository
-public interface KiraDao extends JpaRepository<Kira, Long> {
+public interface KiraDao extends JpaRepository<Kira, Integer> {
 
     @Query("select k.points from Kira k where k.id = :id")
-    Integer findPointsById(@Param("id") long id);
+    Integer findPointsById(@Param("id") int id);
 
     @Query("select r.id from Kira k join k.region r where r.country=:country and r.city=:city")
-    Long findRegionsIdByCountryAndCity(@Param("country") String country, @Param("city") String city);
+    int findRegionsIdByCountryAndCity(@Param("country") String country, @Param("city") String city);
 
     @Transactional
     @Modifying
     @Query("update Kira k set k.region.id=:regionId where k.id = :kiraId")
-    void setRegion(@Param("kiraId") long kiraId, @Param("regionId") long regionId);
+    void setRegion(@Param("kiraId") int kiraId, @Param("regionId") int regionId);
 
-    Kira findById(long id);
+    Kira findById(int id);
 
     @Query("select k.numberOfKills from Kira k where k.id = :kiraId")
-    int findKilledCriminalsByKiraId(@Param("kiraId") long kiraId);
+    int findKilledCriminalsByKiraId(@Param("kiraId") int kiraId);
 
     @Transactional
     @Modifying
     @Query("update Kira k set k.numberOfKills = k.numberOfKills + 1 where k.id = :kiraId")
-    void addKilledCrimianl(@Param("kiraId") long kiraId);
+    void addKilledCrimianl(@Param("kiraId") int kiraId);
 
     @Transactional
     @Modifying
     @Query("update Kira k set k.lvl = k.lvl + 1 where k.id = :id")
-    void levelup(@Param("id") long kiraId);
+    void levelup(@Param("id") int kiraId);
 
     @Transactional
     @Modifying
     @Query("update Kira k set k.points= k.points + :points where k.id=:id")
-    void addPoints(@Param("points") int points, @Param("id") long kiraId);
+    void addPoints(@Param("points") int points, @Param("id") int kiraId);
 
     @Transactional
     @Modifying
     @Query("update Kira k set k.points= k.points - :points where k.id=:id")
-    void deletePoints(@Param("points") int points, @Param("id") long kiraId);
+    void deletePoints(@Param("points") int points, @Param("id") int kiraId);
 
     @Query("select k from Kira k where k.news is empty")
     List<Kira> findKirasWithoutNews();
 
     @Query("select (count(k) > 0) from Kira k where k.id = :kiraId and k.news is not empty")
-    boolean existsWithNewsByKiraId(@Param("kiraId") long kiraId);
+    boolean existsWithNewsByKiraId(@Param("kiraId") int kiraId);
 
 }
 

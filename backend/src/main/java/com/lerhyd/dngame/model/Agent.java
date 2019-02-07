@@ -20,9 +20,10 @@ import java.util.Set;
 public class Agent implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "agent_seq", sequenceName = "agent_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "agent_seq")
     @Column(name = "id", nullable = false, unique = true)
-    private long id;
+    private int id;
 
     @Column(name = "lvl")
     private int lvl;

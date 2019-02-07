@@ -13,33 +13,35 @@ import java.util.Collection;
 import java.util.List;
 
 @Repository
-public interface NewsDao extends JpaRepository<News, Long> {
+public interface NewsDao extends JpaRepository<News, Integer> {
 
     @Query("select n from News n where n.kira.id=:kiraId and n.agent.id = :agentId")
-    List<News> findAllByKiraAndAgent(@Param("kiraId") Long kiraId, @Param("agentId") Long agentId);
-
-    @Query("select n from News n where n.agent.id = :agentId")
-    List<News> findAllByAgentId(@Param("agentId") Long agentId);
-
-    List<News> findNewsByKiraId(long kiraId);
+    List<News> findAllByKiraAndAgent(@Param("kiraId") int kiraId, @Param("agentId") int agentId);
 
     @Transactional
     @Modifying
     @Query("delete from News n where n.kira.id = :kiraId and n.agent.id = :agentId")
-    void deleteAllByKiraIdAndAgentId(@Param("kiraId") Long kiraId, @Param("agentId") Long agentId);
+    void deleteAllByKiraIdAndAgentId(@Param("kiraId") int kiraId, @Param("agentId") int agentId);
 
-    News findById(long id);
+    News findById(int id);
 
     @Query("select n from News n where n.publicationDate <= current_timestamp and n.kira.id=:kiraId and n.agent.id=:agentId")
-    List<News> findAllNewsByAgent_IdAndKira_Id(@Param("kiraId") long kiraId, @Param("agentId") long agentId);
+    List<News> findAllNewsByAgent_IdAndKira_Id(@Param("kiraId") int kiraId, @Param("agentId") int agentId);
 
     @Query("select count(n) from News n where n.kira.id = :kiraId and n.agent.id = :agentId")
-    long cntNewsByKiraAndAgent(@Param("kiraId") long kiraId, @Param("agentId") long agentId);
+    int cntNewsByKiraAndAgent(@Param("kiraId") int kiraId, @Param("agentId") int agentId);
 
     @Query("select n from News n where n.kira is empty and n.agent is empty and n.id = :id")
-    News findRandomNewsTemplate(@Param("id") long randomId);
+    News findRandomNewsTemplate(@Param("id") int randomId);
 
     @Query("select count(n) from News n where n.kira is empty and n.agent is empty")
-    long cntNewsTemplate();
+    int cntNewsTemplate();
+
+    @Query("select (count(n) > 0) from News n where n.agentGenerated=true and n.guiltyPerson.id=:personId and n.kira.id=:kiraId")
+    boolean findIfNewsIsAgentGenerated(@Param("personId") int personId, @Param("kiraId") int kiraId);
+
+    @Query("select (count(n) > 0) from News n where n.kira.region.id=n.distributionRegion.id and n.agentGenerated=true " +
+            "and n.guiltyPerson.id=:personId and n.kira.id=:kiraId")
+    boolean findIfKiraWasFound(@Param("personId") int personId, @Param("kiraId") int kiraId);
 
 }

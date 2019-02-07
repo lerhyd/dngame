@@ -10,12 +10,13 @@ import javax.persistence.*;
 public class Request {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @SequenceGenerator(name = "request_seq", sequenceName = "request_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "request_seq")
     @Column(name = "id", nullable = false, unique = true)
-    private long id;
+    private int id;
 
     @Column(name = "page_number", nullable = false)
-    private int pageNum;
+    private int pageNumber;
 
     @Column(name = "is_success")
     private boolean success;
@@ -38,8 +39,8 @@ public class Request {
 
     public Request(){}
 
-    public Request(int pageNum, boolean success, Action action, Region crimeRegion, Agent agent, Person crimePerson) {
-        this.pageNum = pageNum;
+    public Request(int pageNumber, boolean success, Action action, Region crimeRegion, Agent agent, Person crimePerson) {
+        this.pageNumber = pageNumber;
         this.success = success;
         this.action = action;
         this.crimeRegion = crimeRegion;

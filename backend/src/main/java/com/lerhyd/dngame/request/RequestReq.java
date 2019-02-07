@@ -5,12 +5,12 @@ import lombok.Data;
 @Data
 public class RequestReq {
 
-    private long agentId;
+    private int agentId;
     private int pageNum;
     private String personName;
     private String personSername;
     private String personPatr;
     private boolean personSex;
-    private long regionId;
+    private int regionId;
 
 }

@@ -3,7 +3,7 @@ import com.lerhyd.dngame.model.Rule;
 
 public class RulesInfo {
 
-    public long id;
+    public int id;
     public String desc;
     public boolean isDefault;
 

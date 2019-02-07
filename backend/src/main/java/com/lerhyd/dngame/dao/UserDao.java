@@ -17,7 +17,7 @@ public interface UserDao extends JpaRepository<User, String> {
     @Transactional
     @Modifying
     @Query("update User u set u.password = :passw, u.id = :userId")
-    void changePassword(@Param("passw") String passw, @Param("userId") Long userId);
+    void changePassword(@Param("passw") String passw, @Param("userId") int userId);
 
     Optional<User> findUserByVkId(int id);
 
@@ -30,7 +30,7 @@ public interface UserDao extends JpaRepository<User, String> {
     boolean existsById(String login);
 
     @Query("select u from User u where u.profile.id = :profileId")
-    User findUserByProfile(long profileId);
+    User findUserByProfile(int profileId);
 
 
 

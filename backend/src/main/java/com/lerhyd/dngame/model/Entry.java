@@ -18,9 +18,9 @@ import java.time.LocalDateTime;
 public class Entry implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false, unique = true)
-    private long id;
+    private int id;
 
     @Column(name = "page_number", nullable = false)
     private int pageNumber;

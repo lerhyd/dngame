@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RegionDao extends JpaRepository<Region, Long> {
+public interface RegionDao extends JpaRepository<Region, Integer> {
 
-    Region findById(long id);
+    Region findById(int id);
 
 }

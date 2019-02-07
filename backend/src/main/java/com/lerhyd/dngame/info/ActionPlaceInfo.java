@@ -4,7 +4,7 @@ import com.lerhyd.dngame.model.ActionPlace;
 
 public class ActionPlaceInfo {
 
-    public long id;
+    public int id;
     public String place;
 
     private ActionPlaceInfo(){}

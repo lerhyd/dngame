@@ -31,7 +31,7 @@ public class AgentController {
     private RankDao rankDao;
 
     @PostMapping("game/agent/win")
-    public int endGame(@RequestParam long id){
+    public int endGame(@RequestParam int id){
         if (agentDao.getOne(id) == null)
             return 1;
         if (agentDao.getOne(id).getNews().get(0).getKira() == null)
@@ -44,11 +44,12 @@ public class AgentController {
             return 5;
 
         Agent a = agentDao.getOne(id);
-        long kiraId = a.getNews().get(0).getKira().getId();
+        int kiraId = a.getNews().get(0).getKira().getId();
         Kira k = kiraDao.getOne(kiraId);
 
         newsDao.deleteAllByKiraIdAndAgentId(kiraId, id);
         personDao.deleteAllByFake();
+        personDao.setDeathDateToNull();
         entryDao.deleteAllByKiraId(kiraId);
 
         a.setLvl(0);

@@ -1,42 +1,50 @@
 package com.lerhyd.dngame.controller;
 
-import com.lerhyd.dngame.dao.ActionDao;
-import com.lerhyd.dngame.dao.AgentDao;
-import com.lerhyd.dngame.dao.PersonDao;
-import com.lerhyd.dngame.dao.RequestDao;
+import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.RequestInfo;
 import com.lerhyd.dngame.model.Agent;
+import com.lerhyd.dngame.model.News;
 import com.lerhyd.dngame.model.Person;
 import com.lerhyd.dngame.model.Request;
 import com.lerhyd.dngame.request.RequestReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
 @RestController
 public class RequestController {
 
     @Autowired
-    RequestDao requestDao;
+    private RequestDao requestDao;
 
     @Autowired
-    AgentDao agentDao;
+    private AgentDao agentDao;
 
     @Autowired
-    PersonDao personDao;
+    private PersonDao personDao;
 
     @Autowired
-    ActionDao actionDao;
+    private ActionDao actionDao;
+
+    @Autowired
+    private RegionDao regionDao;
+
+    @Autowired
+    private NewsDao newsDao;
+
+    private final int policeActionId = 1;
+    private final int worldRegionId = 1;
 
     @GetMapping("/game/request")
-    public Stream<RequestInfo> getRequests(@RequestParam("agentId") long agentId){
+    public Stream<RequestInfo> getRequests(@RequestParam("agentId") int agentId){
         return requestDao.findAllByAgent_Id(agentId).stream().map(RequestInfo::new);
     }
 
     @PostMapping("/game/request/add")
     public int addRequest(@RequestBody RequestReq requestReq){
-        long requestCount = requestDao.findCntOfRequestInOnePage(requestReq.getAgentId(), requestReq.getPageNum());
+        int requestCount = requestDao.findCntOfRequestInOnePage(requestReq.getAgentId(), requestReq.getPageNum());
         if (requestCount == 10)
             return 1;
         int maxPageNum = requestDao.findMaxNumPageByAgentId(requestReq.getAgentId()).orElse(1);
@@ -69,28 +77,49 @@ public class RequestController {
         if (!isPersonExists) {
             return 7;
         } else {
-            Agent agent = agentDao.getOne(requestReq.getAgentId());
-            agent.setPoints(agent.getPoints() - 5);//value of police request
+            agentDao.deletePoints(5, requestReq.getAgentId());//value of police request
             Request request = new Request();
             Person guiltyPerson = personDao.findByNameAndSurnameAndPatronymicAndSex(
                     requestReq.getPersonName(),
                     requestReq.getPersonSername(),
                     requestReq.getPersonPatr(),
                     requestReq.isPersonSex());
-            if (guiltyPerson.isCriminal() || guiltyPerson.isFake()){
-                agent.setPoints(agent.getPoints() - 10);//penalty for mistake
+            if (!guiltyPerson.isCriminal() || guiltyPerson.isFake()){
+                agentDao.deletePoints(10, requestReq.getAgentId());//penalty for mistake
+                request.setSuccess(false);
             } else {
-                agent.setPoints(agent.getPoints() + 15);//reward for correctness
+                agentDao.addPoints(15, requestReq.getAgentId());//reward for correctness
+                request.setSuccess(true);
             }
             request.setAgent(agentDao.getOne(requestReq.getAgentId()));
             request.setCrimePerson(guiltyPerson);
-            request.setAction(actionDao.getOne(Long.valueOf(1)));
+            request.setAction(actionDao.getOne(policeActionId));
             requestDao.save(request);
-            agentDao.save(agent);
-            if (agent.getPoints() < 0)
+            newsDao.save(generateNewsFromRequest(request));
+
+            int points = agentDao.findPointsById(requestReq.getAgentId());
+            if (points < 0)
                 return 8;//Kira wins
         }
 
         return 0;
+    }
+
+    private News generateNewsFromRequest(Request request){
+        News news = new News();
+        news.setAgentGenerated(false);
+        news.setDistributionRegion(regionDao.findById(worldRegionId));
+        news.setAction(request.getAction());
+        news.setGuiltyPerson(request.getCrimePerson());
+        news.setCommonRegion(request.getCrimeRegion());
+        news.setPublicationDate(LocalDateTime.now().plusSeconds(50));
+        news.setAgent(request.getAgent());
+        news.setKira(request.getAgent().getNews().get(0).getKira());
+        news.setDie(false);
+        news.setFake(false);
+        news.setVictimExists(false);
+        news.setVictim(null);
+        news.setDescription("Police Department News");
+        return news;
     }
 }

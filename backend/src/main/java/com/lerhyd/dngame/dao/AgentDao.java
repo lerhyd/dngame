@@ -12,24 +12,34 @@ import java.awt.print.Pageable;
 import java.util.List;
 
 @Repository
-public interface AgentDao extends JpaRepository<Agent, Long> {
+public interface AgentDao extends JpaRepository<Agent, Integer> {
 
     @Query("select a.points from Agent a where a.id = :id")
-    Integer findPointsById(@Param("id")Long id);
+    Integer findPointsById(@Param("id")int id);
 
     @Query("select region.id from Agent a left join a.region region where region.country=:country and region.city =:city")
-    Long findRegionsIdByCountryAndCity(@Param("country")String country, @Param("city")String city);
+    int findRegionsIdByCountryAndCity(@Param("country")String country, @Param("city")String city);
 
     @Transactional
     @Modifying
     @Query("update Agent set region=:regionId where id = :agentId")
-    void setRegionByAgentIdAndRegionId(@Param("agentId") Long agentId, @Param("regionId") Long regionId);
+    void setRegionByAgentIdAndRegionId(@Param("agentId") int agentId, @Param("regionId") int regionId);
 
-    Agent findById(long id);
+    Agent findById(int id);
 
     @Query("select a from Agent a where a.news is empty")
     List<Agent> findAgentsWithoutNews();
 
     @Query("select (count(a) > 0) from Agent a where a.id = :agentId and a.news is not empty ")
-    boolean existsWithNewsByAgentId(@Param("agentId") long agentId);
+    boolean existsWithNewsByAgentId(@Param("agentId") int agentId);
+
+    @Transactional
+    @Modifying
+    @Query("update Agent a set a.points= a.points + :points where a.id=:id")
+    void addPoints(@Param("points") int points, @Param("id") int agentId);
+
+    @Transactional
+    @Modifying
+    @Query("update Agent a set a.points= a.points - :points where a.id=:id")
+    void deletePoints(@Param("points") int points, @Param("id") int agentId);
 }

@@ -35,8 +35,11 @@ public class EntryController {
     @Autowired
     private NewsDao newsDao;
 
+    @Autowired
+    private AgentDao agentDao;
+
     @GetMapping("/game/entry")
-    public Stream<EntryInfo> getEntries(@RequestParam("kiraId") long kiraId){
+    public Stream<EntryInfo> getEntries(@RequestParam("kiraId") int kiraId){
         return entryDao.findAllByKira(kiraId).stream().map(EntryInfo::new);
     }
 
@@ -66,6 +69,8 @@ public class EntryController {
         if (kiraDao.getOne(entryReq.getKiraId()).getNews().get(0) == null)
             return 6;
 
+        kiraDao.deletePoints(5, entryReq.getKiraId());
+
         boolean isEntryVictimExists = entryDao.existsEntryByVictim_NameAndVictim_SurnameAndVictim_PatronymicAndVictim_Sex(
                 entryReq.getVictimName(),
                 entryReq.getVictimSername(),
@@ -91,31 +96,32 @@ public class EntryController {
             if (isCriminal) {
                 kiraDao.deletePoints(10, entryReq.getKiraId());
             } else {
-                kiraDao.addPoints(10, entryReq.getKiraId());
+                kiraDao.addPoints(15, entryReq.getKiraId());
             }
 
         } else {
             Entry entry = getFormedEntry(entryReq, true);
             entryDao.save(entry);
-            kiraDao.deletePoints(30, entryReq.getKiraId());
+            kiraDao.deletePoints(5, entryReq.getKiraId());
+        }
+        Person guiltyPerson = personDao.findByNameAndSurnameAndPatronymicAndSex(
+                entryReq.getVictimName(),
+                entryReq.getVictimSername(),
+                entryReq.getVictimPatr(),
+                entryReq.isVictimSex()
+        );
+        int points = kiraDao.findPointsById(entryReq.getKiraId());
+        if (points < 0)
+            return 8;//agent won
+
+        if (newsDao.findIfKiraWasFound(guiltyPerson.getId(), entryReq.getKiraId()))
+            return 9;//agent won
+
+        if (newsDao.findIfNewsIsAgentGenerated(guiltyPerson.getId(), entryReq.getKiraId())){
+            int agentId = kiraDao.getOne(entryReq.getKiraId()).getNews().get(0).getAgent().getId();
+            agentDao.addPoints(40, agentId);
         }
         return 0;
-    }
-
-    private boolean checkIfLose(long kiraId){
-        if (kiraDao.findPointsById(kiraId)<=0){
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean checkIfWin(long kiraId){
-        if (kiraDao.findKilledCriminalsByKiraId(kiraId) >=25){
-            return true;
-        } else {
-            return false;
-        }
     }
 
     private News generateNewsFromEntry(Entry entry){
@@ -132,6 +138,7 @@ public class EntryController {
             isDeathDate = true;
 
         News news = new News(
+                false,
                 false,
                 false,
                 true,

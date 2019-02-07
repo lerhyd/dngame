@@ -4,7 +4,7 @@ import com.lerhyd.dngame.model.Region;
 
 public class RegionInfo {
 
-    public long id;
+    public int id;
     public String country;
     public String city;
 

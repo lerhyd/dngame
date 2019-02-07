@@ -31,7 +31,7 @@ public class KiraController {
     private RankDao rankDao;
 
     @PostMapping("game/kira/win")
-    public int endGame(@RequestParam long id){
+    public int endGame(@RequestParam int id){
         if (kiraDao.getOne(id) == null)
             return 1;
         if (kiraDao.getOne(id).getNews().get(0).getAgent() == null)
@@ -43,11 +43,12 @@ public class KiraController {
         if (kiraDao.getOne(id).getLvl() <= 0)
             return 1;
         Kira k = kiraDao.getOne(id);
-        long agentId = k.getNews().get(0).getAgent().getId();
+        int agentId = k.getNews().get(0).getAgent().getId();
         Agent a = agentDao.getOne(agentId);
 
         newsDao.deleteAllByKiraIdAndAgentId(id, agentId);
         personDao.deleteAllByFake();
+        personDao.setDeathDateToNull();
         entryDao.deleteAllByKiraId(id);
 
         k.setLvl(0);

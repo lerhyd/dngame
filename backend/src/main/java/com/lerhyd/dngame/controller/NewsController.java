@@ -2,6 +2,7 @@ package com.lerhyd.dngame.controller;
 
 import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.NewsInfo;
+import com.lerhyd.dngame.model.Agent;
 import com.lerhyd.dngame.model.News;
 import com.lerhyd.dngame.model.Person;
 import com.lerhyd.dngame.request.NewsReq;
@@ -47,6 +48,7 @@ public class NewsController {
             return 3;
         if (agentDao.getOne(newsReq.getAgentId()).getNews().get(0).getKira() == null)
             return 4;
+        agentDao.deletePoints(40, newsReq.getAgentId());
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         boolean victimExists = personDao.getOne(newsReq.getVictimId()) != null ? true : false;
         Person victim = null;
@@ -54,6 +56,7 @@ public class NewsController {
             victim = personDao.findById(newsReq.getVictimId());
         }
         News news = new News(victimExists,
+                true,
                 true,
                 newsReq.isDie(),
                 newsReq.getDesc(),
@@ -69,6 +72,9 @@ public class NewsController {
                 );
 
         newsDao.save(news);
+        int points = agentDao.findPointsById(newsReq.getAgentId());
+        if (points < 0)
+            return 5;//kira wins
         return 0;
     }
 
@@ -79,7 +85,7 @@ public class NewsController {
      * @return Stream of news info
      */
     @GetMapping("/news/get")
-    public Stream<NewsInfo> getNewsToPublish(@RequestParam("kiraId") long kiraId, @RequestParam("agentId") long agentId){
+    public Stream<NewsInfo> getNewsToPublish(@RequestParam("kiraId") int kiraId, @RequestParam("agentId") int agentId){
         return newsDao.findAllNewsByAgent_IdAndKira_Id(kiraId, agentId).stream().map(NewsInfo::new);
     }
 
@@ -89,7 +95,7 @@ public class NewsController {
      * @param agentId id of {@link com.lerhyd.dngame.model.Agent}
      */
     @DeleteMapping("/news/delete")
-    public void deleteNews(@RequestParam("kiraId") long kiraId, @RequestParam("agentId") long agentId){
+    public void deleteNews(@RequestParam("kiraId") int kiraId, @RequestParam("agentId") int agentId){
         newsDao.deleteAllByKiraIdAndAgentId(kiraId, agentId);
     }
 

@@ -3,7 +3,7 @@ package com.lerhyd.dngame.info;
 import com.lerhyd.dngame.model.Request;
 
 public class RequestInfo {
-    public long id;
+    public int id;
     public int pageNum;
     private boolean success;
     public String city;
@@ -19,7 +19,7 @@ public class RequestInfo {
     public RequestInfo(Request request){
         id = request.getId();
         success = request.isSuccess();
-        pageNum = request.getPageNum();
+        pageNum = request.getPageNumber();
         city = request.getCrimeRegion().getCity();
         country = request.getCrimeRegion().getCountry();
         continent = request.getCrimeRegion().getContinent();

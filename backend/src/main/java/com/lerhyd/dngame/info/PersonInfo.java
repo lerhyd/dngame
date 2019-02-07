@@ -4,7 +4,7 @@ import com.lerhyd.dngame.model.Person;
 
 public class PersonInfo {
 
-    public long id;
+    public int id;
     public String name;
     public String surname;
     public String patr;

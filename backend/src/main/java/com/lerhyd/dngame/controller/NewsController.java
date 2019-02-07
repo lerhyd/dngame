@@ -40,7 +40,7 @@ public class NewsController {
     @Autowired
     private PersonDao personDao;
 
-    @PostMapping("/news/add")
+    @PostMapping("/game/news/add")
     public int addNews(@RequestBody NewsReq newsReq){
         if (agentDao.getOne(newsReq.getAgentId()) == null)
             return 1;
@@ -80,52 +80,60 @@ public class NewsController {
         return 0;
     }
 
-    @GetMapping("game/kira/news/get")
-    public Stream<NewsInfo> getNewsByKira(@RequestParam("kiraId") int kiraId){
+    @GetMapping("/game/kira/news/get")
+    public Stream<NewsInfo> getNewsByKira(@RequestParam("id") int kiraId){
         Region homeRegion = kiraDao.findById(kiraId).getRegion();
         int agentId = kiraDao.findById(kiraId).getNews().get(0).getAgent().getId();
         while (true){
-            List<News> newsList = newsDao.findAllNotPublishedByKiraIdAndAgentId(kiraId, agentId);
+            List<News> newsList = newsDao.findNotPublishedNewsByKiraIdAndAgentId(kiraId, agentId);
 
             for (News news: newsList){
-                if (news.getPublicationDate().isBefore(LocalDateTime.now())){
-
-                        
+                if (news.getPublicationDate().isBefore(LocalDateTime.now()) || news.getPublicationDate().isEqual(LocalDateTime.now())){
+                    if (checkIfNewsCouldBeSeen(news, homeRegion)){
                         news.setPublished(true);
                         newsDao.save(news);
                         return Stream.of(news).map(NewsInfo::new);
+                    }
                 }
             }
         }
     }
 
-    @GetMapping("game/agent/news/get")
-    public Stream<NewsInfo> getNewsByAgent(@RequestParam("agentId") int agentId){
+    @GetMapping("/game/agent/news/get")
+    public Stream<NewsInfo> getNewsByAgent(@RequestParam("id") int agentId){
         Region homeRegion = agentDao.findById(agentId).getRegion();
         int kiraId = agentDao.findById(agentId).getNews().get(0).getAgent().getId();
         while (true){
-            List<News> newsList = newsDao.findAllNotPublishedByKiraIdAndAgentId(kiraId, agentId);
+            List<News> newsList = newsDao.findNotPublishedNewsByKiraIdAndAgentId(kiraId, agentId);
             for (News news: newsList){
-                if (news.getPublicationDate().isBefore(LocalDateTime.now()))
-                    if (homeRegion == news.getDistributionRegion())
-                        news.setPublished(true);
-                        newsDao.save(news);
-                        return Stream.of(news).map(NewsInfo::new);
+                if (news.getPublicationDate().isBefore(LocalDateTime.now()) || news.getPublicationDate().isEqual(LocalDateTime.now())){
+                    news.setPublished(true);
+                    newsDao.save(news);
+                    return Stream.of(news).map(NewsInfo::new);
+                }
             }
         }
     }
 
     private boolean checkIfNewsCouldBeSeen(News news, Region homeRegion){
-        boolean isPlanetCorrect = false;
-        boolean isContinentCorrect = false;
-        boolean isCountryCorrect = false;
-        boolean isCityCorrect = false;
-        if (homeRegion.getPlanet() == news.getDistributionRegion().getPlanet())
-            if (homeRegion.getContinent() == null)
-                if (homeRegion.getCountry() == null)
-                    if (homeRegion.getCity() == null)
-                        return true;
 
+        if (homeRegion.getPlanet().equals(news.getDistributionRegion().getPlanet()))
+            if (news.getDistributionRegion().getContinent() == null)
+                if (news.getDistributionRegion().getCountry() == null)
+                    if (news.getDistributionRegion().getCity() == null)
+                        return true;
+        if (homeRegion.getPlanet().equals(news.getDistributionRegion().getPlanet()))
+            if (homeRegion.getContinent().equals(news.getDistributionRegion().getContinent()))
+                if (news.getDistributionRegion().getCountry() == null)
+                    if (news.getDistributionRegion().getCity() == null)
+                        return true;
+        if (homeRegion.getPlanet().equals(news.getDistributionRegion().getPlanet()))
+            if (homeRegion.getContinent().equals(news.getDistributionRegion().getContinent()))
+                if (homeRegion.getCountry().equals(news.getDistributionRegion().getCountry()))
+                    if (news.getDistributionRegion().getCity() == null)
+                        return true;
+        if (homeRegion.getId() == news.getDistributionRegion().getId())
+                        return true;
         return false;
     }
 

@@ -1,13 +1,8 @@
 package com.lerhyd.dngame.model;
 
-import com.fasterxml.jackson.annotation.*;
 import lombok.Data;
 
 import javax.persistence.*;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.lang.Nullable;
-
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.Set;

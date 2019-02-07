@@ -60,7 +60,7 @@ public class NewsController {
         if (victimExists){
             victim = personDao.findById(newsReq.getVictimId());
         }
-        News news = new News(false, victimExists,
+        News news = new News(false, false, victimExists,
                 true,
                 true,
                 newsReq.isDie(),
@@ -88,12 +88,12 @@ public class NewsController {
         Region homeRegion = kiraDao.findById(kiraId).getRegion();
         int agentId = kiraDao.findById(kiraId).getNews().get(0).getAgent().getId();
         while (true){
-            List<News> newsList = newsDao.findNotPublishedNewsByKiraIdAndAgentId(kiraId, agentId);
+            List<News> newsList = newsDao.findNotPublishedNewsForKiraByKiraIdAndAgentId(kiraId, agentId);
 
             for (News news: newsList){
                 if (news.getPublicationDate().isBefore(LocalDateTime.now()) || news.getPublicationDate().isEqual(LocalDateTime.now())){
                     if (checkIfNewsCouldBeSeen(news, homeRegion)){
-                        news.setPublished(true);
+                        news.setPublishedForKira(true);
                         newsDao.save(news);
                         return Stream.of(news).map(NewsInfo::new);
                     }
@@ -107,10 +107,10 @@ public class NewsController {
         Region homeRegion = agentDao.findById(agentId).getRegion();
         int kiraId = agentDao.findById(agentId).getNews().get(0).getAgent().getId();
         while (true){
-            List<News> newsList = newsDao.findNotPublishedNewsByKiraIdAndAgentId(kiraId, agentId);
+            List<News> newsList = newsDao.findNotPublishedNewsForAgentByKiraIdAndAgentId(kiraId, agentId);
             for (News news: newsList){
                 if (news.getPublicationDate().isBefore(LocalDateTime.now()) || news.getPublicationDate().isEqual(LocalDateTime.now())){
-                    news.setPublished(true);
+                    news.setPublishedForAgent(true);
                     newsDao.save(news);
                     NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
                     return Stream.of(news).map(NewsInfo::new);

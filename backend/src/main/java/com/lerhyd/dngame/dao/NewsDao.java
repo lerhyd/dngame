@@ -44,7 +44,10 @@ public interface NewsDao extends JpaRepository<News, Integer> {
             "and n.guiltyPerson.id=:personId and n.kira.id=:kiraId")
     boolean findIfKiraWasFound(@Param("personId") int personId, @Param("kiraId") int kiraId);
 
-    @Query("select n from News n where n.kira.id=:kiraId and n.agent.id=:agentId and n.published=false")
-    List<News> findNotPublishedNewsByKiraIdAndAgentId(@Param("kiraId") int kiraId, @Param("agentId") int agentId);
+    @Query("select n from News n where n.publishedForKira=false and n.kira.id=:kiraId and n.agent.id=:agentId")
+    List<News> findNotPublishedNewsForKiraByKiraIdAndAgentId(@Param("kiraId") int kiraId, @Param("agentId") int agentId);
+
+    @Query("select n from News n where n.publishedForAgent=false and n.kira.id=:kiraId and n.agent.id=:agentId")
+    List<News> findNotPublishedNewsForAgentByKiraIdAndAgentId(@Param("kiraId") int kiraId, @Param("agentId") int agentId);
 
 }

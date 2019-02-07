@@ -24,7 +24,8 @@ public class NewsGenerator {
                                              RegionDao regionDao){
         News templateNews = newsDao.findAllTempleteNewsInRandomOrder().get(0);
         news = new News(
-                templateNews.isPublished(),
+                templateNews.isPublishedForKira(),
+                templateNews.isPublishedForAgent(),
                 templateNews.isGuiltyPersonExists(),
                 templateNews.isFake(),
                 templateNews.isAgentGenerated(),
@@ -55,7 +56,8 @@ public class NewsGenerator {
             victim.setDeathDate(LocalDateTime.now());
             personDao.save(victim);
         }
-        news.setPublished(false);
+        news.setPublishedForKira(false);
+        news.setPublishedForAgent(false);
         int timeToReadInSeconds = maxTimeInSeconds - kiraDao.getOne(kiraId).getLvl()*(maxTimeInSeconds/maxLevel);
         news.setPublicationDate(LocalDateTime.now().plusSeconds(1).plusSeconds(timeToReadInSeconds));
         news.setDistributionRegion(regionDao.findById(worldRegionId));

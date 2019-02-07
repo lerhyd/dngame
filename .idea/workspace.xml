@@ -5,14 +5,21 @@
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0/storage_v2/_src_/database/dndb.iB4vAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0/storage_v2/_src_/database/dndb.iB4vAA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/backend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/backend.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/EntryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/EntryController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/MainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/RequestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/NewsDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/NewsDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/generators/NewsGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/generators/NewsGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/controller/EntryController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/controller/EntryController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/controller/MainController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/controller/MainController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/controller/NewsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/controller/NewsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/controller/RequestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/controller/RequestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/dao/NewsDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/dao/NewsDao.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/generators/NewsGenerator.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/generators/NewsGenerator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/model/News.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/model/News.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/backend/target/" />
@@ -79,17 +86,59 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="98">
-              <caret line="96" column="43" selection-start-line="96" selection-start-column="43" selection-end-line="96" selection-end-column="43" />
+            <state relative-caret-position="125">
+              <caret line="107" selection-start-line="107" selection-end-line="107" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/EntryController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="104">
+              <caret line="134" column="34" selection-start-line="134" selection-start-column="34" selection-end-line="134" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/generators/NewsGenerator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/MainController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-24">
+              <caret line="175" column="38" selection-start-line="175" selection-start-column="38" selection-end-line="175" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/resources/data.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="134" column="91" selection-start-line="134" selection-start-column="91" selection-end-line="134" selection-end-column="91" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/generators/NewsGenerator.java">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/ActionPlace.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="279">
-              <caret line="41" column="10" lean-forward="true" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
+            <state relative-caret-position="240">
+              <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
             </state>
           </provider>
         </entry>
@@ -97,8 +146,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="81" column="61" selection-start-line="81" selection-start-column="61" selection-end-line="81" selection-end-column="61" />
+            <state relative-caret-position="165">
+              <caret line="84" column="68" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/RequestController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="411">
+              <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -106,17 +164,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/NewsDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="36" column="76" selection-start-line="36" selection-start-column="76" selection-end-line="36" selection-end-column="76" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/PersonDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="250">
-              <caret line="33" column="4" selection-start-line="33" selection-start-column="4" selection-end-line="34" selection-end-column="46" />
+            <state relative-caret-position="370">
+              <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
             </state>
           </provider>
         </entry>
@@ -173,7 +222,6 @@
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/KiraDao.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/KiraController.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/AgentController.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/EntryController.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/121cabb6-d76e-4e91-9ec4-1cc6206bfff0/console_3.sql" />
         <option value="$PROJECT_DIR$/backend/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/Achievement.java" />
@@ -191,16 +239,17 @@
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/Rule.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/User.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/RequestController.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/resources/data.sql" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/NewsDao.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/PersonDao.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/RegionDao.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/MainController.java" />
         <option value="$PROJECT_DIR$/backend/pom.xml" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/NewsDao.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/RequestController.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/EntryController.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/generators/NewsGenerator.java" />
+        <option value="$PROJECT_DIR$/backend/src/main/resources/data.sql" />
       </list>
     </option>
   </component>
@@ -256,7 +305,7 @@
   <component name="MavenRunner">
     <option name="jreName" value="#JAVA_HOME" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-1" />
     <option name="width" value="1602" />
     <option name="height" value="868" />
@@ -404,7 +453,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549574210261" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549576063395" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
@@ -518,12 +567,12 @@
       <workItem from="1549403455757" duration="9190000" />
       <workItem from="1549455417304" duration="30734000" />
       <workItem from="1549532197243" duration="8906000" />
-      <workItem from="1549547749759" duration="24537000" />
+      <workItem from="1549547749759" duration="26363000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="236327000" />
+    <option name="totallyTimeSpent" value="238153000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1602" height="868" extended-state="6" />
@@ -539,19 +588,19 @@
       <window_info id="Favorites" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3287858" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49935815" weight="0.34652114" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.40381992" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49935815" visible="true" weight="0.41609824" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49935815" weight="0.40381992" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5006418" side_tool="true" weight="0.32742155" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5012837" side_tool="true" weight="0.34652114" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.3287858" />
       <window_info anchor="bottom" id="Spring" order="12" />
       <window_info anchor="bottom" id="Java Enterprise" order="13" />
-      <window_info anchor="bottom" id="Messages" order="14" weight="0.32742155" />
+      <window_info anchor="bottom" id="Messages" order="14" sideWeight="0.49935815" weight="0.32742155" />
       <window_info anchor="bottom" id="Database Console" order="15" weight="0.3287858" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -708,13 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/ActionPlace.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/Action.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -802,16 +844,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/EntryController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="144" column="21" selection-start-line="144" selection-start-column="21" selection-end-line="144" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/request/NewsReq.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -882,13 +914,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/NewsDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="36" column="76" selection-start-line="36" selection-start-column="76" selection-end-line="36" selection-end-column="76" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/PersonDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -903,34 +928,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/RequestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="107" column="4" selection-start-line="107" selection-start-column="4" selection-end-line="124" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="98">
-          <caret line="96" column="43" selection-start-line="96" selection-start-column="43" selection-end-line="96" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="57" column="21" selection-start-line="57" selection-start-column="21" selection-end-line="57" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/MainController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -941,24 +942,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/data.sql">
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/dao/NewsDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="134" column="95" selection-start-line="134" selection-start-column="95" selection-end-line="134" selection-end-column="95" />
+        <state relative-caret-position="370">
+          <caret line="49" column="75" selection-start-line="49" selection-start-column="75" selection-end-line="49" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/RequestController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="411">
+          <caret line="110" column="39" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/MainController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-24">
+          <caret line="175" column="38" selection-start-line="175" selection-start-column="38" selection-end-line="175" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/EntryController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="134" column="34" selection-start-line="134" selection-start-column="34" selection-end-line="134" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/News.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="81" column="61" selection-start-line="81" selection-start-column="61" selection-end-line="81" selection-end-column="61" />
+        <state relative-caret-position="165">
+          <caret line="84" column="68" selection-start-line="84" selection-start-column="68" selection-end-line="84" selection-end-column="68" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/generators/NewsGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="279">
-          <caret line="41" column="10" lean-forward="true" selection-start-line="41" selection-start-column="10" selection-end-line="41" selection-end-column="10" />
+        <state relative-caret-position="324">
+          <caret line="59" column="39" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controller/NewsController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="107" selection-start-line="107" selection-end-line="107" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/data.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="134" column="91" selection-start-line="134" selection-start-column="91" selection-end-line="134" selection-end-column="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/model/ActionPlace.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="20" column="54" selection-start-line="20" selection-start-column="54" selection-end-line="20" selection-end-column="54" />
         </state>
       </provider>
     </entry>

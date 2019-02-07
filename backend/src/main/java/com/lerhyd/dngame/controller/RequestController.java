@@ -107,7 +107,8 @@ public class RequestController {
 
     private News generateNewsFromRequest(Request request){
         News news = new News();
-        news.setPublished(false);
+        news.setPublishedForKira(false);
+        news.setPublishedForAgent(false);
         news.setAgentGenerated(false);
         news.setDistributionRegion(regionDao.findById(worldRegionId));
         news.setAction(request.getAction());

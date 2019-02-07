@@ -23,12 +23,11 @@ import java.util.List;
 public class Person implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "person_seq", sequenceName = "person_seq", allocationSize = 1, initialValue = 517)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "person_seq")
-    @Column(name = "id", nullable = false, updatable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, updatable = false, unique = true, columnDefinition = "serial")
     private Integer id;
 
-    @Column(name = "name", nullable = false, length = 15)
+    @Column(name = "name", nullable = false, length = 20)
     private String name;
 
     @Column(name = "surname", length = 20)

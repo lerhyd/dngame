@@ -5,6 +5,7 @@ import com.lerhyd.dngame.info.NewsInfo;
 import com.lerhyd.dngame.model.Agent;
 import com.lerhyd.dngame.model.News;
 import com.lerhyd.dngame.model.Person;
+import com.lerhyd.dngame.model.Region;
 import com.lerhyd.dngame.request.NewsReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +15,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.stream.Stream;
 
-@RestController()
+@SuppressWarnings("Duplicates")
+@RestController
 public class NewsController {
 
     @Autowired
@@ -55,7 +57,7 @@ public class NewsController {
         if (victimExists){
             victim = personDao.findById(newsReq.getVictimId());
         }
-        News news = new News(victimExists,
+        News news = new News(false, victimExists,
                 true,
                 true,
                 newsReq.isDie(),
@@ -78,25 +80,53 @@ public class NewsController {
         return 0;
     }
 
-    /**
-     * Get the last news
-     * @param agentId id of {@link com.lerhyd.dngame.model.Agent} who is the part of current session
-     * @param kiraId id of {@link com.lerhyd.dngame.model.Kira} who is the part of current session
-     * @return Stream of news info
-     */
-    @GetMapping("/news/get")
-    public Stream<NewsInfo> getNewsToPublish(@RequestParam("kiraId") int kiraId, @RequestParam("agentId") int agentId){
-        return newsDao.findAllNewsByAgent_IdAndKira_Id(kiraId, agentId).stream().map(NewsInfo::new);
+    @GetMapping("game/kira/news/get")
+    public Stream<NewsInfo> getNewsByKira(@RequestParam("kiraId") int kiraId){
+        Region homeRegion = kiraDao.findById(kiraId).getRegion();
+        int agentId = kiraDao.findById(kiraId).getNews().get(0).getAgent().getId();
+        while (true){
+            List<News> newsList = newsDao.findAllNotPublishedByKiraIdAndAgentId(kiraId, agentId);
+
+            for (News news: newsList){
+                if (news.getPublicationDate().isBefore(LocalDateTime.now())){
+
+                        
+                        news.setPublished(true);
+                        newsDao.save(news);
+                        return Stream.of(news).map(NewsInfo::new);
+                }
+            }
+        }
     }
 
-    /**
-     * delete all the news in the world
-     * @param kiraId id of {@link com.lerhyd.dngame.model.Kira}
-     * @param agentId id of {@link com.lerhyd.dngame.model.Agent}
-     */
-    @DeleteMapping("/news/delete")
-    public void deleteNews(@RequestParam("kiraId") int kiraId, @RequestParam("agentId") int agentId){
-        newsDao.deleteAllByKiraIdAndAgentId(kiraId, agentId);
+    @GetMapping("game/agent/news/get")
+    public Stream<NewsInfo> getNewsByAgent(@RequestParam("agentId") int agentId){
+        Region homeRegion = agentDao.findById(agentId).getRegion();
+        int kiraId = agentDao.findById(agentId).getNews().get(0).getAgent().getId();
+        while (true){
+            List<News> newsList = newsDao.findAllNotPublishedByKiraIdAndAgentId(kiraId, agentId);
+            for (News news: newsList){
+                if (news.getPublicationDate().isBefore(LocalDateTime.now()))
+                    if (homeRegion == news.getDistributionRegion())
+                        news.setPublished(true);
+                        newsDao.save(news);
+                        return Stream.of(news).map(NewsInfo::new);
+            }
+        }
+    }
+
+    private boolean checkIfNewsCouldBeSeen(News news, Region homeRegion){
+        boolean isPlanetCorrect = false;
+        boolean isContinentCorrect = false;
+        boolean isCountryCorrect = false;
+        boolean isCityCorrect = false;
+        if (homeRegion.getPlanet() == news.getDistributionRegion().getPlanet())
+            if (homeRegion.getContinent() == null)
+                if (homeRegion.getCountry() == null)
+                    if (homeRegion.getCity() == null)
+                        return true;
+
+        return false;
     }
 
 }

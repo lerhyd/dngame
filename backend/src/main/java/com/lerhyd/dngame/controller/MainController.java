@@ -168,6 +168,7 @@ public class MainController {
         News news = new News();
         Kira kira = kiraDao.findById(kiraId);
         Agent agent = agentDao.findById(agentId);
+        news.setPublished(true);
         news.setKira(kira);
         news.setAgent(agent);
         news.setDescription(kira.getUser().getLogin() + " and " + agent.getUser().getLogin() + " has been connected");

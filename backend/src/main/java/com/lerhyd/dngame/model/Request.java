@@ -10,9 +10,8 @@ import javax.persistence.*;
 public class Request {
 
     @Id
-    @SequenceGenerator(name = "request_seq", sequenceName = "request_seq", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "request_seq")
-    @Column(name = "id", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true, columnDefinition = "serial")
     private int id;
 
     @Column(name = "page_number", nullable = false)
@@ -22,19 +21,19 @@ public class Request {
     private boolean success;
 
     @ManyToOne
-    @JoinColumn(name = "action_id")
+    @JoinColumn(name = "action_id", columnDefinition = "integer")
     private Action action;
 
     @ManyToOne
-    @JoinColumn(name = "crime_region_id")
+    @JoinColumn(name = "crime_region_id", columnDefinition = "integer")
     private Region crimeRegion;
 
     @ManyToOne
-    @JoinColumn(name = "agent_id")
+    @JoinColumn(name = "agent_id", columnDefinition = "integer")
     private Agent agent;
 
     @OneToOne
-    @JoinColumn(name = "crime_person_id")
+    @JoinColumn(name = "crime_person_id", columnDefinition = "integer")
     private Person crimePerson;
 
     public Request(){}

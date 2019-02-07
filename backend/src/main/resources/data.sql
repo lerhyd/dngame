@@ -1,9 +1,9 @@
 --Testing data that doesn't have to exist
 --Users
-insert into users
+insert into users (login, email, last_visit_timestamp, password, registration_date, vk_id, agent_id, kira_id, profile_id)
 values ('kiran', 'kiran@kiran.com', null, '12121212', null, null, null, null, null);
 
-insert into users
+insert into users (login, email, last_visit_timestamp, password, registration_date, vk_id, agent_id, kira_id, profile_id)
 values ('tiran', 'tiran@tiran.com', null, '12121212', null, null, null, null, null);
 
 --Base data

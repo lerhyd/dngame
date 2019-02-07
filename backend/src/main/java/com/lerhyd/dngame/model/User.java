@@ -6,6 +6,8 @@ import lombok.Data;
 import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.lang.Nullable;
+
 import javax.validation.constraints.NotEmpty;
 import java.time.LocalDateTime;
 import java.util.Set;
@@ -41,19 +43,19 @@ public class User{
     private LocalDateTime lastVisitTime;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "agent_id")
+    @JoinColumn(name = "agent_id", columnDefinition = "integer")
     private Agent agent;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "kira_id")
+    @JoinColumn(name = "kira_id", columnDefinition = "integer")
     private Kira kira;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "login"), inverseJoinColumns = @JoinColumn(name = "role"))
     private Set<Role> roles;
 
-    @OneToOne()
-    @JoinColumn(name = "profile_id")
+    @OneToOne
+    @JoinColumn(name = "profile_id", columnDefinition = "integer")
     private Person profile;
 
     public User(String login, String password){

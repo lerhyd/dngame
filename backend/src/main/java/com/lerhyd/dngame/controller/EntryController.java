@@ -141,6 +141,7 @@ public class EntryController {
                 false,
                 false,
                 false,
+                false,
                 true,
                 desc,
                 isDeathDate ? deathDate : deathWithoutDate,

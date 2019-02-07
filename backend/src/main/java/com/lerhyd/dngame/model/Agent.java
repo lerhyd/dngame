@@ -20,9 +20,8 @@ import java.util.Set;
 public class Agent implements Serializable {
 
     @Id
-    @SequenceGenerator(name = "agent_seq", sequenceName = "agent_seq", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "agent_seq")
-    @Column(name = "id", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true, columnDefinition = "serial")
     private int id;
 
     @Column(name = "lvl")
@@ -57,11 +56,11 @@ public class Agent implements Serializable {
     private Set<Rule> rules;
 
     @ManyToOne
-    @JoinColumn(name = "region_id", nullable = false)
+    @JoinColumn(name = "region_id", nullable = false, columnDefinition = "integer")
     private Region region;
 
     @ManyToOne
-    @JoinColumn(name = "rank_id", nullable = false)
+    @JoinColumn(name = "rank_id", nullable = false, columnDefinition = "integer")
     private Rank rank;
 
     @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL)

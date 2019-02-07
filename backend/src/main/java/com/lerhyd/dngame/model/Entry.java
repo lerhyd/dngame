@@ -18,8 +18,8 @@ import java.time.LocalDateTime;
 public class Entry implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true, columnDefinition = "serial")
     private int id;
 
     @Column(name = "page_number", nullable = false)
@@ -32,23 +32,23 @@ public class Entry implements Serializable {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "action_id")
+    @JoinColumn(name = "action_id", columnDefinition = "integer")
     private Action action;
 
     @ManyToOne
-    @JoinColumn(name = "action_place_id")
+    @JoinColumn(name = "action_place_id", columnDefinition = "integer")
     private ActionPlace actionPlace;
 
     @ManyToOne
-    @JoinColumn(name = "death_region_id")
+    @JoinColumn(name = "death_region_id", columnDefinition = "integer")
     private Region deathRegion;
 
     @ManyToOne
-    @JoinColumn(name = "kira_id")
+    @JoinColumn(name = "kira_id", columnDefinition = "integer")
     private Kira kira;
 
     @OneToOne
-    @JoinColumn(name = "victim_id")
+    @JoinColumn(name = "victim_id", columnDefinition = "integer")
     private Person victim;
 
     public Entry(int pageNumber, LocalDateTime deathDataTime, String description, Action action, ActionPlace actionPlace, Region deathRegion, Kira kira, Person victim) {

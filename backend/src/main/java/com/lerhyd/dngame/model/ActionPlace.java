@@ -18,8 +18,8 @@ import java.util.Collection;
 public class ActionPlace implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false, unique = true)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", nullable = false, unique = true, columnDefinition = "serial")
     private int id;
 
     @Column(name = "action_place", length = 500, unique = true)

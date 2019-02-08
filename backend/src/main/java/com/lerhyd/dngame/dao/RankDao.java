@@ -20,4 +20,7 @@ public interface RankDao extends JpaRepository<Rank, Integer> {
     @Query("select r from Rank r where r.points = :points and r.kira=:isKira")
     Rank findByPoints(@Param("points") int points,@Param("isKira") boolean isKira);
 
+    @Query("select r from Rank r where r.kira =:isKira and r.id = :id")
+    Rank findRankByClassAndId(@Param("isKira") boolean isKira, @Param("id") int id);
+
 }

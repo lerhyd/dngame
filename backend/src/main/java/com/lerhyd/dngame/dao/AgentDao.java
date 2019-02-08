@@ -42,4 +42,9 @@ public interface AgentDao extends JpaRepository<Agent, Integer> {
     @Modifying
     @Query("update Agent a set a.points= a.points - :points where a.id=:id")
     void deletePoints(@Param("points") int points, @Param("id") int agentId);
+
+    @Transactional
+    @Modifying
+    @Query("update Agent a set a.numberOfCaughtKillers = a.numberOfCaughtKillers + 1 where a.id=:id")
+    void addNumberOfRightCaught(@Param("id") int agentId);
 }

@@ -57,5 +57,10 @@ public interface KiraDao extends JpaRepository<Kira, Integer> {
     @Query("select (count(k) > 0) from Kira k where k.id = :kiraId and k.news is not empty")
     boolean existsWithNewsByKiraId(@Param("kiraId") int kiraId);
 
+    @Transactional
+    @Modifying
+    @Query("update Kira k set k.numberOfKills = k.numberOfKills + 1 where k.id=:id")
+    void addNumberOfRightKills(@Param("id") int kiraId);
+
 }
 

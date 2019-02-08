@@ -16,7 +16,7 @@ import java.util.Optional;
 public interface PersonDao extends JpaRepository<Person, Integer> {
 
     Person findById(int id);
-    
+
     boolean existsByNameAndSurnameAndPatronymicAndSex(String name, String surname, String patronymic, boolean sex);
 
     Person findByNameAndSurnameAndPatronymicAndSex(String name, String surname, String patronymic, boolean sex);

@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.stream.Stream;
 
+@SuppressWarnings("Duplicates")
 @RestController
 public class EntryController {
 
@@ -37,6 +38,9 @@ public class EntryController {
 
     @Autowired
     private AgentDao agentDao;
+
+    @Autowired
+    private RankDao rankDao;
 
     @GetMapping("/game/entry")
     public Stream<EntryInfo> getEntries(@RequestParam("kiraId") int kiraId){
@@ -69,11 +73,11 @@ public class EntryController {
         if (kiraDao.getOne(entryReq.getKiraId()).getNews().get(0) == null)
             return 6;
 
-        kiraDao.deletePoints(5, entryReq.getKiraId());
+        deletePointsOfKira(entryReq.getKiraId(), 5);
 
         boolean isEntryVictimExists = entryDao.existsEntryByVictim_NameAndVictim_SurnameAndVictim_PatronymicAndVictim_Sex(
                 entryReq.getVictimName(),
-                entryReq.getVictimSername(),
+                entryReq.getVictimSurname(),
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex()
         );
@@ -81,7 +85,7 @@ public class EntryController {
             return 7;
 
         boolean isPersonExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
-                entryReq.getVictimSername(),
+                entryReq.getVictimSurname(),
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex());
         if (isPersonExists) {
@@ -90,23 +94,27 @@ public class EntryController {
             newsDao.save(generateNewsFromEntry(entry));
             boolean isCriminal = personDao.findIfCriminal(
                     entryReq.getVictimName(),
-                    entryReq.getVictimSername(),
+                    entryReq.getVictimSurname(),
                     entryReq.getVictimPatr(),
                     entryReq.isVictimSex()).orElse(false);
-            if (isCriminal) {
-                kiraDao.deletePoints(10, entryReq.getKiraId());
+            if (!isCriminal) {
+                deletePointsOfKira(entryReq.getKiraId(), 10);
+                System.out.println("delete 10 point from Kira");
             } else {
-                kiraDao.addPoints(15, entryReq.getKiraId());
+                addPointsOfKira(entryReq.getKiraId(), 15);
+                addNumberOfKills(entryReq.getKiraId());
+                System.out.println("add 15 points to kira and addNumberOfKills");
             }
 
         } else {
             Entry entry = getFormedEntry(entryReq, true);
             entryDao.save(entry);
-            kiraDao.deletePoints(5, entryReq.getKiraId());
+            deletePointsOfKira(entryReq.getKiraId(), 5);
+            System.out.println("delete 5 points from Kira");
         }
         Person guiltyPerson = personDao.findByNameAndSurnameAndPatronymicAndSex(
                 entryReq.getVictimName(),
-                entryReq.getVictimSername(),
+                entryReq.getVictimSurname(),
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex()
         );
@@ -121,7 +129,88 @@ public class EntryController {
             int agentId = kiraDao.getOne(entryReq.getKiraId()).getNews().get(0).getAgent().getId();
             agentDao.addPoints(40, agentId);
         }
+        Kira kira = kiraDao.getOne(entryReq.getKiraId());
+        if (kira.getNumberOfKills() >= 3){
+            if (kira.getNumberOfKills() > 30)
+                kira.setLvl(11);
+            kira.setLvl(kira.getNumberOfKills()/3);
+        }
+        kiraDao.save(kira);
+        setRankToKira(entryReq.getKiraId());
         return 0;
+    }
+
+    private void addPointsOfKira(int kiraId, int points){
+        Kira kiraToSave = kiraDao.getOne(kiraId);
+        kiraToSave.setPoints(kiraToSave.getPoints() + points);
+        kiraDao.save(kiraToSave);
+    }
+
+    private void deletePointsOfKira(int kiraId, int points){
+        Kira kiraToSave = kiraDao.getOne(kiraId);
+        kiraToSave.setPoints(kiraToSave.getPoints() - points);
+        kiraDao.save(kiraToSave);
+    }
+
+    private void addNumberOfKills(int kiraId){
+        Kira kiraToSave = kiraDao.getOne(kiraId);
+        kiraToSave.setNumberOfKills(kiraToSave.getNumberOfKills() + 1);
+        kiraDao.save(kiraToSave);
+    }
+
+    private boolean setRankToKira(int kiraId){
+        Kira kira = kiraDao.getOne(kiraId);
+        boolean isDone = false;
+
+        isDone = setKiraRankInRange(kira, 30, 40, 1);
+        if (isDone)
+            return true;
+        isDone = setKiraRankInRange(kira, 40, 50, 2);
+        if (isDone)
+            return true;
+        isDone = setKiraRankInRange(kira, 50, 60, 3);
+        if (isDone)
+            return true;
+        isDone = setKiraRankInRange(kira, 60, 80, 4);
+        if (isDone)
+            return true;
+        isDone = setKiraRankInRange(kira, 80, 100, 5);
+        if (isDone)
+            return true;
+        isDone = setKiraRankInRange(kira, 100, 170, 6);
+        if (isDone)
+            return true;
+        isDone = setKiraRankInRange(kira, 170, 256, 7);
+        if (isDone)
+            return true;
+        isDone = setKiraRankInRange(kira, 256, 0, 8);
+        if (isDone)
+            return true;
+        return false;
+
+    }
+
+    private boolean setKiraRankInRange(Kira kira, int from, int to, int rankNum){
+        if (to != 0){
+            if (kira.getPoints() < 30)
+                return true;
+            if (kira.getPoints() >= from && kira.getPoints() < to){
+                if (kira.getRank().getId() > rankDao.findRankByClassAndId(true, rankNum).getId())
+                    return true;
+                kira.setRank(rankDao.findRankByClassAndId(true, rankNum));
+            } else
+                return false;
+        } else {
+            if (kira.getPoints() >= from) {
+                if (kira.getRank().getId() > rankDao.findRankByClassAndId(true, rankNum).getId())
+                    return true;
+                kira.setRank(rankDao.findRankByClassAndId(true, rankNum));
+            } else
+                return false;
+        }
+
+        kiraDao.save(kira);
+        return true;
     }
 
     private News generateNewsFromEntry(Entry entry){
@@ -169,6 +258,10 @@ public class EntryController {
                                  boolean isUselessEntry){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         if (!isUselessEntry) {
+            personDao.findByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
+                    entryReq.getVictimSurname(),
+                    entryReq.getVictimPatr(),
+                    entryReq.isVictimSex());
             Entry entry = new Entry(
                     entryReq.getPageNum(),
                     LocalDateTime.parse(entryReq.getDeathDate(), formatter),
@@ -178,7 +271,7 @@ public class EntryController {
                     regionDao.findById(entryReq.getDeathRegionId()),
                     kiraDao.findById(entryReq.getKiraId()),
                     personDao.findByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
-                                                                      entryReq.getVictimSername(),
+                                                                      entryReq.getVictimSurname(),
                                                                       entryReq.getVictimPatr(),
                                                                       entryReq.isVictimSex())
             );
@@ -186,7 +279,7 @@ public class EntryController {
         } else {
             Person unrealVictim = new Person(
                     entryReq.getVictimName(),
-                    entryReq.getVictimSername(),
+                    entryReq.getVictimSurname(),
                     entryReq.getVictimPatr(),
                     entryReq.isVictimSex(),
                     LocalDateTime.now(),

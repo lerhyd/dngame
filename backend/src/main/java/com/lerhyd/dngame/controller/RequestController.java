@@ -2,10 +2,7 @@ package com.lerhyd.dngame.controller;
 
 import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.RequestInfo;
-import com.lerhyd.dngame.model.Agent;
-import com.lerhyd.dngame.model.News;
-import com.lerhyd.dngame.model.Person;
-import com.lerhyd.dngame.model.Request;
+import com.lerhyd.dngame.model.*;
 import com.lerhyd.dngame.request.RequestReq;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.stream.Stream;
 
+@SuppressWarnings("Duplicates")
 @RestController
 public class RequestController {
 
@@ -33,6 +31,9 @@ public class RequestController {
 
     @Autowired
     private NewsDao newsDao;
+
+    @Autowired
+    private RankDao rankDao;
 
     private final int policeActionId = 1;
     private final int worldRegionId = 1;
@@ -60,7 +61,7 @@ public class RequestController {
             return 5;
         boolean isRequestPersonExists = requestDao.existsRequestByCrimePerson_NameAndCrimePerson_SurnameAndCrimePerson_PatronymicAndCrimePerson_Sex(
             requestReq.getPersonName(),
-            requestReq.getPersonSername(),
+            requestReq.getPersonSurname(),
             requestReq.getPersonPatr(),
             requestReq.isPersonSex()
         );
@@ -70,7 +71,7 @@ public class RequestController {
 
         boolean isPersonExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(
                 requestReq.getPersonName(),
-                requestReq.getPersonSername(),
+                requestReq.getPersonSurname(),
                 requestReq.getPersonPatr(),
                 requestReq.isPersonSex()
         );
@@ -81,15 +82,16 @@ public class RequestController {
             Request request = new Request();
             Person guiltyPerson = personDao.findByNameAndSurnameAndPatronymicAndSex(
                     requestReq.getPersonName(),
-                    requestReq.getPersonSername(),
+                    requestReq.getPersonSurname(),
                     requestReq.getPersonPatr(),
                     requestReq.isPersonSex());
             if (!guiltyPerson.isCriminal() || guiltyPerson.isFake()){
-                agentDao.deletePoints(10, requestReq.getAgentId());//penalty for mistake
+                deletePointsOfAgent(requestReq.getAgentId(),10);//penalty for mistake
                 request.setSuccess(false);
             } else {
-                agentDao.addPoints(15, requestReq.getAgentId());//reward for correctness
+                addPointsOfAgent(requestReq.getAgentId(),15);//reward for correctness
                 request.setSuccess(true);
+                addNumberOfCaughtKillers(requestReq.getAgentId());
             }
             request.setAgent(agentDao.getOne(requestReq.getAgentId()));
             request.setCrimePerson(guiltyPerson);
@@ -100,9 +102,91 @@ public class RequestController {
             int points = agentDao.findPointsById(requestReq.getAgentId());
             if (points < 0)
                 return 8;//Kira wins
+
+            Agent agent = agentDao.getOne(requestReq.getAgentId());
+            if (agent.getNumberOfCaughtKillers() >= 3){
+                if (agent.getNumberOfCaughtKillers() > 30)
+                    agent.setLvl(11);
+                agent.setLvl(agent.getNumberOfCaughtKillers()/3);
+            }
+            agentDao.save(agent);
+            setRankToAgent(requestReq.getAgentId());
         }
 
         return 0;
+    }
+
+    private void addPointsOfAgent(int agentId, int points){
+        Agent agentToSave = agentDao.getOne(agentId);
+        agentToSave.setPoints(agentToSave.getPoints() + points);
+        agentDao.save(agentToSave);
+    }
+
+    private void deletePointsOfAgent(int agentId, int points){
+        Agent agentToSave = agentDao.getOne(agentId);
+        agentToSave.setPoints(agentToSave.getPoints() - points);
+        agentDao.save(agentToSave);
+    }
+
+    private void addNumberOfCaughtKillers(int agentId){
+        Agent agentToSave = agentDao.getOne(agentId);
+        agentToSave.setNumberOfCaughtKillers(agentToSave.getNumberOfCaughtKillers() + 1);
+        agentDao.save(agentToSave);
+    }
+
+    private boolean setRankToAgent(int agentId){
+        Agent agent = agentDao.getOne(agentId);
+        boolean isDone = false;
+
+        isDone = setAgentRankInRange(agent, 30, 40, 9);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 40, 50, 10);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 50, 60, 11);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 60, 80, 12);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 80, 100, 13);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 100, 170, 14);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 170, 256, 15);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 256, 0, 16);
+        if (isDone)
+            return true;
+        return false;
+
+    }
+
+    private boolean setAgentRankInRange(Agent agent, int from, int to, int rankNum){
+        if (to != 0){
+            if (agent.getPoints() <= 30)
+                return true;
+            if (agent.getPoints() >= from && agent.getPoints() < to){
+                if (agent.getRank().getId() > rankDao.findRankByClassAndId(false, rankNum).getId())
+                    return true;
+                agent.setRank(rankDao.findRankByClassAndId(false, rankNum));
+            } else
+                return false;
+        } else {
+            if (agent.getPoints() >= from) {
+                if (agent.getRank().getId() > rankDao.findRankByClassAndId(false, rankNum).getId())
+                    return true;
+                agent.setRank(rankDao.findRankByClassAndId(false, rankNum));
+            } else
+                return false;
+        }
+
+        agentDao.save(agent);
+        return true;
     }
 
     private News generateNewsFromRequest(Request request){

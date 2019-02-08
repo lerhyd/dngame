@@ -131,8 +131,8 @@ insert into regions (id, city, country, continent, planet) values (6, 'в Ток
 insert into regions (id, city, country, continent, planet) values (7, 'в Мати', 'в Филиппинах', 'в Азии', 'мир');
 
 --News Templetes
-insert into news (is_agent, what, is_die, is_fake, publication_date, is_published, guilty_person_exists, action_id, action_place, agent_id, common_region_id, distribution_region_id, guilty_person_id, kira_id, victim_id)
-VALUES (false, 'Жестокое преступление произошло сегодня.', true, false, null, false, true, 2, 4, null, null, 1, null, null, null);
+insert into news (is_agent, what, is_die, is_fake, publication_date, is_published_for_kira, is_published_for_agent, guilty_person_exists, action_id, action_place, agent_id, common_region_id, distribution_region_id, guilty_person_id, kira_id, victim_id)
+VALUES (false, 'Жестокое преступление произошло сегодня.', true, false, null, false, false, true, 2, 4, null, null, 1, null, null, null);
 
 
 --Persons

@@ -112,8 +112,11 @@ public class NewsController {
                 if (news.getPublicationDate().isBefore(LocalDateTime.now()) || news.getPublicationDate().isEqual(LocalDateTime.now())){
                     news.setPublishedForAgent(true);
                     newsDao.save(news);
-                    NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
-                    return Stream.of(news).map(NewsInfo::new);
+                    //NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
+                    try {
+                        return Stream.of(news).map(NewsInfo::new);
+                    } catch (Exception e){}
+
                 }
             }
         }

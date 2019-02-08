@@ -8,7 +8,7 @@ public class EntryReq {
     private int pageNum;
     private int actionId;
     private String victimName;
-    private String victimSername;
+    private String victimSurname;
     private String victimPatr;
     private boolean victimSex;
     private String desc;

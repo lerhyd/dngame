@@ -122,12 +122,17 @@ public class EntryController {
         if (points < 0)
             return 8;//agent won
 
-        if (newsDao.findIfKiraWasFound(guiltyPerson.getId(), entryReq.getKiraId()))
+        if (newsDao.findIfKiraWasFound(guiltyPerson.getId(), entryReq.getKiraId())) {
+            System.out.println("Kira was found");
             return 9;//agent won
+        }
 
         if (newsDao.findIfNewsIsAgentGenerated(guiltyPerson.getId(), entryReq.getKiraId())){
             int agentId = kiraDao.getOne(entryReq.getKiraId()).getNews().get(0).getAgent().getId();
-            agentDao.addPoints(40, agentId);
+            System.out.println("Kira was caught");
+            Agent agentToSave = agentDao.getOne(agentId);
+            agentToSave.setPoints(agentToSave.getPoints()+40);
+            agentDao.save(agentToSave);
         }
         Kira kira = kiraDao.getOne(entryReq.getKiraId());
         if (kira.getNumberOfKills() >= 3){

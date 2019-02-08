@@ -53,14 +53,21 @@ public class NewsController {
             return 4;
         if (agentDao.getOne(newsReq.getAgentId()).getNews().get(0).getKira() == null)
             return 5;
-        agentDao.deletePoints(40, newsReq.getAgentId());
+
+        Agent agentToSave = agentDao.getOne(newsReq.getAgentId());
+        agentToSave.setPoints(agentToSave.getPoints() - 30);
+        agentDao.save(agentToSave);
+
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         boolean victimExists = personDao.getOne(newsReq.getVictimId()) != null ? true : false;
         Person victim = null;
         if (victimExists){
             victim = personDao.findById(newsReq.getVictimId());
         }
-        News news = new News(false, false, victimExists,
+        News news = new News(
+                false,
+                false,
+                victimExists,
                 true,
                 true,
                 newsReq.isDie(),
@@ -79,7 +86,7 @@ public class NewsController {
         newsDao.save(news);
         int points = agentDao.findPointsById(newsReq.getAgentId());
         if (points < 0)
-            return 5;//kira wins
+            return 6;//kira wins
         return 0;
     }
 

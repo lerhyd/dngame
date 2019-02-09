@@ -12,6 +12,5 @@ public class ActionInfo {
     public ActionInfo(Action act){
         id = act.getId();
         desc = act.getDescription();
-
     }
 }

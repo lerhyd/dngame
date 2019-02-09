@@ -123,7 +123,6 @@ insert into action_places (id, lvl, action_place) values (55, 10, 'в долин
 
 --Regions
 insert into regions (city, country, continent, planet) values (null, null, null, 'Земля');
-insert into regions (city, country, continent, planet) values (null, null, null, 'Луна');
 ----continents
 insert into regions (city, country, continent, planet) values (null, null, 'Австралия', 'Земля');
 insert into regions (city, country, continent, planet) values (null, null, 'Африка', 'Земля');

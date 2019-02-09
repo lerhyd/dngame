@@ -60,7 +60,6 @@ public class MainController {
         p.setName(personReq.getName());
         p.setSurname(personReq.getSurname());
         p.setPatronymic(personReq.getPatr());
-        p.setDeathDate(null);
         p.setBornDate(LocalDateTime.parse(personReq.getBornDate(), formatter));
         p.setSex(personReq.isSex());
         p.setFake(false);

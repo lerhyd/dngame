@@ -249,13 +249,7 @@ public class EntryController {
                 region,
                 null
         );
-        Person victimToUpdate = personDao.getOne(victim.getId());
-        if (isDeathDate) {
-            victimToUpdate.setDeathDate(deathDate);
-        } else {
-            victimToUpdate.setDeathDate(deathWithoutDate);
-        }
-        personDao.save(victimToUpdate);
+
         return news;
     }
 

@@ -52,10 +52,6 @@ public class NewsGenerator {
             news.setGuiltyPerson(null);
         Person victim = personDao.findAllPeronsInRandomOrder().get(0);
         news.setVictim(victim);
-        if (news.isDie()){
-            victim.setDeathDate(LocalDateTime.now());
-            personDao.save(victim);
-        }
         news.setPublishedForKira(false);
         news.setPublishedForAgent(false);
         int timeToReadInSeconds = maxTimeInSeconds - kiraDao.getOne(kiraId).getLvl()*(maxTimeInSeconds/maxLevel);

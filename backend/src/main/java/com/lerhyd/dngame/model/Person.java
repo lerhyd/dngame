@@ -42,9 +42,6 @@ public class Person implements Serializable {
     @Column(name = "born_date", nullable = false)
     private LocalDateTime bornDate;
 
-    @Column(name = "death_date")
-    private LocalDateTime deathDate;
-
     @Column(name = "is_fake")
     private boolean fake;
 
@@ -74,7 +71,7 @@ public class Person implements Serializable {
         this.patronymic = patronymic;
         this.sex = sex;
         this.bornDate = bornDate;
-        this.deathDate = deathDate;
+
         this.fake = fake;
         this.criminal = criminal;
         this.entry = entry;

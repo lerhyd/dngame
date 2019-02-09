@@ -4,7 +4,7 @@ import com.lerhyd.dngame.model.Person;
 
 public class PersonInfo {
 
-    public int id;
+    public Integer id;
     public String name;
     public String surname;
     public String patr;
@@ -25,6 +25,5 @@ public class PersonInfo {
         fake = p.isFake();
         criminal = p.isCriminal();
         bornDate = p.getBornDate().toLocalDate().toString();
-        deathDate = p.getDeathDate().toLocalDate().toString();
     }
 }

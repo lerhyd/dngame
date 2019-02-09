@@ -49,7 +49,6 @@ public class AgentController {
 
         newsDao.deleteAllByKiraIdAndAgentId(kiraId, id);
         personDao.deleteAllByFake();
-        personDao.setDeathDateToNull();
         entryDao.deleteAllByKiraId(kiraId);
 
         a.setLvl(0);

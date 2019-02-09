@@ -50,7 +50,4 @@ public interface PersonDao extends JpaRepository<Person, Integer> {
 
     @Query("select count(p) from Person p where p.criminal=false ")
     int cntNonCriminalPersons();
-
-    @Query("update Person p set p.deathDate=null")
-    void setDeathDateToNull();
 }

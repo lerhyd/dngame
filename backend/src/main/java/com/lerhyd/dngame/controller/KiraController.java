@@ -50,7 +50,6 @@ public class KiraController {
 
         newsDao.deleteAllByKiraIdAndAgentId(id, agentId);
         personDao.deleteAllByFake();
-        personDao.setDeathDateToNull();
         entryDao.deleteAllByKiraId(id);
 
         k.setLvl(0);

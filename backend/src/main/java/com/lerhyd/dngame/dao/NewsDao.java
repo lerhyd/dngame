@@ -1,6 +1,7 @@
 package com.lerhyd.dngame.dao;
 
 import com.lerhyd.dngame.model.News;
+import com.lerhyd.dngame.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -50,4 +51,15 @@ public interface NewsDao extends JpaRepository<News, Integer> {
     @Query("select n from News n where n.publishedForAgent=false and n.kira.id=:kiraId and n.agent.id=:agentId")
     List<News> findNotPublishedNewsForAgentByKiraIdAndAgentId(@Param("kiraId") int kiraId, @Param("agentId") int agentId);
 
+    @Query("select (count(n) > 0) from News n where n.victim.id=:victimId and n.agent.id=:agentId and n.kira.id=:kiraId")
+    boolean checkIfNewsVictimExists(@Param("agentId") int agentId, @Param("kiraId") int kiraId, @Param("victimId") int victimId);
+
+    @Query("select (count(n) > 0) from News n where n.guiltyPerson.id=:guiltyPersonId and n.agent.id=:agentId and n.kira.id=:kiraId")
+    boolean checkIfNewsGuiltyPersonExists(@Param("agentId") int agentId, @Param("kiraId") int kiraId, @Param("guiltyPersonId") int guiltyPersonId);
+
+    @Query("select count(n) from News n left join  n.victim v where v.fake=false and n.agent.id=:agentId and n.kira.id=:kiraId and n.die=true")
+    int cntVictimsThatUsedInNews(@Param("agentId") int agentId, @Param("kiraId") int kiraId);
+
+    @Query("select n.die from News n where n.victim.id=:victimId and n.agent.id=:agentId and n.kira.id=:kiraId")
+    boolean checkIfVictimDiedInNews(@Param("agentId") int agentId, @Param("kiraId") int kiraId, @Param("victimId") int victimId);
 }

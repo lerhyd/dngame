@@ -16,12 +16,14 @@ public class NewsGenerator {
     private static int maxLevel = 10;
     private final static int worldRegionId = 1;
 
-    public static void generateRandomNews(int kiraId, int agentId,
+    public static boolean generateRandomNews(int kiraId, int agentId,
                                              NewsDao newsDao,
                                              KiraDao kiraDao,
                                              AgentDao agentDao,
                                              PersonDao personDao,
                                              RegionDao regionDao){
+        if (newsDao.cntVictimsThatUsedInNews(agentId, kiraId) == personDao.cntAllPersonsWithoutFake())
+            return false;
         News templateNews = newsDao.findAllTempleteNewsInRandomOrder().get(0);
         news = new News(
                 templateNews.isPublishedForKira(),
@@ -43,23 +45,45 @@ public class NewsGenerator {
         );
         news.setKira(kiraDao.getOne(kiraId));
         news.setAgent(agentDao.getOne(agentId));
+        boolean guiltyPersonExists = false;
         if (news.isGuiltyPersonExists())
             if (news.isFake())
-                news.setGuiltyPerson(personDao.findAllCriminalPeronsInRandomOrder().get(0));
+                while (!guiltyPersonExists){
+                    Person guiltyPerson = personDao.findAllCriminalPeronsInRandomOrder().get(0);
+                    if (newsDao.checkIfNewsGuiltyPersonExists(agentId, kiraId, guiltyPerson.getId())){
+                        news.setGuiltyPerson(guiltyPerson);
+                        guiltyPersonExists = true;
+                    }
+                }
             else
-                news.setGuiltyPerson(personDao.findAllNotCriminalPeronsInRandomOrder().get(0));
+                while (!guiltyPersonExists){
+                    Person guiltyPerson = personDao.findAllNotCriminalPeronsInRandomOrder().get(0);
+                    if (newsDao.checkIfNewsGuiltyPersonExists(agentId, kiraId, guiltyPerson.getId())){
+                        news.setGuiltyPerson(guiltyPerson);
+                        guiltyPersonExists = true;
+                    }
+                }
         else
             news.setGuiltyPerson(null);
-        Person victim = personDao.findAllPeronsInRandomOrder().get(0);
-        news.setVictim(victim);
+
+        boolean victimExists = false;
+
+        while (!victimExists){
+            Person victim = personDao.findAllPeronsInRandomOrder().get(0);
+            if (newsDao.checkIfNewsVictimExists(agentId, kiraId, victim.getId()) && !newsDao.checkIfVictimDiedInNews(agentId, kiraId, victim.getId())) {
+                news.setVictim(victim);
+                victimExists = true;
+            }
+        }
+
         news.setPublishedForKira(false);
         news.setPublishedForAgent(false);
         int timeToReadInSeconds = maxTimeInSeconds - kiraDao.getOne(kiraId).getLvl()*(maxTimeInSeconds/maxLevel);
         news.setPublicationDate(LocalDateTime.now().plusSeconds(1).plusSeconds(timeToReadInSeconds));
         news.setDistributionRegion(regionDao.findById(worldRegionId));
         news.setCommonRegion(regionDao.findAllRegionsInRandomOrder().get(0));
-        System.out.println(news.getPublicationDate().toString());
         newsDao.save(news);
+        return true;
     }
 
 }

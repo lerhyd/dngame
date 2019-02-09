@@ -53,7 +53,9 @@ public class NewsController {
             return 4;
         if (agentDao.getOne(newsReq.getAgentId()).getNews().get(0).getKira() == null)
             return 5;
-
+        int kiraIdToCheck = agentDao.getOne(newsReq.getAgentId()).getNews().get(0).getKira().getId();
+        if (newsDao.cntVictimsThatUsedInNews(kiraIdToCheck, newsReq.getAgentId()) == personDao.cntAllPersonsWithoutFake())
+            return 6;
         Agent agentToSave = agentDao.getOne(newsReq.getAgentId());
         agentToSave.setPoints(agentToSave.getPoints() - 30);
         agentDao.save(agentToSave);
@@ -86,7 +88,7 @@ public class NewsController {
         newsDao.save(news);
         int points = agentDao.findPointsById(newsReq.getAgentId());
         if (points < 0)
-            return 6;//kira wins
+            return 7;//kira wins
         return 0;
     }
 
@@ -119,7 +121,9 @@ public class NewsController {
                 if (news.getPublicationDate().isBefore(LocalDateTime.now()) || news.getPublicationDate().isEqual(LocalDateTime.now())){
                     news.setPublishedForAgent(true);
                     newsDao.save(news);
-                    //NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
+                    boolean isPersonsWereNotUsed = NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
+                    if (isPersonsWereNotUsed)
+                        return null;
                     try {
                         return Stream.of(news).map(NewsInfo::new);
                     } catch (Exception e){}

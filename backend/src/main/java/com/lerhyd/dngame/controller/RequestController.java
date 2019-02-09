@@ -59,6 +59,9 @@ public class RequestController {
 
         if (agentDao.getOne(requestReq.getAgentId()).getNews().get(0) == null)
             return 5;
+        int kiraIdToCheck = agentDao.getOne(requestReq.getAgentId()).getNews().get(0).getKira().getId();
+        if (newsDao.cntVictimsThatUsedInNews(kiraIdToCheck, requestReq.getAgentId())==personDao.cntAllPersonsWithoutFake())
+            return 6;
         boolean isRequestPersonExists = requestDao.existsRequestByCrimePerson_NameAndCrimePerson_SurnameAndCrimePerson_PatronymicAndCrimePerson_Sex(
             requestReq.getPersonName(),
             requestReq.getPersonSurname(),
@@ -67,7 +70,7 @@ public class RequestController {
         );
 
         if (isRequestPersonExists)
-            return 6;
+            return 7;
 
         boolean isPersonExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(
                 requestReq.getPersonName(),
@@ -76,7 +79,7 @@ public class RequestController {
                 requestReq.isPersonSex()
         );
         if (!isPersonExists) {
-            return 7;
+            return 8;
         } else {
             agentDao.deletePoints(5, requestReq.getAgentId());//value of police request
             Request request = new Request();
@@ -101,7 +104,7 @@ public class RequestController {
 
             int points = agentDao.findPointsById(requestReq.getAgentId());
             if (points < 0)
-                return 8;//Kira wins
+                return 9;//Kira wins
 
             Agent agent = agentDao.getOne(requestReq.getAgentId());
             if (agent.getNumberOfCaughtKillers() >= 3){

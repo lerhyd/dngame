@@ -50,6 +50,7 @@ public class EntryController {
     @PostMapping("/game/entry/add")
     public int addEntry(@RequestBody EntryReq entryReq)
     {
+
         long cntEntriesInPage = entryDao.findCntOfEntriesInOnePage(entryReq.getKiraId(), entryReq.getPageNum());
         if (cntEntriesInPage == 10){
             return 1;
@@ -73,6 +74,10 @@ public class EntryController {
         if (kiraDao.getOne(entryReq.getKiraId()).getNews().get(0) == null)
             return 6;
 
+        int agentIdToCheck = kiraDao.getOne(entryReq.getKiraId()).getNews().get(0).getAgent().getId();
+        if (newsDao.cntVictimsThatUsedInNews(entryReq.getKiraId(), agentIdToCheck) == personDao.cntAllPersonsWithoutFake())
+            return 7;
+
         deletePointsOfKira(entryReq.getKiraId(), 5);
 
         boolean isEntryVictimExists = entryDao.existsEntryByVictim_NameAndVictim_SurnameAndVictim_PatronymicAndVictim_Sex(
@@ -81,8 +86,16 @@ public class EntryController {
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex()
         );
+        int victimIdToCheck = personDao.findByNameAndSurnameAndPatronymicAndSex(
+                entryReq.getVictimName(),
+                entryReq.getVictimSurname(),
+                entryReq.getVictimPatr(),
+                entryReq.isVictimSex()
+        ).getId();
+        if (newsDao.checkIfVictimDiedInNews(agentIdToCheck, entryReq.getKiraId(), victimIdToCheck))
+            return 8;
         if (isEntryVictimExists)
-            return 7;
+            return 9;
 
         boolean isPersonExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
                 entryReq.getVictimSurname(),
@@ -120,11 +133,11 @@ public class EntryController {
         );
         int points = kiraDao.findPointsById(entryReq.getKiraId());
         if (points < 0)
-            return 8;//agent won
+            return 10;//agent won
 
         if (newsDao.findIfKiraWasFound(guiltyPerson.getId(), entryReq.getKiraId())) {
             System.out.println("Kira was found");
-            return 9;//agent won
+            return 11;//agent won
         }
 
         if (newsDao.findIfNewsIsAgentGenerated(guiltyPerson.getId(), entryReq.getKiraId())){

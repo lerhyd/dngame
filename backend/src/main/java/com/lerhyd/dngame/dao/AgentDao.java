@@ -1,5 +1,6 @@
 package com.lerhyd.dngame.dao;
 
+import com.lerhyd.dngame.model.Achievement;
 import com.lerhyd.dngame.model.Agent;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -47,4 +48,7 @@ public interface AgentDao extends JpaRepository<Agent, Integer> {
     @Modifying
     @Query("update Agent a set a.numberOfCaughtKillers = a.numberOfCaughtKillers + 1 where a.id=:id")
     void addNumberOfRightCaught(@Param("id") int agentId);
+
+    @Query("select a from Agent a join a.achievements ach where a.id = :id")
+    List<Achievement> getAchievements(@Param("id") int agentId);
 }

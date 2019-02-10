@@ -1,5 +1,6 @@
 package com.lerhyd.dngame.dao;
 
+import com.lerhyd.dngame.model.Achievement;
 import com.lerhyd.dngame.model.Agent;
 import com.lerhyd.dngame.model.Kira;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -61,6 +62,9 @@ public interface KiraDao extends JpaRepository<Kira, Integer> {
     @Modifying
     @Query("update Kira k set k.numberOfKills = k.numberOfKills + 1 where k.id=:id")
     void addNumberOfRightKills(@Param("id") int kiraId);
+
+    @Query("select a from Kira k join k.achievements a where k.id = :id")
+    List<Achievement> getAchievements(@Param("id") int kiraId);
 
 }
 

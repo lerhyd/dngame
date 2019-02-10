@@ -1,3 +1,124 @@
+--Regions
+insert into regions (city, country, continent, planet) values (null, null, null, 'Земля');
+insert into regions (city, country, continent, planet) values (null, null, null, 'Луна');
+----continents
+insert into regions (city, country, continent, planet) values (null, null, 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, null, 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, null, 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, null, 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, null, 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, null, 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, null, 'Антарктида', 'Земля');
+
+----Страны Австралии
+insert into regions (city, country, continent, planet) values (null, 'Австралия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Соломоновы острова', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Фиджи', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Новая Зеландия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Маршалловы острова', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Новая Гвинея', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Палау', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Самоа', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Тонга', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Тувалу', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Науру', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Вануату', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Микронезия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Кирибати', 'Австралия', 'Земля');
+
+----Страны Африки
+insert into regions (city, country, continent, planet) values (null, 'Алжир', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Египет', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Камерун', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Кения', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Конго', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Маврикий', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Уганда', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Сомали', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Тунис', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Эфиопия', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'ЮАР', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Мадагаскар', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Нигер', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Чад', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Либерия', 'Африка', 'Земля');
+
+----Страны Северной Америки
+insert into regions (city, country, continent, planet) values (null, 'США', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Канада', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Куба', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Коста-Рика', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Белиз', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Мексика', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Панама', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Ямайка', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Сальвадор', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Никарагуа', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Гондурас', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Гватемала', 'Северная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Гаити', 'Северная Америка', 'Земля');
+
+----Страны Южной Америки
+insert into regions (city, country, continent, planet) values (null, 'Аргентина', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Уругвай', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Чили', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Колумбия', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Гайана', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Бразилия', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Венесуэла', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Парагвай', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Перу', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Эквадор', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Суринам', 'Южная Америка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Боливия', 'Южная Америка', 'Земля');
+
+----Страны Европы
+insert into regions (city, country, continent, planet) values (null, 'Австрия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Белоруссия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Бельгия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Болгария', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Словакия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Венгрия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Германия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Греция', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Дания', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Исландия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Испания', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Италия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Польша', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Португалия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Украина', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Финляндия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Франция', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Хорватия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Чехия', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Швейцария', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Швеция', 'Европа', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Россия', 'Европа', 'Земля');
+
+----Страны Азии
+insert into regions (city, country, continent, planet) values (null, 'Азербайджан', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Армения', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Афганистан', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Вьетнам', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Грузия', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Израиль', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Индия', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Индонезия', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Ирак', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Иран', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Казахстан', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Кипр', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Китай', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Северная Корея', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Южная Корея', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'ОАЭ', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Монголия', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Филиппины', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Япония', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Турция', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Узбекистан', 'Азия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Шри-Ланка', 'Азия', 'Земля');
 
 ----Города Австралии
 insert into regions (city, country, continent, planet) values ('Аделаида', 'Австралия', 'Австралия', 'Земля');

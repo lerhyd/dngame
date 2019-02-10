@@ -121,7 +121,7 @@ public class RequestController {
             setRankToAgent(requestReq.getAgentId());
         }
 
-    //Welcome ach
+        //Welcome ach
         Achievement welcomeAch = achievementDao.getOne("Welcome");
         if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(welcomeAch))
             if (agentDao.getOne(requestReq.getAgentId()).getLvl() == 1){
@@ -132,6 +132,92 @@ public class RequestController {
                 }
 
                 agentToSave.getAchievements().add(welcomeAch);
+                agentDao.save(agentToSave);
+            }
+        //Ad astra ach
+        Achievement adAstraAch = achievementDao.getOne("Ad astra");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(adAstraAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getLvl() == 5){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null) {
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+
+                agentToSave.getAchievements().add(adAstraAch);
+                agentDao.save(agentToSave);
+            }
+        //Welcome ach
+        Achievement unstoppableAch = achievementDao.getOne("Unstoppable");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(unstoppableAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getLvl() == 10){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null) {
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+
+                agentToSave.getAchievements().add(unstoppableAch);
+                agentDao.save(agentToSave);
+            }
+        //Capital ach
+        Achievement capitalAch = achievementDao.getOne("Capital");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(capitalAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getPoints() >= 200){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(capitalAch);
+                agentDao.save(agentToSave);
+            }
+        //First invistigations ach
+        Achievement firstInvistigationsAch = achievementDao.getOne("First invistigations");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(firstInvistigationsAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getNumberOfCaughtKillers() == 10){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(firstInvistigationsAch);
+                agentDao.save(agentToSave);
+            }
+        //Path of righteousness ach
+        Achievement pathOfRighteousnessAch = achievementDao.getOne("Path of righteousness");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(pathOfRighteousnessAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getNumberOfCaughtKillers() == 20){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(pathOfRighteousnessAch);
+                agentDao.save(agentToSave);
+            }
+        //Uncontrollable detective ach
+        Achievement uncontrollableDetectiveAch = achievementDao.getOne("Uncontrollable detective");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(uncontrollableDetectiveAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getNumberOfWins() == 10){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(uncontrollableDetectiveAch);
+                agentDao.save(agentToSave);
+            }
+        //Irrepressible detective ach
+        Achievement irrepressibleDetective = achievementDao.getOne("Irrepressible detective");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(irrepressibleDetective))
+            if (agentDao.getOne(requestReq.getAgentId()).getNumberOfWins() == 20){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(irrepressibleDetective);
                 agentDao.save(agentToSave);
             }
         return 0;

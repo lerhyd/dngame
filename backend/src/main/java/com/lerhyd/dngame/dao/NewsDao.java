@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface NewsDao extends JpaRepository<News, Integer> {
@@ -61,5 +62,5 @@ public interface NewsDao extends JpaRepository<News, Integer> {
     int cntVictimsThatUsedInNews(@Param("agentId") int agentId, @Param("kiraId") int kiraId);
 
     @Query("select n.die from News n where n.victim.id=:victimId and n.agent.id=:agentId and n.kira.id=:kiraId")
-    boolean checkIfVictimDiedInNews(@Param("agentId") int agentId, @Param("kiraId") int kiraId, @Param("victimId") int victimId);
+    Optional<Boolean> checkIfVictimDiedInNews(@Param("agentId") int agentId, @Param("kiraId") int kiraId, @Param("victimId") int victimId);
 }

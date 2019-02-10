@@ -70,7 +70,7 @@ public class NewsGenerator {
 
         while (!victimExists){
             Person victim = personDao.findAllPeronsInRandomOrder().get(0);
-            if (newsDao.checkIfNewsVictimExists(agentId, kiraId, victim.getId()) && !newsDao.checkIfVictimDiedInNews(agentId, kiraId, victim.getId())) {
+            if (newsDao.checkIfNewsVictimExists(agentId, kiraId, victim.getId()) && !newsDao.checkIfVictimDiedInNews(agentId, kiraId, victim.getId()).orElse(false)) {
                 news.setVictim(victim);
                 victimExists = true;
             }

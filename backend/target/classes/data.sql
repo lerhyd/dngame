@@ -9,9 +9,22 @@ values ('tiran', 'tiran@tiran.com', null, '12121212', null, null, null, null, nu
 --Base data
 
 --Achievements
-insert into achievements (title, description, task) values ('Welcome', 'Всё с его-то начинается', 'Получите 1 уровень');
+----Main
+insert into achievements (title, description, task) values ('Welcome', 'Всё с чего-то начинается', 'Достигните 1 уровеня');
 insert into achievements (title, description, task) values ('Victory', 'Первая победа', 'Насладитесь первой победой над своим противником');
-
+insert into achievements (title, description, task) values ('Ad astra', 'Через тернии к звёздам', 'Достигните 5 уровня');
+insert into achievements (title, description, task) values ('Unstoppable', 'Вне пределов', 'Достигните 10 уровня');
+insert into achievements (title, description, task) values ('Capital', 'Не тот, о чём вы подумали', 'Накопите первые 200 очков в одной игре');
+----Kira
+insert into achievements (title, description, task) values ('First assassinations', 'Всё бывает в первый раз', 'Убейте 5 человек за один матч');
+insert into achievements (title, description, task) values ('Blood path', 'Вы идёте по пути крови', 'Убейте 20 человек за один матч');
+insert into achievements (title, description, task) values ('Uncontrollable killer', 'Ты смотришь в бездну, а бездна на тебя', 'Выиграйте 10 матчей за Киру');
+insert into achievements (title, description, task) values ('Irrepressible killer', 'Из бездны уже нет выхода', 'Выиграйте 20 матчей за Киру');
+----Agent
+insert into achievements (title, description, task) values ('First invistigations', 'Всё бывает в первый раз', 'Поймайте 5 преступников за один матч');
+insert into achievements (title, description, task) values ('Path of righteousness', 'Вы идёте по пути праведности', 'Поймайте 20 преступников за один матч');
+insert into achievements (title, description, task) values ('Uncontrollable detective', 'Ты смотришь в бездну, а бездна на тебя', 'Выиграйте 10 матчей за Агента');
+insert into achievements (title, description, task) values ('Irrepressible detective', 'Из бездны уже нет выхода', 'Выиграйте 20 матчей за Агента');
 
 
 --Ranks

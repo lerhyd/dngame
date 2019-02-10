@@ -26,6 +26,8 @@ insert into achievements (title, description, task) values ('Path of righteousne
 insert into achievements (title, description, task) values ('Uncontrollable detective', 'Ты смотришь в бездну, а бездна на тебя', 'Выиграйте 10 матчей за Агента');
 insert into achievements (title, description, task) values ('Irrepressible detective', 'Из бездны уже нет выхода', 'Выиграйте 20 матчей за Агента');
 
+--Rules
+insert into rules (def, description) values ();
 
 --Ranks
 ----Kira's

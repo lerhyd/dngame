@@ -4,7 +4,7 @@ import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.EntryInfo;
 import com.lerhyd.dngame.model.*;
 import com.lerhyd.dngame.request.EntryReq;
-import org.hibernate.validator.constraints.LuhnCheck;
+import com.lerhyd.dngame.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,6 +47,9 @@ public class EntryController {
 
     @Autowired
     private AchievementDao achievementDao;
+
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping("/game/entry")
     public Stream<EntryInfo> getEntries(@RequestParam("kiraId") int kiraId){
@@ -176,6 +179,7 @@ public class EntryController {
                 }
                 kiraToSave.getAchievements().add(welcomeAch);
                 kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Welcome.");
             }
         //Ad astra ach
         Achievement adAstraAch = achievementDao.getOne("Ad astra");
@@ -188,6 +192,7 @@ public class EntryController {
                 }
                 kiraToSave.getAchievements().add(adAstraAch);
                 kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Ad astra.");
             }
         //Unstoppable ach
         Achievement unstoppableAch = achievementDao.getOne("Unstoppable");
@@ -200,6 +205,7 @@ public class EntryController {
                 }
                 kiraToSave.getAchievements().add(unstoppableAch);
                 kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Unstoppable.");
             }
         //Capital ach
         Achievement capitalAch = achievementDao.getOne("Capital");
@@ -212,6 +218,7 @@ public class EntryController {
                 }
                 kiraToSave.getAchievements().add(capitalAch);
                 kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Capital.");
             }
         //First assassinations ach
         Achievement firstAssassinationsAch = achievementDao.getOne("First assassinations");
@@ -224,6 +231,7 @@ public class EntryController {
                 }
                 kiraToSave.getAchievements().add(firstAssassinationsAch);
                 kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение First assassinations.");
             }
         //Blood path ach
         Achievement bloodPathAch = achievementDao.getOne("Blood path");
@@ -236,6 +244,7 @@ public class EntryController {
                 }
                 kiraToSave.getAchievements().add(bloodPathAch);
                 kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Blood path.");
             }
         //Uncontrollable killer ach
         Achievement uncontrollableKillerAch = achievementDao.getOne("Uncontrollable killer");
@@ -248,6 +257,7 @@ public class EntryController {
                 }
                 kiraToSave.getAchievements().add(uncontrollableKillerAch);
                 kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Uncontrollable killer.");
             }
         //Irrepressible killer ach
         Achievement irrepressibleKillerAch = achievementDao.getOne("Irrepressible killer");
@@ -260,6 +270,7 @@ public class EntryController {
                 }
                 kiraToSave.getAchievements().add(irrepressibleKillerAch);
                 kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Irrepressible killer.");
             }
         if (isAgentGenerated){
             return 01;

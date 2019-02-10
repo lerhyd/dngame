@@ -1,9 +1,9 @@
 --Testing data that doesn't have to exist
 --Users
-insert into users (login, email, last_visit_timestamp, password, registration_date, vk_id, agent_id, kira_id, profile_id)
+insert into users
 values ('kiran', 'kiran@kiran.com', null, '12121212', null, null, null, null, null);
 
-insert into users (login, email, last_visit_timestamp, password, registration_date, vk_id, agent_id, kira_id, profile_id)
+insert into users
 values ('tiran', 'tiran@tiran.com', null, '12121212', null, null, null, null, null);
 
 --Base data
@@ -26,6 +26,8 @@ insert into achievements (title, description, task) values ('Path of righteousne
 insert into achievements (title, description, task) values ('Uncontrollable detective', 'Ты смотришь в бездну, а бездна на тебя', 'Выиграйте 10 матчей за Агента');
 insert into achievements (title, description, task) values ('Irrepressible detective', 'Из бездны уже нет выхода', 'Выиграйте 20 матчей за Агента');
 
+--Rules
+insert into rules (def, description) values ();
 
 --Ranks
 ----Kira's
@@ -142,6 +144,7 @@ insert into action_places (id, lvl, action_place) values (55, 10, 'в долин
 
 --Regions
 insert into regions (city, country, continent, planet) values (null, null, null, 'Земля');
+insert into regions (city, country, continent, planet) values (null, null, null, 'Луна');
 ----continents
 insert into regions (city, country, continent, planet) values (null, null, 'Австралия', 'Земля');
 insert into regions (city, country, continent, planet) values (null, null, 'Африка', 'Земля');
@@ -165,6 +168,7 @@ insert into regions (city, country, continent, planet) values (null, 'Тувал
 insert into regions (city, country, continent, planet) values (null, 'Науру', 'Австралия', 'Земля');
 insert into regions (city, country, continent, planet) values (null, 'Вануату', 'Австралия', 'Земля');
 insert into regions (city, country, continent, planet) values (null, 'Микронезия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Кирибати', 'Австралия', 'Земля');
 
 ----Страны Африки
 insert into regions (city, country, continent, planet) values (null, 'Алжир', 'Африка', 'Земля');
@@ -181,7 +185,7 @@ insert into regions (city, country, continent, planet) values (null, 'ЮАР', '
 insert into regions (city, country, continent, planet) values (null, 'Мадагаскар', 'Африка', 'Земля');
 insert into regions (city, country, continent, planet) values (null, 'Нигер', 'Африка', 'Земля');
 insert into regions (city, country, continent, planet) values (null, 'Чад', 'Африка', 'Земля');
-insert into regions (city, country, continent, planet) values (null, 'Сейшельские острова', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Либерия', 'Африка', 'Земля');
 
 ----Страны Северной Америки
 insert into regions (city, country, continent, planet) values (null, 'США', 'Северная Америка', 'Земля');
@@ -260,9 +264,184 @@ insert into regions (city, country, continent, planet) values (null, 'Турци
 insert into regions (city, country, continent, planet) values (null, 'Узбекистан', 'Азия', 'Земля');
 insert into regions (city, country, continent, planet) values (null, 'Мальдивы', 'Азия', 'Земля');
 
---News Templetes
-insert into news (is_agent, what, is_die, is_fake, publication_date, is_published_for_kira, is_published_for_agent, guilty_person_exists, action_id, action_place, agent_id, common_region_id, distribution_region_id, guilty_person_id, kira_id, victim_id)
-VALUES (false, 'Жестокое преступление произошло сегодня.', true, false, null, false, false, true, 2, 4, null, null, 1, null, null, null);
+
+----Города Австралии
+insert into regions (city, country, continent, planet) values ('Аделаида', 'Австралия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Брисбен', 'Австралия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Перт', 'Австралия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Сидней', 'Австралия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Канберра', 'Австралия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Мельбурн', 'Австралия', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Хониара', 'Соломоновы острова', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Ауки', 'Соломоновы острова', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Буала', 'Соломоновы острова', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Норо', 'Соломоновы острова', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Мунда', 'Соломоновы острова', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Сува', 'Фиджи', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Нанди', 'Фиджи', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Лаутока', 'Фиджи', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Ламбаса', 'Фиджи', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Наусори', 'Фиджи', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Окленд', 'Новая Зеландия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Веллингтон', 'Новая Зеландия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Данидин', 'Новая Зеландия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Крайстчерч', 'Новая Зеландия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Гимильтон', 'Новая Зеландия', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Южная Тарава', 'Кирибати', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Табурао', 'Кирибати', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Бонрики', 'Кирибати', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Буарики', 'Кирибати', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Темарая', 'Кирибати', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Лаэ', 'Новая Гвинея', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Горока', 'Новая Гвинея', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Маданг', 'Новая Гвинея', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Менди', 'Новая Гвинея', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Тари', 'Новая Гвинея', 'Австралия', 'Земля');
+
+
+insert into regions (city, country, continent, planet) values ('Клоулклабед', 'Палау', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Корор', 'Палау', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Хатохобеи', 'Палау', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Мелекеок', 'Палау', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Мейнгс', 'Палау', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Апиа', 'Самоа', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Афега', 'Самоа', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Вайусу', 'Самоа', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Солосоло', 'Самоа', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Леулумоега', 'Самоа', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Неиафу', 'Тонга', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Пангаи', 'Тонга', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Вайни', 'Тонга', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Муа', 'Тонга', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Коловаи', 'Тонга', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Тонга', 'Тувалу', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Ваиаку', 'Тувалу', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Фонгафале', 'Тувалу', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Фунафути', 'Тувалу', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Тавита', 'Тувалу', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Анабар', 'Науру', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Анибар', 'Науру', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Ярен', 'Науру', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Баити', 'Науру', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Арубо', 'Науру', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Порт-Вила', 'Вануату', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Исангел', 'Вануату', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Сола', 'Вануату', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Люганвиль', 'Вануату', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Лакаторо', 'Вануату', 'Австралия', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Паликир', 'Микронезия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Колониа', 'Микронезия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Тофол', 'Микронезия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Вено', 'Микронезия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values ('Румунг', 'Микронезия', 'Австралия', 'Земля');
+
+----Города Африки
+insert into regions (city, country, continent, planet) values ('Алжир', 'Алжир', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Таманрассет', 'Алжир', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Тлемсен', 'Алжир', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Батна', 'Алжир', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Тимга', 'Алжир', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Каир', 'Египет', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Хургада', 'Египет', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Луксор', 'Египет', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Шарм-эль-Шейх', 'Египет', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Дахаб', 'Египет', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Дуала', 'Камерун', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Гаруа', 'Камерун', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Криби', 'Камерун', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Яунде', 'Камерун', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Буэа', 'Камерун', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Найроби', 'Кения', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Момбаса', 'Кения', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Малинди', 'Кения', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Накуру', 'Кения', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Кисуму', 'Кения', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Киншаса', 'Конго', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Браззавиль', 'Конго', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Бома', 'Конго', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Матади', 'Конго', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Букаву', 'Конго', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Порт-Луи', 'Маврикий', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Гран Бэ', 'Маврикий', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Кюрпип', 'Маврикий', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Роз-Хилл', 'Маврикий', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Маэбур', 'Маврикий', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Кампала', 'Уганда', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Энтеббе', 'Уганда', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Джинджа', 'Уганда', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Мбале', 'Уганда', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Гулу', 'Уганда', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Магадишо', 'Сомали', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Кисмайо', 'Сомали', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Босасо', 'Сомали', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Байдабо', 'Сомали', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Буръо', 'Сомали', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Тунис', 'Тунис', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Сус', 'Тунис', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Монастир', 'Тунис', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Хаммамет', 'Тунис', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Кайруан', 'Тунис', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Аддис-Абеба', 'Эфиопия', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Гондэр', 'Эфиопия', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Бахр-Дар', 'Эфиопия', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Харар', 'Эфиопия', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Дире Дауа', 'Эфиопия', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Кейптаун', 'ЮАР', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Дурбан', 'ЮАР', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Претория', 'ЮАР', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Кимберли', 'ЮАР', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Найсна', 'ЮАР', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Антананариву', 'Мадагаскар', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Мурундава', 'Мадагаскар', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Туамасина', 'Мадагаскар', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Махадзанга', 'Мадагаскар', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Тулеар', 'Мадагаскар', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Ниабей', 'Нигер', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Зиндер', 'Нигер', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Арлит', 'Нигер', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Агадес', 'Нигер', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Тахуа', 'Нигер', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Нджамена', 'Чад', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Абеше', 'Чад', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Мунду', 'Чад', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Пала', 'Чад', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Сарх', 'Чад', 'Африка', 'Земля');
+
+insert into regions (city, country, continent, planet) values ('Монровия', 'Либерия', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Харпер', 'Либерия', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Бьюкенен', 'Либерия', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Гринвилл', 'Либерия', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values ('Воинджама', 'Либерия', 'Африка', 'Земля');
+
+--insert into regions (city, country, continent, planet) values ('в Серене', 'в Бельгии', 'в Европе', 'Земля');
+--insert into regions (city, country, continent, planet) values ('в Коге', 'в Японии', 'в Азии', 'Земля');
+--insert into regions (city, country, continent, planet) values ('в Токио', 'в Японии', 'в Азии', 'Земля');
+--insert into regions (city, country, continent, planet) values ('в Мати', 'в Филиппинах', 'в Азии', 'Земля');
+
 
 
 --Persons
@@ -557,7 +736,7 @@ insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, sur
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('24 August 1971',true,false,'Аглая','Иосифовна',false,'Соловьёва');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('9 December 1965',true,false,'Никита','Иванович',true,'Миронов');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('16 March 1985',true,false,'Ия','Платоновна',false,'Кузнецова');
-insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('26 May 1966',false,false,'Гаврила','Данилович',true,'Смирнов');
+insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('26 May 1966',false,false,'Гавриил','Данилович',true,'Смирнов');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('20 December 1983',false,false,'Гордей','Юрьевич',true,'Фомин');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('23 July 1965',false,false,'Эвелина','Евгеньевна',false,'Муравьёва');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('21 December 1986',false,false,'Надежда','Викторовна',false,'Гулевич');

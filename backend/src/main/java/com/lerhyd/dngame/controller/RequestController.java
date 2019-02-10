@@ -4,6 +4,7 @@ import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.RequestInfo;
 import com.lerhyd.dngame.model.*;
 import com.lerhyd.dngame.request.RequestReq;
+import com.lerhyd.dngame.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +40,9 @@ public class RequestController {
 
     @Autowired
     private AchievementDao achievementDao;
+
+    @Autowired
+    private EmailService emailService;
 
     private final int policeActionId = 1;
     private final int worldRegionId = 1;
@@ -130,9 +134,9 @@ public class RequestController {
                     List<Achievement> achievements = new ArrayList<>();
                     agentToSave.setAchievements(achievements);
                 }
-
                 agentToSave.getAchievements().add(welcomeAch);
                 agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Welcome.");
             }
         //Ad astra ach
         Achievement adAstraAch = achievementDao.getOne("Ad astra");
@@ -143,9 +147,9 @@ public class RequestController {
                     List<Achievement> achievements = new ArrayList<>();
                     agentToSave.setAchievements(achievements);
                 }
-
                 agentToSave.getAchievements().add(adAstraAch);
                 agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Ad astra.");
             }
         //Welcome ach
         Achievement unstoppableAch = achievementDao.getOne("Unstoppable");
@@ -156,9 +160,9 @@ public class RequestController {
                     List<Achievement> achievements = new ArrayList<>();
                     agentToSave.setAchievements(achievements);
                 }
-
                 agentToSave.getAchievements().add(unstoppableAch);
                 agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Welcome.");
             }
         //Capital ach
         Achievement capitalAch = achievementDao.getOne("Capital");
@@ -171,6 +175,7 @@ public class RequestController {
                 }
                 agentToSave.getAchievements().add(capitalAch);
                 agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Capital.");
             }
         //First invistigations ach
         Achievement firstInvistigationsAch = achievementDao.getOne("First invistigations");
@@ -183,6 +188,7 @@ public class RequestController {
                 }
                 agentToSave.getAchievements().add(firstInvistigationsAch);
                 agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение First invistigations.");
             }
         //Path of righteousness ach
         Achievement pathOfRighteousnessAch = achievementDao.getOne("Path of righteousness");
@@ -195,6 +201,7 @@ public class RequestController {
                 }
                 agentToSave.getAchievements().add(pathOfRighteousnessAch);
                 agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Path of righteousness.");
             }
         //Uncontrollable detective ach
         Achievement uncontrollableDetectiveAch = achievementDao.getOne("Uncontrollable detective");
@@ -207,6 +214,7 @@ public class RequestController {
                 }
                 agentToSave.getAchievements().add(uncontrollableDetectiveAch);
                 agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Uncontrollable detective.");
             }
         //Irrepressible detective ach
         Achievement irrepressibleDetective = achievementDao.getOne("Irrepressible detective");
@@ -219,6 +227,7 @@ public class RequestController {
                 }
                 agentToSave.getAchievements().add(irrepressibleDetective);
                 agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Irrepressible detective.");
             }
         return 0;
     }

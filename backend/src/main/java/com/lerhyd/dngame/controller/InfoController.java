@@ -2,10 +2,7 @@ package com.lerhyd.dngame.controller;
 
 import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.*;
-import com.lerhyd.dngame.model.Agent;
-import com.lerhyd.dngame.model.Kira;
-import com.lerhyd.dngame.model.Person;
-import com.lerhyd.dngame.model.User;
+import com.lerhyd.dngame.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +34,9 @@ public class InfoController {
     @Autowired
     private ActionPlaceDao actionPlaceDao;
 
+    @Autowired
+    private AchievementDao achievementDao;
+
     @GetMapping("/game/persons/get")
     public Stream<PersonInfo> getPersons(@RequestParam("id") int agentId){
         List<Person> people = personDao.findAllAlivePersonsByAgentId(agentId);
@@ -66,15 +66,15 @@ public class InfoController {
     }
 
     @GetMapping("/game/kira/actionPlaces")
-    public Stream<ActionInfo> getKiraActionPlace(@RequestParam("id") int kiraId){
+    public Stream<ActionPlaceInfo> getKiraActionPlace(@RequestParam("id") int kiraId){
         Kira kira = kiraDao.getOne(kiraId);
-        return actionDao.findByLvl(kira.getLvl()).stream().map(ActionInfo::new);
+        return actionPlaceDao.findByLvl(kira.getLvl()).stream().map(ActionPlaceInfo::new);
     }
 
     @GetMapping("/game/agent/actionPlaces")
-    public Stream<ActionInfo> getAgentActionPlace(@RequestParam("id") int agentId){
+    public Stream<ActionPlaceInfo> getAgentActionPlace(@RequestParam("id") int agentId){
         Agent agent = agentDao.getOne(agentId);
-        return actionDao.findByLvl(agent.getLvl()).stream().map(ActionInfo::new);
+        return actionPlaceDao.findByLvl(agent.getLvl()).stream().map(ActionPlaceInfo::new);
     }
 
     @GetMapping("/game/kira/achievements")
@@ -141,6 +141,18 @@ public class InfoController {
                 return 0;
             }
         }).map(RatingInfo::new);
+    }
+
+    @GetMapping("/game/kira/achievements/new")
+    public Stream<AchievementInfo> getNewAchievement(@RequestParam("id") int kiraId){
+        Kira kira = kiraDao.getOne(kiraId);
+        int size = kira.getAchievements().size();
+        while (true){
+            if (size < kiraDao.getOne(kiraId).getAchievements().size()){
+                List<Achievement> achievements = kiraDao.getOne(kiraId).getAchievements();
+                return Stream.of(achievements.get(achievements.size()-1)).map(AchievementInfo::new);
+            }
+        }
     }
 
 }

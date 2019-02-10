@@ -60,7 +60,7 @@ public class Agent implements Serializable {
     private Region region;
 
     @ManyToOne
-    @JoinColumn(name = "rank_id", nullable = false, columnDefinition = "integer")
+    @JoinColumn(name = "rank_id", columnDefinition = "integer")
     private Rank rank;
 
     @OneToMany(mappedBy = "agent", cascade = CascadeType.ALL)

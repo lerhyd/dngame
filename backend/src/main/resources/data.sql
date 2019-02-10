@@ -1,9 +1,9 @@
 --Testing data that doesn't have to exist
 --Users
-insert into users (login, email, last_visit_timestamp, password, registration_date, vk_id, agent_id, kira_id, profile_id)
+insert into users
 values ('kiran', 'kiran@kiran.com', null, '12121212', null, null, null, null, null);
 
-insert into users (login, email, last_visit_timestamp, password, registration_date, vk_id, agent_id, kira_id, profile_id)
+insert into users
 values ('tiran', 'tiran@tiran.com', null, '12121212', null, null, null, null, null);
 
 --Base data
@@ -142,6 +142,7 @@ insert into action_places (id, lvl, action_place) values (55, 10, 'в долин
 
 --Regions
 insert into regions (city, country, continent, planet) values (null, null, null, 'Земля');
+insert into regions (city, country, continent, planet) values (null, null, null, 'Луна');
 ----continents
 insert into regions (city, country, continent, planet) values (null, null, 'Австралия', 'Земля');
 insert into regions (city, country, continent, planet) values (null, null, 'Африка', 'Земля');
@@ -165,6 +166,7 @@ insert into regions (city, country, continent, planet) values (null, 'Тувал
 insert into regions (city, country, continent, planet) values (null, 'Науру', 'Австралия', 'Земля');
 insert into regions (city, country, continent, planet) values (null, 'Вануату', 'Австралия', 'Земля');
 insert into regions (city, country, continent, planet) values (null, 'Микронезия', 'Австралия', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Кирибати', 'Австралия', 'Земля');
 
 ----Страны Африки
 insert into regions (city, country, continent, planet) values (null, 'Алжир', 'Африка', 'Земля');
@@ -181,7 +183,7 @@ insert into regions (city, country, continent, planet) values (null, 'ЮАР', '
 insert into regions (city, country, continent, planet) values (null, 'Мадагаскар', 'Африка', 'Земля');
 insert into regions (city, country, continent, planet) values (null, 'Нигер', 'Африка', 'Земля');
 insert into regions (city, country, continent, planet) values (null, 'Чад', 'Африка', 'Земля');
-insert into regions (city, country, continent, planet) values (null, 'Сейшельские острова', 'Африка', 'Земля');
+insert into regions (city, country, continent, planet) values (null, 'Либерия', 'Африка', 'Земля');
 
 ----Страны Северной Америки
 insert into regions (city, country, continent, planet) values (null, 'США', 'Северная Америка', 'Земля');
@@ -260,9 +262,13 @@ insert into regions (city, country, continent, planet) values (null, 'Турци
 insert into regions (city, country, continent, planet) values (null, 'Узбекистан', 'Азия', 'Земля');
 insert into regions (city, country, continent, planet) values (null, 'Мальдивы', 'Азия', 'Земля');
 
---News Templetes
-insert into news (is_agent, what, is_die, is_fake, publication_date, is_published_for_kira, is_published_for_agent, guilty_person_exists, action_id, action_place, agent_id, common_region_id, distribution_region_id, guilty_person_id, kira_id, victim_id)
-VALUES (false, 'Жестокое преступление произошло сегодня.', true, false, null, false, false, true, 2, 4, null, null, 1, null, null, null);
+
+
+--insert into regions (city, country, continent, planet) values ('в Серене', 'в Бельгии', 'в Европе', 'Земля');
+--insert into regions (city, country, continent, planet) values ('в Коге', 'в Японии', 'в Азии', 'Земля');
+--insert into regions (city, country, continent, planet) values ('в Токио', 'в Японии', 'в Азии', 'Земля');
+--insert into regions (city, country, continent, planet) values ('в Мати', 'в Филиппинах', 'в Азии', 'Земля');
+
 
 
 --Persons
@@ -557,7 +563,7 @@ insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, sur
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('24 August 1971',true,false,'Аглая','Иосифовна',false,'Соловьёва');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('9 December 1965',true,false,'Никита','Иванович',true,'Миронов');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('16 March 1985',true,false,'Ия','Платоновна',false,'Кузнецова');
-insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('26 May 1966',false,false,'Гаврила','Данилович',true,'Смирнов');
+insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('26 May 1966',false,false,'Гавриил','Данилович',true,'Смирнов');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('20 December 1983',false,false,'Гордей','Юрьевич',true,'Фомин');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('23 July 1965',false,false,'Эвелина','Евгеньевна',false,'Муравьёва');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('21 December 1986',false,false,'Надежда','Викторовна',false,'Гулевич');

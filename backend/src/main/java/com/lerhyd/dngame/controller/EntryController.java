@@ -4,7 +4,7 @@ import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.EntryInfo;
 import com.lerhyd.dngame.model.*;
 import com.lerhyd.dngame.request.EntryReq;
-import org.hibernate.validator.constraints.EAN;
+import com.lerhyd.dngame.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -47,6 +47,9 @@ public class EntryController {
 
     @Autowired
     private AchievementDao achievementDao;
+
+    @Autowired
+    private EmailService emailService;
 
     @GetMapping("/game/entry")
     public Stream<EntryInfo> getEntries(@RequestParam("kiraId") int kiraId){
@@ -98,7 +101,7 @@ public class EntryController {
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex()
         ).getId();
-        if (newsDao.checkIfVictimDiedInNews(agentIdToCheck, entryReq.getKiraId(), victimIdToCheck))
+        if (newsDao.checkIfVictimDiedInNews(agentIdToCheck, entryReq.getKiraId(), victimIdToCheck).orElse(false))
             return 8;
         if (isEntryVictimExists)
             return 9;
@@ -146,12 +149,15 @@ public class EntryController {
             return 11;//agent won
         }
 
+        boolean isAgentGenerated = false;
+
         if (newsDao.findIfNewsIsAgentGenerated(guiltyPerson.getId(), entryReq.getKiraId())){
             int agentId = kiraDao.getOne(entryReq.getKiraId()).getNews().get(0).getAgent().getId();
             System.out.println("Kira was caught");
             Agent agentToSave = agentDao.getOne(agentId);
             agentToSave.setPoints(agentToSave.getPoints()+40);
             agentDao.save(agentToSave);
+            isAgentGenerated = true;
         }
         Kira kira = kiraDao.getOne(entryReq.getKiraId());
         if (kira.getNumberOfKills() >= 3){
@@ -171,10 +177,104 @@ public class EntryController {
                     List<Achievement> achievements = new ArrayList<>();
                     kiraToSave.setAchievements(achievements);
                 }
-
                 kiraToSave.getAchievements().add(welcomeAch);
                 kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Welcome.");
             }
+        //Ad astra ach
+        Achievement adAstraAch = achievementDao.getOne("Ad astra");
+        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(adAstraAch))
+            if (kiraDao.getOne(entryReq.getKiraId()).getLvl() == 5){
+                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+                if (kiraToSave.getAchievements() == null) {
+                    List<Achievement> achievements = new ArrayList<>();
+                    kiraToSave.setAchievements(achievements);
+                }
+                kiraToSave.getAchievements().add(adAstraAch);
+                kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Ad astra.");
+            }
+        //Unstoppable ach
+        Achievement unstoppableAch = achievementDao.getOne("Unstoppable");
+        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(unstoppableAch))
+            if (kiraDao.getOne(entryReq.getKiraId()).getLvl() == 10){
+                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+                if (kiraToSave.getAchievements() == null) {
+                    List<Achievement> achievements = new ArrayList<>();
+                    kiraToSave.setAchievements(achievements);
+                }
+                kiraToSave.getAchievements().add(unstoppableAch);
+                kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Unstoppable.");
+            }
+        //Capital ach
+        Achievement capitalAch = achievementDao.getOne("Capital");
+        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(capitalAch))
+            if (kiraDao.getOne(entryReq.getKiraId()).getPoints() >= 200){
+                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+                if (kiraToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    kiraToSave.setAchievements(achievements);
+                }
+                kiraToSave.getAchievements().add(capitalAch);
+                kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Capital.");
+            }
+        //First assassinations ach
+        Achievement firstAssassinationsAch = achievementDao.getOne("First assassinations");
+        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(firstAssassinationsAch))
+            if (kiraDao.getOne(entryReq.getKiraId()).getNumberOfKills() == 10){
+                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+                if (kiraToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    kiraToSave.setAchievements(achievements);
+                }
+                kiraToSave.getAchievements().add(firstAssassinationsAch);
+                kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение First assassinations.");
+            }
+        //Blood path ach
+        Achievement bloodPathAch = achievementDao.getOne("Blood path");
+        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(bloodPathAch))
+            if (kiraDao.getOne(entryReq.getKiraId()).getNumberOfKills() == 20){
+                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+                if (kiraToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    kiraToSave.setAchievements(achievements);
+                }
+                kiraToSave.getAchievements().add(bloodPathAch);
+                kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Blood path.");
+            }
+        //Uncontrollable killer ach
+        Achievement uncontrollableKillerAch = achievementDao.getOne("Uncontrollable killer");
+        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(uncontrollableKillerAch))
+            if (kiraDao.getOne(entryReq.getKiraId()).getNumberOfWins() == 10){
+                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+                if (kiraToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    kiraToSave.setAchievements(achievements);
+                }
+                kiraToSave.getAchievements().add(uncontrollableKillerAch);
+                kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Uncontrollable killer.");
+            }
+        //Irrepressible killer ach
+        Achievement irrepressibleKillerAch = achievementDao.getOne("Irrepressible killer");
+        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(irrepressibleKillerAch))
+            if (kiraDao.getOne(entryReq.getKiraId()).getNumberOfWins() == 20){
+                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+                if (kiraToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    kiraToSave.setAchievements(achievements);
+                }
+                kiraToSave.getAchievements().add(irrepressibleKillerAch);
+                kiraDao.save(kiraToSave);
+                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Irrepressible killer.");
+            }
+        if (isAgentGenerated){
+            return 01;
+        }
         return 0;
     }
 

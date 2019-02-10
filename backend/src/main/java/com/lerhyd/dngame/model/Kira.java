@@ -52,14 +52,6 @@ public class Kira implements Serializable {
     )
     private List<Achievement> achievements;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "rule_to_kira",
-            joinColumns = @JoinColumn(name = "kira_id"),
-            inverseJoinColumns = @JoinColumn(name = "rule_id")
-    )
-    private Set<Rule> rules;
-
     @ManyToOne
     @JoinColumn(name = "region_id", nullable = false, columnDefinition = "integer")
     private Region region;

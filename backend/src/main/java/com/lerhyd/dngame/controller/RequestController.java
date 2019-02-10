@@ -4,6 +4,7 @@ import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.RequestInfo;
 import com.lerhyd.dngame.model.*;
 import com.lerhyd.dngame.request.RequestReq;
+import com.lerhyd.dngame.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -39,6 +40,9 @@ public class RequestController {
 
     @Autowired
     private AchievementDao achievementDao;
+
+    @Autowired
+    private EmailService emailService;
 
     private final int policeActionId = 1;
     private final int worldRegionId = 1;
@@ -121,7 +125,7 @@ public class RequestController {
             setRankToAgent(requestReq.getAgentId());
         }
 
-    //Welcome ach
+        //Welcome ach
         Achievement welcomeAch = achievementDao.getOne("Welcome");
         if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(welcomeAch))
             if (agentDao.getOne(requestReq.getAgentId()).getLvl() == 1){
@@ -130,9 +134,100 @@ public class RequestController {
                     List<Achievement> achievements = new ArrayList<>();
                     agentToSave.setAchievements(achievements);
                 }
-
                 agentToSave.getAchievements().add(welcomeAch);
                 agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Welcome.");
+            }
+        //Ad astra ach
+        Achievement adAstraAch = achievementDao.getOne("Ad astra");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(adAstraAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getLvl() == 5){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null) {
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(adAstraAch);
+                agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Ad astra.");
+            }
+        //Welcome ach
+        Achievement unstoppableAch = achievementDao.getOne("Unstoppable");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(unstoppableAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getLvl() == 10){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null) {
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(unstoppableAch);
+                agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Welcome.");
+            }
+        //Capital ach
+        Achievement capitalAch = achievementDao.getOne("Capital");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(capitalAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getPoints() >= 200){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(capitalAch);
+                agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Capital.");
+            }
+        //First invistigations ach
+        Achievement firstInvistigationsAch = achievementDao.getOne("First invistigations");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(firstInvistigationsAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getNumberOfCaughtKillers() == 10){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(firstInvistigationsAch);
+                agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение First invistigations.");
+            }
+        //Path of righteousness ach
+        Achievement pathOfRighteousnessAch = achievementDao.getOne("Path of righteousness");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(pathOfRighteousnessAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getNumberOfCaughtKillers() == 20){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(pathOfRighteousnessAch);
+                agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Path of righteousness.");
+            }
+        //Uncontrollable detective ach
+        Achievement uncontrollableDetectiveAch = achievementDao.getOne("Uncontrollable detective");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(uncontrollableDetectiveAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getNumberOfWins() == 10){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(uncontrollableDetectiveAch);
+                agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Uncontrollable detective.");
+            }
+        //Irrepressible detective ach
+        Achievement irrepressibleDetective = achievementDao.getOne("Irrepressible detective");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(irrepressibleDetective))
+            if (agentDao.getOne(requestReq.getAgentId()).getNumberOfWins() == 20){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null){
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+                agentToSave.getAchievements().add(irrepressibleDetective);
+                agentDao.save(agentToSave);
+                emailService.sendMail("DN game.", agentDao.getOne(requestReq.getAgentId()).getUser(), "Вы получили достижение Irrepressible detective.");
             }
         return 0;
     }

@@ -4,6 +4,7 @@ import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.model.Achievement;
 import com.lerhyd.dngame.model.Agent;
 import com.lerhyd.dngame.model.Kira;
+import com.lerhyd.dngame.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,6 +34,9 @@ public class AgentController {
 
     @Autowired
     private AchievementDao achievementDao;
+
+    @Autowired
+    private EmailService emailService;
 
     @PostMapping("game/agent/win")
     public int endGame(@RequestParam int id){
@@ -84,6 +88,7 @@ public class AgentController {
                 }
 
                 a.getAchievements().add(firstVictoryAch);
+                emailService.sendMail("DN game.", agentDao.getOne(id).getUser(), "Вы получили достижение Victory.");
             }
 
         agentDao.save(a);

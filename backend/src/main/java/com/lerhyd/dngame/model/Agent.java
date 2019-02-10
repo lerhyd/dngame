@@ -47,14 +47,6 @@ public class Agent implements Serializable {
     )
     private List<Achievement> achievements;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "rule_to_agent",
-            joinColumns = @JoinColumn(name = "agent_id"),
-            inverseJoinColumns = @JoinColumn(name = "rule_id")
-    )
-    private Set<Rule> rules;
-
     @ManyToOne
     @JoinColumn(name = "region_id", nullable = false, columnDefinition = "integer")
     private Region region;

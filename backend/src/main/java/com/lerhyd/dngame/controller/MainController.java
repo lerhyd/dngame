@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Random;
 
 @SuppressWarnings("Duplicates")
 @RestController
@@ -46,15 +46,20 @@ public class MainController {
     public int createProfile(@RequestBody PersonReq personReq){
         if (userDao.getOne(personReq.getUserLogin()) == null)
             return 1;
-        User u = userDao.getOne(personReq.getUserLogin());
+        User u;
+        try {
+            u = userDao.getOne(personReq.getUserLogin());
+        } catch (EntityNotFoundException e){
+            return 2;
+        }
         Person personToCheck = u.getProfile();
         if (personToCheck != null)
-            return 2;
+            return 3;
         if (personDao.existsByNameAndSurnameAndPatronymicAndSex(personReq.getName(),
                                                                 personReq.getSurname(),
                                                                 personReq.getPatr(),
                                                                 personReq.isSex()))
-            return 3;
+            return 4;
         Person p = new Person();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         p.setName(personReq.getName());

@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,16 +23,10 @@ public class Rule implements Serializable {
     @Column(name = "id", nullable = false, unique = true, columnDefinition = "serial")
     private int id;
 
-    @Column(name = "def", nullable = false)
-    private boolean def;
-
     @Column(name = "description", unique = true)
     private String description;
 
     @ManyToMany(mappedBy = "rules")
-    private Set<Kira> kiras;
-
-    @ManyToMany(mappedBy = "rules")
-    private Set<Agent> agents;
+    private List<User> users;
 
 }

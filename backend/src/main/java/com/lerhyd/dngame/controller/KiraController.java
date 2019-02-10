@@ -4,6 +4,7 @@ import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.model.Achievement;
 import com.lerhyd.dngame.model.Agent;
 import com.lerhyd.dngame.model.Kira;
+import com.lerhyd.dngame.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 @SuppressWarnings("Duplicates")
 @RestController
@@ -34,6 +34,9 @@ public class KiraController {
 
     @Autowired
     private AchievementDao achievementDao;
+
+    @Autowired
+    private EmailService emailService;
 
     @PostMapping("game/kira/win")
     public int endGame(@RequestParam int id){
@@ -83,8 +86,8 @@ public class KiraController {
                     List<Achievement> achievements = new ArrayList<>();
                     k.setAchievements(achievements);
                 }
-
                 k.getAchievements().add(firstVictoryAch);
+                emailService.sendMail("DN game.", agentDao.getOne(id).getUser(), "Вы получили достижение Victory.");
             }
 
         kiraDao.save(k);

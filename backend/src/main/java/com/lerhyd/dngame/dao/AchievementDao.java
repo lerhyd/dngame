@@ -12,9 +12,6 @@ import java.util.Optional;
 @Repository
 public interface AchievementDao extends JpaRepository<Achievement, String> {
 
-    List<Achievement> findAchievementsByKiras(int id);
-
-    List<Achievement> findAchievementsByAgents(int id);
-
     Optional<Achievement> findById(String id);
+
 }

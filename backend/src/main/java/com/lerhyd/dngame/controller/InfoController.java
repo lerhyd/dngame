@@ -144,12 +144,24 @@ public class InfoController {
     }
 
     @GetMapping("/game/kira/achievements/new")
-    public Stream<AchievementInfo> getNewAchievement(@RequestParam("id") int kiraId){
-        Kira kira = kiraDao.getOne(kiraId);
-        int size = kira.getAchievements().size();
+    public Stream<AchievementInfo> getNewAchievementOfKira(@RequestParam("id") int kiraId){
+        int size = kiraDao.getAchievements(kiraId).size();
         while (true){
-            if (size < kiraDao.getOne(kiraId).getAchievements().size()){
-                List<Achievement> achievements = kiraDao.getOne(kiraId).getAchievements();
+            int newSize = kiraDao.getAchievements(kiraId).size();
+            if (size < newSize){
+                List<Achievement> achievements = kiraDao.getAchievements(kiraId);
+                return Stream.of(achievements.get(achievements.size()-1)).map(AchievementInfo::new);
+            }
+        }
+    }
+
+    @GetMapping("/game/agent/achievements/new")
+    public Stream<AchievementInfo> getNewAchievementOfAgent(@RequestParam("id") int agentId){
+        int size = agentDao.getAchievements(agentId).size();
+        while (true){
+            int newSize = agentDao.getAchievements(agentId).size();
+            if (size < newSize){
+                List<Achievement> achievements = kiraDao.getAchievements(agentId);
                 return Stream.of(achievements.get(achievements.size()-1)).map(AchievementInfo::new);
             }
         }

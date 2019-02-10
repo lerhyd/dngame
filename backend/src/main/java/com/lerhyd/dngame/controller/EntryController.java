@@ -4,11 +4,14 @@ import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.EntryInfo;
 import com.lerhyd.dngame.model.*;
 import com.lerhyd.dngame.request.EntryReq;
+import org.hibernate.validator.constraints.EAN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 @SuppressWarnings("Duplicates")
@@ -41,6 +44,9 @@ public class EntryController {
 
     @Autowired
     private RankDao rankDao;
+
+    @Autowired
+    private AchievementDao achievementDao;
 
     @GetMapping("/game/entry")
     public Stream<EntryInfo> getEntries(@RequestParam("kiraId") int kiraId){
@@ -155,6 +161,20 @@ public class EntryController {
         }
         kiraDao.save(kira);
         setRankToKira(entryReq.getKiraId());
+        
+        //Welcome ach
+        Achievement welcomeAch = achievementDao.getOne("Welcome");
+        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(welcomeAch))
+            if (kiraDao.getOne(entryReq.getKiraId()).getLvl() == 1){
+                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+                if (kiraToSave.getAchievements() == null) {
+                    List<Achievement> achievements = new ArrayList<>();
+                    kiraToSave.setAchievements(achievements);
+                }
+
+                kiraToSave.getAchievements().add(welcomeAch);
+                kiraDao.save(kiraToSave);
+            }
         return 0;
     }
 

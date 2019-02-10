@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 @SuppressWarnings("Duplicates")
@@ -34,6 +36,9 @@ public class RequestController {
 
     @Autowired
     private RankDao rankDao;
+
+    @Autowired
+    private AchievementDao achievementDao;
 
     private final int policeActionId = 1;
     private final int worldRegionId = 1;
@@ -116,6 +121,19 @@ public class RequestController {
             setRankToAgent(requestReq.getAgentId());
         }
 
+    //Welcome ach
+        Achievement welcomeAch = achievementDao.getOne("Welcome");
+        if (!agentDao.getOne(requestReq.getAgentId()).getAchievements().contains(welcomeAch))
+            if (agentDao.getOne(requestReq.getAgentId()).getLvl() == 1){
+                Agent agentToSave = agentDao.getOne(requestReq.getAgentId());
+                if (agentToSave.getAchievements() == null) {
+                    List<Achievement> achievements = new ArrayList<>();
+                    agentToSave.setAchievements(achievements);
+                }
+
+                agentToSave.getAchievements().add(welcomeAch);
+                agentDao.save(agentToSave);
+            }
         return 0;
     }
 

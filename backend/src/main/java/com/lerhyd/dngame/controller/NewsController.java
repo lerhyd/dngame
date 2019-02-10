@@ -57,7 +57,7 @@ public class NewsController {
         if (newsDao.cntVictimsThatUsedInNews(kiraIdToCheck, newsReq.getAgentId()) == personDao.cntAllPersonsWithoutFake())
             return 6;
         Agent agentToSave = agentDao.getOne(newsReq.getAgentId());
-        agentToSave.setPoints(agentToSave.getPoints() - 30);
+        agentToSave.setPoints(agentToSave.getPoints() - 40);
         agentDao.save(agentToSave);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

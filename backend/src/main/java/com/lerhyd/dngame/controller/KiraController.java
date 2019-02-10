@@ -1,6 +1,7 @@
 package com.lerhyd.dngame.controller;
 
 import com.lerhyd.dngame.dao.*;
+import com.lerhyd.dngame.model.Achievement;
 import com.lerhyd.dngame.model.Agent;
 import com.lerhyd.dngame.model.Kira;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Stream;
 
 @SuppressWarnings("Duplicates")
@@ -30,20 +33,23 @@ public class KiraController {
     private PersonDao personDao;
 
     @Autowired
-    private RankDao rankDao;
+    private AchievementDao achievementDao;
 
     @PostMapping("game/kira/win")
     public int endGame(@RequestParam int id){
-        if (kiraDao.getOne(id) == null)
-            return 1;
-        if (kiraDao.getOne(id).getNews().get(0).getAgent() == null)
-            return 2;
-        if (kiraDao.getOne(id).getUser() == null)
-            return 3;
-        if (kiraDao.getOne(id).getUser().getProfile() == null)
-            return 4;
-        if (kiraDao.getOne(id).getLvl() <= 0)
-            return 1;
+        try {
+            if (kiraDao.getOne(id) == null)
+                return 1;
+            if (kiraDao.getOne(id).getNews().get(0).getAgent() == null)
+                return 2;
+            if (kiraDao.getOne(id).getUser() == null)
+                return 3;
+            if (kiraDao.getOne(id).getUser().getProfile() == null)
+                return 4;
+        } catch (IndexOutOfBoundsException e){
+            return 5;
+        }
+
         Kira k = kiraDao.getOne(id);
         int agentId = k.getNews().get(0).getAgent().getId();
         Agent a = agentDao.getOne(agentId);
@@ -68,6 +74,18 @@ public class KiraController {
 
         k.setNumberOfWins(k.getNumberOfWins() + 1);
         a.setNumberOfLoses(a.getNumberOfLoses() + 1);
+
+        //First victory ach
+        Achievement firstVictoryAch = achievementDao.getOne("Victory");
+        if (!k.getAchievements().contains(firstVictoryAch))
+            if (k.getNumberOfWins() == 1){
+                if (k.getAchievements() == null) {
+                    List<Achievement> achievements = new ArrayList<>();
+                    k.setAchievements(achievements);
+                }
+
+                k.getAchievements().add(firstVictoryAch);
+            }
 
         kiraDao.save(k);
         agentDao.save(a);

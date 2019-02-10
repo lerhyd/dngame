@@ -8,6 +8,12 @@ values ('tiran', 'tiran@tiran.com', null, '12121212', null, null, null, null, nu
 
 --Base data
 
+--Achievements
+insert into achievements (title, description, task) values ('Welcome', 'Всё с его-то начинается', 'Получите 1 уровень');
+insert into achievements (title, description, task) values ('Victory', 'Первая победа', 'Насладитесь первой победой над своим противником');
+
+
+
 --Ranks
 ----Kira's
 insert into ranks (id, points, rank, is_kira) values (1, 30, 'Соловей разбойник', true);

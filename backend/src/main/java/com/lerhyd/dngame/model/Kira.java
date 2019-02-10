@@ -50,7 +50,7 @@ public class Kira implements Serializable {
             joinColumns = @JoinColumn(name = "kira_id"),
             inverseJoinColumns = @JoinColumn(name = "achievements_id")
     )
-    private Collection<Achievement> achievements;
+    private List<Achievement> achievements;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
@@ -65,7 +65,7 @@ public class Kira implements Serializable {
     private Region region;
 
     @ManyToOne
-    @JoinColumn(name = "rank_id", nullable = false, columnDefinition = "integer")
+    @JoinColumn(name = "rank_id", columnDefinition = "integer")
     private Rank rank;
 
     @OneToMany(mappedBy = "kira", cascade = CascadeType.ALL)

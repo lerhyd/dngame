@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RulesRepo extends JpaRepository<Rule, Integer> {
+public interface RuleDao extends JpaRepository<Rule, Integer> {
 
     Rule findById(int id);
 

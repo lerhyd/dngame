@@ -1,6 +1,7 @@
 package com.lerhyd.dngame.model;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,6 +17,7 @@ import java.util.Set;
 @Data
 @Entity
 @Table(name = "rules")
+@ToString(exclude = {"users"})
 public class Rule implements Serializable {
 
     @Id

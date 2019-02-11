@@ -1,4 +1,4 @@
-package com.lerhyd.dngame.controller;
+package com.lerhyd.dngame.controllers;
 
 import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.info.*;

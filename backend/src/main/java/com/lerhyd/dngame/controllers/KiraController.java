@@ -1,4 +1,4 @@
-package com.lerhyd.dngame.controller;
+package com.lerhyd.dngame.controllers;
 
 import com.lerhyd.dngame.dao.*;
 import com.lerhyd.dngame.model.Achievement;
@@ -15,13 +15,13 @@ import java.util.List;
 
 @SuppressWarnings("Duplicates")
 @RestController
-public class AgentController {
-
-    @Autowired
-    private AgentDao agentDao;
+public class KiraController {
 
     @Autowired
     private KiraDao kiraDao;
+
+    @Autowired
+    private AgentDao agentDao;
 
     @Autowired
     private NewsDao newsDao;
@@ -38,35 +38,28 @@ public class AgentController {
     @Autowired
     private EmailService emailService;
 
-    @PostMapping("game/agent/win")
+    @PostMapping("game/kira/win")
     public int endGame(@RequestParam int id){
         try {
-            if (agentDao.getOne(id) == null)
+            if (kiraDao.getOne(id) == null)
                 return 1;
-            if (agentDao.getOne(id).getNews().get(0).getKira() == null)
+            if (kiraDao.getOne(id).getNews().get(0).getAgent() == null)
                 return 2;
-            if (agentDao.getOne(id).getUser() == null)
+            if (kiraDao.getOne(id).getUser() == null)
                 return 3;
-            if (agentDao.getOne(id).getUser().getProfile() == null)
+            if (kiraDao.getOne(id).getUser().getProfile() == null)
                 return 4;
         } catch (IndexOutOfBoundsException e){
             return 5;
         }
 
-        Agent a = agentDao.getOne(id);
-        int kiraId = a.getNews().get(0).getKira().getId();
-        Kira k = kiraDao.getOne(kiraId);
+        Kira k = kiraDao.getOne(id);
+        int agentId = k.getNews().get(0).getAgent().getId();
+        Agent a = agentDao.getOne(agentId);
 
-        newsDao.deleteAllByKiraIdAndAgentId(kiraId, id);
+        newsDao.deleteAllByKiraIdAndAgentId(id, agentId);
         personDao.deleteAllByFake();
-        entryDao.deleteAllByKiraId(kiraId);
-
-        a.setLvl(0);
-        a.setPoints(0);
-        a.setNumberOfCaughtKillers(0);
-        a.setNews(null);
-        a.setRank(null);
-        a.setRequests(null);
+        entryDao.deleteAllByKiraId(id);
 
         k.setLvl(0);
         k.setPoints(0);
@@ -75,25 +68,32 @@ public class AgentController {
         k.setNews(null);
         k.setRank(null);
 
-        a.setNumberOfWins(a.getNumberOfWins() + 1);
-        k.setNumberOfLoses(k.getNumberOfLoses() + 1);
+        a.setLvl(0);
+        a.setPoints(0);
+        a.setNumberOfCaughtKillers(0);
+        a.setNews(null);
+        a.setRank(null);
+        a.setRequests(null);
+
+        k.setNumberOfWins(k.getNumberOfWins() + 1);
+        a.setNumberOfLoses(a.getNumberOfLoses() + 1);
 
         //First victory ach
         Achievement firstVictoryAch = achievementDao.getOne("Victory");
-        if (!a.getAchievements().contains(firstVictoryAch))
-            if (a.getNumberOfWins() == 1){
-                if (a.getAchievements() == null) {
+        if (!k.getAchievements().contains(firstVictoryAch))
+            if (k.getNumberOfWins() == 1){
+                if (k.getAchievements() == null) {
                     List<Achievement> achievements = new ArrayList<>();
-                    a.setAchievements(achievements);
+                    k.setAchievements(achievements);
                 }
-
-                a.getAchievements().add(firstVictoryAch);
+                k.getAchievements().add(firstVictoryAch);
                 emailService.sendMail("DN game.", agentDao.getOne(id).getUser(), "Вы получили достижение Victory.");
             }
 
-        agentDao.save(a);
         kiraDao.save(k);
+        agentDao.save(a);
         return 0;
     }
+
 
 }

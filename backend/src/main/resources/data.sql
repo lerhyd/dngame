@@ -1,10 +1,10 @@
 --Testing data that doesn't have to exist
 --Users
-insert into users
-values ('kiran', 'kiran@kiran.com', null, '12121212', null, null, null, null, null);
+--insert into users
+--values ('kiran', 'kiran@kiran.com', null, '12121212', null, null, null, null, null);
 
-insert into users
-values ('tiran', 'tiran@tiran.com', null, '12121212', null, null, null, null, null);
+--insert into users
+--values ('tiran', 'tiran@tiran.com', null, '12121212', null, null, null, null, null);
 
 --Base data
 
@@ -27,7 +27,8 @@ insert into achievements (title, description, task) values ('Uncontrollable dete
 insert into achievements (title, description, task) values ('Irrepressible detective', 'Из бездны уже нет выхода', 'Выиграйте 20 матчей за Агента');
 
 --Rules
-insert into rules (def, description) values ();
+insert into rules (description) values ('Человек, чьё имя будет записано в этой тетради — умрёт.');
+insert into rules (description) values ('Если причина смерти не указана, человек умрёт через 40 секунд от сердечного приступа.');
 
 --Ranks
 ----Kira's
@@ -144,7 +145,6 @@ insert into action_places (id, lvl, action_place) values (55, 10, 'в долин
 
 --Regions
 insert into regions (city, country, continent, planet) values (null, null, null, 'Земля');
-insert into regions (city, country, continent, planet) values (null, null, null, 'Луна');
 ----continents
 insert into regions (city, country, continent, planet) values (null, null, 'Австралия', 'Земля');
 insert into regions (city, country, continent, planet) values (null, null, 'Африка', 'Земля');
@@ -945,3 +945,5 @@ insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, sur
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('10 June 1982',true,false,'Аскольд','Валентинович',true,'Усачёв');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('20 December 1988',false,false,'Василиса','Филипповна',false,'Яковлева');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('15 April 1975',true,false,'Петр','Павлович',true,'Воробьёв');
+
+insert into roles (role) values ('USER');

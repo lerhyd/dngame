@@ -44,6 +44,10 @@ public class AuthController {
             return 2;
         if (!userReq.getPassword().equals(userReq.getRetypePassword()))
             return 3;
+        if (userReq.getPassword().length() < 8)
+            return 4;
+        if (!userReq.getPassword().matches("^[a-zA-Z0-9]+$"))
+            return 5;
         Role userRole = roleDao.findById("user").get();
         User user = new User();
         user.setLogin(userReq.getLogin());
@@ -53,6 +57,20 @@ public class AuthController {
         user.setRules(rules);
         user.setRegistrationDate(LocalDateTime.now());
         user.setLastVisitTime(LocalDateTime.now());
+        userDao.save(user);
+        return 0;
+    }
+
+    @PostMapping("/changepass")
+    public int changePass(@RequestParam("newPass") String newPass, @RequestParam("login") String login){
+        if (userDao.findById(login) == null)
+            return 1;
+        if (newPass.length() < 8)
+            return 2;
+        if (!newPass.matches("^[a-zA-Z0-9]+$"))
+            return 3;
+        User user = userDao.getOne(login);
+        user.setPassword(encoder.encode(newPass));
         userDao.save(user);
         return 0;
     }

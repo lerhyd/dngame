@@ -8,16 +8,16 @@ import com.lerhyd.dngame.model.Rule;
 import com.lerhyd.dngame.model.User;
 import com.lerhyd.dngame.request.UserReq;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 
@@ -36,13 +36,15 @@ public class AuthController {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
-    @PostMapping("/registration")
+    @PostMapping("/signup")
     public int createUser(@RequestBody @Valid UserReq userReq, BindingResult bindingResult){
         if (userDao.existsById(userReq.getLogin()))
             return 1;
         if (bindingResult.hasErrors())
             return 2;
-        Role userRole = roleDao.findById("USER").get();
+        if (!userReq.getPassword().equals(userReq.getRetypePassword()))
+            return 3;
+        Role userRole = roleDao.findById("user").get();
         User user = new User();
         user.setLogin(userReq.getLogin());
         user.setPassword(encoder.encode(userReq.getPassword()));
@@ -52,11 +54,15 @@ public class AuthController {
         user.setRegistrationDate(LocalDateTime.now());
         user.setLastVisitTime(LocalDateTime.now());
         userDao.save(user);
-
         return 0;
     }
 
-    @GetMapping("/logout-success")
+    @GetMapping("/get")
+    public Collection<? extends GrantedAuthority> get(){
+        return SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+    }
+
+    @GetMapping("/logout")
     public int logout(){
         return 0;
     }

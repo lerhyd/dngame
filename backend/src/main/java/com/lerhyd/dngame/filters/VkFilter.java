@@ -1,16 +1,20 @@
-/*
 package com.lerhyd.dngame.filters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
+import com.lerhyd.dngame.dao.RoleDao;
+import com.lerhyd.dngame.dao.RuleDao;
+import com.lerhyd.dngame.dao.UserDao;
+import com.lerhyd.dngame.model.Role;
+import com.lerhyd.dngame.model.Rule;
 import com.lerhyd.dngame.model.User;
-import com.lerhyd.dngame.service.impl.AuthServiceImpl;
+import lombok.Data;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.jwt.Jwt;
 import org.springframework.security.jwt.JwtHelper;
 import org.springframework.security.oauth2.client.OAuth2RestTemplate;
@@ -23,22 +27,31 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.*;
+import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
+@Data
 @SuppressWarnings("Duplicates")
-public class GoogleOauthFilter extends AbstractAuthenticationProcessingFilter {
+public class VkFilter extends AbstractAuthenticationProcessingFilter {
 
     private OAuth2RestTemplate restTemplate;
 
-    private AuthServiceImpl authService;
+    private UserDao userDao;
 
-    public GoogleOauthFilter(String defaultFilterProcessesUrl) {
+    private RoleDao roleDao;
+
+    private RuleDao ruleDao;
+
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public VkFilter(String defaultFilterProcessesUrl) {
         super(defaultFilterProcessesUrl);
         setAuthenticationManager(authenticationManagerNone());
     }
-
-
     @Override
     public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws AuthenticationException, IOException, ServletException {
         try {
@@ -46,24 +59,36 @@ public class GoogleOauthFilter extends AbstractAuthenticationProcessingFilter {
 
                 OAuth2AccessToken accessToken = restTemplate.getAccessToken();
 
-                String idToken = accessToken.getAdditionalInformation().get("id_token").toString();
+                String userId = accessToken.getAdditionalInformation().get("user_id").toString();
+                String email = accessToken.getAdditionalInformation().get("email").toString();
 
-                Jwt token = JwtHelper.decode(idToken);
+                if (userDao.findUserByVkId(Integer.parseInt(userId)) == null){
+                    User userEntity = new User();
+                    userEntity.setRegistrationDate(LocalDateTime.now());
+                    while (userDao.existsById(userId)){
+                        int idInt = Integer.parseInt(userId);
+                        idInt++;
+                        userId = String.valueOf(idInt);
+                    }
+                    userEntity.setLogin(userId);
+                    userEntity.setEmail(email);
+                    userEntity.setVkId(Integer.parseInt(userId));
+                    Role userRole = roleDao.findById("vk").get();
+                    userEntity.setRoles(new HashSet<>(Arrays.asList(userRole)));
+                    List<Rule> rules = ruleDao.findAll();
+                    userEntity.setRules(rules);
+                    userEntity.setPassword(bCryptPasswordEncoder.encode(userId));
+                    userEntity.setLastVisitTime(LocalDateTime.now());
+                    userDao.save(userEntity);
 
-                Map<String, String> authInfo = new ObjectMapper().readValue(token.getClaims(), Map.class);
-
-                String email = authInfo.get("email");
-
-                User userEntity = authService.signIn(email).get();
-
+                }
+                User userEntity = userDao.findUserByVkId(Integer.parseInt(userId));
                 List<SimpleGrantedAuthority> authorities = userEntity
                         .getRoles()
                         .stream()
                         .map(e -> new SimpleGrantedAuthority(e.getRole()))
                         .collect(Collectors.toList());
-
                 org.springframework.security.core.userdetails.User user = new org.springframework.security.core.userdetails.User(userEntity.getLogin(), userEntity.getPassword(), authorities);
-
                 return new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
 
             } catch (InvalidTokenException e) {
@@ -73,23 +98,6 @@ public class GoogleOauthFilter extends AbstractAuthenticationProcessingFilter {
             throw new BadCredentialsException("Error token", e);
         }
 
-
-    }
-
-    public OAuth2RestTemplate getRestTemplate() {
-        return restTemplate;
-    }
-
-    public void setRestTemplate(OAuth2RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
-
-    public AuthServiceImpl getAuthService() {
-        return authService;
-    }
-
-    public void setAuthService(AuthServiceImpl authService) {
-        this.authService = authService;
     }
 
     public AuthenticationManager authenticationManagerNone() {
@@ -98,4 +106,5 @@ public class GoogleOauthFilter extends AbstractAuthenticationProcessingFilter {
         };
         return authenticationManager;
     }
-}*/
+
+}

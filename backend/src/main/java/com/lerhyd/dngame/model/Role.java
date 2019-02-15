@@ -14,7 +14,7 @@ import javax.persistence.Table;
 public class Role {
 
     @Id
-    @Column(name="role", length=5)
+    @Column(name="role", length=8)
     private String role;
 
     public Role(){}

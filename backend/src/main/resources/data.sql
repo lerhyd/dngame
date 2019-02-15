@@ -652,4 +652,6 @@ insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, sur
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('20 December 1988',false,false,'Василиса','Филипповна',false,'Яковлева');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('15 April 1975',true,false,'Петр','Павлович',true,'Воробьёв');
 
-insert into roles (role) values ('USER');
+insert into roles (role) values ('user');
+insert into roles (role) values ('google');
+insert into roles (role) values ('vk');

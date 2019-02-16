@@ -157,6 +157,20 @@ public class EntryController {
             Agent agentToSave = agentDao.getOne(agentId);
             agentToSave.setPoints(agentToSave.getPoints()+40);
             agentDao.save(agentToSave);
+            setRankToAgent(agentId);
+            //Capital ach
+            Achievement capitalAch = achievementDao.getOne("Capital");
+            if (!agentDao.getOne(agentId).getAchievements().contains(capitalAch))
+                if (agentDao.getOne(agentId).getPoints() >= 200){
+                    Agent agent = agentDao.getOne(agentId);
+                    if (agentToSave.getAchievements() == null){
+                        List<Achievement> achievements = new ArrayList<>();
+                        agentToSave.setAchievements(achievements);
+                    }
+                    agentToSave.getAchievements().add(capitalAch);
+                    agentDao.save(agentToSave);
+                    emailService.sendMail("DN game.", agentDao.getOne(agentId).getUser(), "Вы получили достижение Capital.");
+                }
             isAgentGenerated = true;
         }
         Kira kira = kiraDao.getOne(entryReq.getKiraId());
@@ -438,6 +452,61 @@ public class EntryController {
             return entry;
         }
 
+    }
+
+    private boolean setRankToAgent(int agentId){
+        Agent agent = agentDao.getOne(agentId);
+        boolean isDone = false;
+
+        isDone = setAgentRankInRange(agent, 30, 40, 9);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 40, 50, 10);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 50, 60, 11);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 60, 80, 12);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 80, 100, 13);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 100, 170, 14);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 170, 256, 15);
+        if (isDone)
+            return true;
+        isDone = setAgentRankInRange(agent, 256, 0, 16);
+        if (isDone)
+            return true;
+        return false;
+
+    }
+
+    private boolean setAgentRankInRange(Agent agent, int from, int to, int rankNum){
+        if (to != 0){
+            if (agent.getPoints() <= 30)
+                return true;
+            if (agent.getPoints() >= from && agent.getPoints() < to){
+                if (agent.getRank().getId() > rankDao.findRankByClassAndId(false, rankNum).getId())
+                    return true;
+                agent.setRank(rankDao.findRankByClassAndId(false, rankNum));
+            } else
+                return false;
+        } else {
+            if (agent.getPoints() >= from) {
+                if (agent.getRank().getId() > rankDao.findRankByClassAndId(false, rankNum).getId())
+                    return true;
+                agent.setRank(rankDao.findRankByClassAndId(false, rankNum));
+            } else
+                return false;
+        }
+
+        agentDao.save(agent);
+        return true;
     }
 
 

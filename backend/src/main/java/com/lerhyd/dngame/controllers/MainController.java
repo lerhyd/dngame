@@ -40,8 +40,6 @@ public class MainController {
     @Autowired
     private RegionDao regionDao;
 
-    private final int firstRankId = 1;
-
     @PostMapping("/game/profile/create")
     public int createProfile(@RequestBody PersonReq personReq){
         if (!userDao.getOne(personReq.getUserLogin()).isConfirmed())

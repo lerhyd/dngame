@@ -44,6 +44,8 @@ public class MainController {
 
     @PostMapping("/game/profile/create")
     public int createProfile(@RequestBody PersonReq personReq){
+        if (!userDao.getOne(personReq.getUserLogin()).isConfirmed())
+            return 666;
         if (userDao.getOne(personReq.getUserLogin()) == null)
             return 1;
         User u;

@@ -79,6 +79,7 @@ public class VkFilter extends AbstractAuthenticationProcessingFilter {
                     userEntity.setRules(rules);
                     userEntity.setPassword(bCryptPasswordEncoder.encode(userId));
                     userEntity.setLastVisitTime(LocalDateTime.now());
+                    userEntity.setConfirmed(true);
                     userDao.save(userEntity);
 
                 }

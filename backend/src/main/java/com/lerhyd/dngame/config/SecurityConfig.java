@@ -42,6 +42,7 @@ import org.springframework.web.filter.RequestContextFilter;
 import javax.servlet.Filter;
 import javax.sql.DataSource;
 
+@SuppressWarnings("Duplicates")
 @Configuration
 @EnableWebSecurity
 @EnableOAuth2Client

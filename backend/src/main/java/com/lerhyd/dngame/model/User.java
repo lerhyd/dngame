@@ -32,6 +32,12 @@ public class User{
     @Column(name = "vk_id")
     private Integer vkId;
 
+    @Column
+    private String token;
+
+    @Column
+    private boolean confirmed;
+
     @Column(name = "registration_date", updatable = false)
     private LocalDateTime registrationDate;
 

@@ -83,6 +83,7 @@ public class GoogleFilter extends AbstractAuthenticationProcessingFilter {
                     userEntity.setRules(rules);
                     userEntity.setPassword(bCryptPasswordEncoder.encode(idToken));
                     userEntity.setLastVisitTime(LocalDateTime.now());
+                    userEntity.setConfirmed(true);
                     userDao.save(userEntity);
 
                 }

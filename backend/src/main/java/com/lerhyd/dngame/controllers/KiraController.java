@@ -38,6 +38,17 @@ public class KiraController {
     @Autowired
     private EmailService emailService;
 
+    /**
+     * Ends match when Kira wins.
+     * @param id ID of the Kira.
+     * @return Status:
+     * 1 -- There's no Kira with the ID,
+     * 2 -- There's no match with the agent's ID,
+     * 3 -- There's no user with the agent's ID,
+     * 4 -- Current user does not have profile,
+     * 5 -- IndexOutOfBoundsException,
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("game/kira/win")
     public int endGame(@RequestParam int id){
         try {

@@ -40,26 +40,31 @@ public class MainController {
     @Autowired
     private RegionDao regionDao;
 
+    /**
+     * Create profile of the user.
+     * @param personReq Form of the person.
+     * @return Status:
+     * 666 -- The user is not authenticated,
+     * 1 -- User with the login does not exist,
+     * 2 -- User already has profile,
+     * 3 -- There's already person with the identification data,
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("/game/profile/create")
     public int createProfile(@RequestBody PersonReq personReq){
         if (!userDao.getOne(personReq.getUserLogin()).isConfirmed())
             return 666;
         if (userDao.getOne(personReq.getUserLogin()) == null)
             return 1;
-        User u;
-        try {
-            u = userDao.getOne(personReq.getUserLogin());
-        } catch (EntityNotFoundException e){
-            return 2;
-        }
+        User u = userDao.getOne(personReq.getUserLogin());
         Person personToCheck = u.getProfile();
         if (personToCheck != null)
-            return 3;
+            return 2;
         if (personDao.existsByNameAndSurnameAndPatronymicAndSex(personReq.getName(),
                                                                 personReq.getSurname(),
                                                                 personReq.getPatr(),
                                                                 personReq.isSex()))
-            return 4;
+            return 3;
         Person p = new Person();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         p.setName(personReq.getName());
@@ -75,17 +80,36 @@ public class MainController {
         return 0;
     }
 
+    /**
+     * Delete the user's profile.
+     * @param userLogin ID of the user.
+     * @return Status:
+     * 1 -- there's no profile of the user,
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("/game/profile/delete")
-    public int deleteProfile(@RequestParam("profileId") int profileId){
-        if (personDao.getOne(profileId) == null)
+    public int deleteProfile(@RequestParam("login") String userLogin){
+        if (userDao.getOne(userLogin).getProfile() == null)
             return 1;
-        User user = userDao.findUserByProfile(profileId);
+        User user = userDao.getOne(userLogin);
         user.setProfile(null);
         userDao.save(user);
-        personDao.deleteById(profileId);
+        personDao.deleteById(user.getProfile().getId());
         return 0;
     }
 
+    /**
+     * Choose class and begin the game.
+     * @param isKira Selected class.
+     * @param userLogin ID of the user.
+     * @param regionId ID of the region of the user in the match.
+     * @return Status:
+     * 1 -- User with the login does not exist,
+     * 2 -- User does not have profile,
+     * 3 -- User is already in match,
+     * 4 -- All the person's were used in news,
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("/game/class/choose")
     public int setMainClass(@RequestParam("isKira") boolean isKira,
                              @RequestParam("userLogin") String userLogin,
@@ -95,6 +119,8 @@ public class MainController {
         User u = userDao.getOne(userLogin);
         if (u.getProfile() == null)
             return 2;
+        if (u.getKira().getNews() != null || u.getAgent().getNews() != null)
+            return 3;
         if (isKira){
             Kira k;
             if (u.getKira() != null)
@@ -118,7 +144,7 @@ public class MainController {
             int agentId = k.getNews().get(0).getAgent().getId();
             boolean isPersonsWereNotUsed = NewsGenerator.generateRandomNews(k.getId(), agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
             if (!isPersonsWereNotUsed)
-                return 3;
+                return 4;
         } else {
             Agent a;
             if (u.getAgent() != null)

@@ -38,6 +38,17 @@ public class AgentController {
     @Autowired
     private EmailService emailService;
 
+    /**
+     * Ends match when Agent wins.
+     * @param id ID of the Agent.
+     * @return Status:
+     * 1 -- There's no Agent with the ID,
+     * 2 -- There's no match with the agent's ID,
+     * 3 -- There's no user with the agent's ID,
+     * 4 -- Current user does not have profile,
+     * 5 -- IndexOutOfBoundsException,
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("game/agent/win")
     public int endGame(@RequestParam int id){
         try {

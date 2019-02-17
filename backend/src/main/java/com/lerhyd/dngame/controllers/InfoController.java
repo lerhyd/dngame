@@ -37,56 +37,105 @@ public class InfoController {
     @Autowired
     private AchievementDao achievementDao;
 
+    /**
+     * Get all alive persons.
+     * @param agentId ID of the Agent.
+     * @return Stream of person info.
+     */
     @GetMapping("/game/persons/get")
     public Stream<PersonInfo> getPersons(@RequestParam("id") int agentId){
         List<Person> people = personDao.findAllAlivePersonsByAgentId(agentId);
         return people.stream().map(PersonInfo::new);
     }
 
+    /**
+     * Get the Kira's info.
+     * @param kiraId ID of the Kira.
+     * @return Stream of Kira info.
+     */
     @GetMapping("/game/kira/status")
     public Stream<KiraInfo> getKira(@RequestParam("id") int kiraId){
         return Stream.of(kiraDao.getOne(kiraId)).map(KiraInfo::new);
     }
 
+    /**
+     * Get the Agent's info.
+     * @param agentId ID of the Agent.
+     * @return Stream of Agent info.
+     */
     @GetMapping("/game/agent/status")
     public Stream<AgentInfo> getAgent(@RequestParam("id") int agentId){
         return Stream.of(agentDao.getOne(agentId)).map(AgentInfo::new);
     }
 
+    /**
+     * Get all available actions of the Kira.
+     * @param kiraId ID of the Kira.
+     * @return Stream of action info.
+     */
     @GetMapping("/game/kira/action")
     public Stream<ActionInfo> getKiraActions(@RequestParam("id") int kiraId){
         Kira kira = kiraDao.getOne(kiraId);
         return actionDao.findByLvl(kira.getLvl()).stream().map(ActionInfo::new);
     }
 
+    /**
+     * Get all available actions of the Agent,
+     * @param agentId ID of the Agent.
+     * @return Stream of action info.
+     */
     @GetMapping("/game/agent/action")
     public Stream<ActionInfo> getAgentActions(@RequestParam("id") int agentId){
         Agent agent = agentDao.getOne(agentId);
         return actionDao.findByLvl(agent.getLvl()).stream().map(ActionInfo::new);
     }
 
+    /**
+     * Get all available action places of the Kira.
+     * @param kiraId ID of the Kira.
+     * @return Stream of action place.
+     */
     @GetMapping("/game/kira/actionPlaces")
     public Stream<ActionPlaceInfo> getKiraActionPlace(@RequestParam("id") int kiraId){
         Kira kira = kiraDao.getOne(kiraId);
         return actionPlaceDao.findByLvl(kira.getLvl()).stream().map(ActionPlaceInfo::new);
     }
 
+    /**
+     * Get all available action places of the Agent.
+     * @param agentId ID of the Agent.
+     * @return Stream of action place.
+     */
     @GetMapping("/game/agent/actionPlaces")
     public Stream<ActionPlaceInfo> getAgentActionPlace(@RequestParam("id") int agentId){
         Agent agent = agentDao.getOne(agentId);
         return actionPlaceDao.findByLvl(agent.getLvl()).stream().map(ActionPlaceInfo::new);
     }
 
+    /**
+     * Get all earned achievements of the Kira.
+     * @param kiraId ID of the Kira.
+     * @return Stream of achievement info.
+     */
     @GetMapping("/game/kira/achievements")
     public Stream<AchievementInfo> getAchievementsOfKira(@RequestParam("id") int kiraId){
         return kiraDao.getOne(kiraId).getAchievements().stream().map(AchievementInfo::new);
     }
 
+    /**
+     * Get all earned achievements of the Agent.
+     * @param agentId ID of the Agent.
+     * @return Stream of achievement info.
+     */
     @GetMapping("/game/agent/achievements")
     public Stream<AchievementInfo> getAchievementsOfAgent(@RequestParam("id") int agentId){
         return agentDao.getOne(agentId).getAchievements().stream().map(AchievementInfo::new);
     }
 
+    /**
+     * Get the overall ranking of the users.
+     * @return Stream of rating info.
+     */
     @GetMapping("/game/rating")
     public Stream<RatingInfo> getRating(){
         List<User> users = userDao.findAll();
@@ -143,6 +192,11 @@ public class InfoController {
         }).map(RatingInfo::new);
     }
 
+    /**
+     * Get the new achievement of the Kira.
+     * @param kiraId ID of the Kira.
+     * @return Stream of achievement info.
+     */
     @GetMapping("/game/kira/achievements/new")
     public Stream<AchievementInfo> getNewAchievementOfKira(@RequestParam("id") int kiraId){
         int size = kiraDao.getAchievements(kiraId).size();
@@ -155,6 +209,11 @@ public class InfoController {
         }
     }
 
+    /**
+     * Get the new achievement of the Agent.
+     * @param agentId ID of the Agent.
+     * @return Stream of achievement info.
+     */
     @GetMapping("/game/agent/achievements/new")
     public Stream<AchievementInfo> getNewAchievementOfAgent(@RequestParam("id") int agentId){
         int size = agentDao.getAchievements(agentId).size();

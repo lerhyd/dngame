@@ -47,11 +47,31 @@ public class RequestController {
     private final int policeActionId = 1;
     private final int worldRegionId = 1;
 
+    /**
+     * Get all requests by Agent.
+     * @param agentId ID of the Agent.
+     * @return Stream of request info.
+     */
     @GetMapping("/game/request")
     public Stream<RequestInfo> getRequests(@RequestParam("agentId") int agentId){
         return requestDao.findAllByAgent_Id(agentId).stream().map(RequestInfo::new);
     }
 
+    /**
+     * Add request by Agent.
+     * @param requestReq Form of the request.
+     * @return Status:
+     * 1 -- The request does not fit on this page,
+     * 2 -- Trying to make a request by skipping an empty page,
+     * 3 -- Agent with the ID does not exist,
+     * 4 -- Current user does not have profile,
+     * 5 -- There's no match with the Agent's ID,
+     * 6 -- These's no alive victims,
+     * 7 -- The request with the person already exists,
+     * 8 -- There's no person with the identification data,
+     * 9 -- The Kira won because the Agent's points less than 0,
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("/game/request/add")
     public int addRequest(@RequestBody RequestReq requestReq){
         int requestCount = requestDao.findCntOfRequestInOnePage(requestReq.getAgentId(), requestReq.getPageNum());

@@ -40,18 +40,26 @@ public class AuthController {
     @Autowired
     private EmailService emailService;
 
+    /**
+     * Sign up in the system.
+     * @param userReq Form of registration data from request.
+     * @return Status:
+     * 1 -- User with the login does not exist,
+     * 2 -- The password does not match with retype password,
+     * 3 -- Password's length is less than 8,
+     * 4 -- Password contains non-Latin letters,
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("/signup")
-    public int createUser(@RequestBody @Valid UserReq userReq, BindingResult bindingResult){
+    public int createUser(@RequestBody UserReq userReq){
         if (userDao.existsById(userReq.getLogin()))
             return 1;
-        if (bindingResult.hasErrors())
-            return 2;
         if (!userReq.getPassword().equals(userReq.getRetypePassword()))
-            return 3;
+            return 2;
         if (userReq.getPassword().length() < 8)
-            return 4;
+            return 3;
         if (!userReq.getPassword().matches("^[a-zA-Z0-9]+$"))
-            return 5;
+            return 4;
         Role userRole = roleDao.findById("user").get();
         User user = new User();
         user.setLogin(userReq.getLogin());
@@ -65,12 +73,22 @@ public class AuthController {
         String token = java.util.UUID.randomUUID().toString();
         user.setToken(token);
         userDao.save(user);
-        emailService.sendMail("DN game.", user, "Вам необходимо подтвердить почту перед тем как использовать аккаунт. Перейдите по этой ссылке:" +
+        emailService.sendMail("DN game.", user, "Вам необходимо подтвердить почту перед " +
+                "тем как использовать аккаунт. Перейдите по этой ссылке:" +
                 "http://localhost:1234/confirm/"+ user.getLogin() + "/" +token);
         return 0;
     }
 
-    @PostMapping("/confirm/{userLogin}/{token}")
+    /**
+     * Authenticate the user's email address through the comparison of the special tokens.
+     * @param userLogin ID of user.
+     * @param token The secret token.
+     * @return Status:
+     * 1 -- User with the login does not exist,
+     * 2 -- The user's email address authentication failed,
+     * 0 -- The function was executed correctly,
+     */
+    @GetMapping("/confirm/{userLogin}/{token}")
     public int confirm(@PathVariable("userLogin") String userLogin, @PathVariable("token") String token){
         if (userDao.getOne(userLogin) == null)
             return 1;
@@ -82,6 +100,16 @@ public class AuthController {
         return 0;
     }
 
+    /**
+     * Change the user password.
+     * @param newPass The new password.
+     * @param login ID of user.
+     * @return Status:
+     * 1 -- User with the login does not exist,
+     * 2 -- Password's length is less than 8,
+     * 3 -- Password contains non-Latin letters,
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("/changepass")
     public int changePass(@RequestParam("newPass") String newPass, @RequestParam("login") String login){
         if (userDao.findById(login) == null)
@@ -101,6 +129,11 @@ public class AuthController {
         return SecurityContextHolder.getContext().getAuthentication().getAuthorities();
     }
 
+
+    /**
+     * Logout of the system.
+     * @return Meaningless zero.
+     */
     @GetMapping("/logout")
     public int logout(){
         return 0;

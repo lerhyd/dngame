@@ -41,6 +41,19 @@ public class NewsController {
     @Autowired
     private PersonDao personDao;
 
+    /**
+     * Add news by Agent.
+     * @param newsReq Form of the news from request.
+     * @return Status:
+     * 1 -- There's no Agent with the ID,
+     * 2 -- There's no user with the ID,
+     * 3 -- The user does not have profile,
+     * 4 -- There's no Kira with the ID,
+     * 5 -- There's no match between the Agent and the Kira,
+     * 6 -- All persons were used in News,
+     * 7 -- The Kira won because the Agent's points less than 0,
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("/game/news/add")
     public int addNews(@RequestBody NewsReq newsReq){
         if (agentDao.getOne(newsReq.getAgentId()) == null)
@@ -92,6 +105,11 @@ public class NewsController {
         return 0;
     }
 
+    /**
+     * Get news by Kira.
+     * @param kiraId ID of the Kira.
+     * @return Stream of news info.
+     */
     @GetMapping("/game/kira/news/get")
     public Stream<NewsInfo> getNewsByKira(@RequestParam("id") int kiraId){
         Region homeRegion = kiraDao.findById(kiraId).getRegion();
@@ -111,6 +129,11 @@ public class NewsController {
         }
     }
 
+    /**
+     * Get news by Agent.
+     * @param agentId ID of the Agent.
+     * @return Stream of news info.
+     */
     @GetMapping("/game/agent/news/get")
     public Stream<NewsInfo> getNewsByAgent(@RequestParam("id") int agentId){
         Region homeRegion = agentDao.findById(agentId).getRegion();

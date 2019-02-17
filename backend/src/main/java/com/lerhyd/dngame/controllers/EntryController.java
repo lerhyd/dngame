@@ -51,11 +51,33 @@ public class EntryController {
     @Autowired
     private EmailService emailService;
 
+    /**
+     * Get all entries of the Kira.
+     * @param kiraId ID of Kira.
+     * @return Stream of entry info.
+     */
     @GetMapping("/game/entry")
     public Stream<EntryInfo> getEntries(@RequestParam("kiraId") int kiraId){
         return entryDao.findAllByKira(kiraId).stream().map(EntryInfo::new);
     }
 
+    /**
+     * Add new death note's entry.
+     * @param entryReq Form of entry from request.
+     * @return Status:
+     * 1 -- The entry does not fit on this page,
+     * 2 -- Trying to make an entry by skipping an empty page,
+     * 3 -- Kira with the ID does not exist,
+     * 4 -- Death date is before then current date,
+     * 5 -- Current user does not have profile,
+     * 6 -- There's no match with the Kira's ID,
+     * 7 -- These's no alive victims,
+     * 8 -- The victim with the ID has already died,
+     * 9 -- The entry with the victim already exists,
+     * 10 -- The Agent won because the Kira's points less than 0,
+     * 11 -- The Kira' location was finally declassified,
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("/game/entry/add")
     public int addEntry(@RequestBody EntryReq entryReq)
     {
@@ -286,9 +308,6 @@ public class EntryController {
                 kiraDao.save(kiraToSave);
                 emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Irrepressible killer.");
             }
-        if (isAgentGenerated){
-            return 01;
-        }
         return 0;
     }
 

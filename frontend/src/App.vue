@@ -13,7 +13,7 @@
           <img src="./assets/img/note.png" alt="Note">
           <p>
             В один прекрасный день ученик старшей школы случайно находит артефакт неизвестного происхождения: Тетрадь Смерти.
-            Тот, чьё имя будет записано в этой тетради, умрёт. С помощью неё подросток решил очистить мир от преступников.
+            Тот, чьё имя будет записано в этой тетради, умрёт. С помощью неё подросток решил очистить общество от преступников.
             Вскоре таинственные убийства потрясли мир. Никто не знал, почему люди умирают, но все понимали, что
             за этим кто-то стоит. Люди назвали этого человека <b>Кирой</b>(<i>от слова killer</i>).
           </p>
@@ -29,7 +29,7 @@
         <div class="info_3">
           <img src="./assets/img/computer.png" alt="computer">
           <p>
-            Многие люди встали на сторону Киры, считая, что преступники действительно заслуживают кары. Другие как <b>Агент</b> посчитали его
+            Многие люди встали на сторону <b>Киры</b>, считая, что преступники действительно заслуживают кары. Другие как <b>Агент</b> посчитали его
             маньяком, которого надо поймать и остановить.
             Выбери сторону и верши своё правосудие.
           </p>
@@ -38,9 +38,7 @@
     </section>
     <section class="login_form">
       <div class="container">
-        <form>
-
-        </form>
+        <Login></Login>
       </div>
     </section>
 
@@ -53,9 +51,12 @@
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+  import Login from './components/Login'
+
+  export default {
+    name: 'App',
+    components: {Login}
+  }
 </script>
 
 <style>
@@ -167,10 +168,15 @@ export default {
     width: 500px;
     text-align: left;
   }
+  
+  .login_form {
+    background: -webkit-linear-gradient(top, #191921, #373749);
+    height: 370px;
+  }
 
   footer {
     padding-top: 8px;
-    height: 50px;
+    height: 35px;
     background-color: #4e4e65;
   }
 
@@ -178,7 +184,7 @@ export default {
     text-decoration: none;
     font-family: "DejaVu Sans Condensed";
     color: #EFEFEA;
-    font-size: 30px;
+    font-size: 23px;
     font-weight: bold;
   }
 </style>

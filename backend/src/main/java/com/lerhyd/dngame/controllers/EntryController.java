@@ -72,10 +72,11 @@ public class EntryController {
      * 5 -- Current user does not have profile,
      * 6 -- There's no match with the Kira's ID,
      * 7 -- These's no alive victims,
-     * 8 -- The victim with the ID has already died,
-     * 9 -- The entry with the victim already exists,
-     * 10 -- The Agent won because the Kira's points less than 0,
-     * 11 -- The Kira' location was finally declassified,
+     * 8 -- Kira committed suicide.
+     * 9 -- The victim with the ID has already died,
+     * 10 -- The entry with the victim already exists,
+     * 11 -- The Agent won because the Kira's points less than 0,
+     * 12 -- The Kira' location was finally declassified,
      * 0 -- The function was executed correctly.
      */
     @PostMapping("/game/entry/add")
@@ -123,10 +124,13 @@ public class EntryController {
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex()
         ).getId();
+
+        if (personDao.getOne(victimIdToCheck) == kiraDao.getOne(entryReq.getKiraId()).getUser().getProfile())
+            return 8; //agent won
         if (newsDao.checkIfVictimDiedInNews(agentIdToCheck, entryReq.getKiraId(), victimIdToCheck).orElse(false))
-            return 8;
-        if (isEntryVictimExists)
             return 9;
+        if (isEntryVictimExists)
+            return 10;
 
         boolean isPersonExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
                 entryReq.getVictimSurname(),
@@ -164,11 +168,11 @@ public class EntryController {
         );
         int points = kiraDao.findPointsById(entryReq.getKiraId());
         if (points < 0)
-            return 10;//agent won
+            return 11;//agent won
 
         if (newsDao.findIfKiraWasFound(guiltyPerson.getId(), entryReq.getKiraId())) {
             System.out.println("Kira was found");
-            return 11;//agent won
+            return 12;//agent won
         }
 
         boolean isAgentGenerated = false;

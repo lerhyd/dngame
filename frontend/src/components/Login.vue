@@ -17,11 +17,15 @@
         <input type="text" v-model="login">
       </label>
       <br>
-      <label>
+      <label class="second_label">
         Password:
         <input type="password" v-model="pass"/>
       </label>
       <br>
+      <div class="forgot_link" >
+        <a href="#">Forgot password?</a>
+      </div>
+
       <!--
       <p style="color: red" v-if="$store.state.failedLogin">Incorrect credentials</p>
       -->
@@ -117,6 +121,7 @@
     color: #FFF352;
     font-weight: bold;
     font-size: 20px;
+    margin-left: -1%;
   }
 
   form {
@@ -128,16 +133,17 @@
     font-weight: bold;
     font-size: 25px;
     font-family: Roboto;
+    margin-left: -8%;
+    margin-bottom: 50px;
   }
 
-  form label:first-child {
-    margin-left: 45px;
-    margin-bottom: 50px;
+  .second_label {
+    margin-left: -13%;
   }
 
   form input {
     height: 25px;
-    width: 180px;
+    width: 250px;
     border: 3px solid #EA5323;
   }
 
@@ -167,6 +173,7 @@
     font-size: 18px;
     background-color: yellow;
     color: black;
+    margin-bottom: 20px;
   }
 
   .link a:hover {
@@ -174,5 +181,9 @@
     background-color: crimson;
   }
 
+  .forgot_link a{
+    color: #FFF352;
+    display: inline;
+  }
 
 </style>

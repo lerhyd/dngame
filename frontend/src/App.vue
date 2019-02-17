@@ -21,7 +21,7 @@
         <div class="info_2">
           <p>
             Убийства продолжались, но никто не мог понять, кто за этим стоит. Детектив Л, человек раскрывший самые
-            сложные преступления, решил лично вызвался поймать убийцу. Используя свой ум и чутьё <b>Агент</b> Л пытается распутать
+            сложные преступления, вызвался поймать загадочного убийцу. Используя свой ум и чутьё <b>Агент</b> Л пытается распутать
             тайны, окутывающие преступника.
           </p>
           <img src="./assets/img/hand.png" alt="hand">
@@ -171,13 +171,17 @@
   
   .login_form {
     background: -webkit-linear-gradient(top, #191921, #373749);
-    height: 370px;
+    height: 390px;
   }
 
   footer {
     padding-top: 8px;
     height: 35px;
     background-color: #4e4e65;
+  }
+  
+  footer:hover {
+    background: #000;
   }
 
   footer a {
@@ -186,5 +190,9 @@
     color: #EFEFEA;
     font-size: 23px;
     font-weight: bold;
+  }
+
+  footer a:hover {
+    color: yellow;
   }
 </style>

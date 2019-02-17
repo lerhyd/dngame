@@ -3,16 +3,16 @@
     <div class="social">
       <div class="google">
         <img src="../assets/img/google_logo.png" alt="google">
-        <a href="#">LOG IN WITH GOOGLE</a>
+        <a href="http://localhost:1234/login/google">LOG IN WITH GOOGLE</a>
       </div>
       <div class="vk">
         <img src="../assets/img/vk_logo.png" alt="vk">
-        <a href="#">LOG IN WITH VKONTAKTE</a>
+        <a href="http://localhost:1234/login/vk">LOG IN WITH VKONTAKTE</a>
       </div>
     </div>
     <p>or</p>
     <form @submit.prevent="enter">
-      <label>
+      <label class="first_label">
         Login:
         <input type="text" v-model="login">
       </label>
@@ -137,8 +137,14 @@
     margin-bottom: 50px;
   }
 
+  .first_label {
+    display: block;
+    margin-bottom: -7px;
+  }
+
   .second_label {
     margin-left: -13%;
+    margin-top: 15px;
   }
 
   form input {

@@ -655,6 +655,3 @@ insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, sur
 insert into roles (role) values ('user');
 insert into roles (role) values ('google');
 insert into roles (role) values ('vk');
-
---News templates
-insert into

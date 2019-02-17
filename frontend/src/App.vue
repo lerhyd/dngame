@@ -171,7 +171,7 @@
   
   .login_form {
     background: -webkit-linear-gradient(top, #191921, #373749);
-    height: 390px;
+    height: 400px;
   }
 
   footer {

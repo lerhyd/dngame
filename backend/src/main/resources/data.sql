@@ -655,7 +655,3 @@ insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, sur
 insert into roles (role) values ('user');
 insert into roles (role) values ('google');
 insert into roles (role) values ('vk');
-
---News templates
-insert into news (id, is_agent, what, is_die, is_fake, guilty_person_exists, publication_date, is_published_for_agent, is_published_for_kira, action_id, action_place, agent_id, common_region_id, distribution_region_id, guilty_person_id, kira_id, victim_id)
-values (1, false, 'Произошло жестокое преступление.', true, false, true, null, false, false, 2, null, null, null, 1, null, null, null);

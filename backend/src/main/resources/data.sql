@@ -29,6 +29,18 @@ insert into achievements (title, description, task) values ('Irrepressible detec
 --Rules
 insert into rules (description) values ('Человек, чьё имя будет записано в этой тетради — умрёт.');
 insert into rules (description) values ('Если причина смерти не указана, человек умрёт через 40 секунд от сердечного приступа.');
+insert into rules (description) values ('Тетрадь станет частью человеческого мира в тот момент, когда коснется земли.');
+insert into rules (description) values ('За человеком, получившим тетрадь смерти, до конца жизни будет следовать бог смерти, потерявший эту тетрадь.');
+insert into rules (description) values ('Хозяин тетради сможет видеть и слышать первоначальных владельцев тетради.');
+insert into rules (description) values ('Нельзя убить бога смерти');
+insert into rules (description) values ('Человек, использующий эту тетрадь, не сможет попасть ни в Ад, ни в Рай.');
+insert into rules (description) values ('Бог смерти совершенно не обязан кому-то объяснять, как использовать тетрадь или рассказывать правила, касающиеся человека, владеющего ею.');
+insert into rules (description) values ('Боги Смерти могут увеличивать продолжительность своей жизни, записывая имена людей в тетрадь, но люди не могут.');
+insert into rules (description) values ('Каждый человек имеет латентную склонность к суициду. Если человек напишет в тетрадь свое имя, то он умрет.');
+insert into rules (description) values ('Нельзя убить человека, имя которого записано неверно');
+insert into rules (description) values ('Если бог смерти решит использовать свою тетрадь, чтобы избавиться от кого, кто угрожает дорогому этому богу человеку, то жизнь последнего будет продлена, но сам бог смерти умрёт.');
+insert into rules (description) values ('Человек, обладающий глазами бога смерти, сможет узнать имя и жизненный срок других, лишь взглянув на них.');
+insert into rules (description) values ('Люди, отказавшиеся от права владения тетрадью смерти, забывают все, ее касающееся.');
 
 --Ranks
 ----Kira's
@@ -50,47 +62,11 @@ insert into ranks (id, points, rank, is_kira) values (14, 100, 'Агент L', f
 insert into ranks (id, points, rank, is_kira) values (15, 170, 'Яндекс', false);
 insert into ranks (id, points, rank, is_kira) values (16, 256, 'Шерлок Холмс', false);
 
---Actions
-insert into actions (id, description, lvl) values (1, 'был(-а) пойман(-а) полицией', 0);
-insert into actions (id, description, lvl) values (2, 'был(-а) убит(-а)', 0); -- Максим Веселов убил(-а) Ярослав Мудрый в кабинке туалета
-insert into actions (id, description, lvl) values (3, 'был(-а) ограблен(-а)', 0);
-insert into actions (id, description, lvl) values (4, 'был(-а) зарезан(-а)', 0);
-insert into actions (id, description, lvl) values (5, 'был(-а) изнасилован(-а)', 1);
-insert into actions (id, description, lvl) values (6, 'был(-а) ограблен(-а)', 1);
-insert into actions (id, description, lvl) values (7, 'был(-а) подвергнут(-а) нападению', 1);
-insert into actions (id, description, lvl) values (8, 'был(-а) отравлен(-а)', 2);
-insert into actions (id, description, lvl) values (9, 'был(-а) поддожен(-а)', 2);
-insert into actions (id, description, lvl) values (10, 'был(-а) избит(-а) тетрадью', 2);
-insert into actions (id, description, lvl) values (11, 'был(-а) убит(-а) карандашом', 3);
-insert into actions (id, description, lvl) values (12, 'был(-а) убит(-а) книгой', 3);
-insert into actions (id, description, lvl) values (13, 'был(-а) убит(-а) из огнестрельного оружия', 3);
-insert into actions (id, description, lvl) values (14, 'утопился(-ась)', 4);
-insert into actions (id, description, lvl) values (15, 'умерл(-а) от голода', 4);
-insert into actions (id, description, lvl) values (16, 'спрыгнул(-а) с крыши', 4);
-insert into actions (id, description, lvl) values (17, 'умер(-а) от чумы', 5);
-insert into actions (id, description, lvl) values (18, 'умер(-а) от свинного гриппа', 5);
-insert into actions (id, description, lvl) values (19, 'умер(-а) от холеры', 5);
-insert into actions (id, description, lvl) values (20, 'умер(-а) от болевого шока', 6);
-insert into actions (id, description, lvl) values (21, 'был(-а) убит(-а) собакой', 6);
-insert into actions (id, description, lvl) values (22, 'был(-а) убит(-а) медведем', 6);
-insert into actions (id, description, lvl) values (23, 'был(-а) убит(-а) злым духом', 7);
-insert into actions (id, description, lvl) values (24, 'замёрз(-ла) до смерти', 7);
-insert into actions (id, description, lvl) values (25, 'умер(-ла) от передозировки наркотиков', 7);
-insert into actions (id, description, lvl) values (26, 'подавился(-ась) едой', 8);
-insert into actions (id, description, lvl) values (27, 'программировал на 1C', 8);
-insert into actions (id, description, lvl) values (28, 'был(-а) избит(-а) тетрадью', 8);
-insert into actions (id, description, lvl) values (29, 'был(-а) убит(-а) роботом', 9);
-insert into actions (id, description, lvl) values (30, 'умер(-а) от углекислого газа', 9);
-insert into actions (id, description, lvl) values (31, 'пытался(-ась) призвать сатану', 9);
-insert into actions (id, description, lvl) values (32, 'был(-а) убит(-а) молнией', 10);
-insert into actions (id, description, lvl) values (33, 'умерл(-а) от смеха', 10);
-insert into actions (id, description, lvl) values (34, 'убил(-а) собаку Джона Уика', 10);
-
 --Action Places
 insert into action_places (id, lvl, action_place) values (1, 0, 'в кабинке туалета');
 insert into action_places (id, lvl, action_place) values (2, 0, 'в спальне');
 insert into action_places (id, lvl, action_place) values (3, 0, 'в канализации');
-insert into action_places (id, lvl, action_place) values (4, 1, 'в музее');
+insert into action_places (id, lvl, action_place) values (4, 1, 'на крыше 2-го корпуса на Ломоносова');
 insert into action_places (id, lvl, action_place) values (5, 1, 'в кинотеатре');
 insert into action_places (id, lvl, action_place) values (6, 1, 'рядом с магазином одежды');
 insert into action_places (id, lvl, action_place) values (7, 2, 'в мясном бутике');
@@ -98,7 +74,7 @@ insert into action_places (id, lvl, action_place) values (8, 2, 'во время
 insert into action_places (id, lvl, action_place) values (9, 2, 'в поезде');
 insert into action_places (id, lvl, action_place) values (10, 3, 'в сексшопе');
 insert into action_places (id, lvl, action_place) values (11, 3, 'у гадалки');
-insert into action_places (id, lvl, action_place) values (12, 3, 'бутылкой ');
+insert into action_places (id, lvl, action_place) values (12, 3, 'в музее ');
 insert into action_places (id, lvl, action_place) values (13, 4, 'в церкви');
 insert into action_places (id, lvl, action_place) values (14, 4, 'в ресторане');
 insert into action_places (id, lvl, action_place) values (15, 4, 'на конференции');
@@ -143,14 +119,122 @@ insert into action_places (id, lvl, action_place) values (53, 8, 'в дворц�
 insert into action_places (id, lvl, action_place) values (54, 9, 'в мире Шинигами');
 insert into action_places (id, lvl, action_place) values (55, 10, 'в долине завершения');
 
---insert into regions (city, country, continent, planet) values ('в Серене', 'в Бельгии', 'в Европе', 'Земля');
---insert into regions (city, country, continent, planet) values ('в Коге', 'в Японии', 'в Азии', 'Земля');
---insert into regions (city, country, continent, planet) values ('в Токио', 'в Японии', 'в Азии', 'Земля');
---insert into regions (city, country, continent, planet) values ('в Мати', 'в Филиппинах', 'в Азии', 'Земля');
+--Actions
+insert into actions (id, description, lvl) values (1, 'был(-а) пойман(-а) полицией', 0);
+insert into actions (id, description, lvl) values (2, 'был(-а) убит(-а)', 0); -- Максим Веселов убил(-а) Ярослав Мудрый в кабинке туалета
+insert into actions (id, description, lvl) values (3, 'был(-а) ограблен(-а)', 0);
+insert into actions (id, description, lvl) values (4, 'был(-а) зарезан(-а)', 0);
+insert into actions (id, description, lvl) values (5, 'был(-а) изнасилован(-а)', 1);
+insert into actions (id, description, lvl) values (6, 'был(-а) ограблен(-а)', 1);
+insert into actions (id, description, lvl) values (7, 'был(-а) подвергнут(-а) нападению', 1);
+insert into actions (id, description, lvl) values (8, 'был(-а) отравлен(-а)', 2);
+insert into actions (id, description, lvl) values (9, 'был(-а) поддожен(-а)', 2);
+insert into actions (id, description, lvl) values (10, 'был(-а) избит(-а) тетрадью', 2);
+insert into actions (id, description, lvl) values (11, 'был(-а) убит(-а) карандашом', 3);
+insert into actions (id, description, lvl) values (12, 'был(-а) убит(-а) книгой', 3);
+insert into actions (id, description, lvl) values (13, 'был(-а) убит(-а) из огнестрельного оружия', 3);
+insert into actions (id, description, lvl) values (14, 'утопился(-ась)', 4);
+insert into actions (id, description, lvl) values (15, 'умерл(-а) от голода', 4);
+insert into actions (id, description, lvl) values (16, 'спрыгнул(-а) с крыши', 4);
+insert into actions (id, description, lvl) values (17, 'умер(-а) от чумы', 5);
+insert into actions (id, description, lvl) values (18, 'умер(-а) от свинного гриппа', 5);
+insert into actions (id, description, lvl) values (19, 'умер(-а) от холеры', 5);
+insert into actions (id, description, lvl) values (20, 'умер(-а) от болевого шока', 6);
+insert into actions (id, description, lvl) values (21, 'был(-а) убит(-а) собакой', 6);
+insert into actions (id, description, lvl) values (22, 'был(-а) убит(-а) медведем', 6);
+insert into actions (id, description, lvl) values (23, 'был(-а) убит(-а) злым духом', 7);
+insert into actions (id, description, lvl) values (24, 'замёрз(-ла) до смерти', 7);
+insert into actions (id, description, lvl) values (25, 'умер(-ла) от передозировки наркотиков', 7);
+insert into actions (id, description, lvl) values (26, 'подавился(-ась) едой', 8);
+insert into actions (id, description, lvl) values (27, 'программировал на 1C', 8);
+insert into actions (id, description, lvl) values (28, 'был(-а) избит(-а) тетрадью', 8);
+insert into actions (id, description, lvl) values (29, 'был(-а) убит(-а) роботом', 9);
+insert into actions (id, description, lvl) values (30, 'умер(-а) от углекислого газа', 9);
+insert into actions (id, description, lvl) values (31, 'пытался(-ась) призвать сатану', 9);
+insert into actions (id, description, lvl) values (32, 'был(-а) убит(-а) ударом молнии', 10);
+insert into actions (id, description, lvl) values (33, 'умерл(-а) от смеха', 10);
+insert into actions (id, description, lvl) values (34, 'убил(-а) собаку Джона Уика', 10);
 
+--News templates
+----10 !fake news
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Произошло жестокое преступление.', true, false, true, false, false, 2); --убийство
 
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'На масленице что-то пошло не так, совсем не так ...', true, false, true, false, false, 9); --подожжен
 
---Persons
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, '10 раз сказал "папка" на ОВТ и ...', true, false, false , false, false, 32);--умер от молнии
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Ген. директор Reebok увидел новые лозунги компании.', true , false, false , false, false, 26); --подавился едой
+--
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Производитель руче был атакован конкурентом.', true , false, true , false, false, 11);--убит карандашом
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, '8 допов для сдачи одной лабы.', false , false, true , false, false, 5);--был изнасилован
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Ироничная смерть анестезиолога-коррупционера.', true , false, false , false, false, 20);--болевой шок
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'ШОК! РУССКИЙ СТУДЕНТ ЗАЧИТАЛ РЭП НА КИТАЙСКОМ.', false , false, false , false, false, 31);--пытался призвать сатану
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Борьба с наркотиками. Миф или реальность?', false , false, false , false, false, 25);--передоз
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Чиновник решил доказать, что прожиточного минимума ему хватит на месяц.', true , false, false , false, false, 15);--от голода
+
+----10 fake news
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'В России будет свой интернет. Го к нам?', false , true, false , false, false, 27);--1С
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Первокурсники на ВТ сказали, что им не нужны допы и они сдадут все вовремя.', true , true, false , false, false, 33);--умер от смеха
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Ужасная смерть космонавта на МКС', true , true, false , false, false, 22);--убит медведем
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Убийственный уж.', true , true, true , false, false, 8);--отравлен
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Новые виды оружия были добавлены в PUBG', true , true, true , false, false, 2);--был убит
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'В ОАЭ температура опутилась до -38', true , true, false, false, false, 24);--замерз до смерти
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, '', true , true, true , false, false, 13);--огнестрел
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Ужасная смерть для комара', true , true, false , false, false, 19);--холера
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Электричество во всем мире пропало год назад.', true , true, false , false, false, 29);--убит роботом
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Инцидент на Ломоносова 9', true , true, false , false, false, 16);--спрыгнул с крыши
+
+----5 absurd news
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Олигарх отобрал у бомжа пустые бутылки, чтобы сдать их', false , true, true , false, false, 3);--ограблен
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Интернет узнал настоящее имя птицы Так-Блэт', true , true, false , false, false, 17);--умер от чумы
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Мальчик наказал ананас.', false , true, true , false, false, 10);--избит тетрадью
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Аквамен получил в паспортном столе новое имя и стал гражданином России, но ненадолго.', true , true, false , false, false, 14);--утопился
+
+insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
+values (false, 'Синий кит стал жертвой.', true , true, false , false, false, 21);--убит собакой
+
+----Persons
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('6 August 1988',false,false,'Антонина','Яковлевна',false,'Борисова');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('26 October 1973',true,false,'Клара','Тимофеевна',false,'Русина');
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('5 January 1979',false,false,'Марк','Эльдарович',true,'Новиков');

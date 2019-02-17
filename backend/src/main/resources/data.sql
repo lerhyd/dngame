@@ -207,7 +207,7 @@ insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_publ
 values (false, 'В ОАЭ температура опутилась до -38', true , true, false, false, false, 24);--замерз до смерти
 
 insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
-values (false, '', true , true, true , false, false, 13);--огнестрел
+values (false, 'Ходят слухи, что учитель Чака Норриса сильнее ученика в разы.', true , true, true , false, false, 13);--огнестрел
 
 insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
 values (false, 'Ужасная смерть для комара', true , true, false , false, false, 19);--холера
@@ -223,16 +223,16 @@ insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_publ
 values (false, 'Олигарх отобрал у бомжа пустые бутылки, чтобы сдать их', false , true, true , false, false, 3);--ограблен
 
 insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
-values (false, 'Интернет узнал настоящее имя птицы Так-Блэт', true , true, false , false, false, 17);--умер от чумы
+values (false, 'Интернет узнал настоящее имя птицы Так-Блэт. Press F to pay respect.', true , true, false , false, false, 17);--умер от чумы
 
 insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
-values (false, 'Мальчик наказал ананас.', false , true, true , false, false, 10);--избит тетрадью
+values (false, 'Шок контент. Мальчик наказал ананас.', false , true, true , false, false, 10);--избит тетрадью
 
 insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
 values (false, 'Аквамен получил в паспортном столе новое имя и стал гражданином России, но ненадолго.', true , true, false , false, false, 14);--утопился
 
 insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
-values (false, 'Синий кит стал жертвой.', true , true, false , false, false, 21);--убит собакой
+values (false, 'Синий кит потерпел поражение в битве MMA за пояс в легком весе.', true , true, false , false, false, 21);--убит собакой
 
 ----Persons
 insert into persons (born_date, is_criminal, is_fake, name, patronymic, sex, surname) values ('6 August 1988',false,false,'Антонина','Яковлевна',false,'Борисова');

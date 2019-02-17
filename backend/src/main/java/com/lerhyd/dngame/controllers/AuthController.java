@@ -139,6 +139,14 @@ public class AuthController {
         return 0;
     }
 
+    /**
+     * Get new password on email.
+     * @param email The user's email.
+     * @return Status:
+     * 1 -- There's no user with the email,
+     * 2 -- User does not have role 'user',
+     * 0 -- The function was executed correctly.
+     */
     @PostMapping("/forgot/password")
     public int forgotPass(@RequestParam("email") String email){
         String token = java.util.UUID.randomUUID().toString();

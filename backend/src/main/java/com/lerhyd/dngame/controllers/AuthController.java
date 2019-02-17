@@ -139,4 +139,20 @@ public class AuthController {
         return 0;
     }
 
+    @PostMapping("/forgot/password")
+    public int forgotPass(@RequestParam("email") String email){
+        String token = java.util.UUID.randomUUID().toString();
+        User user = userDao.findUserByEmail(email);
+        if (user == null)
+            return 1;
+        if (user.getRoles().contains("user")) {
+            changePass(token, user.getLogin());
+            userDao.save(user);
+            emailService.sendMail("DN game", user, "Ваш новый пароль: " + token);
+        } else {
+            return 2;
+        }
+
+        return 0;
+    }
 }

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1ed83755-631a-4913-a5dc-d28486f05d84" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/App.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/backend/target/" />
@@ -76,11 +76,32 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/components/Login.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
               <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="528">
+              <caret line="150" column="74" lean-forward="true" selection-start-line="150" selection-start-column="74" selection-end-line="150" selection-end-column="74" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -199,7 +220,6 @@
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/filters/GoogleFilter.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/filters/VkFilter.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/config/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/InfoController.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AgentController.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/KiraController.java" />
@@ -214,9 +234,10 @@
         <option value="$PROJECT_DIR$/frontend/src/main.js" />
         <option value="$PROJECT_DIR$/frontend/src/store/login.js" />
         <option value="$PROJECT_DIR$/frontend/index.html" />
-        <option value="$PROJECT_DIR$/backend/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/frontend/src/App.vue" />
         <option value="$PROJECT_DIR$/frontend/src/components/Login.vue" />
+        <option value="$PROJECT_DIR$/backend/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java" />
       </list>
     </option>
   </component>
@@ -293,41 +314,55 @@
             <path>
               <item name="dngame" type="b2602c69:ProjectViewProjectNode" />
               <item name="dngame" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dngame" type="b2602c69:ProjectViewProjectNode" />
               <item name="dngame" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dngame" type="b2602c69:ProjectViewProjectNode" />
               <item name="dngame" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dngame" type="b2602c69:ProjectViewProjectNode" />
               <item name="dngame" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dngame" type="b2602c69:ProjectViewProjectNode" />
               <item name="dngame" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="router" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dngame" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="dngame" type="b2602c69:ProjectViewProjectNode" />
               <item name="dngame" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="dngame" type="462c0819:PsiDirectoryNode" />
+              <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="dngame" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dngame" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -347,7 +382,7 @@
     <property name="RequestMappingsPanelWidth2" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550432434590" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550433481744" />
     <property name="database.console.LAST_STATE" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop" />
@@ -495,12 +530,12 @@
       <workItem from="1550266352516" duration="1265000" />
       <workItem from="1550315639530" duration="17951000" />
       <workItem from="1550400546493" duration="722000" />
-      <workItem from="1550402949125" duration="26510000" />
+      <workItem from="1550402949125" duration="27432000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="398484000" />
+    <option name="totallyTimeSpent" value="399406000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1602" height="868" extended-state="6" />
@@ -709,18 +744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="46" column="47" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4722#4723#0" expanded="true" />
-            <element signature="e#4746#4747#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/InfoController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2745">
@@ -898,13 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="31" lean-forward="true" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -927,6 +943,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="57" column="19" selection-start-line="57" selection-start-column="19" selection-end-line="57" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="150" column="74" lean-forward="true" selection-start-line="150" selection-start-column="74" selection-end-line="150" selection-end-column="74" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -23,7 +23,7 @@
       </label>
       <br>
       <div class="forgot_link" >
-        <a href="#">Forgot password?</a>
+        <router-link to="/recovery">Forgot password?</router-link>
       </div>
 
       <!--
@@ -32,7 +32,7 @@
       <input class="sub" type="submit" value="Log in"/>
     </form>
     <div class="link" >
-      <a href="#">Sign up</a>
+      <router-link to="/registry">Sign up</router-link>
     </div>
   </div>
 </template>
@@ -160,7 +160,6 @@
     border: 0;
     background-color: yellow;
     color: black;
-
     font-size: 17px;
     font-weight: bold;
     margin-bottom: 20px;

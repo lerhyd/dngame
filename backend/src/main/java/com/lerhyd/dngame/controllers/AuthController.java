@@ -147,7 +147,7 @@ public class AuthController {
      * 2 -- User does not have role 'user',
      * 0 -- The function was executed correctly.
      */
-    @PostMapping("/forgot/password")
+    @GetMapping("/forgot/password")
     public int forgotPass(@RequestParam("email") String email){
         String token = java.util.UUID.randomUUID().toString();
         User user = userDao.findUserByEmail(email);

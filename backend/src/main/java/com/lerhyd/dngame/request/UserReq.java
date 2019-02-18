@@ -9,5 +9,4 @@ public class UserReq {
     private String password;
     private String retypePassword;
     private String email;
-    private int vkId;
 }

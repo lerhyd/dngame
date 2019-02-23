@@ -170,7 +170,7 @@ insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_publ
 values (false, 'Ген. директор Reebok увидел новые лозунги компании.', true , false, false , false, false, 26); --подавился едой
 --
 insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
-values (false, 'Производитель руче был атакован конкурентом.', true , false, true , false, false, 11);--убит карандашом
+values (false, 'Производитель ручек был атакован конкурентом.', true , false, true , false, false, 11);--убит карандашом
 
 insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id)
 values (false, '8 допов для сдачи одной лабы.', false , false, true , false, false, 5);--был изнасилован

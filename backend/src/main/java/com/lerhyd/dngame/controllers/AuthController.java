@@ -76,9 +76,10 @@ public class AuthController {
         String token = java.util.UUID.randomUUID().toString();
         user.setToken(token);
         userDao.save(user);
-        emailService.sendMail("DN game.", user, "Вам необходимо подтвердить почту перед " +
-                "тем как использовать аккаунт. Перейдите по этой ссылке: " +
-                "http://localhost:1234/confirm/" + user.getLogin() + "/" +token + ".");
+        emailService.sendMail("Регистрация на сайте DN game", user, "Здравствуйте!\n Для пользователя "+user.getEmail()+" с логином "+user.getLogin()+" поступил запрос на регистрацию. " +
+                "Для подтверждения электронного адреса перейдите по ссылке:\n" +
+                "http://localhost:1234/confirm/"+ user.getLogin() + "/" +token+"\nЕсли вы не регистрировались у нас на сайте, то проигнорируйте это письмо.\n" +
+                "Пожалуйста, не отвечайте на это письмо, оно сформировано автоматически.");
         return 0;
     }
 

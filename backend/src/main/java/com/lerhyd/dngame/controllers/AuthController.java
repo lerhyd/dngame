@@ -43,7 +43,7 @@ public class AuthController {
      * Sign up in the system.
      * @param userReq Form of registration data from request.
      * @return Status:
-     * 1 -- User with the login does not exist,
+     * 1 -- User with the login exists,
      * 2 -- The password does not match with retype password,
      * 3 -- Password's length is less than 8,
      * 4 -- Password contains non-Latin letters,
@@ -80,13 +80,34 @@ public class AuthController {
     }
 
     /**
+     * Resend url with token to email for authentication.
+     * @param userLogin ID of user.
+     * @return Status:
+     * 1 -- User with the login does not exist,
+     * 2 -- User is already authenticate
+     * 0 -- The function was executed correctly.
+     */
+    @PostMapping("/resendEmail")
+    public int resendEmail(String userLogin){
+        if (userDao.getOne(userLogin) == null)
+            return 1;
+        if (userDao.getOne(userLogin).isConfirmed() == true)
+            return 2;
+        User user = userDao.getOne(userLogin);
+        emailService.sendMail("DN game.", user, "Вам необходимо подтвердить почту перед " +
+                "тем как использовать аккаунт. Перейдите по этой ссылке:" +
+                "http://localhost:1234/confirm/"+ user.getLogin() + "/" +user.getToken());
+        return 0;
+    }
+
+    /**
      * Authenticate the user's email address through the comparison of the special tokens.
      * @param userLogin ID of user.
      * @param token The secret token.
      * @return Status:
      * 1 -- User with the login does not exist,
      * 2 -- The user's email address authentication failed,
-     * 0 -- The function was executed correctly,
+     * 0 -- The function was executed correctly.
      */
     @GetMapping("/confirm/{userLogin}/{token}")
     public int confirm(@PathVariable("userLogin") String userLogin, @PathVariable("token") String token){

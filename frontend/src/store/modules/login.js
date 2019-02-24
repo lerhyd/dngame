@@ -1,14 +1,24 @@
 import axios from 'axios'
+import router from '../../router'
 
 export default {
+
   state: {
-    login: []
+    login: [],
+    isFailed: false
   },
 
   mutations: {
     setLogin (state, list) {
       state.login = list;
+    },
+    setFailed (state, data) {
+      state.isFailed = data
     }
+  },
+
+  getters: {
+    isFailed: state => state.isFailed
   },
 
   actions: {
@@ -20,10 +30,13 @@ export default {
         },
         method: 'POST'
       }).then(response => {
-        console.log(response);
+        if (response.status = 200)
+          router.push("/game")
+        else
+          context.commit('setFailed', true)
       })
         .catch(error => {
-          console.log(error);
+          context.commit('setFailed', true)
         })
     }
 

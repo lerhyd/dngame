@@ -25,7 +25,7 @@
       <div class="forgot_link" >
         <router-link to="/recovery">Forgot password?</router-link>
       </div>
-      <!--<p style="color: red" v-if="authFailed">Incorrect credentials {{authFailed}}</p>-->
+      <p style="color: red" v-if="this.$store.getters.isFailed">Incorrect credentials</p>
       <input class="sub" type="submit" value="Log in"/>
     </form>
     <div class="link" >
@@ -35,20 +35,21 @@
 </template>
 
 <script>
-    export default {
-      name: "Login",
-      data (){
-        return {
-          username: '',
-          password: ''
-        }
-      },
-      methods: {
-        enter () {
-          this.$store.dispatch('signIn', {username: this.username, password: this.password}).then();
-        }
+
+  export default {
+    name: "Login",
+    data (){
+      return {
+        username: '',
+        password: '',
+      }
+    },
+    methods: {
+      enter () {
+        this.$store.dispatch('signIn', {username: this.username, password: this.password}).then();
       }
     }
+  }
 </script>
 
 <style scoped>

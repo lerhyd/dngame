@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
 import login from './modules/login'
 import registry from './modules/registry'
+import Vuex from 'vuex'
+import Vue from 'vue'
 
 Vue.use(Vuex)
 

@@ -1,15 +1,28 @@
 import axios from 'axios'
+import router from "../../router";
 
 export default {
   state: {
     regData: [],
-
+    failed: false,
+    errorStatus: 0
   },
 
   mutations: {
     setLogin (state, list) {
       state.login = list;
+    },
+    setFailed (state, data) {
+      state.failed = data;
+    },
+    setStatus (state, status){
+      state.errorStatus = status;
     }
+  },
+
+  getters: {
+    failed: state => state.failed,
+    status: state => state.errorStatus
   },
 
   actions: {
@@ -20,10 +33,17 @@ export default {
         retypePassword: credentials.retypePassword,
         email: credentials.email
       }).then(response => {
-        console.log(response);
+        context.commit('setStatus', response.data);
+        if (response.data !== 0){
+          context.commit('setFailed', true);
+          router.push("/registry")
+        }
+        if (response.data == 0)
+          router.push("/confirm")
+
       })
         .catch(error => {
-          console.log(error);
+          context.commit('setFailed', true);
         })
     }
   }

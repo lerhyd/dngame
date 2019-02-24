@@ -4,8 +4,8 @@ import Main from '@/components/Main'
 import Registry from '@/components/Registry'
 import Forgot from '@/components/Forgot'
 import Game from '@/components/Game'
-import Confirm from '@/components/Confirm'
-import ForgotMessage from '@/components/ForgotMessage'
+import ConfirmMessage from '@/components/messages/ConfirmMessage'
+import ForgotMessage from '@/components/messages/ForgotMessage'
 
 Vue.use(Router)
 
@@ -35,8 +35,8 @@ export default new Router({
     },
     {
       path: '/confirm',
-      name: 'Confirm',
-      component: Confirm
+      name: 'ConfirmMessage',
+      component: ConfirmMessage
     },
     {
       path: '/forgotMessage',

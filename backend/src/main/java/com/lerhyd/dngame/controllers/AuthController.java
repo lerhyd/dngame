@@ -118,20 +118,20 @@ public class AuthController {
      * @param userLogin ID of user.
      * @param token     The secret token.
      * @return Status:
-     * 1 -- User with the login does not exist,
-     * 2 -- The user's email address authentication failed,
-     * 0 -- The function was executed correctly.
+     * 1MnV -- User with the login does not exist,
+     * 2MnV -- The user's email address authentication failed,
+     * 0MnV -- The function was executed correctly.
      */
     @GetMapping("/confirm/{userLogin}/{token}")
-    public int confirm(@PathVariable("userLogin") String userLogin, @PathVariable("token") String token) {
+    public ModelAndView confirm(@PathVariable("userLogin") String userLogin, @PathVariable("token") String token) {
         if (userDao.getOne(userLogin) == null)
-            return 1;
+            return new ModelAndView("/failedConfirmMessage");
         if (!userDao.getOne(userLogin).getToken().equals(token))
-            return 2;
+            return new ModelAndView("/failedConfirmMessage");
         User user = userDao.getOne(userLogin);
         user.setConfirmed(true);
         userDao.save(user);
-        return 0;
+        return new ModelAndView("/successConfirmMessage");
     }
 
     /**

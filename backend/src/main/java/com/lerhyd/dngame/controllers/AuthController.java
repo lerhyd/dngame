@@ -191,7 +191,7 @@ public class AuthController {
                 .useLower(true)
                 .useUpper(true)
                 .build();
-        String password = passwordGenerator.generate(10);
+        String password = passwordGenerator.generate(15);
         User user = userDao.findUserByEmail(email);
         Role userRole = roleDao.findById("user").get();
         if (user == null)

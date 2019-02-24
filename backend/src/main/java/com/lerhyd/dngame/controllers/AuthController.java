@@ -63,6 +63,7 @@ public class AuthController {
         Role userRole = roleDao.findById("user").get();
         User user = new User();
         user.setLogin(userReq.getLogin());
+        user.setEmail(userReq.getEmail());
         user.setPassword(encoder.encode(userReq.getPassword()));
         user.setRoles(new HashSet<>(Arrays.asList(userRole)));
         List<Rule> rules = ruleDao.findAll();

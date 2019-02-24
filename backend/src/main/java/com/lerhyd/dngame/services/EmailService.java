@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+//@RequestMapping("#/mailer")
 public class EmailService {
     @Autowired
     Environment env;
@@ -19,12 +20,11 @@ public class EmailService {
     public void sendMail(String subject, User to, String text){
         SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
         simpleMailMessage.setSubject(subject);
-        simpleMailMessage.setFrom("lerhyd@gmail.com");
+        simpleMailMessage.setFrom("deathNoteProject@yandex.ru");
         simpleMailMessage.setTo(to.getEmail());
         simpleMailMessage.setText(text);
-        if(env.getProperty("PMAIL")!=null)
-            javaMailSender.send(simpleMailMessage);
-        //javaMailSender.send(simpleMailMessage);
+        //if (env.getProperty("PMAIL") != null) javaMailSender.send(simpleMailMessage);
+        javaMailSender.send(simpleMailMessage);
     }
     public void sendMail(String subject, String from, String to, String text){
         SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
@@ -32,13 +32,20 @@ public class EmailService {
         simpleMailMessage.setFrom(from);
         simpleMailMessage.setTo(to);
         simpleMailMessage.setText(text);
-        if(env.getProperty("PMAIL")!=null)
-            javaMailSender.send(simpleMailMessage);
-        //javaMailSender.send(simpleMailMessage);
+        //if (env.getProperty("PMAIL") != null) javaMailSender.send(simpleMailMessage);
+        javaMailSender.send(simpleMailMessage);
     }
-    @RequestMapping(path = "/mail", method = RequestMethod.POST)
+    @RequestMapping(value = "/")
+    public String myController() {
+        return "index";
+    }
+
+    @RequestMapping(path = "/test", method = RequestMethod.POST)
+    //@PostMapping(path = "/mail")
     public String testMail(){
-        sendMail("Test","lerhyd@gmail.com", "lerhyd@gmail.com","Test completed!");
+        User u = new User();
+        u.setEmail("deathNoteProject@yandex.ru");
+        sendMail("test1","co8ectu.net@gmail.com","deathNoteProject@yandex.ru","hi. it's okey!");
         return "Email sent";
     }
 }

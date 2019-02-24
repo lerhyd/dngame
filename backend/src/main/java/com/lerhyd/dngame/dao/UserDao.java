@@ -27,7 +27,7 @@ public interface UserDao extends JpaRepository<User, String> {
 
     void deleteById(String login);
 
-    boolean existsById(String login);
+    boolean existsByLogin(String login);
 
     @Query("select u from User u where u.profile.id = :profileId")
     User findUserByProfile(int profileId);

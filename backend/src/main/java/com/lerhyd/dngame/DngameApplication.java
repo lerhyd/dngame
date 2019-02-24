@@ -6,13 +6,12 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 
 @SpringBootApplication
 public class DngameApplication {
-
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 		return application.sources(DngameApplication.class);
 	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(DngameApplication.class, args);
-	}
+  }
 }
 

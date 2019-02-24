@@ -5,12 +5,17 @@
       <img src="../assets/img/dn_logo.jpg" alt="dn_logo">
     </div>
     <div class="recovery">
-      <label class="first_label">
-        Email:
-        <input type="text" v-model="email">
-      </label>
-      <br>
-      <input class="sub" type="submit" value="Send password"/>
+      <form @submit.prevent="enter">
+        <label class="first_label">
+          Email:
+          <input type="text" v-model="email">
+        </label>
+        <br>
+        <p style="color: red" v-if="this.$store.getters.forgotStatus == 1">There's no user with the email</p>
+        <p style="color: red" v-if="this.$store.getters.forgotStatus == 2">Email is incorrect</p>
+        <p style="color: red" v-if="this.$store.getters.forgotStatus == 3">User does not have role 'user'</p>
+        <input class="sub" type="submit" value="Send password"/>
+      </form>
       <div class="link">
         <router-link to="/">Return to welcome page</router-link>
       </div>
@@ -25,7 +30,18 @@
 
 <script>
     export default {
-        name: "Forgot"
+      name: "Forgot",
+      data (){
+        return {
+          email: ''
+        }
+      },
+
+      methods: {
+        enter () {
+          this.$store.dispatch('forgot', {email: this.email}).then();
+        }
+      }
     }
 </script>
 

@@ -3,11 +3,14 @@ package com.lerhyd.dngame.controllers;
 import com.lerhyd.dngame.dao.RoleDao;
 import com.lerhyd.dngame.dao.RuleDao;
 import com.lerhyd.dngame.dao.UserDao;
+import com.lerhyd.dngame.generators.PasswordGenerator;
 import com.lerhyd.dngame.model.Role;
 import com.lerhyd.dngame.model.Rule;
 import com.lerhyd.dngame.model.User;
 import com.lerhyd.dngame.request.UserReq;
 import com.lerhyd.dngame.services.EmailService;
+import org.apache.commons.lang.RandomStringUtils;
+import org.apache.commons.text.RandomStringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,11 +18,11 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import java.time.LocalDateTime;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 public class AuthController {
@@ -41,6 +44,7 @@ public class AuthController {
 
     /**
      * Sign up in the system.
+     *
      * @param userReq Form of registration data from request.
      * @return Status:
      * 1 -- User with the login exists,
@@ -48,10 +52,11 @@ public class AuthController {
      * 3 -- Password's length is less than 6,
      * 4 -- Password contains non-Latin letters,
      * 5 -- There's already user with the email,
+     * 6 -- Email is incorrect,
      * 0 -- The function was executed correctly.
      */
     @PostMapping("/signup")
-    public int createUser(@RequestBody UserReq userReq){
+    public int createUser(@RequestBody UserReq userReq) {
         if (userDao.existsById(userReq.getLogin()))
             return 1;
         if (!userReq.getPassword().equals(userReq.getRetypePassword()))
@@ -60,8 +65,10 @@ public class AuthController {
             return 3;
         if (!userReq.getPassword().matches("^[a-zA-Z0-9]+$"))
             return 4;
-        if (userDao.findUserByEmail(userReq.getEmail()) !=null)
+        if (userDao.findUserByEmail(userReq.getEmail()) != null)
             return 5;
+        if (!isValidEmailAddress(userReq.getEmail()))
+            return 6;
         Role userRole = roleDao.findById("user").get();
         User user = new User();
         user.setLogin(userReq.getLogin());
@@ -76,15 +83,16 @@ public class AuthController {
         String token = java.util.UUID.randomUUID().toString();
         user.setToken(token);
         userDao.save(user);
-        emailService.sendMail("Регистрация на сайте DN game", user, "Здравствуйте!\n Для пользователя "+user.getEmail()+" с логином "+user.getLogin()+" поступил запрос на регистрацию. " +
+        emailService.sendMail("Регистрация на сайте DN game", user, "Здравствуйте!\n Для пользователя " + user.getEmail() + " с логином " + user.getLogin() + " поступил запрос на регистрацию. " +
                 "Для подтверждения электронного адреса перейдите по ссылке:\n" +
-                "http://localhost:1234/confirm/"+ user.getLogin() + "/" +token+"\nЕсли вы не регистрировались у нас на сайте, то проигнорируйте это письмо.\n" +
+                "http://localhost:1234/confirm/" + user.getLogin() + "/" + token + "\nЕсли вы не регистрировались у нас на сайте, то проигнорируйте это письмо.\n" +
                 "Пожалуйста, не отвечайте на это письмо, оно сформировано автоматически.");
         return 0;
     }
 
     /**
      * Resend url with token to email for authentication.
+     *
      * @param userLogin ID of user.
      * @return Status:
      * 1 -- User with the login does not exist,
@@ -92,7 +100,7 @@ public class AuthController {
      * 0 -- The function was executed correctly.
      */
     @PostMapping("/resendEmail")
-    public int resendEmail(String userLogin){
+    public int resendEmail(String userLogin) {
         if (userDao.getOne(userLogin) == null)
             return 1;
         if (userDao.getOne(userLogin).isConfirmed() == true)
@@ -100,21 +108,22 @@ public class AuthController {
         User user = userDao.getOne(userLogin);
         emailService.sendMail("DN game.", user, "Вам необходимо подтвердить почту перед " +
                 "тем как использовать аккаунт. Перейдите по этой ссылке:" +
-                "http://localhost:1234/confirm/"+ user.getLogin() + "/" +user.getToken());
+                "http://localhost:1234/confirm/" + user.getLogin() + "/" + user.getToken());
         return 0;
     }
 
     /**
      * Authenticate the user's email address through the comparison of the special tokens.
+     *
      * @param userLogin ID of user.
-     * @param token The secret token.
+     * @param token     The secret token.
      * @return Status:
      * 1 -- User with the login does not exist,
      * 2 -- The user's email address authentication failed,
      * 0 -- The function was executed correctly.
      */
     @GetMapping("/confirm/{userLogin}/{token}")
-    public int confirm(@PathVariable("userLogin") String userLogin, @PathVariable("token") String token){
+    public int confirm(@PathVariable("userLogin") String userLogin, @PathVariable("token") String token) {
         if (userDao.getOne(userLogin) == null)
             return 1;
         if (!userDao.getOne(userLogin).getToken().equals(token))
@@ -127,8 +136,9 @@ public class AuthController {
 
     /**
      * Change the user password.
+     *
      * @param newPass The new password.
-     * @param login ID of user.
+     * @param login   ID of user.
      * @return Status:
      * 1 -- User with the login does not exist,
      * 2 -- Password's length is less than 8,
@@ -136,7 +146,7 @@ public class AuthController {
      * 0 -- The function was executed correctly.
      */
     @PostMapping("/changepass")
-    public int changePass(@RequestParam("newPass") String newPass, @RequestParam("login") String login){
+    public int changePass(@RequestParam("newPass") String newPass, @RequestParam("login") String login) {
         if (userDao.findById(login) == null)
             return 1;
         if (newPass.length() < 8)
@@ -150,41 +160,60 @@ public class AuthController {
     }
 
     @GetMapping("/get")
-    public Collection<? extends GrantedAuthority> get(){
+    public Collection<? extends GrantedAuthority> get() {
         return SecurityContextHolder.getContext().getAuthentication().getAuthorities();
     }
 
     /**
      * Logout of the system.
+     *
      * @return Meaningless zero.
      */
     @GetMapping("/logout")
-    public int logout(){
+    public int logout() {
         return 0;
     }
 
     /**
      * Get new password on email.
+     *
      * @param email The user's email.
      * @return Status:
      * 1 -- There's no user with the email,
-     * 2 -- User does not have role 'user',
+     * 2 -- Email is incorrect,
+     * 3 -- User does not have role 'user',
      * 0 -- The function was executed correctly.
      */
-    @GetMapping("/forgot/password")
-    public int forgotPass(@RequestParam("email") String email){
-        String token = java.util.UUID.randomUUID().toString();
+    @PostMapping("/forgot/password")
+    public int forgotPass(@RequestParam("email") String email) {
+        PasswordGenerator passwordGenerator = new PasswordGenerator.PasswordGeneratorBuilder()
+                .useDigits(true)
+                .useLower(true)
+                .useUpper(true)
+                .build();
+        String password = passwordGenerator.generate(10);
         User user = userDao.findUserByEmail(email);
+        Role userRole = roleDao.findById("user").get();
         if (user == null)
             return 1;
-        if (user.getRoles().contains("user")) {
-            changePass(token, user.getLogin());
-            userDao.save(user);
-            emailService.sendMail("DN game", user, "Ваш новый пароль: " + token);
-        } else {
+        if (!isValidEmailAddress(email))
             return 2;
-        }
+        if (!user.getRoles().contains(userRole))
+            return 3;
+        changePass(password, user.getLogin());
+        emailService.sendMail("DN game", user, "Ваш новый пароль: " + password);
 
         return 0;
+    }
+
+    public static boolean isValidEmailAddress(String email) {
+        boolean result = true;
+        try {
+            InternetAddress emailAddr = new InternetAddress(email);
+            emailAddr.validate();
+        } catch (AddressException ex) {
+            result = false;
+        }
+        return result;
     }
 }

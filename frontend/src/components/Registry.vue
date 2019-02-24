@@ -41,6 +41,9 @@
         <p style="color: red" v-else-if="this.$store.getters.errorStatus == 5">
           There's already user with the email
         </p>
+        <p style="color: red" v-else-if="this.$store.getters.errorStatus == 6">
+          Email is incorrect
+        </p>
         <input class="sub" type="submit" value="Sign up"/>
       </form>
       <div class="link">

@@ -26,18 +26,20 @@
           <input type="text" v-model="email"/>
         </label>
         <br>
-        <p style="color: red" v-if="this.$store.getters.failed">Incorrect credentials</p>
-        <p style="color: red" v-else-if="this.$store.getters.errorStatus == 1">
-          User with the login exists {{this.$store.getters.errorStatus}}
+        <p style="color: red" v-if="this.$store.getters.errorStatus == 1">
+          User with the login exists
         </p>
         <p style="color: red" v-else-if="this.$store.getters.errorStatus == 2">
           The password does not match with retype password
         </p>
         <p style="color: red" v-else-if="this.$store.getters.errorStatus == 3">
-          Password's length is less than 8
+          Password's length is less than 6
         </p>
         <p style="color: red" v-else-if="this.$store.getters.errorStatus == 4">
           Password contains non-Latin letters
+        </p>
+        <p style="color: red" v-else-if="this.$store.getters.errorStatus == 5">
+          There's already user with the email
         </p>
         <input class="sub" type="submit" value="Sign up"/>
       </form>

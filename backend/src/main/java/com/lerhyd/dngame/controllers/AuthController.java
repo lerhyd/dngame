@@ -45,8 +45,9 @@ public class AuthController {
      * @return Status:
      * 1 -- User with the login exists,
      * 2 -- The password does not match with retype password,
-     * 3 -- Password's length is less than 8,
+     * 3 -- Password's length is less than 6,
      * 4 -- Password contains non-Latin letters,
+     * 5 -- There's already user with the email,
      * 0 -- The function was executed correctly.
      */
     @PostMapping("/signup")
@@ -55,10 +56,12 @@ public class AuthController {
             return 1;
         if (!userReq.getPassword().equals(userReq.getRetypePassword()))
             return 2;
-        if (userReq.getPassword().length() < 8)
+        if (userReq.getPassword().length() < 6)
             return 3;
         if (!userReq.getPassword().matches("^[a-zA-Z0-9]+$"))
             return 4;
+        if (userDao.findUserByEmail(userReq.getEmail()) !=null)
+            return 5;
         Role userRole = roleDao.findById("user").get();
         User user = new User();
         user.setLogin(userReq.getLogin());
@@ -74,8 +77,8 @@ public class AuthController {
         user.setToken(token);
         userDao.save(user);
         emailService.sendMail("DN game.", user, "Вам необходимо подтвердить почту перед " +
-                "тем как использовать аккаунт. Перейдите по этой ссылке:" +
-                "http://localhost:1234/confirm/"+ user.getLogin() + "/" +token);
+                "тем как использовать аккаунт. Перейдите по этой ссылке: " +
+                "http://localhost:1234/confirm/" + user.getLogin() + "/" +token + ".");
         return 0;
     }
 

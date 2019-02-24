@@ -13,12 +13,12 @@
         <br>
         <label class="second_label">
           Password:
-          <input type="password" v-model="pass"/>
+          <input type="password" v-model="password"/>
         </label>
         <br>
         <label class="third_label">
           Retype password:
-          <input type="password" v-model="retypePass"/>
+          <input type="password" v-model="retypePassword"/>
         </label>
         <br>
         <label class="fourth_label">
@@ -44,9 +44,27 @@
 </template>
 
 <script>
-    export default {
-        name: "Registry"
+  export default {
+    name: "Registry",
+    data (){
+      return {
+        login: '',
+        password: '',
+        retypePassword: '',
+        email: ''
+      }
+    },
+    methods: {
+      signup () {
+        this.$store.dispatch('signup', {
+          login: this.login,
+          password: this.password,
+          retypePassword: this.retypePassword,
+          email: this.email
+        }).then(() => this.$router.push('/'));
+      }
     }
+  }
 </script>
 
 <style scoped>

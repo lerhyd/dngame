@@ -14,21 +14,18 @@
     <form @submit.prevent="enter">
       <label class="first_label">
         Login:
-        <input type="text" v-model="login">
+        <input type="text" v-model="username">
       </label>
       <br>
       <label class="second_label">
         Password:
-        <input type="password" v-model="pass"/>
+        <input type="password" v-model="password"/>
       </label>
       <br>
       <div class="forgot_link" >
         <router-link to="/recovery">Forgot password?</router-link>
       </div>
-
-      <!--
-      <p style="color: red" v-if="$store.state.failedLogin">Incorrect credentials</p>
-      -->
+      <!--<p style="color: red" v-if="authFailed">Incorrect credentials {{authFailed}}</p>-->
       <input class="sub" type="submit" value="Log in"/>
     </form>
     <div class="link" >
@@ -42,13 +39,13 @@
       name: "Login",
       data (){
         return {
-          login: '',
-          pass: ''
+          username: '',
+          password: ''
         }
       },
       methods: {
         enter () {
-          //this.$store.dispatch('login', {login: this.login, password: this.pass}).then();
+          this.$store.dispatch('signIn', {username: this.username, password: this.password}).then();
         }
       }
     }

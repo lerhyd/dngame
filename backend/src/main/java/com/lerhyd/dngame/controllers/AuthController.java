@@ -12,10 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.Collection;
@@ -129,7 +128,6 @@ public class AuthController {
     public Collection<? extends GrantedAuthority> get(){
         return SecurityContextHolder.getContext().getAuthentication().getAuthorities();
     }
-
 
     /**
      * Logout of the system.

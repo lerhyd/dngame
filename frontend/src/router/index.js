@@ -3,12 +3,13 @@ import Router from 'vue-router'
 import Main from '@/components/Main'
 import Registry from '@/components/Registry'
 import Forgot from '@/components/Forgot'
+import Game from '@/components/Game'
 
 Vue.use(Router)
 
 export default new Router({
-  mode: "history",
-  base: process.env.BASE_URL,
+  mode: 'history',
+  hash: false,
   routes: [
     {
       path: '/',
@@ -24,17 +25,11 @@ export default new Router({
       path: '/recovery',
       name: 'Forgot',
       component: Forgot
+    },
+    {
+      path: '/game',
+      name: 'Game',
+      component: Game
     }
-  ],
-  scrollBehavior: (to, from, savedPosition) => {
-    if (savedPosition) {
-      return savedPosition;
-    } else if (to.hash) {
-      return {
-        selector: to.hash
-      };
-    } else {
-      return { x: 0, y: 0 };
-    }
-  }
+  ]
 })

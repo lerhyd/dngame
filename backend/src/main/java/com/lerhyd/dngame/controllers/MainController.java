@@ -5,10 +5,8 @@ import com.lerhyd.dngame.generators.NewsGenerator;
 import com.lerhyd.dngame.model.*;
 import com.lerhyd.dngame.request.PersonReq;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
@@ -78,6 +76,11 @@ public class MainController {
         personDao.save(p);
         userDao.save(u);
         return 0;
+    }
+
+    @GetMapping("/")
+    public ModelAndView index(){
+        return new ModelAndView("index.html");
     }
 
     /**

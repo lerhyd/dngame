@@ -113,7 +113,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .authorizeRequests()
                         .mvcMatchers("/").permitAll()
                         .antMatchers("/main").permitAll()
-                        .antMatchers("/registration", "/logout").permitAll()
+                        .antMatchers("/signup", "/logout", "/favicon.ico", "/confirm/**", "/login").permitAll()
                         .anyRequest().authenticated()
                 .and()
                     .formLogin().loginPage("/login").permitAll()

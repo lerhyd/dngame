@@ -40,7 +40,6 @@
         <Login></Login>
       </div>
     </section>
-
     <footer>
       <div class="container">
         <a href="#">Our contacts</a>
@@ -69,8 +68,6 @@
     font-weight: 400;
     font-style: normal;
   }
-
-
 
   #app {
     font-family: 'Alegreya Sans';

@@ -21,6 +21,7 @@ com/lerhyd/dngame/config/SecurityConfig$ClientResources.class
 com/lerhyd/dngame/dao/RuleDao.class
 com/lerhyd/dngame/dao/AchievementDao.class
 com/lerhyd/dngame/controllers/MainController.class
+com/lerhyd/dngame/info/UserInfo.class
 com/lerhyd/dngame/config/AuthenticationSuccessHandler.class
 com/lerhyd/dngame/info/ActionPlaceInfo.class
 com/lerhyd/dngame/model/Agent.class

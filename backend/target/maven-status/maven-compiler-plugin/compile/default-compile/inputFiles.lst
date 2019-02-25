@@ -21,6 +21,7 @@
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/model/News.java
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/dao/RoleDao.java
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/dao/PersonDao.java
+/home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/info/UserInfo.java
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/request/EntryReq.java
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/generators/PasswordGenerator.java
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/controllers/RequestController.java

@@ -8,7 +8,8 @@ export default {
     isFailed: false,
     loginStatus: true,
     role: null,
-    logged: false
+    loggedInSocial: false,
+    logged: undefined
   },
 
   mutations: {
@@ -20,6 +21,9 @@ export default {
     },
     setLoginStatus (state, data){
       state.loginStatus = data
+    },
+    setLoggedInSocial (state, data){
+      state.loggedInSocial = data
     },
     setLogged (state, data){
       state.logged = data
@@ -33,8 +37,9 @@ export default {
     isFailed: state => state.isFailed,
     login: state => state.login,
     loginStatus: state => state.loginStatus,
-    logged: state => state.logged,
-    role: state => state.role
+    loggedInSocial: state => state.loggedInSocial,
+    role: state => state.role,
+    logged: state => state.logged
   },
 
   actions: {
@@ -76,11 +81,10 @@ export default {
     checkIfConfirmed(context) {
       axios("/confirm/check", {
         params: {
-          userLogin: context.state.login.username,
+          userLogin: context.getters.loginName,
         },
         method: 'GET'
       }).then(response => {
-        console.log(response.data)
         context.commit('setLoginStatus', response.data)
       })
         .catch(error => {
@@ -100,6 +104,17 @@ export default {
         else {
           context.commit('setLogged', false)
         }
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    checkIfLogged(context) {
+      axios("/auth/check", {
+        method: 'GET'
+      }).then(response => {
+        context.commit('setLogged', response.data);
       })
         .catch(error => {
           console.log(error)

@@ -71,6 +71,7 @@ public class GoogleFilter extends AbstractAuthenticationProcessingFilter {
                     User userEntity = new User();
                     userEntity.setRegistrationDate(LocalDateTime.now());
                     String sub = authInfo.get("sub");
+                    String emailLogin = email.substring(0, email.indexOf('@'));
                     PasswordGenerator passwordGenerator = new PasswordGenerator.PasswordGeneratorBuilder()
                             .useDigits(true)
                             .build();
@@ -86,8 +87,7 @@ public class GoogleFilter extends AbstractAuthenticationProcessingFilter {
                         }
                     }
 
-                    userEntity.setLogin(sub);
-                    userEntity.setEmail(email);
+                    userEntity.setLogin(emailLogin + sub);
                     userEntity.setGoogleEmail(email);
                     Role userRole = roleDao.findById("google").get();
                     userEntity.setRoles(new HashSet<>(Arrays.asList(userRole)));

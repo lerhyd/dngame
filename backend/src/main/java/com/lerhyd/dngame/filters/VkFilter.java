@@ -60,7 +60,9 @@ public class VkFilter extends AbstractAuthenticationProcessingFilter {
                 OAuth2AccessToken accessToken = restTemplate.getAccessToken();
 
                 String userId = accessToken.getAdditionalInformation().get("user_id").toString();
+
                 String email = accessToken.getAdditionalInformation().get("email").toString();
+                String emailLogin = email.substring(0, email.indexOf('@'));
 
                 if (userDao.findUserByVkId(Integer.parseInt(userId)) == null){
                     User userEntity = new User();
@@ -70,8 +72,7 @@ public class VkFilter extends AbstractAuthenticationProcessingFilter {
                         idInt++;
                         userId = String.valueOf(idInt);
                     }
-                    userEntity.setLogin(userId);
-                    userEntity.setEmail(email);
+                    userEntity.setLogin(emailLogin + userId);
                     userEntity.setVkId(Integer.parseInt(userId));
                     Role userRole = roleDao.findById("vk").get();
                     userEntity.setRoles(new HashSet<>(Arrays.asList(userRole)));

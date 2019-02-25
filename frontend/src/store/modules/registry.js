@@ -3,7 +3,7 @@ import router from "../../router";
 
 export default {
   state: {
-    regData: [],
+    regDate: [],
     failed: false,
     errorStatus: 0
   },

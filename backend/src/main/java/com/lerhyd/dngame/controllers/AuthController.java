@@ -9,8 +9,6 @@ import com.lerhyd.dngame.model.Rule;
 import com.lerhyd.dngame.model.User;
 import com.lerhyd.dngame.request.UserReq;
 import com.lerhyd.dngame.services.EmailService;
-import org.apache.commons.lang.RandomStringUtils;
-import org.apache.commons.text.RandomStringGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -20,9 +18,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
+import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 
 @RestController
 public class AuthController {
@@ -88,6 +89,11 @@ public class AuthController {
                 "http://localhost:1234/confirm/" + user.getLogin() + "/" + token + "\nЕсли вы не регистрировались у нас на сайте, то проигнорируйте это письмо.\n" +
                 "Пожалуйста, не отвечайте на это письмо, оно сформировано автоматически.");
         return 0;
+    }
+
+    @GetMapping("/login")
+    public String currentUserName(Principal principal) {
+        return principal.getName();
     }
 
     /**
@@ -168,6 +174,16 @@ public class AuthController {
         user.setPassword(encoder.encode(newPass));
         userDao.save(user);
         return 0;
+    }
+
+    @GetMapping("/auth/check")
+    public Boolean isAuth()
+    {
+        Principal principal = (Principal) SecurityContextHolder.getContext().getAuthentication();
+        if (principal.getName() == "anonymousUser")
+            return false;
+        else
+            return true;
     }
 
     @GetMapping("/get")

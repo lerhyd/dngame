@@ -38,6 +38,28 @@ public class InfoController {
     private AchievementDao achievementDao;
 
     /**
+     * Get the user's info.
+     * @param userLogin ID of the user.
+     * @return Stream of user info.
+     */
+    @GetMapping("/game/user/get")
+    public Stream<UserInfo> getUser(@RequestParam("login") String userLogin){
+        User user = userDao.findById(userLogin).get();
+        return Stream.of(user).map(UserInfo::new);
+    }
+
+    /**
+     * Get the user's profile info.
+     * @param userLogin ID of the user.
+     * @return Stream of person info.
+     */
+    @GetMapping("/game/user/profile/get")
+    public Stream<PersonInfo> getUserProfile(@RequestParam("login") String userLogin){
+        User user = userDao.findById(userLogin).get();
+        return Stream.of(user.getProfile()).map(PersonInfo::new);
+    }
+
+    /**
      * Get all alive persons.
      * @param agentId ID of the Agent.
      * @return Stream of person info.

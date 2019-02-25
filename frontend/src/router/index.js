@@ -5,6 +5,7 @@ import Registry from '@/components/Registry'
 import Forgot from '@/components/Forgot'
 import Game from '@/components/Game'
 import Confirm from '@/components/Confirm'
+import Header from '@/components/Header'
 
 Vue.use(Router)
 
@@ -21,6 +22,11 @@ export default new Router({
       path: '/registry',
       name: 'Registry',
       component: Registry
+    },
+    {
+      path: '/header',
+      name: 'Header',
+      component: Header
     },
     {
       path: '/recovery',

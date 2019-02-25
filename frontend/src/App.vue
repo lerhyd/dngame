@@ -9,3 +9,9 @@
     name: 'App',
   }
 </script>
+<style>
+  html {
+    background: #111111;
+    color: white;
+  }
+</style>

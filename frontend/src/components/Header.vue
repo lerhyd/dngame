@@ -64,7 +64,7 @@
     /*border: 3px solid red;*/
     display:block;
     width:100%;
-    height: 90px;
+    height: 75px;
     min-height: 10%;
     max-height: 10%;
     font-family: 'DeathNote';

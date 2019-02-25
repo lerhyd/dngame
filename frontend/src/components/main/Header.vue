@@ -3,14 +3,14 @@
       <header>
         <div>Death Note</div>
         <div>
-          <a class="button16">Главная</a>
-          <a class="button16">О проекте</a>
-          <a class="button16">Войти</a>
-          <a class="button16">Зарегистрироваться</a>
-          <a class="button16">Мои достижения</a>
-          <a class="button16">В игру!</a>
-          <a class="button16">Выйти</a>
-
+          <router-link class="button16" to="/main">Главная</router-link>
+          <router-link class="button16" to="/about">О проекте</router-link>
+          <router-link class="button16" to="/login" v-if="!this.$store.getters.logged">Войти</router-link>
+          <router-link class="button16" to="/registry" v-if="!this.$store.getters.logged">Зарегистрироваться</router-link>
+          <router-link class="button16" to="/game" v-if="this.$store.getters.logged">В игру!</router-link>
+          <router-link class="button16" to="/achievements" v-if="this.$store.getters.logged">Мои достижения</router-link>
+          <router-link class="button16" to="/settings" v-if="this.$store.getters.logged">Настройки</router-link>
+          <router-link class="button16" to="/logOut" v-if="this.$store.getters.logged">Выйти</router-link>
         </div>
       </header>
     </div>
@@ -40,7 +40,7 @@
     font-style: normal;
   }
 
-  a.button16 {
+  .button16 {
     display: inline-block;
     text-decoration: none;
     padding: 1em;
@@ -48,13 +48,14 @@
     border-radius: 10px;
     font-size: medium;
     font-family: 'Hand';
+    color: white;
   }
-  a.button16:hover {
+  .button16:hover {
     background-image:
       radial-gradient(3px 45% at 0% 50%, rgba(255, 255, 255, 0.6), transparent),
       radial-gradient(3px 45% at 100% 50%, rgba(255,255,255,.6), transparent);
   }
-  a.button16:active {
+  .button16:active {
     background-image:
       radial-gradient(50% 50% at 50% 50%, rgba(74, 74, 74, 0.9), rgba(255,255,255,0));
   }

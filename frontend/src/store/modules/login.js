@@ -6,7 +6,9 @@ export default {
   state: {
     login: [],
     isFailed: false,
-    loginStatus: true
+    loginStatus: true,
+    role: null,
+    logged: false
   },
 
   mutations: {
@@ -18,13 +20,21 @@ export default {
     },
     setLoginStatus (state, data){
       state.loginStatus = data
+    },
+    setLogged (state, data){
+      state.logged = data
+    },
+    setRole (state, date){
+      state.role = date
     }
   },
 
   getters: {
     isFailed: state => state.isFailed,
     login: state => state.login,
-    loginStatus: state => state.loginStatus
+    loginStatus: state => state.loginStatus,
+    logged: state => state.logged,
+    role: state => state.role
   },
 
   actions: {
@@ -70,7 +80,26 @@ export default {
         },
         method: 'GET'
       }).then(response => {
+        console.log(response.data)
         context.commit('setLoginStatus', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    checkIfLoggedIn(context) {
+      axios("/get", {
+        method: 'GET'
+      }).then(response => {
+        context.commit('setRole', response.data);
+        if (context.getters.role[0].authority == "vk" || context.getters.role[0].authority == "google") {
+          context.commit('setLogged', true);
+          router.push("/game");
+        }
+        else {
+          context.commit('setLogged', false)
+        }
       })
         .catch(error => {
           console.log(error)

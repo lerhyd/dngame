@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lerhyd.dngame.dao.RoleDao;
 import com.lerhyd.dngame.dao.RuleDao;
 import com.lerhyd.dngame.dao.UserDao;
+import com.lerhyd.dngame.generators.PasswordGenerator;
 import com.lerhyd.dngame.model.Role;
 import com.lerhyd.dngame.model.Rule;
 import com.lerhyd.dngame.model.User;
@@ -66,17 +67,28 @@ public class GoogleFilter extends AbstractAuthenticationProcessingFilter {
 
                 String email = authInfo.get("email");
 
-                if (userDao.findUserByEmail(email) == null || userDao.findUserByEmail(email).getPassword().equals(bCryptPasswordEncoder.encode(idToken))){
+                if (userDao.findUserByGoogleEmail(email) == null || userDao.findUserByGoogleEmail(email).getPassword().equals(bCryptPasswordEncoder.encode(idToken))){
                     User userEntity = new User();
                     userEntity.setRegistrationDate(LocalDateTime.now());
                     String sub = authInfo.get("sub");
-                    while (userDao.existsById(sub)){
-                        int subInt = Integer.parseInt(sub);
-                        subInt++;
-                        sub = String.valueOf(subInt);
+                    PasswordGenerator passwordGenerator = new PasswordGenerator.PasswordGeneratorBuilder()
+                            .useDigits(true)
+                            .build();
+                    try {
+                        while (userDao.existsById(sub)){
+                            int subInt = Integer.parseInt(sub);
+                            subInt++;
+                            sub = String.valueOf(subInt);
+                        }
+                    } catch (NumberFormatException e){
+                        while (userDao.existsById(authInfo.get("sub"))){
+                            sub = passwordGenerator.generate(8);
+                        }
                     }
+
                     userEntity.setLogin(sub);
                     userEntity.setEmail(email);
+                    userEntity.setGoogleEmail(email);
                     Role userRole = roleDao.findById("google").get();
                     userEntity.setRoles(new HashSet<>(Arrays.asList(userRole)));
                     List<Rule> rules = ruleDao.findAll();
@@ -87,7 +99,7 @@ public class GoogleFilter extends AbstractAuthenticationProcessingFilter {
                     userDao.save(userEntity);
 
                 }
-                User userEntity = userDao.findUserByEmail(email);
+                User userEntity = userDao.findUserByGoogleEmail(email);
                 List<SimpleGrantedAuthority> authorities = userEntity
                         .getRoles()
                         .stream()

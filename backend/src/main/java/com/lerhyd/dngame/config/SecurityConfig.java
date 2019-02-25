@@ -29,6 +29,7 @@ import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilt
 import org.springframework.security.oauth2.client.token.grant.code.AuthorizationCodeResourceDetails;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableOAuth2Client;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
+import org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 import org.springframework.security.web.authentication.preauth.AbstractPreAuthenticatedProcessingFilter;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
@@ -101,17 +102,25 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors();
         http
-                .addFilterAfter(googleFilter(), SecurityContextPersistenceFilter.class);
+                .addFilterAfter(new OAuth2ClientContextFilter(), AbstractPreAuthenticatedProcessingFilter.class)
+                .addFilterAfter(googleFilter(), SecurityContextPersistenceFilter.class)
+                .httpBasic()
+                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login/vk"));
         http
-                .addFilterAfter(vkFilter(), SecurityContextPersistenceFilter.class);
+                .addFilterAfter(new OAuth2ClientContextFilter(), AbstractPreAuthenticatedProcessingFilter.class)
+                .addFilterAfter(vkFilter(), SecurityContextPersistenceFilter.class)
+                .httpBasic()
+                .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login/vk"));
 
         http
                 .csrf().disable()
                     .exceptionHandling()
                     .authenticationEntryPoint(restAuthenticationEntryPoint)
+
                 .and()
                     .authorizeRequests()
                         .mvcMatchers("/").permitAll()
+                        .antMatchers("/contacts").permitAll()
                         .antMatchers("/main", "/recovery", "/forgotMessage", "/forgot/password").permitAll()
                         .antMatchers("/signup", "/logout", "/favicon.ico", "/confirm/**", "/login").permitAll()
                         .anyRequest().authenticated()

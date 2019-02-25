@@ -5,7 +5,8 @@ export default {
 
   state: {
     login: [],
-    isFailed: false
+    isFailed: false,
+    loginStatus: true
   },
 
   mutations: {
@@ -14,11 +15,16 @@ export default {
     },
     setFailed (state, data) {
       state.isFailed = data
+    },
+    setLoginStatus (state, data){
+      state.loginStatus = data
     }
   },
 
   getters: {
-    isFailed: state => state.isFailed
+    isFailed: state => state.isFailed,
+    login: state => state.login,
+    loginStatus: state => state.loginStatus
   },
 
   actions: {
@@ -37,6 +43,37 @@ export default {
       })
         .catch(error => {
           context.commit('setFailed', true)
+        })
+    },
+
+    sendToken(context) {
+      axios("/resendEmail", {
+        params: {
+          userLogin: context.state.login.username,
+        },
+        method: 'POST'
+      }).then(response => {
+        if (response.status = 200)
+          context.commit('setLoginStatus', true)
+        else
+          context.commit('setLoginStatus', false)
+      })
+        .catch(error => {
+          context.commit('setLoginStatus', false)
+        })
+    },
+
+    checkIfConfirmed(context) {
+      axios("/confirm/check", {
+        params: {
+          userLogin: context.state.login.username,
+        },
+        method: 'GET'
+      }).then(response => {
+        context.commit('setLoginStatus', response.data)
+      })
+        .catch(error => {
+          console.log(error)
         })
     }
   }

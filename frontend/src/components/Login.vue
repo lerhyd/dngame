@@ -47,6 +47,7 @@
     methods: {
       enter () {
         this.$store.dispatch('signIn', {username: this.username, password: this.password}).then();
+        this.$store.commit('setLogin', {username: this.username, password: this.password});
       }
     }
   }

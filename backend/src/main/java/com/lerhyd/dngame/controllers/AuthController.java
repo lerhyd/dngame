@@ -113,6 +113,17 @@ public class AuthController {
     }
 
     /**
+     * Check if user confirmed the email.
+     *
+     * @param userLogin ID of user.
+     * @return isConfirmed.
+     */
+    @GetMapping("/confirm/check")
+    public boolean checkIfConfirm(String userLogin){
+        return userDao.getOne(userLogin).isConfirmed();
+    }
+
+    /**
      * Authenticate the user's email address through the comparison of the special tokens.
      *
      * @param userLogin ID of user.

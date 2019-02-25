@@ -31,6 +31,7 @@
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/info/AchievementInfo.java
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/info/RegionInfo.java
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/services/EmailService.java
+/home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/config/MvcConfig.java
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/config/RestAuthenticationEntryPoint.java
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/controllers/MainController.java
 /home/lerhyd/dev/dngame/backend/src/main/java/com/lerhyd/dngame/DngameApplication.java

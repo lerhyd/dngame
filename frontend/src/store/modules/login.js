@@ -5,7 +5,11 @@ export default {
 
   state: {
     login: [],
-    isFailed: false
+    isFailed: false,
+    loginStatus: true,
+    role: null,
+    loggedInSocial: false,
+    logged: undefined
   },
 
   mutations: {
@@ -14,11 +18,28 @@ export default {
     },
     setFailed (state, data) {
       state.isFailed = data
+    },
+    setLoginStatus (state, data){
+      state.loginStatus = data
+    },
+    setLoggedInSocial (state, data){
+      state.loggedInSocial = data
+    },
+    setLogged (state, data){
+      state.logged = data
+    },
+    setRole (state, date){
+      state.role = date
     }
   },
 
   getters: {
-    isFailed: state => state.isFailed
+    isFailed: state => state.isFailed,
+    login: state => state.login,
+    loginStatus: state => state.loginStatus,
+    loggedInSocial: state => state.loggedInSocial,
+    role: state => state.role,
+    logged: state => state.logged
   },
 
   actions: {
@@ -38,8 +59,67 @@ export default {
         .catch(error => {
           context.commit('setFailed', true)
         })
-    }
+    },
 
+    sendToken(context) {
+      axios("/resendEmail", {
+        params: {
+          userLogin: context.state.login.username,
+        },
+        method: 'POST'
+      }).then(response => {
+        if (response.status = 200)
+          context.commit('setLoginStatus', true)
+        else
+          context.commit('setLoginStatus', false)
+      })
+        .catch(error => {
+          context.commit('setLoginStatus', false)
+        })
+    },
+
+    checkIfConfirmed(context) {
+      axios("/confirm/check", {
+        params: {
+          userLogin: context.getters.loginName,
+        },
+        method: 'GET'
+      }).then(response => {
+        context.commit('setLoginStatus', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    checkIfLoggedIn(context) {
+      axios("/get", {
+        method: 'GET'
+      }).then(response => {
+        context.commit('setRole', response.data);
+        if (context.getters.role[0].authority == "vk" || context.getters.role[0].authority == "google") {
+          context.commit('setLogged', true);
+          router.push("/game");
+        }
+        else {
+          context.commit('setLogged', false)
+        }
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    checkIfLogged(context) {
+      axios("/auth/check", {
+        method: 'GET'
+      }).then(response => {
+        context.commit('setLogged', response.data);
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    }
   }
 
 }

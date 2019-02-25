@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '@/components/Main'
-import Registry from '@/components/Registry'
-import Forgot from '@/components/Forgot'
-import Game from '@/components/Game'
-import Confirm from '@/components/Confirm'
-import Header from '@/components/Header'
+import Main from '@/components/main/Main'
+import Registry from '@/components/main/Registry'
+import Forgot from '@/components/main/Forgot'
+import Game from '@/components/game/Game'
+import ConfirmMessage from '@/components/messages/ConfirmMessage'
+import ForgotMessage from '@/components/messages/ForgotMessage'
+import Contacts from '@/components/main/Contacts'
 
 Vue.use(Router)
 
@@ -24,11 +25,6 @@ export default new Router({
       component: Registry
     },
     {
-      path: '/header',
-      name: 'Header',
-      component: Header
-    },
-    {
       path: '/recovery',
       name: 'Forgot',
       component: Forgot
@@ -40,8 +36,18 @@ export default new Router({
     },
     {
       path: '/confirm',
-      name: 'Confirm',
-      component: Confirm
+      name: 'ConfirmMessage',
+      component: ConfirmMessage
+    },
+    {
+      path: '/forgotMessage',
+      name: 'ForgotMessage',
+      component: ForgotMessage
+    },
+    {
+      path: '/contacts',
+      name: 'Contacts',
+      component: Contacts
     }
   ]
 })

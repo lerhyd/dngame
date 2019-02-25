@@ -12,10 +12,13 @@
   "dependencies": {
     "axios": "^0.18.0",
     "axios-debug-log": "^0.4.0",
+    "luxon": "^1.11.3",
     "vue": "^2.6.6",
+    "vue-datetime": "^1.0.0-beta.10",
     "vue-router": "^3.0.1",
     "vue-scrollto": "^2.13.0",
-    "vuex": "^3.1.0"
+    "vuex": "^3.1.0",
+    "weekstart": "^1.0.0"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

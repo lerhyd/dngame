@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.persistence.EntityNotFoundException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -99,6 +98,16 @@ public class MainController {
         userDao.save(user);
         personDao.deleteById(user.getProfile().getId());
         return 0;
+    }
+
+    @GetMapping("/game/profile")
+    public boolean hasProfile(@RequestParam("login") String userLogin){
+        if (userDao.getOne(userLogin).getProfile() == null) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     /**

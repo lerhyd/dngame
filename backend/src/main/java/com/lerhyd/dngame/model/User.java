@@ -29,6 +29,9 @@ public class User{
     @Column(name = "email")
     private String email;
 
+    @Column(name = "googleEmail")
+    private String googleEmail;
+
     @Column(name = "vk_id")
     private Integer vkId;
 

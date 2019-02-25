@@ -3,7 +3,7 @@ import router from "../../router";
 
 export default {
   state: {
-    regData: [],
+    regDate: [],
     failed: false,
     errorStatus: 0
   },
@@ -22,7 +22,7 @@ export default {
 
   getters: {
     failed: state => state.failed,
-    status: state => state.errorStatus
+    errorStatus: state => state.errorStatus
   },
 
   actions: {
@@ -35,7 +35,7 @@ export default {
       }).then(response => {
         context.commit('setStatus', response.data);
         if (response.data !== 0){
-          context.commit('setFailed', true);
+          context.commit('setStatus', response.data);
           router.push("/registry")
         }
         if (response.data == 0)

@@ -7,6 +7,7 @@ import Game from '@/components/game/Game'
 import ConfirmMessage from '@/components/messages/ConfirmMessage'
 import ForgotMessage from '@/components/messages/ForgotMessage'
 import Contacts from '@/components/main/Contacts'
+import Header from '@/components/main/Header'
 
 Vue.use(Router)
 
@@ -18,6 +19,11 @@ export default new Router({
       path: '/',
       name: 'Main',
       component: Main
+    },
+    {
+      path: '/header',
+      name: 'Header',
+      component: Header
     },
     {
       path: '/registry',

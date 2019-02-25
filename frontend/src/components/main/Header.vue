@@ -27,7 +27,7 @@
   @font-face {
     font-family: 'DeathNote';
     src: local('DeathNote'),
-    url('../assets/fonts/alegreyasans/DEATHNOTEFont.ttf') format('truetype');
+    url('../../assets/fonts/alegreyasans/DEATHNOTEFont.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
   }
@@ -35,7 +35,7 @@
   @font-face {
     font-family: 'Hand';
     src: local('Hand'),
-    url('../assets/fonts/alegreyasans/14310.ttf') format('truetype');
+    url('../../assets/fonts/alegreyasans/14310.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
   }

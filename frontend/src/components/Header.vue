@@ -45,7 +45,7 @@
     text-decoration: none;
     padding: 1em;
     outline: none;
-    border-radius: 1px;
+    border-radius: 10px;
     font-size: medium;
     font-family: 'Hand';
   }
@@ -56,11 +56,7 @@
   }
   a.button16:active {
     background-image:
-      radial-gradient(45% 45% at 50% 100%, rgba(255,255,255,.9), rgba(255,255,255,0));
-      /*linear-gradient(rgba(255,255,255,.4), rgba(255,255,255,.3));*/
-    box-shadow:
-      inset rgba(162,95,42,.4) 0 0 0 1px,
-      inset rgba(255,255,255,.9) 0 0 1px 3px;
+      radial-gradient(50% 50% at 50% 50%, rgba(74, 74, 74, 0.9), rgba(255,255,255,0));
   }
 
   #app{

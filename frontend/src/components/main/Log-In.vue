@@ -10,7 +10,7 @@
     <div class="wrapper">
       <!--<div id="title">Вход в Аккаунт</div>-->
       <div><img src="../../assets/img/ryuk.png" style="width: 30%"/></div>
-      <div style="display: inherit; padding-bottom: 5%">
+      <div  id="login-form">
         <ul>
           <li><i class="fa fa-vk" aria-hidden="true"></i></li>
           <li><i class="fa fa-google-plus" aria-hidden="true"></i></li>
@@ -45,6 +45,11 @@
 
 <style scoped>
 
+  #login-form{
+    display: inherit;
+    padding-bottom: 5%;
+    /*border: 1px blue solid*/
+  }
   #forgot{
     font-family: 'Hand';
     color: white;
@@ -210,23 +215,60 @@
     transform: translateX(-50%) translateY(-50%);
   }
 
-  section article {margin: 0 auto;}
 
   @media screen and (max-width: 700px){
+    ul li{
+      margin-right: 10px;
+      left: 10%;
+    }
+
+    ul .sign-in{
+      margin-right: 10px;
+    }
+    #login-form{
+      width: 100%;
+    }
+    .wrapper{
+      width: 90%;
+    }
     .wrapper ul{
-      width: 100px;
+      width: auto;
     }
-    .wrapper ul li{
-      margin-top: 20px;
+
+    .left-section{
+      display: none;
     }
+
+    .right-section{
+      display: none;
+    }
+
+    .main-section{
+      width: 90%;
+    }
+
+    fieldset::after{
+      right: 21%;
+    }
+
 
     section img{
       display: none;
-      width: 1px;
     }
   }
 
   @media screen and (min-width:701px) and (max-width: 1209px){
+    .left-section{
+      display: none;
+    }
+
+    .right-section{
+      display: none;
+    }
+
+    .main-section{
+      width: 95%;
+    }
 
   }
 </style>

@@ -7,7 +7,7 @@
           <router-link class="button16" to="/about">О проекте</router-link>
           <router-link class="button16" to="/login" v-if="!this.$store.getters.logged">Войти</router-link>
           <router-link class="button16" to="/registry" v-if="!this.$store.getters.logged">Зарегистрироваться</router-link>
-          <router-link class="button16" to="/game" v-if="this.$store.getters.logged">В игру!</router-link>
+          <router-link class="button16" to="/game" v-if="this.$store.getters.logged">В игру</router-link>
           <router-link class="button16" to="/achievements" v-if="this.$store.getters.logged">Мои достижения</router-link>
           <router-link class="button16" to="/settings" v-if="this.$store.getters.logged">Настройки</router-link>
           <router-link class="button16" to="/logOut" v-if="this.$store.getters.logged">Выйти</router-link>

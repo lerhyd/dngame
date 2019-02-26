@@ -3,19 +3,31 @@
     <Header></Header>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <section class="left-section">
-      <img src="../../assets/img/apples.png"/>
+      <img src="../../assets/img/a1.png"/>
     </section>
     <section class="main-section">
+
     <div class="wrapper">
+      <!--<div id="title">Вход в Аккаунт</div>-->
+      <div><img src="../../assets/img/ryuk.png" style="width: 30%"/></div>
+      <div style="display: inherit">
         <ul>
-          <li><i class="fa" aria-hidden="true"></i></li>
           <li><i class="fa fa-vk" aria-hidden="true"></i></li>
           <li><i class="fa fa-google-plus" aria-hidden="true"></i></li>
         </ul>
+        <fieldset class="login">
+          <input class="form-input" type="text" placeholder="Логин" required>
+        </fieldset>
+        <fieldset class="password">
+          <input class="form-input" type="text" placeholder="Пароль" required>
+        </fieldset>
+
+
+      </div>
     </div>
     </section>
     <section class="right-section">
-      <img src="../../assets/img/r.png"/>
+      <img src="../../assets/img/a2.png"/>
     </section>
   </div>
 </template>
@@ -30,32 +42,94 @@
 
 <style scoped>
 
+  fieldset {
+    border: none;
+    position: relative;
+    /*width: 200px;*/
+    height: 50px;
+    alignment: center;
+  }
+
+  fieldset::after {
+    font-family: FontAwesome;
+    position: absolute;
+    right: 45px;
+    top: 29px;
+    text-align: center;
+    color: #880807;
+  }
+
+  fieldset.login::after {
+    content: '\f007';
+  }
+
+  fieldset.password::after {
+    content: '\f023';
+  }
+
+  ::placeholder {
+    color: white;
+  }
+  .form-input{
+    font-family: 'Hand';
+    color: white;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid white;
+    user-focus: none;
+    background: none;
+    outline: none;
+    margin-top: 10px;
+    font-size: 25px;
+    transition: all 0.5s linear;
+  }
+
+  .form-input:hover{
+    background: rgb(222, 222, 222);
+    box-shadow: 0 0 700px 1px #c0c0c0;
+    border: 1px solid #474A59;
+    color: #882a2e;
+  }
+
+  .form-input:hover::placeholder{
+    color: #882a2e;
+  }
+
+  .form-input::selection{
+    color: white;
+    background: #474A59;
+  }
+
+  .form-input:focus::placeholder{
+    color: transparent;
+  }
+
+  .wrapper{
+    display: inherit;
+    height: 30%;
+    width: 60%;
+    border: 6px solid rgb(254, 254, 254);
+    border-radius: 10px 10px 10px 10px;
+  }
+
   #app{
     text-align: center;
-    alignment: center;
-    align-content: center;
-    align-items: center;
-  }
-  .wrapper{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
   }
 
   ul{
     list-style: none;
-    width: 300px;
-    height: 100px;
-    border: 3px blue solid;
+    width: 240px;
+    height: 41px;
+    /*border: 1px wheat solid;*/
   }
 
   ul li{
     float: left;
-    width: 55px;
-    height: 50px;
+    width: 80px;
+    height: 40px;
     border: 2px solid #fff;
-    margin-right: 36px;
+    margin-right: 30px;
     border-radius: 5px;
     position: relative;
     cursor: pointer;
@@ -86,10 +160,8 @@
   }
 
   section{
-    padding-top: 5%;
-    padding-bottom: 4%;
     display: inline-block;
-    /*border: 2px red solid;*/
+    /*border: 1px darkgrey solid;*/
     width: 25%;
     text-align: center;
   }
@@ -107,9 +179,11 @@
 
   .main-section{
     width: 45%;
+    text-align: center;
+    /*border: solid 1px gray;*/
   }
 
-  @media screen and (max-width: 640px){
+  @media screen and (max-width: 700px){
     .wrapper ul{
       width: 100px;
     }
@@ -119,7 +193,11 @@
 
     section img{
       display: none;
-      width: 1%;
+      width: 1px;
     }
+  }
+
+  @media screen and (min-width:701px) and (max-width: 1209px){
+
   }
 </style>

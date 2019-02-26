@@ -62,13 +62,34 @@
 
   #app{
     text-align: center;
-    /*border: 3px solid red;*/
     display:block;
     width:100%;
     height: 75px;
-    min-height: 10%;
-    max-height: 10%;
     font-family: 'DeathNote';
     font-size: xx-large;
+  }
+
+  @media screen and (max-width: 700px){
+    #app{
+      height: 45px;
+      font-size: large;
+    }
+
+    .button16{
+      padding: 0.4em;
+      font-size: small;
+    }
+  }
+
+  @media screen and (min-width:701px) and (max-width: 1209px){
+    #app{
+      height: 50px;
+      font-size: x-large;
+    }
+
+    .button16{
+      padding: 0.7em;
+      font-size: medium;
+    }
   }
 </style>

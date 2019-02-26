@@ -10,7 +10,7 @@
     <div class="wrapper">
       <!--<div id="title">Вход в Аккаунт</div>-->
       <div><img src="../../assets/img/ryuk.png" style="width: 30%"/></div>
-      <div style="display: inherit">
+      <div style="display: inherit; padding-bottom: 5%">
         <ul>
           <li><i class="fa fa-vk" aria-hidden="true"></i></li>
           <li><i class="fa fa-google-plus" aria-hidden="true"></i></li>
@@ -21,8 +21,11 @@
         <fieldset class="password">
           <input class="form-input" type="text" placeholder="Пароль" required>
         </fieldset>
-
-
+        <router-link id="forgot" to="/recovery">Забыли пароль?</router-link>
+        <ul>
+          <li class="sign-in"><i class="fa fa-sign-in" aria-hidden="true"></i></li>
+          <li class="sign-in"><i class="fa fa-user-plus" aria-hidden="true"></i></li>
+        </ul>
       </div>
     </div>
     </section>
@@ -42,10 +45,13 @@
 
 <style scoped>
 
+  #forgot{
+    font-family: 'Hand';
+    color: white;
+  }
   fieldset {
     border: none;
     position: relative;
-    /*width: 200px;*/
     height: 50px;
     alignment: center;
   }
@@ -59,17 +65,12 @@
     color: #880807;
   }
 
-  fieldset.login::after {
-    content: '\f007';
-  }
+  fieldset.login::after {content: '\f007';}
 
-  fieldset.password::after {
-    content: '\f023';
-  }
+  fieldset.password::after {content: '\f023';}
 
-  ::placeholder {
-    color: white;
-  }
+  ::placeholder {color: white;}
+
   .form-input{
     font-family: 'Hand';
     color: white;
@@ -106,11 +107,12 @@
   }
 
   .wrapper{
-    display: inherit;
-    height: 30%;
+    display: inline-block;
+    position: center;
+    height: 90%;
     width: 60%;
-    border: 6px solid rgb(254, 254, 254);
-    border-radius: 10px 10px 10px 10px;
+    border: 5px solid rgb(254, 254, 254);
+    border-radius: 30px;
   }
 
   #app{
@@ -146,6 +148,19 @@
     transition: all 0.3s linear;
   }
 
+  ul .sign-in{
+    float: left;
+    width: 90px;
+    height: 40px;
+    border: 2px solid #fff;
+    margin-right: 10px;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s linear;
+  }
+
+
   ul li:hover{
     background: #fff;
     box-shadow: 0 0 300px 1px #c0c0c0;
@@ -157,6 +172,13 @@
 
   ul li:hover .fa-vk{
     color: #4A76A8;
+  }
+
+  ul li:hover .fa-sign-in{
+    color: #111111;}
+
+  ul li:hover .fa-user-plus{
+    color: #111111;
   }
 
   section{
@@ -180,8 +202,15 @@
   .main-section{
     width: 45%;
     text-align: center;
-    /*border: solid 1px gray;*/
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
   }
+
+  section article {margin: 0 auto;}
 
   @media screen and (max-width: 700px){
     .wrapper ul{

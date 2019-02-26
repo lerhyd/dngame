@@ -12,23 +12,21 @@
       <div><img src="../../assets/img/ryuk.png" style="width: 30%"/></div>
       <div  id="login-form">
         <ul>
-          <li><router-link to="/login/vk">
-            <i class="fa fa-vk" aria-hidden="true"></i>
-          </router-link>
-          </li>
-          <li><i class="fa fa-google-plus" aria-hidden="true"></i></li>
+          <router-link to="/login/vk"><li><i class="fa fa-vk" aria-hidden="true"></i></li></router-link>
+          <router-link to="/login/google"><li><i class="fa fa-google-plus" aria-hidden="true"></i></li></router-link>
         </ul>
         <fieldset class="login">
-          <input class="form-input" type="text" placeholder="Логин" required>
+          <input class="form-input" type="text" v-model="username" placeholder="Логин" required>
         </fieldset>
         <fieldset class="password">
-          <input class="form-input" type="password" placeholder="Пароль" required>
+          <input class="form-input" type="password" v-model="password" placeholder="Пароль" required>
         </fieldset>
         <router-link id="forgot" to="/recovery">Забыли пароль?</router-link>
         <ul>
-          <li class="sign-in"><i class="fa fa-sign-in" aria-hidden="true"></i></li>
-          <li class="sign-in"><i class="fa fa-user-plus" aria-hidden="true"></i></li>
+          <li class="sign-in" v-on:click="enter"><i class="fa fa-sign-in" aria-hidden="true"></i></li>
+          <router-link to="/registry"><li class="sign-in"><i class="fa fa-user-plus" aria-hidden="true"></i></li></router-link>
         </ul>
+        <p id="fail-message" v-if="this.$store.getters.isFailed">Неверный логин или пароль!</p>
       </div>
     </div>
     </section>
@@ -64,6 +62,11 @@
 </script>
 
 <style scoped>
+  #fail-message{
+    font-family: 'Hand';
+    color: #ff2438;
+    font-size: large;
+  }
 
   #login-form{
     display: inherit;

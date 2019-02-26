@@ -35,11 +35,6 @@ export default new Router({
       component: LogIn
     },
     {
-      path: '/signin',
-      name: 'signin',
-      component: Log_in
-    },
-    {
       path: '/recovery',
       name: 'Forgot',
       component: Forgot

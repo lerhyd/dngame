@@ -86,11 +86,11 @@
     height: 40px;
     border: 2px solid black;
   }
-  
+
   .google:hover {
     background-color: coral;
   }
-  
+
   .google img {
     background-color: #fff;
   }

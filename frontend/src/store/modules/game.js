@@ -139,7 +139,7 @@ export default {
     },
 
     getLoginName(context, data) {
-      axios("/login", {
+      axios("/login/userName", {
         method: 'GET'
       }).then(response => {
         context.commit('setLoginName', response.data)

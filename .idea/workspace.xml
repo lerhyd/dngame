@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ed83755-631a-4913-a5dc-d28486f05d84" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/controllers/AuthController.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/com/lerhyd/dngame/controllers/AuthController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/login.js" afterDir="false" />
-    </list>
+    <list default="true" id="1ed83755-631a-4913-a5dc-d28486f05d84" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/backend/target/" />
     <ignored path="$PROJECT_DIR$/frontend/target/" />
@@ -100,8 +95,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+            <state relative-caret-position="450">
+              <caret line="141" column="28" selection-start-line="141" selection-start-column="28" selection-end-line="141" selection-end-column="28" />
             </state>
           </provider>
         </entry>
@@ -256,12 +251,12 @@
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/filters/GoogleFilter.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/filters/VkFilter.java" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/MainController.java" />
-        <option value="$PROJECT_DIR$/frontend/src/store/modules/game.js" />
         <option value="$PROJECT_DIR$/frontend/src/components/game/Game.vue" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/config/SecurityConfig.java" />
         <option value="$PROJECT_DIR$/frontend/src/main.js" />
         <option value="$PROJECT_DIR$/frontend/src/store/modules/login.js" />
         <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java" />
+        <option value="$PROJECT_DIR$/frontend/src/store/modules/game.js" />
       </list>
     </option>
   </component>
@@ -600,12 +595,12 @@
       <workItem from="1551139543317" duration="587000" />
       <workItem from="1551169429208" duration="1526000" />
       <workItem from="1551186579100" duration="237000" />
-      <workItem from="1551221989493" duration="261000" />
+      <workItem from="1551221989493" duration="509000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="505632000" />
+    <option name="totallyTimeSpent" value="505880000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1602" height="868" extended-state="6" />
@@ -1069,8 +1064,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="139" lean-forward="true" selection-start-line="139" selection-end-line="139" />
+        <state relative-caret-position="450">
+          <caret line="141" column="28" selection-start-line="141" selection-start-column="28" selection-end-line="141" selection-end-column="28" />
         </state>
       </provider>
     </entry>

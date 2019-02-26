@@ -9,6 +9,8 @@ import ForgotMessage from '@/components/messages/ForgotMessage'
 import Contacts from '@/components/main/Contacts'
 import Header from '@/components/main/Header'
 import LogIn from '@/components/main/Log-In'
+import Log_in from '@/components/main/Login'
+
 
 
 Vue.use(Router)
@@ -31,6 +33,11 @@ export default new Router({
       path: '/login',
       name: 'LogIn',
       component: LogIn
+    },
+    {
+      path: '/signin',
+      name: 'signin',
+      component: Log_in
     },
     {
       path: '/recovery',

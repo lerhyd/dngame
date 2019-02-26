@@ -12,14 +12,17 @@
       <div><img src="../../assets/img/ryuk.png" style="width: 30%"/></div>
       <div  id="login-form">
         <ul>
-          <li><i class="fa fa-vk" aria-hidden="true"></i></li>
+          <li><router-link to="/login/vk">
+            <i class="fa fa-vk" aria-hidden="true"></i>
+          </router-link>
+          </li>
           <li><i class="fa fa-google-plus" aria-hidden="true"></i></li>
         </ul>
         <fieldset class="login">
           <input class="form-input" type="text" placeholder="Логин" required>
         </fieldset>
         <fieldset class="password">
-          <input class="form-input" type="text" placeholder="Пароль" required>
+          <input class="form-input" type="password" placeholder="Пароль" required>
         </fieldset>
         <router-link id="forgot" to="/recovery">Забыли пароль?</router-link>
         <ul>
@@ -39,7 +42,24 @@
     import Header from "@/components/main/Header";
     export default {
         name: "Log-In",
-      components: {Header}
+      components: {Header},
+      methods: {
+        enter () {
+          this.$store.dispatch('signIn', {username: this.username, password: this.password}).then();
+          this.$store.commit('setLogin', {username: this.username, password: this.password});
+        },
+
+        checkIfLoggedIn (){
+          this.$store.dispatch('checkIfLoggedIn').then();
+        }
+      },
+      data (){
+        return {
+          username: '',
+          password: ''
+        }
+      }
+
     }
 </script>
 
@@ -179,30 +199,20 @@
     color: #4A76A8;
   }
 
-  ul li:hover .fa-sign-in{
-    color: #111111;}
+  ul li:hover .fa-sign-in{color: #111111;}
 
-  ul li:hover .fa-user-plus{
-    color: #111111;
-  }
+  ul li:hover .fa-user-plus{color: #111111;}
 
   section{
     display: inline-block;
-    /*border: 1px darkgrey solid;*/
     width: 25%;
     text-align: center;
   }
 
-  section img{
-    width: 100%;
-  }
-  .left-section{
-    float: left;
-  }
+  section img{width: 100%;}
+  .left-section{float: left;}
 
-  .right-section{
-    float: right;
-  }
+  .right-section{float: right;}
 
   .main-section{
     width: 45%;
@@ -222,53 +232,30 @@
       left: 10%;
     }
 
-    ul .sign-in{
-      margin-right: 10px;
-    }
-    #login-form{
-      width: 100%;
-    }
-    .wrapper{
-      width: 90%;
-    }
-    .wrapper ul{
-      width: auto;
-    }
+    ul .sign-in{margin-right: 10px;}
 
-    .left-section{
-      display: none;
-    }
+    #login-form{width: 100%;}
 
-    .right-section{
-      display: none;
-    }
+    .wrapper{width: 90%;}
 
-    .main-section{
-      width: 90%;
-    }
+    .wrapper ul{width: auto;}
 
-    fieldset::after{
-      right: 21%;
-    }
+    .left-section{display: none;}
 
+    .right-section{display: none;}
 
-    section img{
-      display: none;
-    }
+    .main-section{width: 90%;}
+
+    fieldset::after{right: 21%;}
+
+    section img{display: none;}
   }
 
   @media screen and (min-width:701px) and (max-width: 1209px){
-    .left-section{
-      display: none;
-    }
+    .left-section{display: none;}
 
-    .right-section{
-      display: none;
-    }
+    .right-section{display: none;}
 
-    .main-section{
-      width: 95%;
-    }
-
+    .main-section{width: 95%;}
   }
 </style>

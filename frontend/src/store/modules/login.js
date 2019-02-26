@@ -8,7 +8,6 @@ export default {
     isFailed: false,
     loginStatus: true,
     role: null,
-    loggedInSocial: false,
     logged: undefined
   },
 
@@ -22,9 +21,6 @@ export default {
     setLoginStatus (state, data){
       state.loginStatus = data
     },
-    setLoggedInSocial (state, data){
-      state.loggedInSocial = data
-    },
     setLogged (state, data){
       state.logged = data
     },
@@ -37,7 +33,6 @@ export default {
     isFailed: state => state.isFailed,
     login: state => state.login,
     loginStatus: state => state.loginStatus,
-    loggedInSocial: state => state.loggedInSocial,
     role: state => state.role,
     logged: state => state.logged
   },

@@ -91,7 +91,7 @@ public class AuthController {
         return 0;
     }
 
-    @GetMapping("/login")
+    @GetMapping("/login/userName")
     public String currentUserName(Principal principal) {
         return principal.getName();
     }

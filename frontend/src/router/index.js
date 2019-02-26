@@ -8,6 +8,8 @@ import ConfirmMessage from '@/components/messages/ConfirmMessage'
 import ForgotMessage from '@/components/messages/ForgotMessage'
 import Contacts from '@/components/main/Contacts'
 import Header from '@/components/main/Header'
+import LogIn from '@/components/main/Log-In'
+
 
 Vue.use(Router)
 
@@ -21,14 +23,14 @@ export default new Router({
       component: Main
     },
     {
-      path: '/header',
-      name: 'Header',
-      component: Header
-    },
-    {
       path: '/registry',
       name: 'Registry',
       component: Registry
+    },
+    {
+      path: '/login',
+      name: 'LogIn',
+      component: LogIn
     },
     {
       path: '/recovery',

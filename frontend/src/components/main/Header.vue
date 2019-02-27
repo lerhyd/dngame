@@ -7,7 +7,7 @@
           <router-link class="button16" to="/about">О проекте</router-link>
           <router-link class="button16" to="/login" v-if="!this.$store.getters.logged">Войти</router-link>
           <router-link class="button16" to="/registry" v-if="!this.$store.getters.logged">Зарегистрироваться</router-link>
-          <router-link class="button16" to="/game" v-if="this.$store.getters.logged">В игру!</router-link>
+          <router-link class="button16" to="/game" v-if="this.$store.getters.logged">В игру</router-link>
           <router-link class="button16" to="/achievements" v-if="this.$store.getters.logged">Мои достижения</router-link>
           <router-link class="button16" to="/settings" v-if="this.$store.getters.logged">Настройки</router-link>
           <router-link class="button16" to="/logOut" v-if="this.$store.getters.logged">Выйти</router-link>
@@ -62,13 +62,34 @@
 
   #app{
     text-align: center;
-    /*border: 3px solid red;*/
     display:block;
     width:100%;
     height: 75px;
-    min-height: 10%;
-    max-height: 10%;
     font-family: 'DeathNote';
     font-size: xx-large;
+  }
+
+  @media screen and (max-width: 700px){
+    #app{
+      height: 45px;
+      font-size: x-large;
+    }
+
+    .button16{
+      padding: 0px;
+      font-size: small;
+    }
+  }
+
+  @media screen and (min-width:701px) and (max-width: 1209px){
+    #app{
+      height: 50px;
+      font-size: xx-large;
+    }
+
+    .button16{
+      padding: 0.3em;
+      font-size: 24px;
+    }
   }
 </style>

@@ -1,14 +1,15 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '@/components/main/Main'
-import Registry from '@/components/main/Registry'
 import Forgot from '@/components/main/Forgot'
 import Game from '@/components/game/Game'
 import ConfirmMessage from '@/components/messages/ConfirmMessage'
 import ForgotMessage from '@/components/messages/ForgotMessage'
 import Contacts from '@/components/main/Contacts'
-import Header from '@/components/main/Header'
-import LogIn from '@/components/main/Log-In'
+import NewRegistry from '@/components/main/NewRegistry'
+import Login from '@/components/main/Log-In'
+
+
 
 
 Vue.use(Router)
@@ -24,13 +25,13 @@ export default new Router({
     },
     {
       path: '/registry',
-      name: 'Registry',
-      component: Registry
+      name: 'NewRegistry',
+      component: NewRegistry
     },
     {
       path: '/login',
-      name: 'LogIn',
-      component: LogIn
+      name: 'Login',
+      component: Login
     },
     {
       path: '/recovery',

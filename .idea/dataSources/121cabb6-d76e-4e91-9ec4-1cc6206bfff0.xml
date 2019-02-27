@@ -25,11 +25,11 @@ sequence|table|77600|77602|1
 sequence|table|77608|77610|1
 sequence|table|77616|77618|1
 sequence|table|77627|77629|1
+sequence|table|77675|77677|2
 sequence|table|77635|77637|1
 sequence|table|77643|77645|1
 sequence|table|77654|77656|1
 sequence|table|77667|77669|1
-sequence|table|77675|77677|2
 </Relations>
     </database>
     <database id="4" parent="1" name="postgres">

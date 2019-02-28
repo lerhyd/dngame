@@ -1,15 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Main from '@/components/main/Main'
-import Forgot from '@/components/main/Forgot'
+import Forgot from '@/components/main/NewForgot'
 import Game from '@/components/game/Game'
 import ConfirmMessage from '@/components/messages/ConfirmMessage'
 import ForgotMessage from '@/components/messages/ForgotMessage'
 import Contacts from '@/components/main/Contacts'
 import NewRegistry from '@/components/main/NewRegistry'
 import Login from '@/components/main/Log-In'
-
-
 
 
 Vue.use(Router)

@@ -8,10 +8,7 @@
     <section class="main-section">
       <div class="wrapper">
         <div><img src="../../assets/img/ryuk.png" style="width: 30%"/></div>
-        <form  id="login-form">
-          <fieldset class="email">
-            <input class="form-input" type="email" v-model="email" placeholder="Введите почту" required>
-          </fieldset>
+        <form  id="registry-form">
           <fieldset class="login">
             <input class="form-input" type="text" v-model="login" placeholder="Придумайте логин" required>
           </fieldset>
@@ -20,6 +17,9 @@
           </fieldset>
           <fieldset class="re-password">
             <input class="form-input" type="password" v-model="retypePassword" placeholder="Повторите пароль" required>
+          </fieldset>
+          <fieldset class="email">
+            <input class="form-input" type="email" v-model="email" placeholder="Введите почту" required>
           </fieldset>
           <div>
             <button type="submit" class="submit"><a>Зарегистрироваться</a></button>
@@ -70,6 +70,11 @@
 </script>
 
 <style scoped>
+
+  #registry-form{
+    display: inherit;
+    padding-bottom: 5%;
+  }
 
   #fail-message{
     font-family: 'Hand';
@@ -154,7 +159,7 @@
   fieldset::after {
     font-family: FontAwesome;
     position: absolute;
-    right: 13%;
+    right: 8%;
     top: 53%;
     text-align: center;
     color: #880807;
@@ -213,7 +218,7 @@
 
   @media screen and (max-width: 700px){
 
-    #login-form{width: 100%;}
+    #registry-form{width: 100%;}
 
     .wrapper{width: 90%;}
 

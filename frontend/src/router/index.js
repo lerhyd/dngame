@@ -10,8 +10,6 @@ import NewRegistry from '@/components/main/NewRegistry'
 import Login from '@/components/main/Log-In'
 
 
-
-
 Vue.use(Router)
 
 export default new Router({

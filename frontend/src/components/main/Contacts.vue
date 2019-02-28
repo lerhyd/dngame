@@ -32,6 +32,8 @@
                     <a href="http://t.me/c08ectb">Telegram</a>
                   </div>
                 </div>
+              </tr>
+              <tr>
                 <div class="button github">
                   <i class="fa fa-github" aria-hidden="true" ></i>
                   <div class="slide">
@@ -49,6 +51,8 @@
                     <a href="http://t.me/kuroiavem">Telegram</a>
                   </div>
                 </div>
+              </tr>
+              <tr>
                 <div class="button github">
                   <i class="fa fa-github" aria-hidden="true" ></i>
                   <div class="slide">
@@ -79,10 +83,10 @@
 <style scoped>
 
   .contacts-table{
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     color: #111111;
-    font-size: x-large;
+    font-size: 130%;
     width: 85%;
     position: center;
     display: inline-block;
@@ -100,7 +104,7 @@
   }
 
   #first-row{
-    padding-top: 30px;
+    padding-top: 10px;
     /*border-right: 1px solid #111111;*/
     border-width: 1px;
     border-style: solid;
@@ -115,13 +119,14 @@
 
 
   .questions-list {
-    background: white;
-    width: 75%;
+    /*background: white;*/
+    width: 90%;
     align-content: center;
     position: center;
     display: inline-block;
     padding: 0 10px;
     margin: 0;
+    /*border-radius: 90px;*/
   }
   .questions-list li {
     border-bottom: 1px solid #efefef;
@@ -133,7 +138,7 @@
     text-decoration: none;
     color: #5e5e5e;
     font-family: 'Hand';
-    font-size: 20px;
+    font-size: 100%;
   }
 
   .telegram {
@@ -148,13 +153,13 @@
 
   a{
     color: #5e5e5e;
-    font-size: 21px;
+    font-size: 100%;
   }
   a a{
     color: #111111;
     text-align: center;
     display: block;
-    font-size: x-large;
+    font-size: 120%;
     margin-top: 15px;
     margin-bottom: 15px;
   }
@@ -170,10 +175,11 @@
     width: 80%;
     /*border: 5px solid;*/
     background: white;
+    border-radius: 150px;
     /*border-image: linear-gradient(90deg, #d6d6d6 0%, #1e1e1e 100%);*/
     /*border-image-slice: 1;*/
     font-family: 'Hand';
-    box-shadow: 0px 0px 60px 50px #ffffff;
+    box-shadow: 0px 0px 20px 20px #ffffff;
   }
 
   .button {
@@ -265,11 +271,12 @@
   }
 
   .main-section{
-    width: 45%;
+    width: 50%;
     text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
+    /*max-height: 60%;*/
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);

@@ -220,7 +220,11 @@
 
     #registry-form{width: 100%;}
 
-    .wrapper{width: 90%;}
+    .wrapper{
+      width: 90%;
+      border: 5px solid rgb(254, 254, 254);
+      border-radius: 10px;
+    }
 
     .wrapper ul{width: auto;}
 

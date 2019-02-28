@@ -11,7 +11,7 @@
         <div class="questions-list">
         <ul>
           <li><a>Есть предложения по улучшению?</a></li>
-          <li><a>Не можешь войти в свой аккаунт?</a></li>
+          <li><a>Не можешь войти в свой аккаунт или восстановить его?</a></li>
           <li><a>Возникли проблемы во время игрового процесса?</a></li>
           <li><a>Или нашел очередной баг? (возможно это фича)</a></li>
           <li><a>А может появились какие-то вопросы?</a></li>
@@ -116,7 +116,7 @@
 
   .questions-list {
     background: white;
-    width: 70%;
+    width: 75%;
     align-content: center;
     position: center;
     display: inline-block;

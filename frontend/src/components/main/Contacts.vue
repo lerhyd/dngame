@@ -29,13 +29,13 @@
                 <div class="button telegram">
                   <i class="fa fa-telegram" aria-hidden="true" ></i>
                   <div class="slide">
-                    <p>Telegram</p>
+                    <a href="http://t.me/c08ectb">Telegram</a>
                   </div>
                 </div>
                 <div class="button github">
                   <i class="fa fa-github" aria-hidden="true" ></i>
                   <div class="slide">
-                    <p>GitHub</p>
+                    <a href="https://github.com/CO8ECTb">GitHub</a>
                   </div>
                 </div>
               </tr>
@@ -46,13 +46,13 @@
                 <div class="button telegram">
                   <i class="fa fa-telegram" aria-hidden="true" ></i>
                   <div class="slide">
-                    <p>Telegram</p>
+                    <a href="http://t.me/kuroiavem">Telegram</a>
                   </div>
                 </div>
                 <div class="button github">
                   <i class="fa fa-github" aria-hidden="true" ></i>
                   <div class="slide">
-                    <p>GitHub</p>
+                    <a href="https://github.com/lerhyd">GitHub</a>
                   </div>
                 </div>
               </tr>
@@ -116,7 +116,7 @@
 
   .questions-list {
     background: white;
-    width: 60%;
+    width: 70%;
     align-content: center;
     position: center;
     display: inline-block;
@@ -133,11 +133,9 @@
     text-decoration: none;
     color: #5e5e5e;
     font-family: 'Hand';
-    font-size: medium;
+    font-size: 20px;
   }
 
-
-  @import url(http://fonts.googleapis.com/css?family=Open+Sans:400);
   .telegram {
     background: #2EA3DD;
   }
@@ -213,7 +211,7 @@
     width: 90px;
   }
 
-  .slide p {
+  .slide a {
     font-family: "Apple Symbols";
     border-left: 1px solid rgba(255,255,255,0.35);
     color: #fff;
@@ -224,6 +222,7 @@
     text-align: center;
     top: 10px;
     width: 100%;
+    text-decoration: none;
   }
 
 
@@ -274,6 +273,47 @@
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
     transform: translateX(-50%) translateY(-50%);
+  }
+
+  @media screen and (max-width: 700px){
+
+    .wrapper{
+      width: 95%;
+      box-shadow: none;
+      border-radius: 20px;
+    }
+
+    a{
+      color: #5e5e5e;
+      font-size: 15px;
+    }
+    a a{
+      color: #111111;
+      text-align: center;
+      display: block;
+      font-size: large;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    .questions-list {
+      width: 80%;
+      background: transparent;
+    }
+
+    .questions-list a {
+      text-decoration: none;
+      color: #5e5e5e;
+      font-family: 'Hand';
+      font-size: small;
+    }
+
+    #first-row{padding-top: 10px;}
+
+    .left-section{display: none;}
+
+    .right-section{display: none;}
+
+    .main-section{width: 95%;}
   }
 
   @media screen and (min-width:701px) and (max-width: 1209px){

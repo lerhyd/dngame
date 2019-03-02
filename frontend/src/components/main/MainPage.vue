@@ -1,38 +1,21 @@
 <template>
   <div>
     <Header></Header>
-    <!--To use it you have to install library using command 'npm install sass-loader node-sass --save-dev'-->
-    <!--And this one 'npm install vue-agile'-->
-    <main>
-    <!--<agile>-->
-      <!--<div class="slide slide&#45;&#45;1"><h3>slide 1</h3></div>-->
-      <!--<div class="slide slide&#45;&#45;2"><h3>slide 2</h3></div>-->
-      <!--<div class="slide slide&#45;&#45;3"><h3>slide 3</h3></div>-->
-      <!--<div class="slide slide&#45;&#45;4"><h3>slide 4</h3></div>-->
-      <!--<div class="slide slide&#45;&#45;5"><h3>slide 5</h3></div>-->
-      <!--<div class="slide slide&#45;&#45;6"><h3>slide 6</h3></div>-->
-    <!--</agile>-->
-    <!--<agile :prevArrow="left" :nextArrow="right" :speed="750"-->
-           <!--:timing="'linear'" :fade="true"-->
-           <!--:autoplay="true" :pauseOnHover="false" :dots="false">-->
-      <!--<div class="slide slide&#45;&#45;1"></div>-->
-      <!--<div class="slide slide&#45;&#45;2"></div>-->
-      <!--<div class="slide slide&#45;&#45;3"></div>-->
-    <!--</agile>-->
-
-      <agile :infinite="false" :dots="false" :arrows="false" :autoplay="true" :speed="1750"
-      :timing="'linear'" :fade="true"
-      :pauseOnHover="true">
-        <div class="slide slide--1"><h3>slide 1</h3></div>
-        <div class="slide slide--2"><h3>slide 2</h3></div>
-        <div class="slide slide--3"><h3>slide 3</h3></div>
-        <div class="slide slide--4"><h3>slide 4</h3></div>
-        <div class="slide slide--5"><h3>slide 5</h3></div>
-        <div class="slide slide--6"><h3>slide 6</h3></div>
-      </agile>
-    </main>
+    <section class="main-section">
+      <div class="main">
+      <!--To use it you have to install library using command 'npm install sass-loader node-sass --save-dev'-->
+      <!--And this one 'npm install vue-agile'-->
+          <agile :infinite="false" :dots="false" :arrows="false" :autoplay="true" :speed="1750"
+          :timing="'linear'" :fade="true" :pauseOnHover="false">
+            <div class="slide slide--1"><h3>slide 1</h3></div>
+            <div class="slide slide--2"><h3>slide 2</h3></div>
+            <div class="slide slide--3"><h3>slide 3</h3></div>
+            <div class="slide slide--4"><h3>slide 4</h3></div>
+            <div class="slide slide--5"><h3>slide 5</h3></div>
+          </agile>
+      </div>
+    </section>
   </div>
-
 </template>
 <script>
     import Header from "@/components/main/Header";
@@ -43,16 +26,31 @@
 </script>
 
 <style lang="scss" type="text/scss">
+
+  .main-section{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-45%);
+  }
+
+  .main {
+    width: 95%;
+    height: 100%;
+    display: inline-block;
+    position: center;
+  }
   .slide {
     background: {
       position: center;
       size: cover;
 
     }
-    height: 550px;
-    width: 100px;
-    /*height: auto;*/
-    /*width: 100%;*/
+    height: 500px;
 
     &:before {
       background-color: rgba(#000, .2);
@@ -95,5 +93,6 @@
       transform: translate(-50%, -50%);
     }
   }
+
 
 </style>

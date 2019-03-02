@@ -145,7 +145,6 @@
 
   ul{
     color: #111111;
-    /*border: blue 1px solid;*/
     text-align: left;
   }
 
@@ -211,6 +210,7 @@
     left: 38px;
     position: absolute;
     width: 90px;
+    background: transparent;
   }
 
   .slide a {
@@ -262,8 +262,6 @@
   section img{
     height: auto;
     width: 100%;
-    /*border: red 1px solid;*/
-    /*margin-top: 0px;*/
   }
 
   .main-section{
@@ -334,21 +332,13 @@
     .main-section{width: 95%;}
 
     .questions-list li {
-      /*border-bottom: none;*/
-      /*padding: 0px 0;*/
       list-style-type: circle;
       list-style-position: inside;
     }
 
-    .wrapper{
-      width: 80%;
-      /*box-shadow: none;*/
-      /*border-radius: 20px;*/
-    }
+    .wrapper{width: 80%;}
 
-    .questions-list{
-      width: 60%;
-    }
+    .questions-list{width: 60%;}
   }
 
 </style>

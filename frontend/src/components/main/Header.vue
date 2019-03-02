@@ -3,7 +3,7 @@
       <header>
         <div>Death Note</div>
         <div>
-          <router-link class="button16" to="/main">Главная</router-link>
+          <router-link class="button16" to="/">Главная</router-link>
           <router-link class="button16" to="/about">О проекте</router-link>
           <router-link class="button16" to="/login" v-if="!this.$store.getters.logged">Войти</router-link>
           <router-link class="button16" to="/registry" v-if="!this.$store.getters.logged">Зарегистрироваться</router-link>

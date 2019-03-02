@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Main from '@/components/main/Main'
+import Main from '@/components/main/MainPage'
 import Forgot from '@/components/main/NewForgot'
 import Game from '@/components/game/Game'
 import ConfirmMessage from '@/components/messages/ConfirmMessage'

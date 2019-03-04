@@ -8,6 +8,7 @@ import ForgotMessage from '@/components/messages/ForgotMessage'
 import Contacts from '@/components/main/Contacts'
 import NewRegistry from '@/components/main/NewRegistry'
 import Login from '@/components/main/Log-In'
+import NotFound from '@/components/main/NotFound'
 
 
 Vue.use(Router)
@@ -25,6 +26,10 @@ export default new Router({
       path: '/registry',
       name: 'NewRegistry',
       component: NewRegistry
+    },
+    {
+      path: "*",
+      component: NotFound
     },
     {
       path: '/login',

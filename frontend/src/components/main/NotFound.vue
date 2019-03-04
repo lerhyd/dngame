@@ -117,13 +117,19 @@
     height: 100%;
     width: 2px;
     background-color: #010000;
-    /*background: #880000;*/
   }
   .close:before {
     transform: rotate(45deg);
   }
   .close:after {
     transform: rotate(-45deg);
+  }
+
+  @media screen and (max-width: 700px) {
+    .main-section{
+      width: 95%;
+    }
+
   }
 
 

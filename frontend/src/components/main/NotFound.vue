@@ -129,8 +129,6 @@
     .main-section{
       width: 95%;
     }
-
   }
-
 
 </style>

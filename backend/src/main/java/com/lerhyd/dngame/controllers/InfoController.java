@@ -37,12 +37,15 @@ public class InfoController {
     @Autowired
     private AchievementDao achievementDao;
 
+    @Autowired
+    private RuleDao ruleDao;
+
     /**
      * Get the user's info.
      * @param userLogin ID of the user.
      * @return Stream of user info.
      */
-    @GetMapping("/game/user/get")
+    @GetMapping("/game/user")
     public Stream<UserInfo> getUser(@RequestParam("login") String userLogin){
         User user = userDao.findById(userLogin).get();
         return Stream.of(user).map(UserInfo::new);
@@ -53,7 +56,7 @@ public class InfoController {
      * @param userLogin ID of the user.
      * @return Stream of person info.
      */
-    @GetMapping("/game/user/profile/get")
+    @GetMapping("/game/user/profile")
     public Stream<PersonInfo> getUserProfile(@RequestParam("login") String userLogin){
         User user = userDao.findById(userLogin).get();
         return Stream.of(user.getProfile()).map(PersonInfo::new);
@@ -64,7 +67,7 @@ public class InfoController {
      * @param agentId ID of the Agent.
      * @return Stream of person info.
      */
-    @GetMapping("/game/persons/get")
+    @GetMapping("/game/persons")
     public Stream<PersonInfo> getPersons(@RequestParam("id") int agentId){
         List<Person> people = personDao.findAllAlivePersonsByAgentId(agentId);
         return people.stream().map(PersonInfo::new);
@@ -246,6 +249,15 @@ public class InfoController {
                 return Stream.of(achievements.get(achievements.size()-1)).map(AchievementInfo::new);
             }
         }
+    }
+
+    /**
+     * Get all the rules.
+     * @return Stream of rules.
+     */
+    @GetMapping("/game/rules")
+    public Stream<RulesInfo> getRules(){
+        return ruleDao.findAll().stream().map(RulesInfo::new);
     }
 
 }

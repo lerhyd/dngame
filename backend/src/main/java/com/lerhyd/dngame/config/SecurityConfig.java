@@ -120,7 +120,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .authorizeRequests()
                         .mvcMatchers("/").permitAll()
-                        .antMatchers("/contacts", "/auth/check").permitAll()
+                        .antMatchers("/contacts", "/auth/check", "/game/rules").permitAll()
                         .antMatchers("/main", "/recovery", "/forgotMessage", "/forgot/password").permitAll()
                         .antMatchers("/signup", "/logout", "/favicon.ico", "/confirm/**", "/login").permitAll()
                         .anyRequest().authenticated()

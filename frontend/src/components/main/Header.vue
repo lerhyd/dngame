@@ -1,16 +1,18 @@
 <template>
+
     <div id="app">
       <header>
         <div>Death Note</div>
         <div>
-          <router-link class="button16" to="/">Главная</router-link>
-          <router-link class="button16" to="/about">О проекте</router-link>
-          <router-link class="button16" to="/login" v-if="!this.$store.getters.logged">Войти</router-link>
-          <router-link class="button16" to="/registry" v-if="!this.$store.getters.logged">Зарегистрироваться</router-link>
-          <router-link class="button16" to="/game" v-if="this.$store.getters.logged">В игру</router-link>
-          <router-link class="button16" to="/achievements" v-if="this.$store.getters.logged">Мои достижения</router-link>
-          <router-link class="button16" to="/settings" v-if="this.$store.getters.logged">Настройки</router-link>
-          <router-link class="button16" to="/logOut" v-if="this.$store.getters.logged">Выйти</router-link>
+          {{checkIfLoggedIn()}}
+          <router-link class="button16" to="/" @click="checkIfLoggedIn()">Главная</router-link>
+          <router-link class="button16" to="/about" @click="checkIfLoggedIn()">О проекте</router-link>
+          <router-link class="button16" to="/login" @click="checkIfLoggedIn()" v-if="!this.$store.getters.logged">Войти</router-link>
+          <router-link class="button16" to="/registry" @click="checkIfLoggedIn()" v-if="!this.$store.getters.logged">Зарегистрироваться</router-link>
+          <router-link class="button16" to="/game" @click="checkIfLoggedIn()" v-if="this.$store.getters.logged">В игру</router-link>
+          <router-link class="button16" to="/achievements" @click="checkIfLoggedIn()" v-if="this.$store.getters.logged">Мои достижения</router-link>
+          <router-link class="button16" to="/settings" @click="checkIfLoggedIn()" v-if="this.$store.getters.logged">Настройки</router-link>
+          <router-link class="button16" to="/logOut" @click="checkIfLoggedIn()" v-if="this.$store.getters.logged">Выйти</router-link>
         </div>
       </header>
     </div>
@@ -18,7 +20,12 @@
 
 <script>
     export default {
-        name: "Header"
+        name: "Header",
+        methods: {
+          checkIfLoggedIn (){
+            this.$store.dispatch('checkIfLoggedIn').then();
+          }
+        }
     }
 </script>
 

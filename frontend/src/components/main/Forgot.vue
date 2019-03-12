@@ -47,7 +47,7 @@
 
 <style scoped>
   #recovery {
-    font-family: 'Alegreya Sans';
+    /*font-family: 'Alegreya Sans';*/
     text-align: center;
     color: #EFEFEA;
     background-color: #030000;

@@ -9,6 +9,8 @@ import Contacts from '@/components/main/Contacts'
 import NewRegistry from '@/components/main/NewRegistry'
 import Login from '@/components/main/Log-In'
 import NotFound from '@/components/main/NotFound'
+import About from '@/components/main/About'
+
 
 
 Vue.use(Router)
@@ -21,6 +23,11 @@ export default new Router({
       path: '/',
       name: 'Main',
       component: Main
+    },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
     },
     {
       path: '/registry',

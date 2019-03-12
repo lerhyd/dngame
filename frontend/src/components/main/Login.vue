@@ -1,13 +1,14 @@
 <template>
+  {{checkIfLoggedIn()}}
   <div>
     <div class="social">
       <div class="google">
         <img src="../../assets/img/google_logo.png" alt="google">
-        <a href="http://localhost:1234/login/google" @click="checkIfLoggedIn()">LOG IN WITH GOOGLE</a>
+        <a href="/login/google" @click="checkIfLoggedIn()">LOG IN WITH GOOGLE</a>
       </div>
       <div class="vk">
         <img src="../../assets/img/vk_logo.png" alt="vk">
-        <a href="http://localhost:1234/login/vk" @click="checkIfLoggedIn()">LOG IN WITH VKONTAKTE {{checkIfLoggedIn()}}</a>
+        <a href="/login/vk" @click="checkIfLoggedIn()">LOG IN WITH VKONTAKTE {{checkIfLoggedIn()}}</a>
       </div>
     </div>
     <p>or</p>

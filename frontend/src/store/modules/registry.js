@@ -36,9 +36,11 @@ export default {
         context.commit('setStatus', response.data);
         if (response.data !== 0){
           context.commit('setStatus', response.data);
+          console.log(response.data)
           router.push("/registry")
         }
         if (response.data == 0)
+          console.log(response.data)
           router.push("/confirm")
 
       })

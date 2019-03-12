@@ -106,10 +106,11 @@
     border-radius: 5px;
     /*border: 1px red solid;*/
   }
+
   .close:hover {
     background: #880000;
-
   }
+
   .close:before, .close:after {
     position: absolute;
     left: 10px;

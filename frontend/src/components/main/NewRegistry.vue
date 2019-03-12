@@ -8,7 +8,7 @@
     <section class="main-section">
       <div class="wrapper">
         <div><img src="../../assets/img/ryuk.png" style="width: 30%"/></div>
-        <form  id="registry-form">
+        <form  id="registry-form" @submit.prevent="signup">
           <fieldset class="login">
             <input class="form-input" type="text" v-model="login" placeholder="Придумайте логин" required>
           </fieldset>

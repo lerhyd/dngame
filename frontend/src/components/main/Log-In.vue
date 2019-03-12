@@ -12,8 +12,9 @@
       <div><img src="../../assets/img/ryuk.png" style="width: 30%"/></div>
       <div  id="login-form">
         <ul>
-          <router-link to="/login/vk"><li><i class="fa fa-vk" aria-hidden="true"></i></li></router-link>
-          <router-link to="/login/google"><li><i class="fa fa-google-plus" aria-hidden="true"></i></li></router-link>
+          {{checkIfLoggedIn()}}
+          <a href="/login/vk" @click="checkIfLoggedIn()"><li><i class="fa fa-vk" aria-hidden="true"></i></li></a>
+          <a href="/login/google" @click="checkIfLoggedIn()"><li><i class="fa fa-google-plus" aria-hidden="true"></i></li></a>
         </ul>
         <fieldset class="login">
           <input class="form-input" type="text" v-model="username" placeholder="Логин" required>

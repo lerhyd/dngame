@@ -91,7 +91,6 @@
     position: center;
     display: inline-block;
     padding: 0 10px;
-
   }
 
   .contacts-table table {

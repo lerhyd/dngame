@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1ed83755-631a-4913-a5dc-d28486f05d84" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/EntryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/EntryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/RequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/RequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/css/app.620977fb443052ecca37587fe05a78f7.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/css/app.620977fb443052ecca37587fe05a78f7.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/app.f42a18acfabf110428f5.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/app.f42a18acfabf110428f5.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/public/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterDir="false" />
-    </list>
+    <list default="true" id="1ed83755-631a-4913-a5dc-d28486f05d84" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/backend/target/" />
     <ignored path="$PROJECT_DIR$/frontend/target/" />
@@ -88,8 +77,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="510">
-                <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+              <first_editor relative-caret-position="504">
+                <caret line="51" column="73" lean-forward="true" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="73" />
               </first_editor>
               <second_editor />
             </state>
@@ -635,15 +624,15 @@
       <workItem from="1552315580639" duration="2760000" />
       <workItem from="1552416066894" duration="13000" />
       <workItem from="1552420680825" duration="5473000" />
-      <workItem from="1552504220017" duration="3887000" />
+      <workItem from="1552504220017" duration="4170000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="521865000" />
+    <option name="totallyTimeSpent" value="522148000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1602" height="868" extended-state="7" />
+    <frame x="-1" y="0" width="1602" height="868" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3397933" />
@@ -1047,8 +1036,8 @@
     <entry file="file://$PROJECT_DIR$/README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="510">
-            <caret line="34" column="9" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
+          <first_editor relative-caret-position="504">
+            <caret line="51" column="73" lean-forward="true" selection-start-line="51" selection-start-column="73" selection-end-line="51" selection-end-column="73" />
           </first_editor>
           <second_editor />
         </state>

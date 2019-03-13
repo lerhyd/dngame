@@ -70,7 +70,8 @@ public class RequestController {
      * 7 -- The request with the person already exists,
      * 8 -- There's no person with the identification data,
      * 9 -- The Kira won because the Agent's points less than 0,
-     * 0 -- The function was executed correctly.
+     * 0 -- The function was executed correctly,
+     * 01 -- The Agent won because he has 300 points or more.
      */
     @PostMapping("/game/request/add")
     public int addRequest(@RequestBody RequestReq requestReq){
@@ -132,8 +133,10 @@ public class RequestController {
             newsDao.save(generateNewsFromRequest(request));
 
             int points = agentDao.findPointsById(requestReq.getAgentId());
+            if (points >= 300)
+                return 01;//agent won
             if (points < 0)
-                return 9;//Kira wins
+                return 9;//kira won
 
             Agent agent = agentDao.getOne(requestReq.getAgentId());
             if (agent.getNumberOfCaughtKillers() >= 3){

@@ -13,16 +13,16 @@
         </div>
       </section>
       <section class="main-section-about">
-        <div class="main-table">
+        <div class="main-table-area">
           <table>
-            <td id="first-row">
-              <tr><button class="button" v-on:click="state = 3">Что это вообще такое?</button></tr>
-              <tr><button class="button" v-on:click="state = 1">Правила игры</button></tr>
-              <tr><button class="button" v-on:click="state = 2">Правила Тетради</button></tr>
-              <tr><button class="button" v-on:click="state = 5">А зачем?</button></tr>
-              <tr><router-link to="/contacts"><button class="button" >Ещё вопросы?</button></router-link></tr>
+            <td id="first-table-row">
+              <tr><button class="button-state" v-on:click="state = 3">Что это вообще такое?</button></tr>
+              <tr><button class="button-state" v-on:click="state = 1">Правила игры</button></tr>
+              <tr><button class="button-state" v-on:click="state = 2">Правила Тетради</button></tr>
+              <tr><button class="button-state" v-on:click="state = 5">А зачем?</button></tr>
+              <tr><router-link to="/contacts"><button class="button-state" >Ещё вопросы?</button></router-link></tr>
             </td>
-            <td id="second-row">
+            <td id="second-table-row">
               <tr colspan="5" id="content-area">
                 <a v-if="state == 0">Выбери раздел. Рискни, открой ящик пандоры
                   и узнай тайны, хранящиеся за семью печатями!</a>
@@ -220,7 +220,7 @@
     }
   }
 
-  .button{
+  .button-state{
     width: 100%;
     height: 70px;
     background: transparent;
@@ -233,26 +233,26 @@
     cursor: pointer;
   }
 
-  .button:hover,
-  .button:active {
+  .button-state:hover,
+  .button-state:active {
     letter-spacing: 2px;
     border-bottom: 1px solid #111111;
   }
 
-  .button:after,
-  .button:before {
+  .button-state:after,
+  .button-state:before {
     transition: all 280ms ease-in-out;
   }
 
-  .button:hover:after,
-  .button:hover:before {
+  .button-state:hover:after,
+  .button-state:hover:before {
     backface-visibility: hidden;
     border-color: #fff;
     transition: width 350ms ease-in-out;
     width: 70%;
   }
 
-  .button:hover:before {
+  .button-state:hover:before {
     bottom: auto;
     top: 0;
     width: 70%;
@@ -262,10 +262,10 @@
     text-align: left;
   }
 
-  #first-row{
+  #first-table-row{
     width: 30%;
   }
-  #second-row{
+  #second-table-row{
     display: block;
     width: 98%;
     margin-left: 1%;
@@ -280,7 +280,7 @@
     font-family: 'Hand';
   }
 
-  .main-table{
+  .main-table-area{
     margin-top: 5px;
     margin-bottom: 5px;
     position: center;
@@ -293,7 +293,7 @@
     box-shadow: 0px 0px 10px 10px #ffffff;
   }
 
-  .main-table table {
+  .main-table-area table {
     border-collapse: collapse;
     position: center;
     align-content: center;
@@ -305,11 +305,8 @@
     border-radius: 10px;
   }
 
-  table, th, td {
+  .main-table-area td {
     border: 1px solid #2d2d2d;
-  }
-
-  tr, td{
     font-size:large;
   }
 
@@ -339,7 +336,7 @@
 
   @media screen and (max-width: 700px){
 
-    .main-table{
+    .main-table-area{
       width: 95%;
       box-shadow: none;
       border-radius: 20px;
@@ -359,7 +356,7 @@
 
     .main-section-about{width: 95%;}
 
-    .main-table{width: 80%;}
+    .main-table-area{width: 80%;}
 
   }
 

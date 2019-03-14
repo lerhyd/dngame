@@ -2,19 +2,18 @@
     <div id="app">
       <Header></Header>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <section class="left-section">
+      <section class="left-section-about">
         <div class="main">
           <agile :infinite="false" :dots="false" :arrows="false" :autoplay="true" :speed="1700"
                  :timing="'linear'" :fade="true" :pauseOnHover="false" :autoplaySpeed="4500">
-            <div class="slide slide--1"></div>
-            <div class="slide slide--2"></div>
-            <div class="slide slide--3"></div>
+            <div class="slides slides--1"></div>
+            <div class="slides slides--2"></div>
+            <div class="slides slides--3"></div>
           </agile>
         </div>
       </section>
-      <section class="main-section">
-        <div class="wrapper">
-          <div class="main-table">
+      <section class="main-section-about">
+        <div class="main-table">
           <table>
             <td id="first-row">
               <tr><button class="button" v-on:click="state = 3">Что это вообще такое?</button></tr>
@@ -121,15 +120,14 @@
             </td>
           </table>
           </div>
-        </div>
       </section>
-      <section class="right-section">
+      <section class="right-section-about">
         <div class="main">
           <agile :infinite="false" :dots="false" :arrows="false" :autoplay="true" :speed="1700"
                  :timing="'linear'" :fade="true" :pauseOnHover="false" :autoplaySpeed="4500">
-            <div class="slide slide--4"></div>
-            <div class="slide slide--5"></div>
-            <div class="slide slide--6"></div>
+            <div class="slides slides--4"></div>
+            <div class="slides slides--5"></div>
+            <div class="slides slides--6"></div>
           </agile>
         </div>
       </section>
@@ -157,7 +155,7 @@
     display: inline-block;
     position: center;
   }
-  .slide {
+  .slides {
     background: {
       position: center;
       size: cover;
@@ -285,11 +283,14 @@
   .main-table{
     margin-top: 5px;
     margin-bottom: 5px;
-    /*font-size: 130%;*/
-    width: 96%;
     position: center;
     display: inline-block;
     padding: 0 10px;
+    width: 95%;
+    border: 5px solid rgb(254, 254, 254);
+    border-radius: 30px;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0px 10px 10px #ffffff;
   }
 
   .main-table table {
@@ -320,24 +321,12 @@
     /*border: 1px gray solid;*/
   }
 
-  .wrapper{
-    display: inline-block;
-    position: center;
-    /*height: 90%;*/
-    width: 98%;
-    border: 5px solid rgb(254, 254, 254);
-    border-radius: 30px;
-    background: rgb(255, 255, 255);
-    box-shadow: 0px 0px 10px 10px #ffffff;
-
-  }
-
   section img{width: 100%;}
-  .left-section{float: left;}
+  .left-section-about{float: left;}
 
-  .right-section{float: right;}
+  .right-section-about{float: right;}
 
-  .main-section{
+  .main-section-about{
     width: 50%;
     text-align: center;
     position: absolute;
@@ -350,27 +339,27 @@
 
   @media screen and (max-width: 700px){
 
-    .wrapper{
+    .main-table{
       width: 95%;
       box-shadow: none;
       border-radius: 20px;
     }
 
-    .left-section{display: none;}
+    .left-section-about{display: none;}
 
-    .right-section{display: none;}
+    .right-section-about{display: none;}
 
-    .main-section{width: 95%;}
+    .main-section-about{width: 95%;}
   }
 
   @media screen and (min-width:701px) and (max-width: 1209px){
-    .left-section{display: none;}
+    .left-section-about{display: none;}
 
-    .right-section{display: none;}
+    .right-section-about{display: none;}
 
-    .main-section{width: 95%;}
+    .main-section-about{width: 95%;}
 
-    .wrapper{width: 80%;}
+    .main-table{width: 80%;}
 
   }
 

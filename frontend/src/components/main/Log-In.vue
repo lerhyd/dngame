@@ -8,7 +8,6 @@
     <section class="main-section">
 
     <div class="wrapper">
-      <!--<div id="title">Вход в Аккаунт</div>-->
       <div><img src="../../assets/img/ryuk.png" style="width: 30%"/></div>
       <div  id="login-form">
         <ul>

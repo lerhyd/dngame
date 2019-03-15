@@ -54,7 +54,7 @@ export default new Router({
       component: Game
     },
     {
-      path: '/confirm/*',
+      path: '/confirm',
       name: 'ConfirmMessage',
       component: ConfirmMessage
     },

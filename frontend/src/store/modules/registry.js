@@ -34,16 +34,14 @@ export default {
         email: credentials.email
       }).then(response => {
         context.commit('setStatus', response.data);
-        if (response.data !== 0){
+        console.log(response.data)
+        if (response.data != 0){
           context.commit('setStatus', response.data);
-          console.log(context.state.registryStatus)
           router.push("/registry")
-        }
-        if (response.data == 0)
+        } else {
           context.commit('setStatus', response.data);
-          console.log(context.state.registryStatus)
           router.push("/confirm")
-
+        }
       })
         .catch(error => {
           context.commit('setFailed', true);

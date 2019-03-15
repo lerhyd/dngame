@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div id="confirm-mes">
       <section>
         <p>
           На почту отправлено подтверждающее письмо. Подтверди почту, чтобы завершить регистрацию.
@@ -50,9 +50,10 @@
     font-style: normal;
   }
 
-  #app{
+  #confirm-mes{
     font-family: 'Hand';
     font-size: x-large;
+    color: white;
   }
 
   #to-main{

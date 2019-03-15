@@ -26,17 +26,17 @@
             <td width="50%" align="center" id="first-row">
               <tr>CO8ECTb</tr>
               <tr>
-                <div class="button telegram">
+                <div class="social-button telegram">
                   <i class="fa fa-telegram" aria-hidden="true" ></i>
-                  <div class="slide">
+                  <div class="social-name">
                     <a href="http://t.me/c08ectb">Telegram</a>
                   </div>
                 </div>
               </tr>
               <tr>
-                <div class="button github">
+                <div class="social-button github">
                   <i class="fa fa-github" aria-hidden="true" ></i>
-                  <div class="slide">
+                  <div class="social-name">
                     <a href="https://github.com/CO8ECTb">GitHub</a>
                   </div>
                 </div>
@@ -45,17 +45,17 @@
             <td width="50%" align="center">
               <tr>Pizza-Eater</tr>
               <tr>
-                <div class="button telegram">
+                <div class="social-button telegram">
                   <i class="fa fa-telegram" aria-hidden="true" ></i>
-                  <div class="slide">
+                  <div class="social-name">
                     <a href="http://t.me/kuroiavem">Telegram</a>
                   </div>
                 </div>
               </tr>
               <tr>
-                <div class="button github">
+                <div class="social-button github">
                   <i class="fa fa-github" aria-hidden="true" ></i>
-                  <div class="slide">
+                  <div class="social-name">
                     <a href="https://github.com/lerhyd">GitHub</a>
                   </div>
                 </div>
@@ -176,7 +176,7 @@
     box-shadow: 0px 0px 20px 20px #ffffff;
   }
 
-  .button {
+  .social-button {
     position: relative;
     display: block;
     float: left;
@@ -201,7 +201,7 @@
   }
 
 
-  .slide {
+  .social-name {
     z-index: 2;
     display: block;
     margin: 0;
@@ -212,7 +212,7 @@
     background: transparent;
   }
 
-  .slide a {
+  .social-name a {
     font-family: "Apple Symbols";
     border-left: 1px solid rgba(255,255,255,0.35);
     color: #fff;

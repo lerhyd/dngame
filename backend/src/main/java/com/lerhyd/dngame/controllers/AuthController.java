@@ -126,11 +126,8 @@ public class AuthController {
      */
     @GetMapping("/confirm/check")
     public boolean checkIfConfirm(String userLogin){
-<<<<<<< HEAD
         if (userLogin == null)
             return false;
-=======
->>>>>>> CO8ECTb-master
         return userDao.getOne(userLogin).isConfirmed();
     }
 

@@ -52,8 +52,8 @@ export default {
   },
 
   actions: {
-    getUser(context, data){
-      axios("/game/user/get", {
+    getUser(context){
+      axios("/game/user", {
         params: {
           login: context.getters.loginName
         },
@@ -67,16 +67,14 @@ export default {
     },
 
     createProfile(context, data){
-      axios("/game/profile/create", {
-        params: {
+      console.log(context.getters.loginName)
+      axios.post("/game/profile/create", {
           name: data.name,
           surname: data.surname,
           patr: data.patr,
           sex: data.sex,
           bornDate: data.bornDate,
           userLogin: context.getters.loginName
-        },
-        method: 'POST'
       }).then(response => {
         context.commit('setProfileCreateStatus', response.data)
       })
@@ -85,8 +83,8 @@ export default {
         })
     },
 
-    getProfile (context, data) {
-      axios("/game/user/profile/get", {
+    getProfile (context) {
+      axios("/game/user/profile", {
         params: {
           login: context.getters.loginName
         },
@@ -99,7 +97,7 @@ export default {
         })
     },
 
-    deleteProfile(context, data){
+    deleteProfile(context){
       axios("/game/profile/delete", {
         params: {
           login: context.getters.loginName
@@ -129,13 +127,14 @@ export default {
         })
     },
 
-    hasProfile(context, data) {
+    hasProfile(context) {
       axios("/game/profile", {
         params: {
           login: context.getters.loginName
         },
         method: 'GET'
       }).then(response => {
+        console.log(response.data)
         context.commit('setHasProfile', response.data)
       })
         .catch(error => {
@@ -143,7 +142,7 @@ export default {
         })
     },
 
-    getLoginName(context, data) {
+    getLoginName(context) {
       axios("/login/userName", {
         method: 'GET'
       }).then(response => {

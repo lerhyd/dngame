@@ -2,27 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dc8ff81c-426b-4b8c-89b1-b50d28a04d39" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0/storage_v2/_src_/database/dndb.iB4vAA/schema/public.abK9xQ.meta" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/121cabb6-d76e-4e91-9ec4-1cc6206bfff0/storage_v2/_src_/database/dndb.iB4vAA/schema/public.abK9xQ.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/static/css/app.f9e0b91f269518d1832db2abe5a080bb.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/static/css/app.f9e0b91f269518d1832db2abe5a080bb.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/static/js/app.abd68641e6e0e23b2e52.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/static/js/app.abd68641e6e0e23b2e52.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/static/js/app.2ef592ba98877c89e9ba.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/static/js/app.2ef592ba98877c89e9ba.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/public/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/css/app.ac2098e9c1f9941052f3183f5fd65d4b.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/css/app.ac2098e9c1f9941052f3183f5fd65d4b.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/app.94e9be2bd26655766c93.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/app.94e9be2bd26655766c93.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/app.2ef592ba98877c89e9ba.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/app.2ef592ba98877c89e9ba.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/public/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/components/game/Game.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/game/Game.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/target/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/target/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/target/dist/static/css/app.f9e0b91f269518d1832db2abe5a080bb.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/target/dist/static/css/app.f9e0b91f269518d1832db2abe5a080bb.css.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/target/dist/static/js/app.abd68641e6e0e23b2e52.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/target/dist/static/js/app.abd68641e6e0e23b2e52.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/target/dist/static/js/app.2ef592ba98877c89e9ba.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/target/dist/static/js/app.2ef592ba98877c89e9ba.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/target/dist/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/target/dist/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -87,15 +79,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/game.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1290">
-              <caret line="86" column="31" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/registry.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="660">
@@ -151,9 +134,21 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/components/messages/ForgotMessage.vue">
           <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/src/router/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="57">
+              <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -187,8 +182,8 @@
         <option value="$PROJECT_DIR$/frontend/src/components/main/NewRegistry.vue" />
         <option value="$PROJECT_DIR$/frontend/src/store/modules/login.js" />
         <option value="$PROJECT_DIR$/frontend/src/store/modules/registry.js" />
-        <option value="$PROJECT_DIR$/frontend/src/router/index.js" />
         <option value="$PROJECT_DIR$/frontend/src/components/game/Game.vue" />
+        <option value="$PROJECT_DIR$/frontend/src/router/index.js" />
       </list>
     </option>
   </component>
@@ -416,7 +411,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552849215913" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552849580826" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -452,12 +447,12 @@
       <option name="presentableId" value="Default" />
       <updated>1552834692133</updated>
       <workItem from="1552834695354" duration="792000" />
-      <workItem from="1552848813155" duration="391000" />
+      <workItem from="1552848813155" duration="639000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2769000" />
+    <option name="totallyTimeSpent" value="3090000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1602" height="868" extended-state="6" />
@@ -586,16 +581,6 @@
     <entry file="file://$PROJECT_DIR$/frontend/src/components/main/Registry.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2568" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/router/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="57" column="23" selection-start-line="57" selection-start-column="23" selection-end-line="57" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/main.js">
@@ -739,6 +724,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/components/messages/ForgotMessage.vue">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/router/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="55" column="21" selection-start-line="55" selection-start-column="21" selection-end-line="55" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

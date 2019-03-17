@@ -48,7 +48,11 @@ export default {
       }).then(response => {
         if (response.status = 200) {
           context.commit('setLogged', true)
-          router.push("/")
+          if(context.getters.loginStatus){
+            router.push("/")
+          } else{
+            router.push("/reSend")
+          }
         } else
           context.commit('setFailed', true)
       })

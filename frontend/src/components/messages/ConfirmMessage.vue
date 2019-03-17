@@ -48,6 +48,7 @@
     url('../../assets/fonts/alegreyasans/14310.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
+    color: white;
   }
 
   #confirm-mes{

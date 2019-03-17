@@ -10,8 +10,7 @@ import NewRegistry from '@/components/main/NewRegistry'
 import Login from '@/components/main/Log-In'
 import NotFound from '@/components/main/NotFound'
 import About from '@/components/main/About'
-
-
+import NotConfirmEmailMessage from '@/components/messages/NotConfirmEmailMessage'
 
 Vue.use(Router)
 
@@ -54,10 +53,14 @@ export default new Router({
       component: Game
     },
     {
-
-      path: '/confirm',
+      path: '/confirm/*',
       name: 'ConfirmMessage',
       component: ConfirmMessage
+    },
+    {
+      path: '/reSend',
+      name: 'NotConfirmEmailMessage',
+      component: NotConfirmEmailMessage
     },
     {
       path: '/forgotMessage',

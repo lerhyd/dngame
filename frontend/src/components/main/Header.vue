@@ -5,6 +5,7 @@
         <div>Death Note</div>
         <div>
           {{checkIfLogged()}}
+          {{checkIfLoggedIn()}}
           {{checkIfConfirmed()}}
           <router-link class="button16" to="/" @click="checkIfLogged();checkIfConfirmed()">Главная</router-link>
           <router-link class="button16" to="/about" @click="checkIfLogged();checkIfConfirmed()">О проекте</router-link>
@@ -25,6 +26,9 @@
         methods: {
           checkIfLogged (){
             this.$store.dispatch('checkIfLogged').then();
+          },
+          checkIfLoggedIn (){
+            this.$store.dispatch('checkIfLoggedIn').then();
           },
           checkIfConfirmed (){
             this.$store.dispatch('checkIfConfirmed').then();

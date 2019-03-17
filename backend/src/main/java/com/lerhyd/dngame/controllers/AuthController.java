@@ -129,7 +129,6 @@ public class AuthController {
         if (userLogin == null)
             return false;
         return userDao.getOne(userLogin).isConfirmed();
-
     }
 
     /**

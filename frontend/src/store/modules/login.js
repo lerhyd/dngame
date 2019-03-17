@@ -70,18 +70,23 @@ export default {
           context.commit('setLoginStatus', false)
       })
         .catch(error => {
-          context.commit('setLoginStatus', false)
+          console.log(error)
         })
     },
 
     checkIfConfirmed(context) {
       axios("/confirm/check", {
         params: {
-          userLogin: context.getters.loginName,
+          userLogin: context.getters.login.username,
         },
         method: 'GET'
       }).then(response => {
-        context.commit('setLoginStatus', response.data)
+        if (context.getters.role[0].authority == "vk" || context.getters.role[0].authority == "google")
+          context.commit('setLoginStatus', true)
+        else {
+          console.log(response.data)
+          context.commit('setLoginStatus', response.data)
+        }
       })
         .catch(error => {
           console.log(error)
@@ -93,12 +98,6 @@ export default {
         method: 'GET'
       }).then(response => {
         context.commit('setRole', response.data);
-        if (context.getters.role[0].authority == "vk" || context.getters.role[0].authority == "google") {
-          context.commit('setLogged', true);
-        }
-        else {
-          context.commit('setLogged', false)
-        }
       })
         .catch(error => {
           console.log(error)

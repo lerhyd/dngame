@@ -232,10 +232,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1" />
-    <option name="width" value="1602" />
-    <option name="height" value="868" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-136" />
+    <option name="y" value="253" />
+    <option name="width" value="1594" />
+    <option name="height" value="879" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">

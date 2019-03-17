@@ -146,7 +146,7 @@
 </script>
 
 <style scoped>
-<<<<<<< HEAD
+
  * {
    color: white;
  }
@@ -174,6 +174,5 @@
    background-image:
      radial-gradient(50% 50% at 50% 50%, rgba(74, 74, 74, 0.9), rgba(255,255,255,0));
  }
-=======
->>>>>>> 5394f71599c0d0d13dedba123fbd95e851a72227
+
 </style>

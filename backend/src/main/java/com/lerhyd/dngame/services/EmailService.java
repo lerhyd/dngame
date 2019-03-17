@@ -20,7 +20,11 @@ public class EmailService {
     public void sendMail(String subject, User to, String text){
         SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
         simpleMailMessage.setSubject(subject);
+<<<<<<< HEAD
         simpleMailMessage.setFrom("deathNoteGame@yandex.ru");
+=======
+        simpleMailMessage.setFrom("deathNoteGameProject@yandex.ru");
+>>>>>>> CO8ECTb-master
         simpleMailMessage.setTo(to.getEmail());
         simpleMailMessage.setText(text);
         //if (env.getProperty("PMAIL") != null) javaMailSender.send(simpleMailMessage);

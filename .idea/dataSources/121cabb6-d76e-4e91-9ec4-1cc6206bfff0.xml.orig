@@ -7,7 +7,7 @@
     <database id="2" parent="1" name="dbdb">
       <ObjectId>16385</ObjectId>
       <StateNumber>569</StateNumber>
-     <Owner>postgres</Owner>
+      <Owner>postgres</Owner>
     </database>
     <database id="3" parent="1" name="dndb">
       <ObjectId>16386</ObjectId>
@@ -220,18 +220,21 @@ sequence|table|85557|85559|2
       <DataType>bigint</DataType>
     </sequence>
     <sequence id="29" parent="20" name="achievements_to_agent_agent_id_seq">
-
+<<<<<<< HEAD
       <ObjectId>86998</ObjectId>
-      <Owner>lerhyd</Owner>
+      <Owner>lerhyd</Owner>
       <StateNumber>13672</StateNumber>
+=======
       <ObjectId>85440</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13196</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="30" parent="20" name="achievements_to_kira_kira_id_seq">
+<<<<<<< HEAD
       <ObjectId>87004</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13673</StateNumber>

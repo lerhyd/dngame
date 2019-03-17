@@ -46,16 +46,10 @@ export default {
         },
         method: 'POST'
       }).then(response => {
-<<<<<<< HEAD
         if (response.status = 200) {
           context.commit('setLogged', true)
           router.push("/")
         } else
-=======
-        if (response.status = 200)
-          router.push("/game")
-        else
->>>>>>> CO8ECTb-master
           context.commit('setFailed', true)
       })
         .catch(error => {
@@ -76,18 +70,13 @@ export default {
           context.commit('setLoginStatus', false)
       })
         .catch(error => {
-<<<<<<< HEAD
           console.log(error)
-=======
-          context.commit('setLoginStatus', false)
->>>>>>> CO8ECTb-master
         })
     },
 
     checkIfConfirmed(context) {
       axios("/confirm/check", {
         params: {
-<<<<<<< HEAD
           userLogin: context.getters.login.username,
         },
         method: 'GET'
@@ -98,13 +87,6 @@ export default {
           console.log(response.data)
           context.commit('setLoginStatus', response.data)
         }
-=======
-          userLogin: context.getters.loginName,
-        },
-        method: 'GET'
-      }).then(response => {
-        context.commit('setLoginStatus', response.data)
->>>>>>> CO8ECTb-master
       })
         .catch(error => {
           console.log(error)
@@ -116,16 +98,6 @@ export default {
         method: 'GET'
       }).then(response => {
         context.commit('setRole', response.data);
-<<<<<<< HEAD
-=======
-        if (context.getters.role[0].authority == "vk" || context.getters.role[0].authority == "google") {
-          context.commit('setLogged', true);
-          console.log(context.state.logged)
-        }
-        else {
-          context.commit('setLogged', false)
-        }
->>>>>>> CO8ECTb-master
       })
         .catch(error => {
           console.log(error)

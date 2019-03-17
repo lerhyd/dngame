@@ -25,21 +25,12 @@
             <button type="submit" class="submit"><a>Зарегистрироваться</a></button>
           </div>
           <p id="fail-message">
-<<<<<<< HEAD
             <a v-if="this.$store.getters.registryStatus == 1">Пользователь с таким логином<br> уже существует</a>
             <a v-else-if="this.$store.getters.registryStatus == 2">Пароли не совпадают</a>
             <a v-else-if="this.$store.getters.registryStatus == 3">Длина пароля меньше<br> 6 символов</a>
             <a v-else-if="this.$store.getters.registryStatus == 4">Пароль содержит недопустимые символы</a>
             <a v-else-if="this.$store.getters.registryStatus == 5">Пользователь с такий адресом<br> почты уже существует</a>
             <a v-else-if="this.$store.getters.registryStatus == 6">Поле с почтой заполнено<br> неверно</a>
-=======
-            <a v-if="this.$store.getters.errorStatus == 1">Пользователь с таким логином<br> уже существует</a>
-            <a v-else-if="this.$store.getters.errorStatus == 2">Пароли не совпадают</a>
-            <a v-else-if="this.$store.getters.errorStatus == 3">Длина пароля меньше<br> 6 символов</a>
-            <a v-else-if="this.$store.getters.errorStatus == 4">Пароль содержит недопустимые символы</a>
-            <a v-else-if="this.$store.getters.errorStatus == 5">Пользователь с такий адресом<br> почты уже существует</a>
-            <a v-else-if="this.$store.getters.errorStatus == 6">Поле с почтой заполнено<br> неверно</a>
->>>>>>> CO8ECTb-master
           </p>
         </form>
       </div>

@@ -4,7 +4,6 @@
       <header>
         <div>Death Note</div>
         <div>
-<<<<<<< HEAD
           {{checkIfLogged()}}
           {{checkIfLoggedIn()}}
           {{checkIfConfirmed()}}
@@ -16,17 +15,6 @@
           <router-link class="button16" to="/achievements" @click="checkIfLogged();checkIfConfirmed()" v-if="this.$store.getters.logged && this.$store.getters.loginStatus">Мои достижения</router-link>
           <router-link class="button16" to="/settings" @click="checkIfLogged();checkIfConfirmed()" v-if="this.$store.getters.logged && this.$store.getters.loginStatus">Настройки</router-link>
           <a class="button16" href="/logout" @click="checkIfLogged();checkIfConfirmed()" v-if="this.$store.getters.logged">Выйти</a>
-=======
-          {{checkIfLoggedIn()}}
-          <router-link class="button16" to="/" @click="checkIfLoggedIn()">Главная</router-link>
-          <router-link class="button16" to="/about" @click="checkIfLoggedIn()">О проекте</router-link>
-          <router-link class="button16" to="/login" @click="checkIfLoggedIn()" v-if="!this.$store.getters.logged">Войти</router-link>
-          <router-link class="button16" to="/registry" @click="checkIfLoggedIn()" v-if="!this.$store.getters.logged">Зарегистрироваться</router-link>
-          <router-link class="button16" to="/game" @click="checkIfLoggedIn()" v-if="this.$store.getters.logged">В игру</router-link>
-          <router-link class="button16" to="/achievements" @click="checkIfLoggedIn()" v-if="this.$store.getters.logged">Мои достижения</router-link>
-          <router-link class="button16" to="/settings" @click="checkIfLoggedIn()" v-if="this.$store.getters.logged">Настройки</router-link>
-          <router-link class="button16" to="/logOut" @click="checkIfLoggedIn()" v-if="this.$store.getters.logged">Выйти</router-link>
->>>>>>> CO8ECTb-master
         </div>
       </header>
     </div>
@@ -36,7 +24,7 @@
     export default {
         name: "Header",
         methods: {
-<<<<<<< HEAD
+
           checkIfLogged (){
             this.$store.dispatch('checkIfLogged').then();
           },
@@ -45,10 +33,6 @@
           },
           checkIfConfirmed (){
             this.$store.dispatch('checkIfConfirmed').then();
-=======
-          checkIfLoggedIn (){
-            this.$store.dispatch('checkIfLoggedIn').then();
->>>>>>> CO8ECTb-master
           }
         }
     }

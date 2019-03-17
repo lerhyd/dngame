@@ -54,11 +54,8 @@ export default new Router({
       component: Game
     },
     {
-<<<<<<< HEAD
+
       path: '/confirm',
-=======
-      path: '/confirm/*',
->>>>>>> CO8ECTb-master
       name: 'ConfirmMessage',
       component: ConfirmMessage
     },

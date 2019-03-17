@@ -24,6 +24,9 @@
           <div>
             <button type="submit" class="submit"><a>Зарегистрироваться</a></button>
           </div>
+          <p id="ok-message">
+            <a v-if="this.$store.getters.registryStatus == 0 && this.status==true">Подтверждающее письмо<br> отправлено на почту</a>
+          </p>
           <p id="fail-message">
             <a v-if="this.$store.getters.registryStatus == 1">Пользователь с таким логином<br> уже существует</a>
             <a v-else-if="this.$store.getters.registryStatus == 2">Пароли не совпадают</a>
@@ -53,7 +56,8 @@
           login: '',
           password: '',
           retypePassword: '',
-          email: ''
+          email: '',
+          status: false
         }
       },
       methods: {
@@ -63,7 +67,8 @@
             password: this.password,
             retypePassword: this.retypePassword,
             email: this.email
-          }).then()
+          }).then();
+          this.status = true;
         }
       }
     }
@@ -79,6 +84,12 @@
   #fail-message{
     font-family: 'Hand';
     color: #ff2438;
+    font-size: large;
+  }
+
+  #ok-message{
+    font-family: 'Hand';
+    color: green;
     font-size: large;
   }
 

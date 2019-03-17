@@ -241,12 +241,14 @@
     font-family: 'DeathNote';
     font-size: 40px;
     color: white;
+    cursor: default;
   }
 
   .right-section a{
     font-family: 'DeathNote';
     font-size: 40px;
     color: white;
+    cursor: default;
   }
 
   .right-section{

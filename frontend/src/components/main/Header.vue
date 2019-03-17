@@ -2,7 +2,7 @@
 
     <div id="app">
       <header>
-        <div>Death Note</div>
+        <div style="cursor: default;">Death Note</div>
         <div>
           {{checkIfLogged()}}
           {{checkIfLoggedIn()}}

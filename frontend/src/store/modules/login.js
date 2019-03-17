@@ -46,9 +46,10 @@ export default {
         },
         method: 'POST'
       }).then(response => {
-        if (response.status = 200)
-          router.push("/game")
-        else
+        if (response.status = 200) {
+          context.commit('setLogged', true)
+          router.push("/")
+        } else
           context.commit('setFailed', true)
       })
         .catch(error => {
@@ -94,7 +95,6 @@ export default {
         context.commit('setRole', response.data);
         if (context.getters.role[0].authority == "vk" || context.getters.role[0].authority == "google") {
           context.commit('setLogged', true);
-          console.log(context.state.logged)
         }
         else {
           context.commit('setLogged', false)

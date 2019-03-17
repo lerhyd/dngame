@@ -126,7 +126,10 @@ public class AuthController {
      */
     @GetMapping("/confirm/check")
     public boolean checkIfConfirm(String userLogin){
+        if (userLogin == null)
+            return false;
         return userDao.getOne(userLogin).isConfirmed();
+
     }
 
     /**

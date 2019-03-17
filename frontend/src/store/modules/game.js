@@ -6,6 +6,8 @@ export default {
     user:[],
     profile:[],
     rules: [],
+    kiraAchievements: [],
+    agentAchievements: [],
     hasProfile:undefined,
     loginName: null,
     profileCreateStatus: 0,
@@ -14,6 +16,12 @@ export default {
   },
 
   mutations: {
+    setAgentAchievements (state, data) {
+      state.agentAchievements = data
+    },
+    setKiraAchievements (state, data) {
+      state.kiraAchievements = data
+    },
     setUser (state, data) {
       state.user = data
     },
@@ -48,7 +56,9 @@ export default {
     profileDeleteStatus: state => state.profileDeleteStatus,
     gameClassChooseStatus: state => state.gameClassChooseStatus,
     loginName: state => state.loginName,
-    rules: state => state.rules
+    rules: state => state.rules,
+    kiraAchievements: state => state.kiraAchievements,
+    agentAchievements: state => state.agentAchievements
   },
 
   actions: {
@@ -159,6 +169,36 @@ export default {
           method: 'GET'
         }).then(response => {
         context.commit('setRules', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    getKiraAchievements(context){
+      axios("/game/kira/achievements",
+        {
+          params: {
+            login: context.getters.loginName
+          },
+          method: 'GET'
+        }).then(response => {
+        context.commit('setKiraAchievements', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    getAgentAchievements(context){
+      axios("/game/agent/achievements",
+        {
+          params: {
+            login: context.getters.loginName
+          },
+          method: 'GET'
+        }).then(response => {
+        context.commit('setAgentAchievements', response.data)
       })
         .catch(error => {
           console.log(error)

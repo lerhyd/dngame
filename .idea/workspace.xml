@@ -3,19 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="dc8ff81c-426b-4b8c-89b1-b50d28a04d39" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/static/js/app.2ef592ba98877c89e9ba.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/static/js/app.2ef592ba98877c89e9ba.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/public/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/public/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/app.2ef592ba98877c89e9ba.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/app.2ef592ba98877c89e9ba.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/public/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/public/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/target/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/target/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/target/dist/static/js/app.2ef592ba98877c89e9ba.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/target/dist/static/js/app.2ef592ba98877c89e9ba.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/target/dist/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/target/dist/static/js/manifest.2ae2e69a05c33dfc65f8.js.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/src/store/modules/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/store/modules/game.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <ignored path="$PROJECT_DIR$/backend/target/" />
@@ -79,29 +67,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/registry.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="45" column="9" selection-start-line="45" selection-start-column="9" selection-end-line="45" selection-end-column="9" />
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/forgot.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#25#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/login.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
@@ -125,7 +90,27 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/components/messages/ConfirmMessage.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-902" />
+            <state relative-caret-position="-2">
+              <caret line="60" column="17" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/game.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="267">
+              <caret line="195" column="19" lean-forward="true" selection-start-line="195" selection-start-column="19" selection-end-line="195" selection-end-column="19" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/InfoController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="73">
+              <caret line="144" column="40" selection-start-line="144" selection-start-column="17" selection-end-line="144" selection-end-column="40" />
+            </state>
           </provider>
         </entry>
       </file>
@@ -139,7 +124,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/frontend/src/router/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="57">
@@ -152,20 +137,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/AuthController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-              <folding>
-                <element signature="e#7260#7261#0" expanded="true" />
-                <element signature="e#7284#7285#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
+        <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/failedConfirmMessage.html">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/failedConfirmMessage.html">
+        <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/successConfirmMessage.html">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -184,6 +161,8 @@
         <option value="$PROJECT_DIR$/frontend/src/store/modules/registry.js" />
         <option value="$PROJECT_DIR$/frontend/src/components/game/Game.vue" />
         <option value="$PROJECT_DIR$/frontend/src/router/index.js" />
+        <option value="$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/InfoController.java" />
+        <option value="$PROJECT_DIR$/frontend/src/store/modules/game.js" />
       </list>
     </option>
   </component>
@@ -411,7 +390,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552849580826" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552850465899" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -447,18 +426,18 @@
       <option name="presentableId" value="Default" />
       <updated>1552834692133</updated>
       <workItem from="1552834695354" duration="792000" />
-      <workItem from="1552848813155" duration="639000" />
+      <workItem from="1552848813155" duration="1641000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3090000" />
+    <option name="totallyTimeSpent" value="4125000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="0" width="1602" height="868" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3617571" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3617571" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -468,7 +447,7 @@
       <window_info id="Image Layers" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36605892" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.36605892" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -622,13 +601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/InfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://121cabb6-d76e-4e91-9ec4-1cc6206bfff0/database/dndb/schema/public/table/persons" />
     <entry file="file://$PROJECT_DIR$/backend/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
@@ -654,13 +626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="86" column="31" selection-start-line="86" selection-start-column="31" selection-end-line="86" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -694,9 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/failedConfirmMessage.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/login.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -714,11 +676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/frontend/src/components/messages/ConfirmMessage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-902" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/frontend/src/components/messages/NotConfirmEmailMessage.vue">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -732,6 +689,33 @@
           <folding>
             <element signature="e#0#21#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/failedConfirmMessage.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/resources/static/successConfirmMessage.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/components/messages/ConfirmMessage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2">
+          <caret line="60" column="17" selection-start-line="60" selection-start-column="17" selection-end-line="60" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/backend/src/main/java/com/lerhyd/dngame/controllers/InfoController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="144" column="40" selection-start-line="144" selection-start-column="17" selection-end-line="144" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/frontend/src/store/modules/game.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="195" column="19" lean-forward="true" selection-start-line="195" selection-start-column="19" selection-end-line="195" selection-end-column="19" />
         </state>
       </provider>
     </entry>

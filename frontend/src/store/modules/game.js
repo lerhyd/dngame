@@ -5,6 +5,7 @@ export default {
   state: {
     user:[],
     profile:[],
+    rules: [],
     hasProfile:undefined,
     loginName: null,
     profileCreateStatus: 0,
@@ -33,6 +34,9 @@ export default {
     },
     setLoginName (state, data) {
       state.loginName = data
+    },
+    setRules (state, data) {
+      state.rules = data
     }
   },
 
@@ -43,7 +47,8 @@ export default {
     profileCreateStatus: state => state.profileCreateStatus,
     profileDeleteStatus: state => state.profileDeleteStatus,
     gameClassChooseStatus: state => state.gameClassChooseStatus,
-    loginName: state => state.loginName
+    loginName: state => state.loginName,
+    rules: state => state.rules
   },
 
   actions: {
@@ -143,6 +148,18 @@ export default {
         method: 'GET'
       }).then(response => {
         context.commit('setLoginName', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    getRules(context){
+      axios("/game/rules",
+        {
+          method: 'GET'
+        }).then(response => {
+        context.commit('setRules', response.data)
       })
         .catch(error => {
           console.log(error)

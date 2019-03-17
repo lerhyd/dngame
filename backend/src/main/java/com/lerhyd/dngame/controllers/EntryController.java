@@ -77,7 +77,8 @@ public class EntryController {
      * 10 -- The entry with the victim already exists,
      * 11 -- The Agent won because the Kira's points less than 0,
      * 12 -- The Kira' location was finally declassified,
-     * 0 -- The function was executed correctly.
+     * 0 -- The function was executed correctly,
+     * 01 -- The Kira won because he has 300 points or more.
      */
     @PostMapping("/game/entry/add")
     public int addEntry(@RequestBody EntryReq entryReq)
@@ -167,6 +168,9 @@ public class EntryController {
                 entryReq.isVictimSex()
         );
         int points = kiraDao.findPointsById(entryReq.getKiraId());
+        if (points >= 300)
+            return 01;//kira won
+
         if (points < 0)
             return 11;//agent won
 
@@ -181,14 +185,13 @@ public class EntryController {
             int agentId = kiraDao.getOne(entryReq.getKiraId()).getNews().get(0).getAgent().getId();
             System.out.println("Kira was caught");
             Agent agentToSave = agentDao.getOne(agentId);
-            agentToSave.setPoints(agentToSave.getPoints()+40);
+            agentToSave.setPoints(agentToSave.getPoints()+50);
             agentDao.save(agentToSave);
             setRankToAgent(agentId);
             //Capital ach
             Achievement capitalAch = achievementDao.getOne("Capital");
             if (!agentDao.getOne(agentId).getAchievements().contains(capitalAch))
                 if (agentDao.getOne(agentId).getPoints() >= 200){
-                    Agent agent = agentDao.getOne(agentId);
                     if (agentToSave.getAchievements() == null){
                         List<Achievement> achievements = new ArrayList<>();
                         agentToSave.setAchievements(achievements);

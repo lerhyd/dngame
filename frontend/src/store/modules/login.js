@@ -94,7 +94,7 @@ export default {
         context.commit('setRole', response.data);
         if (context.getters.role[0].authority == "vk" || context.getters.role[0].authority == "google") {
           context.commit('setLogged', true);
-          router.push("/game");
+          console.log(context.state.logged)
         }
         else {
           context.commit('setLogged', false)

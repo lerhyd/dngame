@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
 
   <div>
     <header></header>
@@ -20,6 +21,19 @@
           <p>{{profile.bornDate}}</p>
         </div>
         <button class="button16" @click="deleteProfile()" value="Удалить профиль"></button>
+=======
+  {{updateLoginName()}}
+  {{getUserInfo()}}
+  {{hasProfile()}}
+  <div>
+    <header></header>
+    <section>
+      <div v-if="this.$store.getters.hasProfile">
+        <div v-for="user in this.$store.getters.user">
+          <p>{{user.login }}</p>
+          <p>{{user.regDate}}</p>
+        </div>
+>>>>>>> 5394f71599c0d0d13dedba123fbd95e851a72227
       </div>
 
       <div v-if="!this.$store.getters.hasProfile">
@@ -51,10 +65,18 @@
             <br>
             <label class="fifth_label">
               Дата Рождения:
+<<<<<<< HEAD
               <datetime v-model="profile.bornDate" type="datetime" format="yyyy-MM-dd HH:mm:ss"></datetime>
             </label>
             <br>
             <input class="sub" type="submit" value="Создать" @click="updateLoginName();hasProfile()"/>
+=======
+              <datetime v-model="bornDate"></datetime>
+              {{bornDate}}
+            </label>
+            <br>
+            <input class="sub" type="submit" value="Создать"/>
+>>>>>>> 5394f71599c0d0d13dedba123fbd95e851a72227
           </form>
         </div>
       </div>
@@ -124,6 +146,7 @@
 </script>
 
 <style scoped>
+<<<<<<< HEAD
  * {
    color: white;
  }
@@ -151,4 +174,6 @@
    background-image:
      radial-gradient(50% 50% at 50% 50%, rgba(74, 74, 74, 0.9), rgba(255,255,255,0));
  }
+=======
+>>>>>>> 5394f71599c0d0d13dedba123fbd95e851a72227
 </style>

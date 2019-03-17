@@ -123,6 +123,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers("/contacts", "/auth/check", "/game/rules").permitAll()
                         .antMatchers("/main", "/recovery", "/forgotMessage", "/forgot/password").permitAll()
                         .antMatchers("/signup", "/logout", "/favicon.ico", "/confirm/**", "/login", "/get").permitAll()
+
                         .anyRequest().authenticated()
                 .and()
                     .formLogin().loginPage("/login").permitAll()

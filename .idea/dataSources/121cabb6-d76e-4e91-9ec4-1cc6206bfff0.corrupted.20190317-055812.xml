@@ -7,13 +7,14 @@
     <database id="2" parent="1" name="dbdb">
       <ObjectId>16385</ObjectId>
       <StateNumber>569</StateNumber>
-      <Owner>postgres</Owner>
+     <Owner>postgres</Owner>
     </database>
     <database id="3" parent="1" name="dndb">
       <ObjectId>16386</ObjectId>
       <StateNumber>573</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>13747</IntrospectionStateNumber>
+<<<<<<< HEAD
+      <IntrospectionStateNumber>13734</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|86998|87000|1
@@ -30,6 +31,25 @@ sequence|table|87083|87085|1
 sequence|table|87094|87096|1
 sequence|table|87107|87109|1
 sequence|table|87115|87117|2
+=======
+      <IntrospectionStateNumber>13258</IntrospectionStateNumber>
+      <Current>1</Current>
+      <Visible>1</Visible>
+      <Relations>sequence|table|85440|85442|1
+sequence|table|85446|85448|1
+sequence|table|85452|85454|1
+sequence|table|85463|85465|1
+sequence|table|85474|85476|1
+sequence|table|85482|85484|1
+sequence|table|85490|85492|1
+sequence|table|85498|85500|1
+sequence|table|85509|85511|1
+sequence|table|85517|85519|1
+sequence|table|85525|85527|1
+sequence|table|85536|85538|1
+sequence|table|85549|85551|1
+sequence|table|85557|85559|2
+>>>>>>> CO8ECTb-master
 </Relations>
     </database>
     <database id="4" parent="1" name="postgres">
@@ -127,7 +147,11 @@ sequence|table|87115|87117|2
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>13748</IntrospectionStateNumber>
+<<<<<<< HEAD
+      <IntrospectionStateNumber>13735</IntrospectionStateNumber>
+=======
+      <IntrospectionStateNumber>13259</IntrospectionStateNumber>
+>>>>>>> CO8ECTb-master
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -196,9 +220,13 @@ sequence|table|87115|87117|2
       <DataType>bigint</DataType>
     </sequence>
     <sequence id="29" parent="20" name="achievements_to_agent_agent_id_seq">
+
       <ObjectId>86998</ObjectId>
-      <Owner>lerhyd</Owner>
+      <Owner>lerhyd</Owner>
       <StateNumber>13672</StateNumber>
+      <ObjectId>85440</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13196</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
@@ -207,107 +235,185 @@ sequence|table|87115|87117|2
       <ObjectId>87004</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13673</StateNumber>
+=======
+      <ObjectId>85446</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13197</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="31" parent="20" name="action_places_id_seq">
+<<<<<<< HEAD
       <ObjectId>87010</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13674</StateNumber>
+=======
+      <ObjectId>85452</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13198</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="32" parent="20" name="actions_id_seq">
+<<<<<<< HEAD
       <ObjectId>87021</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13675</StateNumber>
+=======
+      <ObjectId>85463</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13199</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="33" parent="20" name="agents_id_seq">
+<<<<<<< HEAD
       <ObjectId>87032</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13676</StateNumber>
+=======
+      <ObjectId>85474</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13200</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="34" parent="20" name="entries_id_seq">
+<<<<<<< HEAD
       <ObjectId>87040</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13677</StateNumber>
+=======
+      <ObjectId>85482</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="35" parent="20" name="kiras_id_seq">
+<<<<<<< HEAD
       <ObjectId>87048</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13678</StateNumber>
+=======
+      <ObjectId>85490</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13202</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="36" parent="20" name="news_id_seq">
+<<<<<<< HEAD
       <ObjectId>87056</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13679</StateNumber>
+=======
+      <ObjectId>85498</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="37" parent="20" name="persons_id_seq">
+<<<<<<< HEAD
       <ObjectId>87067</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13680</StateNumber>
+=======
+      <ObjectId>85509</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13204</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="38" parent="20" name="ranks_id_seq">
+<<<<<<< HEAD
       <ObjectId>87075</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13681</StateNumber>
+=======
+      <ObjectId>85517</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13205</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="39" parent="20" name="regions_id_seq">
+<<<<<<< HEAD
       <ObjectId>87083</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13682</StateNumber>
+=======
+      <ObjectId>85525</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13206</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="40" parent="20" name="requests_id_seq">
+<<<<<<< HEAD
       <ObjectId>87094</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13683</StateNumber>
+=======
+      <ObjectId>85536</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13207</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="41" parent="20" name="rules_id_seq">
+<<<<<<< HEAD
       <ObjectId>87107</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13685</StateNumber>
+=======
+      <ObjectId>85549</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13209</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="42" parent="20" name="rules_to_user_rule_id_seq">
+<<<<<<< HEAD
       <ObjectId>87115</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13686</StateNumber>
+=======
+      <ObjectId>85557</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13210</StateNumber>
+>>>>>>> CO8ECTb-master
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <table id="43" parent="20" name="achievements">
+<<<<<<< HEAD
       <ObjectId>86990</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13691</StateNumber>
@@ -396,35 +502,147 @@ sequence|table|87115|87117|2
       <ObjectId>87126</ObjectId>
       <Owner>lerhyd</Owner>
       <StateNumber>13717</StateNumber>
+=======
+      <ObjectId>85432</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13215</StateNumber>
+    </table>
+    <table id="44" parent="20" name="achievements_to_agent">
+      <ObjectId>85442</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13215</StateNumber>
+    </table>
+    <table id="45" parent="20" name="achievements_to_kira">
+      <ObjectId>85448</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13217</StateNumber>
+    </table>
+    <table id="46" parent="20" name="action_places">
+      <ObjectId>85454</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13222</StateNumber>
+    </table>
+    <table id="47" parent="20" name="actions">
+      <ObjectId>85465</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13221</StateNumber>
+    </table>
+    <table id="48" parent="20" name="agents">
+      <ObjectId>85476</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13216</StateNumber>
+    </table>
+    <table id="49" parent="20" name="entries">
+      <ObjectId>85484</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13221</StateNumber>
+    </table>
+    <table id="50" parent="20" name="kiras">
+      <ObjectId>85492</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13218</StateNumber>
+    </table>
+    <table id="51" parent="20" name="news">
+      <ObjectId>85500</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13228</StateNumber>
+    </table>
+    <table id="52" parent="20" name="persons">
+      <ObjectId>85511</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13225</StateNumber>
+    </table>
+    <table id="53" parent="20" name="ranks">
+      <ObjectId>85519</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13219</StateNumber>
+    </table>
+    <table id="54" parent="20" name="regions">
+      <ObjectId>85527</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13220</StateNumber>
+    </table>
+    <table id="55" parent="20" name="requests">
+      <ObjectId>85538</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13236</StateNumber>
+    </table>
+    <table id="56" parent="20" name="roles">
+      <ObjectId>85544</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13242</StateNumber>
+    </table>
+    <table id="57" parent="20" name="rules">
+      <ObjectId>85551</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13240</StateNumber>
+    </table>
+    <table id="58" parent="20" name="rules_to_user">
+      <ObjectId>85559</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13240</StateNumber>
+    </table>
+    <table id="59" parent="20" name="user_role">
+      <ObjectId>85563</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13242</StateNumber>
+    </table>
+    <table id="60" parent="20" name="users">
+      <ObjectId>85568</ObjectId>
+      <Owner>lerhyd</Owner>
+      <StateNumber>13241</StateNumber>
+>>>>>>> CO8ECTb-master
     </table>
     <column id="61" parent="43" name="title">
       <Position>1</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13671</StateNumber>
+=======
+      <StateNumber>13195</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="62" parent="43" name="description">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13671</StateNumber>
+=======
+      <StateNumber>13195</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="63" parent="43" name="task">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13671</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="64" parent="43" name="achievements_pkey">
       <ObjectId>86996</ObjectId>
       <StateNumber>13671</StateNumber>
+=======
+      <StateNumber>13195</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="64" parent="43" name="achievements_pkey">
+      <ObjectId>85438</ObjectId>
+      <StateNumber>13195</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>title</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="65" parent="43" name="achievements_pkey">
+<<<<<<< HEAD
       <ObjectId>86997</ObjectId>
       <StateNumber>13671</StateNumber>
+=======
+      <ObjectId>85439</ObjectId>
+      <StateNumber>13195</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>title</ColNames>
       <UnderlyingIndexName>achievements_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -433,7 +651,11 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13672</StateNumber>
+=======
+      <StateNumber>13196</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;achievements_to_agent_agent_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
@@ -441,6 +663,7 @@ sequence|table|87115|87117|2
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13672</StateNumber>
       <TypeId>1043</TypeId>
     </column>
@@ -449,16 +672,33 @@ sequence|table|87115|87117|2
       <StateNumber>13692</StateNumber>
       <ColNames>agent_id</ColNames>
       <RefTableId>87034</RefTableId>
+=======
+      <StateNumber>13196</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="68" parent="44" name="fk8nje0yvvmsm8sw3d95bmd6v74">
+      <ObjectId>85585</ObjectId>
+      <StateNumber>13216</StateNumber>
+      <ColNames>agent_id</ColNames>
+      <RefTableId>85476</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>agents</RefTableName>
       <RefKeyName>agents_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="69" parent="44" name="fkgmgjn8g5u58egnj5ndeirdgif">
+<<<<<<< HEAD
       <ObjectId>87138</ObjectId>
       <StateNumber>13691</StateNumber>
       <ColNames>achievements_id</ColNames>
       <RefTableId>86990</RefTableId>
+=======
+      <ObjectId>85580</ObjectId>
+      <StateNumber>13215</StateNumber>
+      <ColNames>achievements_id</ColNames>
+      <RefTableId>85432</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>achievements</RefTableName>
       <RefKeyName>achievements_pkey</RefKeyName>
@@ -468,7 +708,11 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13673</StateNumber>
+=======
+      <StateNumber>13197</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;achievements_to_kira_kira_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
@@ -476,6 +720,7 @@ sequence|table|87115|87117|2
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13673</StateNumber>
       <TypeId>1043</TypeId>
     </column>
@@ -484,16 +729,33 @@ sequence|table|87115|87117|2
       <StateNumber>13694</StateNumber>
       <ColNames>kira_id</ColNames>
       <RefTableId>87050</RefTableId>
+=======
+      <StateNumber>13197</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <foreign-key id="72" parent="45" name="fk303rqpqyie6355ynhviy298io">
+      <ObjectId>85595</ObjectId>
+      <StateNumber>13218</StateNumber>
+      <ColNames>kira_id</ColNames>
+      <RefTableId>85492</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>kiras</RefTableName>
       <RefKeyName>kiras_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="73" parent="45" name="fk4kawu2hi9f9hiw1k4yw4tj59o">
+<<<<<<< HEAD
       <ObjectId>87148</ObjectId>
       <StateNumber>13693</StateNumber>
       <ColNames>achievements_id</ColNames>
       <RefTableId>86990</RefTableId>
+=======
+      <ObjectId>85590</ObjectId>
+      <StateNumber>13217</StateNumber>
+      <ColNames>achievements_id</ColNames>
+      <RefTableId>85432</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>achievements</RefTableName>
       <RefKeyName>achievements_pkey</RefKeyName>
@@ -503,44 +765,76 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13674</StateNumber>
+=======
+      <StateNumber>13198</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;action_places_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="75" parent="46" name="lvl">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13674</StateNumber>
+=======
+      <StateNumber>13198</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="76" parent="46" name="action_place">
       <Position>3</Position>
       <DataType>varchar(500)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13674</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="77" parent="46" name="action_places_pkey">
       <ObjectId>87019</ObjectId>
       <StateNumber>13674</StateNumber>
+=======
+      <StateNumber>13198</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="77" parent="46" name="action_places_pkey">
+      <ObjectId>85461</ObjectId>
+      <StateNumber>13198</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="78" parent="46" name="uk_3il3ubvgy8va0a4kejimy2pev">
+<<<<<<< HEAD
       <ObjectId>87134</ObjectId>
       <StateNumber>13689</StateNumber>
+=======
+      <ObjectId>85576</ObjectId>
+      <StateNumber>13213</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>action_place</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="79" parent="46" name="action_places_pkey">
+<<<<<<< HEAD
       <ObjectId>87020</ObjectId>
       <StateNumber>13674</StateNumber>
+=======
+      <ObjectId>85462</ObjectId>
+      <StateNumber>13198</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>action_places_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <key id="80" parent="46" name="uk_3il3ubvgy8va0a4kejimy2pev">
+<<<<<<< HEAD
       <ObjectId>87135</ObjectId>
       <StateNumber>13689</StateNumber>
+=======
+      <ObjectId>85577</ObjectId>
+      <StateNumber>13213</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>action_place</ColNames>
       <UnderlyingIndexName>uk_3il3ubvgy8va0a4kejimy2pev</UnderlyingIndexName>
     </key>
@@ -548,31 +842,53 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13675</StateNumber>
+=======
+      <StateNumber>13199</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;actions_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="82" parent="47" name="description">
       <Position>2</Position>
       <DataType>varchar(500)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13675</StateNumber>
+=======
+      <StateNumber>13199</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="83" parent="47" name="lvl">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13675</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="84" parent="47" name="actions_pkey">
       <ObjectId>87030</ObjectId>
       <StateNumber>13675</StateNumber>
+=======
+      <StateNumber>13199</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="84" parent="47" name="actions_pkey">
+      <ObjectId>85472</ObjectId>
+      <StateNumber>13199</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="85" parent="47" name="actions_pkey">
+<<<<<<< HEAD
       <ObjectId>87031</ObjectId>
       <StateNumber>13675</StateNumber>
+=======
+      <ObjectId>85473</ObjectId>
+      <StateNumber>13199</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>actions_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -581,81 +897,137 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13676</StateNumber>
+=======
+      <StateNumber>13200</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;agents_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="87" parent="48" name="lvl">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13676</StateNumber>
+=======
+      <StateNumber>13200</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="88" parent="48" name="number_of_caught_killers">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13676</StateNumber>
+=======
+      <StateNumber>13200</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="89" parent="48" name="number_of_loses">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13676</StateNumber>
+=======
+      <StateNumber>13200</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="90" parent="48" name="number_of_wins">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13676</StateNumber>
+=======
+      <StateNumber>13200</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="91" parent="48" name="points">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13676</StateNumber>
+=======
+      <StateNumber>13200</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="92" parent="48" name="rank_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13676</StateNumber>
+=======
+      <StateNumber>13200</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="93" parent="48" name="region_id">
       <Position>8</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13676</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="94" parent="48" name="agents_pkey">
       <ObjectId>87038</ObjectId>
       <StateNumber>13676</StateNumber>
+=======
+      <StateNumber>13200</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="94" parent="48" name="agents_pkey">
+      <ObjectId>85480</ObjectId>
+      <StateNumber>13200</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="95" parent="48" name="agents_pkey">
+<<<<<<< HEAD
       <ObjectId>87039</ObjectId>
       <StateNumber>13676</StateNumber>
+=======
+      <ObjectId>85481</ObjectId>
+      <StateNumber>13200</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>agents_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="96" parent="48" name="fkakqp5k1lh3ggj4o8sxkde1gs6">
+<<<<<<< HEAD
       <ObjectId>87158</ObjectId>
       <StateNumber>13695</StateNumber>
       <ColNames>rank_id</ColNames>
       <RefTableId>87077</RefTableId>
+=======
+      <ObjectId>85600</ObjectId>
+      <StateNumber>13219</StateNumber>
+      <ColNames>rank_id</ColNames>
+      <RefTableId>85519</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>ranks</RefTableName>
       <RefKeyName>ranks_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="97" parent="48" name="fkrltjic7f0rl4uqbaktoxad90v">
+<<<<<<< HEAD
       <ObjectId>87163</ObjectId>
       <StateNumber>13696</StateNumber>
       <ColNames>region_id</ColNames>
       <RefTableId>87085</RefTableId>
+=======
+      <ObjectId>85605</ObjectId>
+      <StateNumber>13220</StateNumber>
+      <ColNames>region_id</ColNames>
+      <RefTableId>85527</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
@@ -665,117 +1037,198 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13677</StateNumber>
+=======
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;entries_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="99" parent="49" name="death_date">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13677</StateNumber>
+=======
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1114</TypeId>
     </column>
     <column id="100" parent="49" name="description_id">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13677</StateNumber>
+=======
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="101" parent="49" name="page_number">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13677</StateNumber>
+=======
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="102" parent="49" name="action_id">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13677</StateNumber>
+=======
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="103" parent="49" name="action_place_id">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13677</StateNumber>
+=======
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="104" parent="49" name="death_region_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13677</StateNumber>
+=======
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="105" parent="49" name="kira_id">
       <Position>8</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13677</StateNumber>
+=======
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="106" parent="49" name="victim_id">
       <Position>9</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13677</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="107" parent="49" name="entries_pkey">
       <ObjectId>87046</ObjectId>
       <StateNumber>13677</StateNumber>
+=======
+      <StateNumber>13201</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="107" parent="49" name="entries_pkey">
+      <ObjectId>85488</ObjectId>
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="108" parent="49" name="entries_pkey">
+<<<<<<< HEAD
       <ObjectId>87047</ObjectId>
       <StateNumber>13677</StateNumber>
+=======
+      <ObjectId>85489</ObjectId>
+      <StateNumber>13201</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>entries_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="109" parent="49" name="fkibxsps9o4p0p2ibv9ygvhkob9">
+<<<<<<< HEAD
       <ObjectId>87168</ObjectId>
       <StateNumber>13697</StateNumber>
       <ColNames>action_id</ColNames>
       <RefTableId>87023</RefTableId>
+=======
+      <ObjectId>85610</ObjectId>
+      <StateNumber>13221</StateNumber>
+      <ColNames>action_id</ColNames>
+      <RefTableId>85465</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>actions</RefTableName>
       <RefKeyName>actions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="110" parent="49" name="fkdps41ea1ubx6lqjliwwgap93d">
+<<<<<<< HEAD
       <ObjectId>87173</ObjectId>
       <StateNumber>13698</StateNumber>
       <ColNames>action_place_id</ColNames>
       <RefTableId>87012</RefTableId>
+=======
+      <ObjectId>85615</ObjectId>
+      <StateNumber>13222</StateNumber>
+      <ColNames>action_place_id</ColNames>
+      <RefTableId>85454</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>action_places</RefTableName>
       <RefKeyName>action_places_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="111" parent="49" name="fk829cdkedgl72m2kgwlhe5detc">
+<<<<<<< HEAD
       <ObjectId>87178</ObjectId>
       <StateNumber>13699</StateNumber>
       <ColNames>death_region_id</ColNames>
       <RefTableId>87085</RefTableId>
+=======
+      <ObjectId>85620</ObjectId>
+      <StateNumber>13223</StateNumber>
+      <ColNames>death_region_id</ColNames>
+      <RefTableId>85527</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="112" parent="49" name="fkgs0b3evl2ds8qyhcijn95pduc">
+<<<<<<< HEAD
       <ObjectId>87183</ObjectId>
       <StateNumber>13700</StateNumber>
       <ColNames>kira_id</ColNames>
       <RefTableId>87050</RefTableId>
+=======
+      <ObjectId>85625</ObjectId>
+      <StateNumber>13224</StateNumber>
+      <ColNames>kira_id</ColNames>
+      <RefTableId>85492</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>kiras</RefTableName>
       <RefKeyName>kiras_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="113" parent="49" name="fkkidth9dreyr9p63hjpv4gcdmw">
+<<<<<<< HEAD
       <ObjectId>87188</ObjectId>
       <StateNumber>13701</StateNumber>
       <ColNames>victim_id</ColNames>
       <RefTableId>87069</RefTableId>
+=======
+      <ObjectId>85630</ObjectId>
+      <StateNumber>13225</StateNumber>
+      <ColNames>victim_id</ColNames>
+      <RefTableId>85511</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>persons</RefTableName>
       <RefKeyName>persons_pkey</RefKeyName>
@@ -785,81 +1238,137 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13678</StateNumber>
+=======
+      <StateNumber>13202</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;kiras_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="115" parent="50" name="lvl">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13678</StateNumber>
+=======
+      <StateNumber>13202</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="116" parent="50" name="number_of_kills">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13678</StateNumber>
+=======
+      <StateNumber>13202</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="117" parent="50" name="number_of_loses">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13678</StateNumber>
+=======
+      <StateNumber>13202</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="118" parent="50" name="number_of_wins">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13678</StateNumber>
+=======
+      <StateNumber>13202</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="119" parent="50" name="points">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13678</StateNumber>
+=======
+      <StateNumber>13202</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="120" parent="50" name="rank_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13678</StateNumber>
+=======
+      <StateNumber>13202</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="121" parent="50" name="region_id">
       <Position>8</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13678</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="122" parent="50" name="kiras_pkey">
       <ObjectId>87054</ObjectId>
       <StateNumber>13678</StateNumber>
+=======
+      <StateNumber>13202</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="122" parent="50" name="kiras_pkey">
+      <ObjectId>85496</ObjectId>
+      <StateNumber>13202</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="123" parent="50" name="kiras_pkey">
+<<<<<<< HEAD
       <ObjectId>87055</ObjectId>
       <StateNumber>13678</StateNumber>
+=======
+      <ObjectId>85497</ObjectId>
+      <StateNumber>13202</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>kiras_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="124" parent="50" name="fk6w1m4wrcnlrvcq1kypwt8998c">
+<<<<<<< HEAD
       <ObjectId>87193</ObjectId>
       <StateNumber>13702</StateNumber>
       <ColNames>rank_id</ColNames>
       <RefTableId>87077</RefTableId>
+=======
+      <ObjectId>85635</ObjectId>
+      <StateNumber>13226</StateNumber>
+      <ColNames>rank_id</ColNames>
+      <RefTableId>85519</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>ranks</RefTableName>
       <RefKeyName>ranks_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="125" parent="50" name="fki8od4ynfw1rbqd4k9sfwdpg9">
+<<<<<<< HEAD
       <ObjectId>87198</ObjectId>
       <StateNumber>13703</StateNumber>
       <ColNames>region_id</ColNames>
       <RefTableId>87085</RefTableId>
+=======
+      <ObjectId>85640</ObjectId>
+      <StateNumber>13227</StateNumber>
+      <ColNames>region_id</ColNames>
+      <RefTableId>85527</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
@@ -869,195 +1378,329 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;news_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="127" parent="51" name="is_agent">
       <Position>2</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="128" parent="51" name="what">
       <Position>3</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="129" parent="51" name="is_die">
       <Position>4</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="130" parent="51" name="is_fake">
       <Position>5</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="131" parent="51" name="guilty_person_exists">
       <Position>6</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="132" parent="51" name="publication_date">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1114</TypeId>
     </column>
     <column id="133" parent="51" name="is_published_for_agent">
       <Position>8</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="134" parent="51" name="is_published_for_kira">
       <Position>9</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="135" parent="51" name="action_id">
       <Position>10</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="136" parent="51" name="action_place">
       <Position>11</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="137" parent="51" name="agent_id">
       <Position>12</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="138" parent="51" name="common_region_id">
       <Position>13</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="139" parent="51" name="distribution_region_id">
       <Position>14</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="140" parent="51" name="guilty_person_id">
       <Position>15</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="141" parent="51" name="kira_id">
       <Position>16</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="142" parent="51" name="victim_id">
       <Position>17</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13679</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="143" parent="51" name="news_pkey">
       <ObjectId>87065</ObjectId>
       <StateNumber>13679</StateNumber>
+=======
+      <StateNumber>13203</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="143" parent="51" name="news_pkey">
+      <ObjectId>85507</ObjectId>
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="144" parent="51" name="news_pkey">
+<<<<<<< HEAD
       <ObjectId>87066</ObjectId>
       <StateNumber>13679</StateNumber>
+=======
+      <ObjectId>85508</ObjectId>
+      <StateNumber>13203</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>news_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="145" parent="51" name="fkiw08x09qbtsv16sifya9m50pp">
+<<<<<<< HEAD
       <ObjectId>87203</ObjectId>
       <StateNumber>13704</StateNumber>
       <ColNames>action_id</ColNames>
       <RefTableId>87023</RefTableId>
+=======
+      <ObjectId>85645</ObjectId>
+      <StateNumber>13228</StateNumber>
+      <ColNames>action_id</ColNames>
+      <RefTableId>85465</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>actions</RefTableName>
       <RefKeyName>actions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="146" parent="51" name="fkilcwc8277ndn8gbgdjya06ucw">
+<<<<<<< HEAD
       <ObjectId>87208</ObjectId>
       <StateNumber>13705</StateNumber>
       <ColNames>action_place</ColNames>
       <RefTableId>87012</RefTableId>
+=======
+      <ObjectId>85650</ObjectId>
+      <StateNumber>13229</StateNumber>
+      <ColNames>action_place</ColNames>
+      <RefTableId>85454</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>action_places</RefTableName>
       <RefKeyName>action_places_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="147" parent="51" name="fk5eegodw92q2via5bn1ndmuwes">
+<<<<<<< HEAD
       <ObjectId>87213</ObjectId>
       <StateNumber>13706</StateNumber>
       <ColNames>agent_id</ColNames>
       <RefTableId>87034</RefTableId>
+=======
+      <ObjectId>85655</ObjectId>
+      <StateNumber>13230</StateNumber>
+      <ColNames>agent_id</ColNames>
+      <RefTableId>85476</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>agents</RefTableName>
       <RefKeyName>agents_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="148" parent="51" name="fkqjmgefs2xcstsmrim7m5b8q0k">
+<<<<<<< HEAD
       <ObjectId>87218</ObjectId>
       <StateNumber>13707</StateNumber>
       <ColNames>common_region_id</ColNames>
       <RefTableId>87085</RefTableId>
+=======
+      <ObjectId>85660</ObjectId>
+      <StateNumber>13231</StateNumber>
+      <ColNames>common_region_id</ColNames>
+      <RefTableId>85527</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="149" parent="51" name="fk9bi3ngs9emed10xns5qcuubi5">
+<<<<<<< HEAD
       <ObjectId>87223</ObjectId>
       <StateNumber>13708</StateNumber>
       <ColNames>distribution_region_id</ColNames>
       <RefTableId>87085</RefTableId>
+=======
+      <ObjectId>85665</ObjectId>
+      <StateNumber>13232</StateNumber>
+      <ColNames>distribution_region_id</ColNames>
+      <RefTableId>85527</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="150" parent="51" name="fk8ml5x1vtnavo4on1sbwbjl13m">
+<<<<<<< HEAD
       <ObjectId>87228</ObjectId>
       <StateNumber>13709</StateNumber>
       <ColNames>guilty_person_id</ColNames>
       <RefTableId>87069</RefTableId>
+=======
+      <ObjectId>85670</ObjectId>
+      <StateNumber>13233</StateNumber>
+      <ColNames>guilty_person_id</ColNames>
+      <RefTableId>85511</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>persons</RefTableName>
       <RefKeyName>persons_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="151" parent="51" name="fk42a9jkdqp2r9xd5390afg39cw">
+<<<<<<< HEAD
       <ObjectId>87233</ObjectId>
       <StateNumber>13710</StateNumber>
       <ColNames>kira_id</ColNames>
       <RefTableId>87050</RefTableId>
+=======
+      <ObjectId>85675</ObjectId>
+      <StateNumber>13234</StateNumber>
+      <ColNames>kira_id</ColNames>
+      <RefTableId>85492</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>kiras</RefTableName>
       <RefKeyName>kiras_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="152" parent="51" name="fkj2r1rbbqvt06xpc1jtxbgifvh">
+<<<<<<< HEAD
       <ObjectId>87238</ObjectId>
       <StateNumber>13711</StateNumber>
       <ColNames>victim_id</ColNames>
       <RefTableId>87069</RefTableId>
+=======
+      <ObjectId>85680</ObjectId>
+      <StateNumber>13235</StateNumber>
+      <ColNames>victim_id</ColNames>
+      <RefTableId>85511</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>persons</RefTableName>
       <RefKeyName>persons_pkey</RefKeyName>
@@ -1067,7 +1710,11 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13680</StateNumber>
+=======
+      <StateNumber>13204</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;persons_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
@@ -1075,55 +1722,93 @@ sequence|table|87115|87117|2
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13680</StateNumber>
+=======
+      <StateNumber>13204</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1114</TypeId>
     </column>
     <column id="155" parent="52" name="is_criminal">
       <Position>3</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13680</StateNumber>
+=======
+      <StateNumber>13204</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="156" parent="52" name="is_fake">
       <Position>4</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13680</StateNumber>
+=======
+      <StateNumber>13204</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="157" parent="52" name="name">
       <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13680</StateNumber>
+=======
+      <StateNumber>13204</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="158" parent="52" name="patronymic">
       <Position>6</Position>
       <DataType>varchar(20)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13680</StateNumber>
+=======
+      <StateNumber>13204</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="159" parent="52" name="sex">
       <Position>7</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13680</StateNumber>
+=======
+      <StateNumber>13204</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="160" parent="52" name="surname">
       <Position>8</Position>
       <DataType>varchar(20)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13680</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="161" parent="52" name="persons_pkey">
       <ObjectId>87073</ObjectId>
       <StateNumber>13680</StateNumber>
+=======
+      <StateNumber>13204</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="161" parent="52" name="persons_pkey">
+      <ObjectId>85515</ObjectId>
+      <StateNumber>13204</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="162" parent="52" name="persons_pkey">
+<<<<<<< HEAD
       <ObjectId>87074</ObjectId>
       <StateNumber>13680</StateNumber>
+=======
+      <ObjectId>85516</ObjectId>
+      <StateNumber>13204</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>persons_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -1132,38 +1817,64 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13681</StateNumber>
+=======
+      <StateNumber>13205</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;ranks_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="164" parent="53" name="is_kira">
       <Position>2</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13681</StateNumber>
+=======
+      <StateNumber>13205</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="165" parent="53" name="points">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13681</StateNumber>
+=======
+      <StateNumber>13205</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="166" parent="53" name="rank">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13681</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="167" parent="53" name="ranks_pkey">
       <ObjectId>87081</ObjectId>
       <StateNumber>13681</StateNumber>
+=======
+      <StateNumber>13205</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="167" parent="53" name="ranks_pkey">
+      <ObjectId>85523</ObjectId>
+      <StateNumber>13205</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="168" parent="53" name="ranks_pkey">
+<<<<<<< HEAD
       <ObjectId>87082</ObjectId>
       <StateNumber>13681</StateNumber>
+=======
+      <ObjectId>85524</ObjectId>
+      <StateNumber>13205</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>ranks_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -1172,43 +1883,73 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13682</StateNumber>
+=======
+      <StateNumber>13206</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;regions_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="170" parent="54" name="city">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13682</StateNumber>
+=======
+      <StateNumber>13206</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="171" parent="54" name="continent">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13682</StateNumber>
+=======
+      <StateNumber>13206</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="172" parent="54" name="country">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13682</StateNumber>
+=======
+      <StateNumber>13206</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="173" parent="54" name="planet">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13682</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="174" parent="54" name="regions_pkey">
       <ObjectId>87092</ObjectId>
       <StateNumber>13682</StateNumber>
+=======
+      <StateNumber>13206</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="174" parent="54" name="regions_pkey">
+      <ObjectId>85534</ObjectId>
+      <StateNumber>13206</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="175" parent="54" name="regions_pkey">
+<<<<<<< HEAD
       <ObjectId>87093</ObjectId>
       <StateNumber>13682</StateNumber>
+=======
+      <ObjectId>85535</ObjectId>
+      <StateNumber>13206</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>regions_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -1217,7 +1958,11 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13683</StateNumber>
+=======
+      <StateNumber>13207</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;requests_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
@@ -1225,87 +1970,149 @@ sequence|table|87115|87117|2
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13683</StateNumber>
+=======
+      <StateNumber>13207</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="178" parent="55" name="is_success">
       <Position>3</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13683</StateNumber>
+=======
+      <StateNumber>13207</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="179" parent="55" name="action_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13683</StateNumber>
+=======
+      <StateNumber>13207</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="180" parent="55" name="agent_id">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13683</StateNumber>
+=======
+      <StateNumber>13207</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="181" parent="55" name="crime_person_id">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13683</StateNumber>
+=======
+      <StateNumber>13207</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="182" parent="55" name="crime_region_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13683</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="183" parent="55" name="requests_pkey">
       <ObjectId>87100</ObjectId>
       <StateNumber>13683</StateNumber>
+=======
+      <StateNumber>13207</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="183" parent="55" name="requests_pkey">
+      <ObjectId>85542</ObjectId>
+      <StateNumber>13207</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="184" parent="55" name="requests_pkey">
+<<<<<<< HEAD
       <ObjectId>87101</ObjectId>
       <StateNumber>13683</StateNumber>
+=======
+      <ObjectId>85543</ObjectId>
+      <StateNumber>13207</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>requests_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="185" parent="55" name="fkejcjd0e86395kwlsrfdho5p3d">
+<<<<<<< HEAD
       <ObjectId>87243</ObjectId>
       <StateNumber>13712</StateNumber>
       <ColNames>action_id</ColNames>
       <RefTableId>87023</RefTableId>
+=======
+      <ObjectId>85685</ObjectId>
+      <StateNumber>13236</StateNumber>
+      <ColNames>action_id</ColNames>
+      <RefTableId>85465</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>actions</RefTableName>
       <RefKeyName>actions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="186" parent="55" name="fk85e1xyebwtvxhhv77peja0mp1">
+<<<<<<< HEAD
       <ObjectId>87248</ObjectId>
       <StateNumber>13713</StateNumber>
       <ColNames>agent_id</ColNames>
       <RefTableId>87034</RefTableId>
+=======
+      <ObjectId>85690</ObjectId>
+      <StateNumber>13237</StateNumber>
+      <ColNames>agent_id</ColNames>
+      <RefTableId>85476</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>agents</RefTableName>
       <RefKeyName>agents_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="187" parent="55" name="fkscq2dqb6bqc6e7l2673a1bydi">
+<<<<<<< HEAD
       <ObjectId>87253</ObjectId>
       <StateNumber>13714</StateNumber>
       <ColNames>crime_person_id</ColNames>
       <RefTableId>87069</RefTableId>
+=======
+      <ObjectId>85695</ObjectId>
+      <StateNumber>13238</StateNumber>
+      <ColNames>crime_person_id</ColNames>
+      <RefTableId>85511</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>persons</RefTableName>
       <RefKeyName>persons_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="188" parent="55" name="fkho81e27m0co9m6sa75pms0kq4">
+<<<<<<< HEAD
       <ObjectId>87258</ObjectId>
       <StateNumber>13715</StateNumber>
       <ColNames>crime_region_id</ColNames>
       <RefTableId>87085</RefTableId>
+=======
+      <ObjectId>85700</ObjectId>
+      <StateNumber>13239</StateNumber>
+      <ColNames>crime_region_id</ColNames>
+      <RefTableId>85527</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
@@ -1315,18 +2122,32 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>varchar(8)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13684</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="190" parent="56" name="roles_pkey">
       <ObjectId>87105</ObjectId>
       <StateNumber>13684</StateNumber>
+=======
+      <StateNumber>13208</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="190" parent="56" name="roles_pkey">
+      <ObjectId>85547</ObjectId>
+      <StateNumber>13208</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>role</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="191" parent="56" name="roles_pkey">
+<<<<<<< HEAD
       <ObjectId>87106</ObjectId>
       <StateNumber>13684</StateNumber>
+=======
+      <ObjectId>85548</ObjectId>
+      <StateNumber>13208</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>role</ColNames>
       <UnderlyingIndexName>roles_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -1335,38 +2156,66 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13685</StateNumber>
+=======
+      <StateNumber>13209</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;rules_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="193" parent="57" name="description">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13685</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="194" parent="57" name="rules_pkey">
       <ObjectId>87113</ObjectId>
       <StateNumber>13685</StateNumber>
+=======
+      <StateNumber>13209</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="194" parent="57" name="rules_pkey">
+      <ObjectId>85555</ObjectId>
+      <StateNumber>13209</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="195" parent="57" name="uk_ijbudtpsxby634taeqpl8fngd">
+<<<<<<< HEAD
       <ObjectId>87136</ObjectId>
       <StateNumber>13690</StateNumber>
+=======
+      <ObjectId>85578</ObjectId>
+      <StateNumber>13214</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>description</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="196" parent="57" name="rules_pkey">
+<<<<<<< HEAD
       <ObjectId>87114</ObjectId>
       <StateNumber>13685</StateNumber>
+=======
+      <ObjectId>85556</ObjectId>
+      <StateNumber>13209</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>id</ColNames>
       <UnderlyingIndexName>rules_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <key id="197" parent="57" name="uk_ijbudtpsxby634taeqpl8fngd">
+<<<<<<< HEAD
       <ObjectId>87137</ObjectId>
       <StateNumber>13690</StateNumber>
+=======
+      <ObjectId>85579</ObjectId>
+      <StateNumber>13214</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>description</ColNames>
       <UnderlyingIndexName>uk_ijbudtpsxby634taeqpl8fngd</UnderlyingIndexName>
     </key>
@@ -1374,32 +2223,54 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13686</StateNumber>
+=======
+      <StateNumber>13210</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="199" parent="58" name="rule_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13686</StateNumber>
+=======
+      <StateNumber>13210</StateNumber>
+>>>>>>> CO8ECTb-master
       <DefaultExpression>nextval(&apos;rules_to_user_rule_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="200" parent="58" name="fkd8x57wb16ilxy18k52gv3nsed">
+<<<<<<< HEAD
       <ObjectId>87268</ObjectId>
       <StateNumber>13717</StateNumber>
       <ColNames>user_id</ColNames>
       <RefTableId>87126</RefTableId>
+=======
+      <ObjectId>85710</ObjectId>
+      <StateNumber>13241</StateNumber>
+      <ColNames>user_id</ColNames>
+      <RefTableId>85568</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>login</RefColNames>
     </foreign-key>
     <foreign-key id="201" parent="58" name="fk65tx12r962rt3bq0lkedichcv">
+<<<<<<< HEAD
       <ObjectId>87263</ObjectId>
       <StateNumber>13716</StateNumber>
       <ColNames>rule_id</ColNames>
       <RefTableId>87109</RefTableId>
+=======
+      <ObjectId>85705</ObjectId>
+      <StateNumber>13240</StateNumber>
+      <ColNames>rule_id</ColNames>
+      <RefTableId>85551</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>rules</RefTableName>
       <RefKeyName>rules_pkey</RefKeyName>
@@ -1409,46 +2280,78 @@ sequence|table|87115|87117|2
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13687</StateNumber>
+=======
+      <StateNumber>13211</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="203" parent="59" name="role">
       <Position>2</Position>
       <DataType>varchar(8)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13687</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="204" parent="59" name="user_role_pkey">
       <ObjectId>87124</ObjectId>
       <StateNumber>13687</StateNumber>
+=======
+      <StateNumber>13211</StateNumber>
+      <TypeId>1043</TypeId>
+    </column>
+    <index id="204" parent="59" name="user_role_pkey">
+      <ObjectId>85566</ObjectId>
+      <StateNumber>13211</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>login
 role</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="205" parent="59" name="user_role_pkey">
+<<<<<<< HEAD
       <ObjectId>87125</ObjectId>
       <StateNumber>13687</StateNumber>
+=======
+      <ObjectId>85567</ObjectId>
+      <StateNumber>13211</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>login
 role</ColNames>
       <UnderlyingIndexName>user_role_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="206" parent="59" name="fkk67cu8t2bbsnws6t9yx6rlsju">
+<<<<<<< HEAD
       <ObjectId>87278</ObjectId>
       <StateNumber>13719</StateNumber>
       <ColNames>login</ColNames>
       <RefTableId>87126</RefTableId>
+=======
+      <ObjectId>85720</ObjectId>
+      <StateNumber>13243</StateNumber>
+      <ColNames>login</ColNames>
+      <RefTableId>85568</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>login</RefColNames>
     </foreign-key>
     <foreign-key id="207" parent="59" name="fkfhq23r1o3cqe0n8jdi4vyv4s8">
+<<<<<<< HEAD
       <ObjectId>87273</ObjectId>
       <StateNumber>13718</StateNumber>
       <ColNames>role</ColNames>
       <RefTableId>87102</RefTableId>
+=======
+      <ObjectId>85715</ObjectId>
+      <StateNumber>13242</StateNumber>
+      <ColNames>role</ColNames>
+      <RefTableId>85544</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>roles</RefTableName>
       <RefKeyName>roles_pkey</RefKeyName>
@@ -1458,114 +2361,193 @@ role</ColNames>
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="209" parent="60" name="confirmed">
       <Position>2</Position>
       <DataType>boolean|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>16</TypeId>
     </column>
     <column id="210" parent="60" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="211" parent="60" name="googleemail">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="212" parent="60" name="last_visit_timestamp">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1114</TypeId>
     </column>
     <column id="213" parent="60" name="password">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="214" parent="60" name="registration_date">
       <Position>7</Position>
       <DataType>timestamp|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1114</TypeId>
     </column>
     <column id="215" parent="60" name="token">
       <Position>8</Position>
       <DataType>varchar(255)|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>1043</TypeId>
     </column>
     <column id="216" parent="60" name="vk_id">
       <Position>9</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="217" parent="60" name="agent_id">
       <Position>10</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="218" parent="60" name="kira_id">
       <Position>11</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <TypeId>23</TypeId>
     </column>
     <column id="219" parent="60" name="profile_id">
       <Position>12</Position>
       <DataType>integer|0s</DataType>
+<<<<<<< HEAD
       <StateNumber>13688</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="220" parent="60" name="users_pkey">
       <ObjectId>87132</ObjectId>
       <StateNumber>13688</StateNumber>
+=======
+      <StateNumber>13212</StateNumber>
+      <TypeId>23</TypeId>
+    </column>
+    <index id="220" parent="60" name="users_pkey">
+      <ObjectId>85574</ObjectId>
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>login</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="221" parent="60" name="users_pkey">
+<<<<<<< HEAD
       <ObjectId>87133</ObjectId>
       <StateNumber>13688</StateNumber>
+=======
+      <ObjectId>85575</ObjectId>
+      <StateNumber>13212</StateNumber>
+>>>>>>> CO8ECTb-master
       <ColNames>login</ColNames>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="222" parent="60" name="fk9lv8y3pid6g0tiuqnfj74q2o">
+<<<<<<< HEAD
       <ObjectId>87283</ObjectId>
       <StateNumber>13720</StateNumber>
       <ColNames>agent_id</ColNames>
       <RefTableId>87034</RefTableId>
+=======
+      <ObjectId>85725</ObjectId>
+      <StateNumber>13244</StateNumber>
+      <ColNames>agent_id</ColNames>
+      <RefTableId>85476</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>agents</RefTableName>
       <RefKeyName>agents_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="223" parent="60" name="fkip4it4p86y110k5djq0krrwd">
+<<<<<<< HEAD
       <ObjectId>87288</ObjectId>
       <StateNumber>13721</StateNumber>
       <ColNames>kira_id</ColNames>
       <RefTableId>87050</RefTableId>
+=======
+      <ObjectId>85730</ObjectId>
+      <StateNumber>13245</StateNumber>
+      <ColNames>kira_id</ColNames>
+      <RefTableId>85492</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>kiras</RefTableName>
       <RefKeyName>kiras_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="224" parent="60" name="fkrsjlh42c8ymbhf9sq2dxridca">
+<<<<<<< HEAD
       <ObjectId>87293</ObjectId>
       <StateNumber>13722</StateNumber>
       <ColNames>profile_id</ColNames>
       <RefTableId>87069</RefTableId>
+=======
+      <ObjectId>85735</ObjectId>
+      <StateNumber>13246</StateNumber>
+      <ColNames>profile_id</ColNames>
+      <RefTableId>85511</RefTableId>
+>>>>>>> CO8ECTb-master
       <RefColPositions>1</RefColPositions>
       <RefTableName>persons</RefTableName>
       <RefKeyName>persons_pkey</RefKeyName>

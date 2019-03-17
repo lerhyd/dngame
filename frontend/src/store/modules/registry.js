@@ -16,6 +16,7 @@ export default {
       state.failed = data;
     },
     setStatus (state, status){
+
       state.registryStatus = status;
     }
   },
@@ -34,6 +35,7 @@ export default {
         email: credentials.email
       }).then(response => {
         context.commit('setStatus', response.data);
+
         console.log(response.data)
         if (response.data != 0){
           context.commit('setStatus', response.data);

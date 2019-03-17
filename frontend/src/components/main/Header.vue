@@ -23,6 +23,7 @@
     export default {
         name: "Header",
         methods: {
+
           checkIfLogged (){
             this.$store.dispatch('checkIfLogged').then();
           },

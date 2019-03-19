@@ -1,5 +1,4 @@
 <template>
-
     <div id="app">
       <header>
         <div style="cursor: default;">Death Note</div>

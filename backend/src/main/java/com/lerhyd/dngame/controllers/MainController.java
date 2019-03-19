@@ -8,7 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -41,6 +44,7 @@ public class MainController {
      * Create profile of the user.
      * @param personReq Form of the person.
      * @return Status:
+     * 888 -- The userName does not exist,
      * 666 -- The user is not authenticated,
      * 1 -- User with the login does not exist,
      * 2 -- User already has profile,
@@ -49,6 +53,8 @@ public class MainController {
      */
     @PostMapping("/game/profile/create")
     public int createProfile(@RequestBody PersonReq personReq){
+        if (personReq.getUserLogin() == null)
+            return 888;
         if (!userDao.getOne(personReq.getUserLogin()).isConfirmed())
             return 666;
         if (userDao.getOne(personReq.getUserLogin()) == null)
@@ -62,12 +68,15 @@ public class MainController {
                                                                 personReq.getPatr(),
                                                                 personReq.isSex()))
             return 3;
+        if (personReq.getBornDate() == "")
+            return 4;
         Person p = new Person();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT;
+        Instant dateInstant = Instant.from(formatter.parse(personReq.getBornDate()));
         p.setName(personReq.getName());
         p.setSurname(personReq.getSurname());
         p.setPatronymic(personReq.getPatr());
-        p.setBornDate(LocalDateTime.parse(personReq.getBornDate(), formatter));
+        p.setBornDate(LocalDateTime.ofInstant(dateInstant, ZoneId.of(ZoneOffset.UTC.getId())));
         p.setSex(personReq.isSex());
         p.setFake(false);
         p.setCriminal(false);

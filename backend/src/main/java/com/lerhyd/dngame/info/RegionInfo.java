@@ -7,6 +7,7 @@ public class RegionInfo {
     public int id;
     public String country;
     public String city;
+    public String continent;
 
     private RegionInfo(){}
 
@@ -14,5 +15,6 @@ public class RegionInfo {
         id = reg.getId();
         country = reg.getCountry();
         city = reg.getCity();
+        continent = reg.getContinent();
     }
 }

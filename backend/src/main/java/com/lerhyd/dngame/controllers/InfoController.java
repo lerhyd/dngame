@@ -35,7 +35,7 @@ public class InfoController {
     private ActionPlaceDao actionPlaceDao;
 
     @Autowired
-    private AchievementDao achievementDao;
+    private RegionDao regionDao;
 
     @Autowired
     private RuleDao ruleDao;
@@ -61,6 +61,45 @@ public class InfoController {
         User user = userDao.findById(userLogin).get();
         return Stream.of(user.getProfile()).map(PersonInfo::new);
     }
+
+    /**
+     * Get all the region info with continents.
+     * @return List of continents.
+     */
+    @GetMapping("/game/regions/continents")
+    public List<String> getAllRegionsWithContinents(){
+        return regionDao.findAllRegionsWithContinents();
+    }
+
+    /**
+     * Get all the region info with countries.
+     * @param continent Continent.
+     * @return List of countries.
+     */
+    @GetMapping("/game/regions/countries")
+    public List<String> getAllRegionsWithCountries(@RequestParam("continent") String continent){
+        return regionDao.findAllRegionsWithCountriesByContinent(continent);
+    }
+
+    /**
+     * Get all the region info with cities.
+     * @return List of cities.
+     */
+    @GetMapping("/game/regions/cities")
+    public List<String> getAllRegionsWithCities(@RequestParam("country") String country){
+        return regionDao.findAllRegionsWithCitiesByCountry(country);
+    }
+
+    /**
+     * Get region id with the city.
+     * @param city City.
+     * @return Region ID.
+     */
+    @GetMapping("/game/regions/id")
+    public int getRegionIdByCity(@RequestParam("city") String city){
+        return regionDao.findRegionIdByCity(city);
+    }
+
 
     /**
      * Get all alive persons.

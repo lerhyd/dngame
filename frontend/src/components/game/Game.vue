@@ -20,6 +20,8 @@
           <p>{{profile.bornDate}}</p>
         </div>
         <button class="button16" @click="deleteProfile()" value="Удалить профиль"></button>
+        <br>
+        <router-link class="button16" to="/class">Играть</router-link>
       </div>
 
       <div v-if="!this.$store.getters.hasProfile">
@@ -44,8 +46,8 @@
               Пол:
               <select v-model="profile.sex">
                 <option disabled value="">Пожалуйста, выберите пол</option>
-                <option v-bind:value="true">true</option>
-                <option v-bind:value="false">false</option>
+                <option v-bind:value="true">Мужчина</option>
+                <option v-bind:value="false">Женщина</option>
               </select>
             </label>
             <br>
@@ -76,10 +78,6 @@
           patr: '',
           sex: false,
           bornDate: null
-        },
-        class: {
-          isKira: undefined,
-          regionId: undefined
         }
       }
     },
@@ -107,12 +105,6 @@
       },
       deleteProfile() {
         this.$store.dispatch('deleteProfile').then();
-      },
-      classChoose() {
-        this.$store.dispatch('classChoose', {
-          isKira: this.class.isKira,
-          regionId: this.class.regionId
-        }).then();
       },
       hasProfile() {
         this.$store.dispatch('hasProfile').then();

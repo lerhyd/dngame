@@ -1,11 +1,12 @@
 <template>
     <div id="app">
       <header>
-        <div>Death Note</div>
+        <div style="cursor: default;">Death Note</div>
         <div>
           {{checkIfLogged()}}
           {{checkIfLoggedIn()}}
           {{checkIfConfirmed()}}
+          <router-link class="button16" to="/test" @click="checkIfLogged();checkIfConfirmed()">Test</router-link>
           <router-link class="button16" to="/" @click="checkIfLogged();checkIfConfirmed()">Главная</router-link>
           <router-link class="button16" to="/about" @click="checkIfLogged();checkIfConfirmed()">О проекте</router-link>
           <router-link class="button16" to="/login" @click="checkIfLogged();checkIfConfirmed()" v-if="!this.$store.getters.logged">Войти</router-link>

@@ -14,7 +14,6 @@ Vue.config.productionTip = false
 Vue.use(Datetime)
 Vue.use(VueAgile)
 
-/* eslint-disable no-new */
 new Vue({
   el: '#app',
   store: store,

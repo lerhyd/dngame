@@ -114,21 +114,23 @@ public class InfoController {
 
     /**
      * Get the Kira's info.
-     * @param kiraId ID of the Kira.
+     * @param userLogin ID of the user.
      * @return Stream of Kira info.
      */
     @GetMapping("/game/kira/status")
-    public Stream<KiraInfo> getKira(@RequestParam("id") int kiraId){
+    public Stream<KiraInfo> getKira(@RequestParam("userLogin") String userLogin){
+        int kiraId = userDao.getOne(userLogin).getKira().getId();
         return Stream.of(kiraDao.getOne(kiraId)).map(KiraInfo::new);
     }
 
     /**
      * Get the Agent's info.
-     * @param agentId ID of the Agent.
+     * @param userLogin ID of the user.
      * @return Stream of Agent info.
      */
     @GetMapping("/game/agent/status")
-    public Stream<AgentInfo> getAgent(@RequestParam("id") int agentId){
+    public Stream<AgentInfo> getAgent(@RequestParam("userLogin") String userLogin){
+        int agentId = userDao.getOne(userLogin).getAgent().getId();
         return Stream.of(agentDao.getOne(agentId)).map(AgentInfo::new);
     }
 

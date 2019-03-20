@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,20 @@ public interface NewsDao extends JpaRepository<News, Integer> {
 
     @Query("select n from News n where n.kira.id=:kiraId and n.agent.id = :agentId")
     List<News> findAllByKiraAndAgent(@Param("kiraId") int kiraId, @Param("agentId") int agentId);
+
+    @Query("select n from News n where n.kira.id=:kiraId")
+    List<News> findAllNewsByKiraId(@Param("kiraId") int kiraId);
+
+    @Query("select n from News n where n.agent.id=:agentId")
+    List<News> findAllNewsByAgentId(@Param("agentId") int agentId);
+
+    @Transactional
+    @Modifying
+    void deleteAllByKira_Id(int kiraId);
+
+    @Transactional
+    @Modifying
+    void deleteAllByAgent_Id(int agentId);
 
     @Transactional
     @Modifying

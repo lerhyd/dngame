@@ -49,16 +49,16 @@ public class NewsGenerator {
         if (news.isGuiltyPersonExists())
             if (news.isFake())
                 while (!guiltyPersonExists){
-                    Person guiltyPerson = personDao.findAllCriminalPeronsInRandomOrder().get(0);
-                    if (newsDao.checkIfNewsGuiltyPersonExists(agentId, kiraId, guiltyPerson.getId())){
+                    Person guiltyPerson = personDao.findAllNotCriminalPeronsInRandomOrder().get(0);
+                    if (!newsDao.checkIfNewsGuiltyPersonExists(agentId, kiraId, guiltyPerson.getId())){
                         news.setGuiltyPerson(guiltyPerson);
                         guiltyPersonExists = true;
                     }
                 }
             else
                 while (!guiltyPersonExists){
-                    Person guiltyPerson = personDao.findAllNotCriminalPeronsInRandomOrder().get(0);
-                    if (newsDao.checkIfNewsGuiltyPersonExists(agentId, kiraId, guiltyPerson.getId())){
+                    Person guiltyPerson = personDao.findAllCriminalPeronsInRandomOrder().get(0);
+                    if (!newsDao.checkIfNewsGuiltyPersonExists(agentId, kiraId, guiltyPerson.getId())){
                         news.setGuiltyPerson(guiltyPerson);
                         guiltyPersonExists = true;
                     }
@@ -70,7 +70,7 @@ public class NewsGenerator {
 
         while (!victimExists){
             Person victim = personDao.findAllPeronsInRandomOrder().get(0);
-            if (newsDao.checkIfNewsVictimExists(agentId, kiraId, victim.getId()) && !newsDao.checkIfVictimDiedInNews(agentId, kiraId, victim.getId()).orElse(false)) {
+            if (!newsDao.checkIfNewsVictimExists(agentId, kiraId, victim.getId()) && !newsDao.checkIfVictimDiedInNews(agentId, kiraId, victim.getId()).orElse(false)) {
                 news.setVictim(victim);
                 victimExists = true;
             }

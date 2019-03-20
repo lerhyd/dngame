@@ -140,12 +140,13 @@ public class MainController {
         User u = userDao.getOne(userLogin);
         if (u.getProfile() == null)
             return 2;
-        if (u.getKira().getNews() != null || u.getAgent().getNews() != null)
-            return 3;
         if (isKira){
             Kira k;
-            if (u.getKira() != null)
+            if (u.getKira() != null) {
+                if (u.getKira().getNews() != null)
+                    return 3;
                 k = kiraDao.getOne(u.getKira().getId());
+            }
             else {
                 k = new Kira();
                 k.setNumberOfLoses(0);
@@ -161,16 +162,18 @@ public class MainController {
             u.setKira(k);
             kiraDao.save(k);
             userDao.save(u);
-            findOpponent(isKira, k.getId());
+            findOpponent(true, k.getId());
             int agentId = k.getNews().get(0).getAgent().getId();
             boolean isPersonsWereNotUsed = NewsGenerator.generateRandomNews(k.getId(), agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
             if (!isPersonsWereNotUsed)
                 return 4;
         } else {
             Agent a;
-            if (u.getAgent() != null)
+            if (u.getAgent() != null) {
+                if (u.getAgent().getNews() != null)
+                    return 3;
                 a = agentDao.getOne(u.getAgent().getId());
-            else{
+            } else{
                 a = new Agent();
                 a.setNumberOfLoses(0);
                 a.setNumberOfWins(0);
@@ -185,7 +188,7 @@ public class MainController {
             u.setAgent(a);
             agentDao.save(a);
             userDao.save(u);
-            findOpponent(isKira, a.getId());
+            findOpponent(false, a.getId());
         }
         return 0;
     }
@@ -196,7 +199,7 @@ public class MainController {
         while (!isFound){
             if (isKira){
                 List<Agent> agents = agentDao.findAgentsWithoutNews();
-                if (isMatchCreated(isKira, classId))
+                if (isMatchCreated(true, classId))
                     break;
 
                 if (!agents.isEmpty()){
@@ -208,7 +211,7 @@ public class MainController {
             } else {
                 List<Kira> kiras = kiraDao.findKirasWithoutNews();
 
-                if (isMatchCreated(isKira, classId))
+                if (isMatchCreated(false, classId))
                     break;
 
                 if (!kiras.isEmpty()){

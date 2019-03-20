@@ -1,55 +1,71 @@
 <template>
     <div>
-      <div v-if="this.$store.getters.gameClassChooseStatus!=0">
-        <p>
-          Идёт поиск противника...
-        </p>
+      <!--killer's area-->
+      <div v-if="this.$store.getters.isKira">
+        {{getKiraStatus()}}
+        <!--User's data-->
+        <div>
+          <div v-for="user in this.$store.getters.user">
+            <p>{{user.login}}</p>
+          </div>
+          <div v-for="stat in this.$store.getters.status">
+            <p>points: {{stat.points}}</p>
+            <p>lvl: {{stat.lvl}}</p>
+            <p>rank: {{stat.rank}}</p>
+            <p>number of right kills: {{stat.numberOfRightKills}}</p>
+          </div>
+        </div>
+        <!--News-->
+        <div>
+
+        </div>
+        <!--Actions-->
+        <div>
+
+        </div>
       </div>
-      <div v-if="this.$store.getters.gameClassChooseStatus == 0">
-        <p>
-          Противник найден!
-        </p>
+
+      <!--agent's area-->
+      <div v-if="!this.$store.getters.isKira">
+        {{getAgentStatus()}}
+        <!--User's data-->
+        <div>
+          <div v-for="user in this.$store.getters.user">
+            <p>{{user.login}}</p>
+          </div>
+          <div v-for="stat in this.$store.getters.status">
+            <p>points: {{stat.points}}</p>
+            <p>lvl: {{stat.lvl}}</p>
+            <p>rank: {{stat.rank}}</p>
+            <p>number Of Caught Killers: {{stat.numberOfCaughtKillers}}</p>
+          </div>
+        </div>
+        <!--News-->
+        <div>
+
+        </div>
+        <!--Actions-->
+        <div>
+
+        </div>
       </div>
     </div>
 </template>
 
 <script>
-    export default {
-        name: "Area"
+  export default {
+    name: "Area",
+    methods: {
+      getKiraStatus(){
+        this.$store.dispatch('getKiraStatus')
+      },
+      getAgentStatus(){
+        this.$store.dispatch('getAgentStatus')
+      },
     }
+  }
 </script>
 
 <style scoped>
 
-  * {
-    color: white;
-  }
-
-  input {
-    color: black;
-  }
-
-  select {
-    color: black;
-  }
-
-  .button16 {
-    display: inline-block;
-    text-decoration: none;
-    padding: 1em;
-    outline: none;
-    border-radius: 10px;
-    font-size: medium;
-    font-family: 'Hand';
-    color: white;
-  }
-  .button16:hover {
-    background-image:
-      radial-gradient(3px 45% at 0% 50%, rgba(255, 255, 255, 0.6), transparent),
-      radial-gradient(3px 45% at 100% 50%, rgba(255,255,255,.6), transparent);
-  }
-  .button16:active {
-    background-image:
-      radial-gradient(50% 50% at 50% 50%, rgba(74, 74, 74, 0.9), rgba(255,255,255,0));
-  }
 </style>

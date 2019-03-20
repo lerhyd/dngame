@@ -11,6 +11,7 @@ export default {
     countries: [],
     cities: [],
     id: null,
+    isKira: undefined,
     kiraAchievements: [],
     agentAchievements: [],
     hasProfile:undefined,
@@ -65,6 +66,9 @@ export default {
     },
     setId (state, data) {
       state.id = data
+    },
+    setIsKira (state, data){
+      state.isKira = data
     }
   },
 
@@ -85,7 +89,8 @@ export default {
     continents: state => state.continents,
     countries: state => state.countries,
     cities: state => state.cities,
-    id: state => state.id
+    id: state => state.id,
+    isKira: state => state.isKira
   },
 
   actions: {
@@ -149,7 +154,8 @@ export default {
     },
 
     classChoose(context, data){
-      router.push("/area")
+      router.push("/findMatch")
+      context.commit('setIsKira', data.isKira)
       axios("/game/class/choose", {
         params: {
           isKira: data.isKira,

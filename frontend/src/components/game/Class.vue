@@ -25,7 +25,7 @@
         <option>Choose City</option>
         <option v-for="city in this.$store.getters.cities" v-bind:value="city">{{city}}</option>
       </select>
-      <button class="button16" @click="classChoose()" value="Найти матч" v-if="gameClass.isKira != undefined && this.$store.getters.id != null"></button>
+      <button class="button16" @click="classChoose()" value="Найти матч" v-if="gameClass.isKira != undefined && this.$store.getters.id != null">Найти матч</button>
     </div>
 </template>
 

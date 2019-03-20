@@ -21,10 +21,11 @@
         <option v-for="country in this.$store.getters.countries" v-bind:value="country">{{country}}</option>
       </select>
       <br>
-      <select class="form-control" v-model="gameRegion.regionId" v-if="gameRegion.country!=null" @click="getRegionsWithCities()">
+      <select class="form-control" v-model="gameRegion.city" v-if="gameRegion.country!=null" @click="getRegionsWithCities()">
         <option>Choose City</option>
         <option v-for="city in this.$store.getters.cities" v-bind:value="city">{{city}}</option>
       </select>
+      <button class="button16" @click="classChoose()" value="Найти матч" v-if="gameClass.isKira != undefined && this.$store.getters.id != null"></button>
     </div>
 </template>
 
@@ -54,19 +55,21 @@
       },
       getRegionsWithCities(){
         this.$store.dispatch('getRegionsWithCities', {country: this.gameRegion.country}).then()
-      },
-      getRegionId(){
         this.$store.dispatch('getRegionId', {city: this.gameRegion.city}).then()
       },
       classChoose() {
         this.$store.dispatch('classChoose', {
-          isKira: this.class.isKira,
-          regionId: this.class.regionId
+          isKira: this.gameClass.isKira,
+          regionId: this.$store.getters.id
         }).then();
+      },
+      setDefaultStatusOfChoosing(){
+        this.$store.commit('setGameClassChooseStatus', 666);
       }
     },
     mounted() {
       this.getRegionsWithContinents();
+      this.setDefaultStatusOfChoosing();
     }
   }
 </script>

@@ -12,6 +12,7 @@ import NotFound from '@/components/main/NotFound'
 import About from '@/components/main/About'
 import NotConfirmEmailMessage from '@/components/messages/NotConfirmEmailMessage'
 import Class from '@/components/game/Class'
+import Area from '@/components/game/Area'
 
 Vue.use(Router)
 
@@ -77,6 +78,11 @@ export default new Router({
       path: '/class',
       name: 'Class',
       component: Class
+    },
+    {
+      path: '/area',
+      name: 'Area',
+      component: Area
     }
   ]
 })

@@ -2,6 +2,7 @@ import login from './modules/login'
 import registry from './modules/registry'
 import forgot from './modules/forgot'
 import game from './modules/game'
+import area from './modules/area'
 import Vuex from 'vuex'
 import Vue from 'vue'
 
@@ -12,6 +13,7 @@ export default new Vuex.Store({
     login,
     registry,
     forgot,
-    game
+    game,
+    area
   }
 })

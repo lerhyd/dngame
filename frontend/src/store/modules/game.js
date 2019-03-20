@@ -1,4 +1,5 @@
 import axios from 'axios'
+import router from "@/router";
 
 export default {
 
@@ -10,15 +11,13 @@ export default {
     countries: [],
     cities: [],
     id: null,
-    continent: null,
-    country: null,
     kiraAchievements: [],
     agentAchievements: [],
     hasProfile:undefined,
     loginName: null,
-    profileCreateStatus: 0,
-    profileDeleteStatus: 0,
-    gameClassChooseStatus: 0
+    profileCreateStatus: 666,
+    profileDeleteStatus: 666,
+    gameClassChooseStatus: 666
   },
 
   mutations: {
@@ -150,6 +149,7 @@ export default {
     },
 
     classChoose(context, data){
+      router.push("/area")
       axios("/game/class/choose", {
         params: {
           isKira: data.isKira,
@@ -158,6 +158,7 @@ export default {
         },
         method: 'POST'
       }).then(response => {
+        console.log(response.data)
         context.commit('setGameClassChooseStatus', response.data)
       })
         .catch(error => {
@@ -172,7 +173,6 @@ export default {
         },
         method: 'GET'
       }).then(response => {
-        console.log(response.data)
         context.commit('setHasProfile', response.data)
       })
         .catch(error => {
@@ -195,7 +195,6 @@ export default {
       axios("/game/regions/continents", {
         method: 'GET'
       }).then(response => {
-        console.log(response.data)
         context.commit('setContinents', response.data)
       })
         .catch(error => {
@@ -210,7 +209,6 @@ export default {
         },
         method: 'GET'
       }).then(response => {
-        console.log(response.data)
         context.commit('setCountries', response.data)
       })
         .catch(error => {
@@ -225,7 +223,6 @@ export default {
         },
         method: 'GET'
       }).then(response => {
-        console.log(response.data)
         context.commit('setCities', response.data)
       })
         .catch(error => {
@@ -234,13 +231,12 @@ export default {
     },
 
     getRegionId(context, credentials) {
-      axios("/game/regions/id", {
+      console.log(credentials.city)
+      axios.get("/game/regions/id", {
         params: {
           city: credentials.city
-        },
-        method: 'GET'
+        }
       }).then(response => {
-        console.log(response.data)
         context.commit('setId', response.data)
       })
         .catch(error => {

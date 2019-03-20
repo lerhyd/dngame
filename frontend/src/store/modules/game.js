@@ -15,6 +15,7 @@ export default {
     kiraAchievements: [],
     agentAchievements: [],
     hasProfile:undefined,
+    criminalPeople: [],
     loginName: null,
     profileCreateStatus: 0,
     profileDeleteStatus: 0,
@@ -22,6 +23,9 @@ export default {
   },
 
   mutations: {
+    setCriminalPeople (state, data) {
+      state.criminalPeople = data
+    },
     setAgentAchievements (state, data) {
       state.agentAchievements = data
     },
@@ -86,7 +90,8 @@ export default {
     continents: state => state.continents,
     countries: state => state.countries,
     cities: state => state.cities,
-    id: state => state.id
+    id: state => state.id,
+    criminalPeople: state => state.criminalPeople
   },
 
   actions: {
@@ -254,6 +259,21 @@ export default {
           method: 'GET'
         }).then(response => {
         context.commit('setRules', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    getRandomPeople(context) {
+      axios("/game/randomCriminalPeople", {
+        // params: {
+        //   criminalPeople: credentials.criminalPeople
+        // },
+        method: 'GET'
+      }).then(response => {
+        console.log(response.data)
+        context.commit('setCriminalPeople', response.data)
       })
         .catch(error => {
           console.log(error)

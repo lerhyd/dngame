@@ -299,4 +299,9 @@ public class InfoController {
         return ruleDao.findAll().stream().map(RulesInfo::new);
     }
 
+    @GetMapping("/game/randomCriminalPeople")
+    public Stream<PersonInfo> getRandomCriminalPeople(){
+        return personDao.findAllCriminalPeronsInRandomOrder().subList(0,7).stream().map(PersonInfo::new);
+    }
+
 }

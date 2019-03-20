@@ -12,6 +12,7 @@ import NotFound from '@/components/main/NotFound'
 import About from '@/components/main/About'
 import NotConfirmEmailMessage from '@/components/messages/NotConfirmEmailMessage'
 import Class from '@/components/game/Class'
+import Test from '@/components/game/Test'
 
 Vue.use(Router)
 
@@ -52,6 +53,11 @@ export default new Router({
       path: '/game',
       name: 'Game',
       component: Game
+    },
+    {
+      path: '/test',
+      name: 'Test',
+      component: Test
     },
     {
       path: '/confirm',

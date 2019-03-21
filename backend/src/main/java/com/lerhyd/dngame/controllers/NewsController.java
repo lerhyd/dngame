@@ -148,7 +148,7 @@ public class NewsController {
                     news.setPublishedForAgent(true);
                     newsDao.save(news);
                     if (!newsDao.isThereNewNews(agentId, kiraId)){
-                        boolean isPersonsWereNotUsed = NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
+                        boolean isPersonsWereNotUsed = NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao, false);
                         if (!isPersonsWereNotUsed)
                             return null;
                     }

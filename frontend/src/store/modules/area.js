@@ -5,7 +5,8 @@ export default {
 
   state: {
     news: [],
-    status: []
+    status: [],
+    noPersons: false
   },
 
   mutations: {
@@ -14,12 +15,16 @@ export default {
     },
     setStatus(state, data) {
       state.status = data
+    },
+    setNoPersons(state, data) {
+      state.noPerson = data
     }
   },
 
   getters: {
     news: state => state.news,
-    status: state => state.status
+    status: state => state.status,
+    noPersons: state => state.noPerson
   },
 
   actions: {
@@ -56,9 +61,7 @@ export default {
         },
         method: 'GET'
       }).then(response => {
-        console.log(response.data)
         context.commit('setNews', response.data)
-        console.log(context.getters.news)
         context.dispatch('getKiraNews')
       })
         .catch(error => {
@@ -72,9 +75,9 @@ export default {
         },
         method: 'GET'
       }).then(response => {
-        console.log(response.data)
+        if (response.data === null)
+          context.commit('setNoPersons', true)
         context.commit('setNews', response.data)
-        console.log(context.getters.news)
         context.dispatch('getAgentNews')
       })
         .catch(error => {

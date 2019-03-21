@@ -92,10 +92,14 @@
         this.$store.dispatch('getAgentNews')
       },
       getNews(){
-        if (this.$store.getters.isKira)
+        if (this.$store.getters.isKira) {
           this.$store.dispatch('getKiraNews')
-        else
+          console.log('getKiraNews')
+        }
+        else {
           this.$store.dispatch('getAgentNews')
+          console.log('getAgentNews')
+        }
       },
       getStatus(){
         if (this.$store.getters.isKira)

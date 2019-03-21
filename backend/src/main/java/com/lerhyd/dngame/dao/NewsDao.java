@@ -78,4 +78,8 @@ public interface NewsDao extends JpaRepository<News, Integer> {
 
     @Query("select n.die from News n where n.victim.id=:victimId and n.agent.id=:agentId and n.kira.id=:kiraId")
     Optional<Boolean> checkIfVictimDiedInNews(@Param("agentId") int agentId, @Param("kiraId") int kiraId, @Param("victimId") int victimId);
+
+    @Query("select (count(n) > 0) from News n where n.kira.id = :kiraId and n.agent.id =:agentId " +
+            "and n.publicationDate is not null and n.publishedForKira = false and n.publishedForAgent = false")
+    Boolean isThereNewNews(@Param("agentId") int agentId, @Param("kiraId") int kiraId);
 }

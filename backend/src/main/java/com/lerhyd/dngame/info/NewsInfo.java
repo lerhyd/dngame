@@ -9,7 +9,7 @@ public class NewsInfo {
     public int id;
     public String pubDate;
     public String victimName;
-    public String victimSername;
+    public String victimSurname;
     public String victimPatr;
     public boolean victimSex;
     public String actionDesc;
@@ -19,10 +19,7 @@ public class NewsInfo {
     public String commonCountry;
     public String commonContinent;
 
-    public String distCity;
-    public String distCountry;
-    public String distContinent;
-
+    public boolean isGuiltyPersonExists;
     public String guiltyPersonName;
     public String guiltyPersonSername;
     public String guiltyPersonPatr;
@@ -39,15 +36,6 @@ public class NewsInfo {
         actionDesc = news.getAction().getDescription();
         actionPlace = news.getActionPlace().getPlace();
 
-
-        Region distRegion = news.getDistributionRegion();
-        if (distRegion != null){
-            distCity = distRegion.getCity();
-            distCountry = distRegion.getCountry();
-            distContinent = distRegion.getContinent();
-        }
-
-
         Region commonRegion = news.getCommonRegion();
         if (commonRegion!= null){
             commonCity = commonRegion.getCity();
@@ -58,13 +46,14 @@ public class NewsInfo {
         Person victim = news.getVictim();
         if (victim !=null){
             victimName = victim.getName();
-            victimSername = victim.getSurname();
+            victimSurname = victim.getSurname();
             victimPatr = victim.getPatronymic();
             victimSex = victim.getSex();
         }
 
 
         Person guiltyPerson = news.getGuiltyPerson();
+        isGuiltyPersonExists = news.isGuiltyPersonExists();
         if (guiltyPerson != null){
             guiltyPersonName = guiltyPerson.getName();
             guiltyPersonSername = guiltyPerson.getSurname();

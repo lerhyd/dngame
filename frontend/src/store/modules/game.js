@@ -94,7 +94,7 @@ export default {
     countries: state => state.countries,
     cities: state => state.cities,
     id: state => state.id,
-    criminalPeople: state => state.criminalPeople
+    criminalPeople: state => state.criminalPeople,
     isKira: state => state.isKira
   },
 

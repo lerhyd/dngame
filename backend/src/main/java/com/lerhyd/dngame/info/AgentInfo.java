@@ -19,13 +19,13 @@ public class AgentInfo {
     public AgentInfo(Agent agent){
         id = agent.getId();
         lvl = agent.getLvl();
-        numberOfCaughtKillers = agent.getPoints();
-        numberOfWins = agent.getNumberOfCaughtKillers();
-        numberOfLoses = agent.getNumberOfWins();
+        numberOfCaughtKillers = agent.getNumberOfCaughtKillers();
+        numberOfWins = agent.getNumberOfWins();
         numberOfLoses = agent.getNumberOfLoses();
         rank = agent.getRank().getRank();
         city = agent.getRegion().getCity();
         country = agent.getRegion().getCountry();
         continent = agent.getRegion().getContinent();
+        points = agent.getPoints();
     }
 }

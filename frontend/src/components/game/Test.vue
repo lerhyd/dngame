@@ -1,6 +1,5 @@
 <template>
     <div>
-      {{getPeople()}}
       <select>
         <option v-for="item in items">{{item.name}}</option>
       </select>

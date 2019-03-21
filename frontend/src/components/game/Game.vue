@@ -1,16 +1,12 @@
 <template>
-
+  {{updateLoginName()}}
   <div>
+    {{hasProfile()}}
     <header></header>
     <section>
-      {{updateLoginName()}}
-      {{hasProfile()}}
-      {{getUserInfo()}}
       <div v-if="this.$store.getters.hasProfile">
-        {{getProfile()}}
         <div v-for="user in this.$store.getters.user">
-          <p>{{user.login}}</p>
-          <p>{{user.regDate}}</p>
+          <p>{{user.login}} {{user.regDate}}</p>
         </div>
         <div v-for="profile in this.$store.getters.profile">
           <p>{{profile.name}}</p>
@@ -19,7 +15,7 @@
           <p>{{profile.sex}}</p>
           <p>{{profile.bornDate}}</p>
         </div>
-        <button class="button16" @click="deleteProfile()" value="Удалить профиль"></button>
+        <button class="button16" @click="deleteProfile()">Удалить профиль</button>
         <br>
         <router-link class="button16" to="/class">Играть</router-link>
       </div>
@@ -57,7 +53,7 @@
               <datetime v-model="profile.bornDate" type="datetime" format="yyyy-MM-dd HH:mm:ss"></datetime>
             </label>
             <br>
-            <input class="sub" type="submit" value="Создать" @click="updateLoginName();hasProfile()"/>
+            <input class="sub" type="submit" value="Создать" @click="updateLoginName();hasProfile();getUserInfo()"/>
           </form>
         </div>
       </div>
@@ -108,10 +104,18 @@
       },
       hasProfile() {
         this.$store.dispatch('hasProfile').then();
+        if (this.$store.getters.hasProfile)
+          this.getProfile()
       },
       updateLoginName() {
         this.$store.dispatch('getLoginName').then();
       }
+    },
+    mounted() {
+      this.updateLoginName()
+      this.getUserInfo()
+      this.hasProfile()
+      this.getProfile()
     }
   }
 </script>

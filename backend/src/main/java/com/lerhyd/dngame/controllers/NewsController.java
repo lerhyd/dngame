@@ -41,6 +41,9 @@ public class NewsController {
     @Autowired
     private PersonDao personDao;
 
+    @Autowired
+    private UserDao userDao;
+
     /**
      * Add news by Agent.
      * @param newsReq Form of the news from request.
@@ -107,16 +110,16 @@ public class NewsController {
 
     /**
      * Get news by Kira.
-     * @param kiraId ID of the Kira.
+     * @param userLogin ID of the user.
      * @return Stream of news info.
      */
     @GetMapping("/game/kira/news/get")
-    public Stream<NewsInfo> getNewsByKira(@RequestParam("id") int kiraId){
+    public Stream<NewsInfo> getNewsByKira(@RequestParam("userLogin") String userLogin){
+        int kiraId = userDao.getOne(userLogin).getKira().getId();
         Region homeRegion = kiraDao.findById(kiraId).getRegion();
         int agentId = kiraDao.findById(kiraId).getNews().get(0).getAgent().getId();
         while (true){
             List<News> newsList = newsDao.findNotPublishedNewsForKiraByKiraIdAndAgentId(kiraId, agentId);
-
             for (News news: newsList){
                 if (news.getPublicationDate().isBefore(LocalDateTime.now()) || news.getPublicationDate().isEqual(LocalDateTime.now())){
                     if (checkIfNewsCouldBeSeen(news, homeRegion)){
@@ -131,12 +134,12 @@ public class NewsController {
 
     /**
      * Get news by Agent.
-     * @param agentId ID of the Agent.
+     * @param userLogin ID of the user.
      * @return Stream of news info.
      */
     @GetMapping("/game/agent/news/get")
-    public Stream<NewsInfo> getNewsByAgent(@RequestParam("id") int agentId){
-        Region homeRegion = agentDao.findById(agentId).getRegion();
+    public Stream<NewsInfo> getNewsByAgent(@RequestParam("userLogin") String userLogin){
+        int agentId = userDao.getOne(userLogin).getAgent().getId();
         int kiraId = agentDao.findById(agentId).getNews().get(0).getAgent().getId();
         while (true){
             List<News> newsList = newsDao.findNotPublishedNewsForAgentByKiraIdAndAgentId(kiraId, agentId);
@@ -145,7 +148,7 @@ public class NewsController {
                     news.setPublishedForAgent(true);
                     newsDao.save(news);
                     boolean isPersonsWereNotUsed = NewsGenerator.generateRandomNews(kiraId, agentId, newsDao, kiraDao, agentDao, personDao, regionDao);
-                    if (isPersonsWereNotUsed)
+                    if (!isPersonsWereNotUsed)
                         return null;
                     try {
                         return Stream.of(news).map(NewsInfo::new);

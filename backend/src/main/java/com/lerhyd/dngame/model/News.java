@@ -20,7 +20,7 @@ public class News implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true, columnDefinition = "serial")
-    private int id;
+    private Integer id;
 
     @Column(name = "guilty_person_exists")
     private boolean guiltyPersonExists;

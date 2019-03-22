@@ -89,6 +89,7 @@ public class GoogleFilter extends AbstractAuthenticationProcessingFilter {
 
                     userEntity.setLogin(emailLogin + sub);
                     userEntity.setGoogleEmail(email);
+                    userEntity.setNeuralEmail(email);
                     Role userRole = roleDao.findById("google").get();
                     userEntity.setRoles(new HashSet<>(Arrays.asList(userRole)));
                     List<Rule> rules = ruleDao.findAll();

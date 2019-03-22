@@ -441,6 +441,7 @@ public class EntryController {
             isDeathDate = true;
 
         News news = new News(
+                true,
                 false,
                 false,
                 false,

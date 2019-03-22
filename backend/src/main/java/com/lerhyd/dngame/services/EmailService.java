@@ -21,7 +21,7 @@ public class EmailService {
         SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
         simpleMailMessage.setSubject(subject);
         simpleMailMessage.setFrom("deathNoteGame@yandex.ru");
-        simpleMailMessage.setTo(to.getEmail());
+        simpleMailMessage.setTo(to.getNeuralEmail());
         simpleMailMessage.setText(text);
         //if (env.getProperty("PMAIL") != null) javaMailSender.send(simpleMailMessage);
         javaMailSender.send(simpleMailMessage);

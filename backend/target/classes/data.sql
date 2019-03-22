@@ -157,57 +157,57 @@ insert into actions (id, description, lvl) values (34, 'убил(-а) собак
 
 --News templates
 ----10 !fake news
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Произошло жестокое преступление.', true, false, true, false, false, 2, 7); --убийство
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Произошло жестокое преступление.', true, false, true, false, false, 2, 7); --убийство
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'На масленице что-то пошло не так, совсем не так ...', true, false, true, false, false, 9, 13); --подожжен
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'На масленице что-то пошло не так, совсем не так ...', true, false, true, false, false, 9, 13); --подожжен
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Производитель ручек был атакован конкурентом.', true , false, true , false, false, 11, 32);--убит карандашом
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Производитель ручек был атакован конкурентом.', true , false, true , false, false, 11, 32);--убит карандашом
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, '8 допов для сдачи одной лабы.', true , false, true , false, false, 5, 24);--был изнасилован
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, '8 допов для сдачи одной лабы.', true , false, true , false, false, 5, 24);--был изнасилован
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Олигарх отобрал у бомжа пустые бутылки, чтобы сдать их', true , false, true , false, false, 3, 40);--ограблен
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Олигарх отобрал у бомжа пустые бутылки, чтобы сдать их', true , false, true , false, false, 3, 40);--ограблен
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Аристократ(ка) раздавал(а) деньги беднякам.', true, false, true, false, false, 4, 37); --убийство
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Аристократ(ка) раздавал(а) деньги беднякам.', true, false, true, false, false, 4, 37); --убийство
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Человека нашли мёртвым в канализации.', true, false, true, false, false, 5, 3); --изнасилован
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Человека нашли мёртвым в канализации.', true, false, true, false, false, 5, 3); --изнасилован
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'На школьника по дороге домой напали Якудзо.', true , false, true , false, false, 7, 11);--подвергнут нападению
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'На школьника по дороге домой напали Якудзо.', true , false, true , false, false, 7, 11);--подвергнут нападению
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'В ночном клубе батя с сыном снова решили подраться по пьяне.', true , false, true , false, false, 4, 17);--был зарезан
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'В ночном клубе батя с сыном снова решили подраться по пьяне.', true , false, true , false, false, 4, 17);--был зарезан
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Произошло ограбление в центральном банке.', false , true, true , false, false, 2, 29);--был убит
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Произошло ограбление в центральном банке.', false , true, true , false, false, 2, 29);--был убит
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'В мясной лавке клиент обнаружил человеческое мясо.', true, false, true, false, false, 2, 7); --убийство
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'В мясной лавке клиент обнаружил человеческое мясо.', true, false, true, false, false, 2, 7); --убийство
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Прихожанин зашёл в церковь помолиться, но не думал, что тут произойдёт столкновение мафиозных кланов.', true, false, true, false, false, 9, 13); --подожжен
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Прихожанин зашёл в церковь помолиться, но не думал, что тут произойдёт столкновение мафиозных кланов.', true, false, true, false, false, 9, 13); --подожжен
 
 ----10 fake news
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, '10 раз сказал "папка" на ОВТ и ...', true, false, false , false, false, 32, 21);--умер от молнии
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, '10 раз сказал "папка" на ОВТ и ...', true, false, false , false, false, 32, 21);--умер от молнии
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'В России будет свой интернет. Го к нам?', false , true, false , false, false, 27, 17);--1С
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'В России будет свой интернет. Го к нам?', false , true, false , false, false, 27, 17);--1С
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Первокурсники на ВТ сказали, что им не нужны допы и они сдадут все вовремя.', true , true, false , false, false, 33, 24);--умер от смеха
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Первокурсники на ВТ сказали, что им не нужны допы и они сдадут все вовремя.', true , true, false , false, false, 33, 24);--умер от смеха
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Ужасная смерть космонавта на МКС', true , true, false , false, false, 22, 28);--убит медведем
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Ужасная смерть космонавта на МКС', true , true, false , false, false, 22, 28);--убит медведем
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Убийственный уж.', true , true, true , false, false, 8, 46);--отравлен
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Убийственный уж.', true , true, true , false, false, 8, 46);--отравлен
 
 --insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
 --values (false, 'Новые виды оружия были добавлены в PUBG', true , true, true , false, false, 2, 51);--был убит
@@ -224,12 +224,12 @@ values (false, 'Убийственный уж.', true , true, true , false, fals
 --insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
 --values (false, 'Электричество во всем мире пропало год назад.', true , true, false , false, false, 29, 38);--убит роботом
 
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id,action_place)
-values (false, 'Инцидент на Ломоносова 9', true , true, false , false, false, 16, 4);--спрыгнул с крыши
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id,action_place)
+values (false, false, 'Инцидент на Ломоносова 9', true , true, false , false, false, 16, 4);--спрыгнул с крыши
 
 ----5 absurd news
-insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
-values (false, 'Чиновник решил доказать, что прожиточного минимума ему хватит на месяц.', true , false, false , false, false, 15, 29);--от голода
+insert into news (is_from_entry, is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
+values (false, false, 'Чиновник решил доказать, что прожиточного минимума ему хватит на месяц.', true , false, false , false, false, 15, 29);--от голода
 
 --insert into news (is_agent, what, is_die, is_fake, guilty_person_exists, is_published_for_agent, is_published_for_kira, action_id, action_place)
 --values (false, 'ШОК! РУССКИЙ СТУДЕНТ ЗАЧИТАЛ РЭП НА КИТАЙСКОМ.', false , false, false , false, false, 31, 26);--пытался призвать сатану

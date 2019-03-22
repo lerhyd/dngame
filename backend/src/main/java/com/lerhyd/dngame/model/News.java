@@ -28,6 +28,9 @@ public class News implements Serializable {
     @Column(name = "is_fake")
     private boolean fake;
 
+    @Column(name = "is_from_entry")
+    private boolean fromEntry;
+
     @Column(name = "is_agent")
     private boolean agentGenerated;
 
@@ -82,7 +85,8 @@ public class News implements Serializable {
 
     }
 
-    public News(boolean publishedForKira, boolean publishedForAgent, boolean guiltyPersonExists, boolean fake, boolean agentGenerated, boolean die, String description, LocalDateTime publicationDate, Action action, ActionPlace actionPlace, Person victim, Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person guiltyPerson) {
+    public News(boolean fromEntry, boolean publishedForKira, boolean publishedForAgent, boolean guiltyPersonExists, boolean fake, boolean agentGenerated, boolean die, String description, LocalDateTime publicationDate, Action action, ActionPlace actionPlace, Person victim, Agent agent, Kira kira, Region distributionRegion, Region commonRegion, Person guiltyPerson) {
+        this.fromEntry = fromEntry;
         this.guiltyPersonExists = guiltyPersonExists;
         this.fake = fake;
         this.agentGenerated = agentGenerated;

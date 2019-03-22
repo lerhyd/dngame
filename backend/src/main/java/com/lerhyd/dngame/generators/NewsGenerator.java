@@ -27,6 +27,7 @@ public class NewsGenerator {
             return false;
         News templateNews = newsDao.findAllTempleteNewsInRandomOrder().get(0);
         news = new News(
+                templateNews.isFromEntry(),
                 templateNews.isPublishedForKira(),
                 templateNews.isPublishedForAgent(),
                 templateNews.isGuiltyPersonExists(),

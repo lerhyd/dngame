@@ -4,8 +4,7 @@ import lombok.Data;
 
 @Data
 public class EntryReq {
-    private int kiraId;
-    private int pageNum;
+    private String userLogin;
     private int actionId;
     private String victimName;
     private String victimSurname;
@@ -14,5 +13,4 @@ public class EntryReq {
     private String desc;
     private String deathDate;
     private int actionPlaceId;
-    private int deathRegionId;
 }

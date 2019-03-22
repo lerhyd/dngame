@@ -49,8 +49,10 @@ public class NewsGenerator {
         boolean guiltyPersonExists = false;
         if (news.isGuiltyPersonExists())
             if (news.isFake())
-                while (!guiltyPersonExists){
+                outer: while (!guiltyPersonExists){
                     Person guiltyPerson = personDao.findAllNotCriminalPeronsInRandomOrder().get(0);
+                    if (kiraDao.getOne(kiraId).getUser().getProfile().equals(guiltyPerson) || agentDao.getOne(agentId).getUser().getProfile().equals(guiltyPerson))
+                        continue outer;
                     if (!newsDao.checkIfNewsGuiltyPersonExists(agentId, kiraId, guiltyPerson.getId())){
                         news.setGuiltyPerson(guiltyPerson);
                         guiltyPersonExists = true;

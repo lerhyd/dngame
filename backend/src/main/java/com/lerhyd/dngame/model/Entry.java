@@ -40,10 +40,6 @@ public class Entry implements Serializable {
     private ActionPlace actionPlace;
 
     @ManyToOne
-    @JoinColumn(name = "death_region_id", columnDefinition = "integer")
-    private Region deathRegion;
-
-    @ManyToOne
     @JoinColumn(name = "kira_id", columnDefinition = "integer")
     private Kira kira;
 
@@ -51,13 +47,12 @@ public class Entry implements Serializable {
     @JoinColumn(name = "victim_id", columnDefinition = "integer")
     private Person victim;
 
-    public Entry(int pageNumber, LocalDateTime deathDataTime, String description, Action action, ActionPlace actionPlace, Region deathRegion, Kira kira, Person victim) {
+    public Entry(int pageNumber, LocalDateTime deathDataTime, String description, Action action, ActionPlace actionPlace, Kira kira, Person victim) {
         this.pageNumber = pageNumber;
         this.deathDataTime = deathDataTime;
         this.description = description;
         this.action = action;
         this.actionPlace = actionPlace;
-        this.deathRegion = deathRegion;
         this.kira = kira;
         this.victim = victim;
     }

@@ -35,6 +35,9 @@ public class User{
     @Column(name = "vk_id")
     private Integer vkId;
 
+    @Column(name = "neutral_email")
+    private String neuralEmail;
+
     @Column
     private String token;
 

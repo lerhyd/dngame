@@ -8,7 +8,10 @@ import com.lerhyd.dngame.services.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,14 +54,35 @@ public class EntryController {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private UserDao userDao;
+
+
+    /**
+     * Get note's pages
+     * @param userLogin ID of user.
+     * @return Number of pages.
+     */
+    @GetMapping("/game/note/pages")
+    public List<Integer> getNotePages(@RequestParam("userLogin") String userLogin){
+        int kiraId = userDao.getOne(userLogin).getKira().getId();
+        int maxNum = entryDao.findMaxNumPageByKiraId(kiraId).orElse(1);
+        List<Integer> listOfNums = new ArrayList<>();
+        for (int i = 1; i<maxNum; i++){
+            listOfNums.add(i);
+        }
+        return listOfNums;
+    }
+
     /**
      * Get all entries of the Kira.
-     * @param kiraId ID of Kira.
+     * @param userLogin ID of user.
      * @return Stream of entry info.
      */
     @GetMapping("/game/entry")
-    public Stream<EntryInfo> getEntries(@RequestParam("kiraId") int kiraId){
-        return entryDao.findAllByKira(kiraId).stream().map(EntryInfo::new);
+    public Stream<EntryInfo> getEntries(@RequestParam("userLogin") String userLogin, @RequestParam("numPage") int numPage){
+        int kiraId = userDao.getOne(userLogin).getKira().getId();
+        return entryDao.findAllByKira(kiraId, numPage).stream().map(EntryInfo::new);
     }
 
     /**
@@ -83,35 +107,40 @@ public class EntryController {
     @PostMapping("/game/entry/add")
     public int addEntry(@RequestBody EntryReq entryReq)
     {
-
-        long cntEntriesInPage = entryDao.findCntOfEntriesInOnePage(entryReq.getKiraId(), entryReq.getPageNum());
+        int numPage = 0;
+        int kiraId = userDao.getOne(entryReq.getUserLogin()).getKira().getId();
+        int maxNumPage = entryDao.findMaxNumPageByKiraId(kiraId).orElse(0);
+        if (maxNumPage == 0)
+            numPage = 1;
+        else
+            numPage = maxNumPage;
+        long cntEntriesInPage = entryDao.findCntOfEntriesInOnePage(kiraId, numPage);
         if (cntEntriesInPage == 10){
-            return 1;
+            numPage++;
         }
 
-        int maxPageNum = entryDao.findMaxNumPageByKiraId(entryReq.getKiraId()).orElse(1);
-        if ((entryReq.getPageNum() - 1) > maxPageNum)
-            return 2;
-        if (!kiraDao.existsById(entryReq.getKiraId())){
+        if (!kiraDao.existsById(kiraId)){
             return 3;
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-
-        if (LocalDateTime.parse(entryReq.getDeathDate(), formatter).isBefore(LocalDateTime.now()))
+        if (entryReq.getDeathDate() == "")
             return 4;
 
-        if (kiraDao.getOne(entryReq.getKiraId()).getUser().getProfile() == null)
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT;
+        Instant dateInstant = Instant.from(formatter.parse(entryReq.getDeathDate()));
+        LocalDateTime deathDataTime = LocalDateTime.ofInstant(dateInstant, ZoneId.of(ZoneOffset.UTC.getId()));
+
+        if (kiraDao.getOne(kiraId).getUser().getProfile() == null)
             return 5;
 
-        if (kiraDao.getOne(entryReq.getKiraId()).getNews().get(0) == null)
+        if (kiraDao.getOne(kiraId).getNews().get(0) == null)
             return 6;
 
-        int agentIdToCheck = kiraDao.getOne(entryReq.getKiraId()).getNews().get(0).getAgent().getId();
-        if (newsDao.cntVictimsThatUsedInNews(entryReq.getKiraId(), agentIdToCheck) == personDao.cntAllPersonsWithoutFake())
+        int agentIdToCheck = kiraDao.getOne(kiraId).getNews().get(0).getAgent().getId();
+        if (newsDao.cntVictimsThatUsedInNews(kiraId, agentIdToCheck) == personDao.cntAllPersonsWithoutFake())
             return 7;
 
-        deletePointsOfKira(entryReq.getKiraId(), 5);
+        deletePointsOfKira(kiraId, 5);
 
         boolean isEntryVictimExists = entryDao.existsEntryByVictim_NameAndVictim_SurnameAndVictim_PatronymicAndVictim_Sex(
                 entryReq.getVictimName(),
@@ -119,26 +148,38 @@ public class EntryController {
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex()
         );
-        int victimIdToCheck = personDao.findByNameAndSurnameAndPatronymicAndSex(
+        int victimIdToCheck;
+        try {
+
+            victimIdToCheck = personDao.findByNameAndSurnameAndPatronymicAndSex(
+                    entryReq.getVictimName(),
+                    entryReq.getVictimSurname(),
+                    entryReq.getVictimPatr(),
+                    entryReq.isVictimSex()
+            ).getId();
+        } catch (NullPointerException e) {
+            victimIdToCheck = 1;
+        }
+        if (personDao.getOne(victimIdToCheck) == kiraDao.getOne(kiraId).getUser().getProfile())
+            return 8; //agent won
+        if (isEntryVictimExists)
+            return 10;
+
+        Person guiltyPerson = personDao.findByNameAndSurnameAndPatronymicAndSex(
                 entryReq.getVictimName(),
                 entryReq.getVictimSurname(),
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex()
-        ).getId();
-
-        if (personDao.getOne(victimIdToCheck) == kiraDao.getOne(entryReq.getKiraId()).getUser().getProfile())
-            return 8; //agent won
-        if (newsDao.checkIfVictimDiedInNews(agentIdToCheck, entryReq.getKiraId(), victimIdToCheck).orElse(false))
-            return 9;
-        if (isEntryVictimExists)
-            return 10;
+        );
 
         boolean isPersonExists = personDao.existsByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
                 entryReq.getVictimSurname(),
                 entryReq.getVictimPatr(),
                 entryReq.isVictimSex());
-        if (isPersonExists) {
-            Entry entry = getFormedEntry(entryReq, false);
+        if (isPersonExists && !deathDataTime.isBefore(LocalDateTime.now()) &&
+                !newsDao.checkIfVictimDiedInNews(agentIdToCheck, kiraId, victimIdToCheck).orElse(false)
+                && !newsDao.checkIfVictimDiedInNews(agentIdToCheck, kiraId, victimIdToCheck).orElse(false)) {
+            Entry entry = getFormedEntry(entryReq, false, numPage);
             entryDao.save(entry);
             newsDao.save(generateNewsFromEntry(entry));
             boolean isCriminal = personDao.findIfCriminal(
@@ -147,42 +188,37 @@ public class EntryController {
                     entryReq.getVictimPatr(),
                     entryReq.isVictimSex()).orElse(false);
             if (!isCriminal) {
-                deletePointsOfKira(entryReq.getKiraId(), 10);
+                deletePointsOfKira(kiraId, 10);
                 System.out.println("delete 10 point from Kira");
             } else {
-                addPointsOfKira(entryReq.getKiraId(), 15);
-                addNumberOfKills(entryReq.getKiraId());
+                addPointsOfKira(kiraId, 15);
+                addNumberOfKills(kiraId);
                 System.out.println("add 15 points to kira and addNumberOfKills");
             }
 
         } else {
-            Entry entry = getFormedEntry(entryReq, true);
+            Entry entry = getFormedEntry(entryReq, true, numPage);
             entryDao.save(entry);
-            deletePointsOfKira(entryReq.getKiraId(), 5);
+            deletePointsOfKira(kiraId, 5);
             System.out.println("delete 5 points from Kira");
         }
-        Person guiltyPerson = personDao.findByNameAndSurnameAndPatronymicAndSex(
-                entryReq.getVictimName(),
-                entryReq.getVictimSurname(),
-                entryReq.getVictimPatr(),
-                entryReq.isVictimSex()
-        );
-        int points = kiraDao.findPointsById(entryReq.getKiraId());
+
+        int points = kiraDao.findPointsById(kiraId);
         if (points >= 300)
             return 01;//kira won
 
         if (points < 0)
             return 11;//agent won
 
-        if (newsDao.findIfKiraWasFound(guiltyPerson.getId(), entryReq.getKiraId())) {
+        if (newsDao.findIfKiraWasFound(guiltyPerson.getId(), kiraId)) {
             System.out.println("Kira was found");
             return 12;//agent won
         }
 
         boolean isAgentGenerated = false;
 
-        if (newsDao.findIfNewsIsAgentGenerated(guiltyPerson.getId(), entryReq.getKiraId())){
-            int agentId = kiraDao.getOne(entryReq.getKiraId()).getNews().get(0).getAgent().getId();
+        if (newsDao.findIfNewsIsAgentGenerated(guiltyPerson.getId(), kiraId)){
+            int agentId = kiraDao.getOne(kiraId).getNews().get(0).getAgent().getId();
             System.out.println("Kira was caught");
             Agent agentToSave = agentDao.getOne(agentId);
             agentToSave.setPoints(agentToSave.getPoints()+50);
@@ -202,118 +238,118 @@ public class EntryController {
                 }
             isAgentGenerated = true;
         }
-        Kira kira = kiraDao.getOne(entryReq.getKiraId());
+        Kira kira = kiraDao.getOne(kiraId);
         if (kira.getNumberOfKills() >= 3){
             if (kira.getNumberOfKills() > 30)
                 kira.setLvl(11);
             kira.setLvl(kira.getNumberOfKills()/3);
         }
         kiraDao.save(kira);
-        setRankToKira(entryReq.getKiraId());
+        setRankToKira(kiraId);
         
         //Welcome ach
         Achievement welcomeAch = achievementDao.getOne("Welcome");
-        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(welcomeAch))
-            if (kiraDao.getOne(entryReq.getKiraId()).getLvl() == 1){
-                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+        if (!kiraDao.getOne(kiraId).getAchievements().contains(welcomeAch))
+            if (kiraDao.getOne(kiraId).getLvl() == 1){
+                Kira kiraToSave = kiraDao.getOne(kiraId);
                 if (kiraToSave.getAchievements() == null) {
                     List<Achievement> achievements = new ArrayList<>();
                     kiraToSave.setAchievements(achievements);
                 }
                 kiraToSave.getAchievements().add(welcomeAch);
                 kiraDao.save(kiraToSave);
-                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Welcome.");
+                emailService.sendMail("DN game.", kiraDao.getOne(kiraId).getUser(), "Вы получили достижение Welcome.");
             }
         //Ad astra ach
         Achievement adAstraAch = achievementDao.getOne("Ad astra");
-        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(adAstraAch))
-            if (kiraDao.getOne(entryReq.getKiraId()).getLvl() == 5){
-                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+        if (!kiraDao.getOne(kiraId).getAchievements().contains(adAstraAch))
+            if (kiraDao.getOne(kiraId).getLvl() == 5){
+                Kira kiraToSave = kiraDao.getOne(kiraId);
                 if (kiraToSave.getAchievements() == null) {
                     List<Achievement> achievements = new ArrayList<>();
                     kiraToSave.setAchievements(achievements);
                 }
                 kiraToSave.getAchievements().add(adAstraAch);
                 kiraDao.save(kiraToSave);
-                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Ad astra.");
+                emailService.sendMail("DN game.", kiraDao.getOne(kiraId).getUser(), "Вы получили достижение Ad astra.");
             }
         //Unstoppable ach
         Achievement unstoppableAch = achievementDao.getOne("Unstoppable");
-        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(unstoppableAch))
-            if (kiraDao.getOne(entryReq.getKiraId()).getLvl() == 10){
-                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+        if (!kiraDao.getOne(kiraId).getAchievements().contains(unstoppableAch))
+            if (kiraDao.getOne(kiraId).getLvl() == 10){
+                Kira kiraToSave = kiraDao.getOne(kiraId);
                 if (kiraToSave.getAchievements() == null) {
                     List<Achievement> achievements = new ArrayList<>();
                     kiraToSave.setAchievements(achievements);
                 }
                 kiraToSave.getAchievements().add(unstoppableAch);
                 kiraDao.save(kiraToSave);
-                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Unstoppable.");
+                emailService.sendMail("DN game.", kiraDao.getOne(kiraId).getUser(), "Вы получили достижение Unstoppable.");
             }
         //Capital ach
         Achievement capitalAch = achievementDao.getOne("Capital");
-        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(capitalAch))
-            if (kiraDao.getOne(entryReq.getKiraId()).getPoints() >= 200){
-                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+        if (!kiraDao.getOne(kiraId).getAchievements().contains(capitalAch))
+            if (kiraDao.getOne(kiraId).getPoints() >= 200){
+                Kira kiraToSave = kiraDao.getOne(kiraId);
                 if (kiraToSave.getAchievements() == null){
                     List<Achievement> achievements = new ArrayList<>();
                     kiraToSave.setAchievements(achievements);
                 }
                 kiraToSave.getAchievements().add(capitalAch);
                 kiraDao.save(kiraToSave);
-                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Capital.");
+                emailService.sendMail("DN game.", kiraDao.getOne(kiraId).getUser(), "Вы получили достижение Capital.");
             }
         //First assassinations ach
         Achievement firstAssassinationsAch = achievementDao.getOne("First assassinations");
-        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(firstAssassinationsAch))
-            if (kiraDao.getOne(entryReq.getKiraId()).getNumberOfKills() == 10){
-                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+        if (!kiraDao.getOne(kiraId).getAchievements().contains(firstAssassinationsAch))
+            if (kiraDao.getOne(kiraId).getNumberOfKills() == 10){
+                Kira kiraToSave = kiraDao.getOne(kiraId);
                 if (kiraToSave.getAchievements() == null){
                     List<Achievement> achievements = new ArrayList<>();
                     kiraToSave.setAchievements(achievements);
                 }
                 kiraToSave.getAchievements().add(firstAssassinationsAch);
                 kiraDao.save(kiraToSave);
-                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение First assassinations.");
+                emailService.sendMail("DN game.", kiraDao.getOne(kiraId).getUser(), "Вы получили достижение First assassinations.");
             }
         //Blood path ach
         Achievement bloodPathAch = achievementDao.getOne("Blood path");
-        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(bloodPathAch))
-            if (kiraDao.getOne(entryReq.getKiraId()).getNumberOfKills() == 20){
-                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+        if (!kiraDao.getOne(kiraId).getAchievements().contains(bloodPathAch))
+            if (kiraDao.getOne(kiraId).getNumberOfKills() == 20){
+                Kira kiraToSave = kiraDao.getOne(kiraId);
                 if (kiraToSave.getAchievements() == null){
                     List<Achievement> achievements = new ArrayList<>();
                     kiraToSave.setAchievements(achievements);
                 }
                 kiraToSave.getAchievements().add(bloodPathAch);
                 kiraDao.save(kiraToSave);
-                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Blood path.");
+                emailService.sendMail("DN game.", kiraDao.getOne(kiraId).getUser(), "Вы получили достижение Blood path.");
             }
         //Uncontrollable killer ach
         Achievement uncontrollableKillerAch = achievementDao.getOne("Uncontrollable killer");
-        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(uncontrollableKillerAch))
-            if (kiraDao.getOne(entryReq.getKiraId()).getNumberOfWins() == 10){
-                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+        if (!kiraDao.getOne(kiraId).getAchievements().contains(uncontrollableKillerAch))
+            if (kiraDao.getOne(kiraId).getNumberOfWins() == 10){
+                Kira kiraToSave = kiraDao.getOne(kiraId);
                 if (kiraToSave.getAchievements() == null){
                     List<Achievement> achievements = new ArrayList<>();
                     kiraToSave.setAchievements(achievements);
                 }
                 kiraToSave.getAchievements().add(uncontrollableKillerAch);
                 kiraDao.save(kiraToSave);
-                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Uncontrollable killer.");
+                emailService.sendMail("DN game.", kiraDao.getOne(kiraId).getUser(), "Вы получили достижение Uncontrollable killer.");
             }
         //Irrepressible killer ach
         Achievement irrepressibleKillerAch = achievementDao.getOne("Irrepressible killer");
-        if (!kiraDao.getOne(entryReq.getKiraId()).getAchievements().contains(irrepressibleKillerAch))
-            if (kiraDao.getOne(entryReq.getKiraId()).getNumberOfWins() == 20){
-                Kira kiraToSave = kiraDao.getOne(entryReq.getKiraId());
+        if (!kiraDao.getOne(kiraId).getAchievements().contains(irrepressibleKillerAch))
+            if (kiraDao.getOne(kiraId).getNumberOfWins() == 20){
+                Kira kiraToSave = kiraDao.getOne(kiraId);
                 if (kiraToSave.getAchievements() == null){
                     List<Achievement> achievements = new ArrayList<>();
                     kiraToSave.setAchievements(achievements);
                 }
                 kiraToSave.getAchievements().add(irrepressibleKillerAch);
                 kiraDao.save(kiraToSave);
-                emailService.sendMail("DN game.", kiraDao.getOne(entryReq.getKiraId()).getUser(), "Вы получили достижение Irrepressible killer.");
+                emailService.sendMail("DN game.", kiraDao.getOne(kiraId).getUser(), "Вы получили достижение Irrepressible killer.");
             }
         return 0;
     }
@@ -396,7 +432,7 @@ public class EntryController {
         Kira kira = entry.getKira();
         ActionPlace actionPlace = entry.getActionPlace();
         Action action = entry.getAction();
-        Region region = entry.getDeathRegion();
+        Region region = regionDao.findAllRegionsInRandomOrder().get(0);
         Person victim = entry.getVictim();
         boolean isDeathDate = false;
         LocalDateTime deathDate = entry.getDeathDataTime();
@@ -405,6 +441,7 @@ public class EntryController {
             isDeathDate = true;
 
         News news = new News(
+                true,
                 false,
                 false,
                 false,
@@ -427,21 +464,23 @@ public class EntryController {
     }
 
     private Entry getFormedEntry(EntryReq entryReq,
-                                 boolean isUselessEntry){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+                                 boolean isUselessEntry, int numPage){
+        int kiraId = userDao.getOne(entryReq.getUserLogin()).getKira().getId();
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT;
+        Instant dateInstant = Instant.from(formatter.parse(entryReq.getDeathDate()));
+        LocalDateTime deathDataTime = LocalDateTime.ofInstant(dateInstant, ZoneId.of(ZoneOffset.UTC.getId()));
         if (!isUselessEntry) {
             personDao.findByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
                     entryReq.getVictimSurname(),
                     entryReq.getVictimPatr(),
                     entryReq.isVictimSex());
             Entry entry = new Entry(
-                    entryReq.getPageNum(),
-                    LocalDateTime.parse(entryReq.getDeathDate(), formatter),
+                    numPage,
+                    deathDataTime,
                     entryReq.getDesc(),
                     actionDao.findById(entryReq.getActionId()),
                     actionPlaceDao.findById(entryReq.getActionPlaceId()),
-                    regionDao.findById(entryReq.getDeathRegionId()),
-                    kiraDao.findById(entryReq.getKiraId()),
+                    kiraDao.findById(kiraId),
                     personDao.findByNameAndSurnameAndPatronymicAndSex(entryReq.getVictimName(),
                                                                       entryReq.getVictimSurname(),
                                                                       entryReq.getVictimPatr(),
@@ -455,7 +494,7 @@ public class EntryController {
                     entryReq.getVictimPatr(),
                     entryReq.isVictimSex(),
                     LocalDateTime.now(),
-                    LocalDateTime.parse(entryReq.getDeathDate(), formatter),
+                    deathDataTime,
                     true,
                     false,
                     null,
@@ -464,13 +503,12 @@ public class EntryController {
                     );
 
             Entry entry = new Entry(
-                    entryReq.getPageNum(),
-                    LocalDateTime.parse(entryReq.getDeathDate(), formatter),
+                    numPage,
+                    deathDataTime,
                     entryReq.getDesc(),
                     actionDao.findById(entryReq.getActionId()),
                     actionPlaceDao.findById(entryReq.getActionPlaceId()),
-                    regionDao.findById(entryReq.getDeathRegionId()),
-                    kiraDao.findById(entryReq.getKiraId()),
+                    kiraDao.findById(kiraId),
                     unrealVictim
             );
             unrealVictim.setEntry(entry);

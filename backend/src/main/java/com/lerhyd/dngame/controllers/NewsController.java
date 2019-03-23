@@ -85,6 +85,7 @@ public class NewsController {
         News news = new News(
                 false,
                 false,
+                false,
                 victimExists,
                 true,
                 true,

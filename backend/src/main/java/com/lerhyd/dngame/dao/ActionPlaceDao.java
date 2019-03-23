@@ -13,7 +13,7 @@ public interface ActionPlaceDao extends JpaRepository<ActionPlace, Integer> {
 
     ActionPlace findById(int id);
 
-    @Query("select a from ActionPlace a where a.lvl<=lvl")
+    @Query("select a from ActionPlace a where a.lvl<=:lvl")
     List<ActionPlace> findByLvl(@Param("lvl") int lvl);
 
 }

@@ -12,9 +12,6 @@ public class EntryInfo {
     public String deathReason;
     public String deathPlace;
     public String deathDataTime;
-    public String deathCity;
-    public String deathCountry;
-    public String deathContinent;
     public String desc;
     public boolean victimSex;
 
@@ -27,10 +24,6 @@ public class EntryInfo {
         deathReason = entry.getAction().getDescription();
         deathPlace = entry.getActionPlace().getPlace();
         desc = entry.getDescription();
-        Region deathRegion = entry.getDeathRegion();
-        deathCity = deathRegion.getCity();
-        deathCountry = deathRegion.getCountry();
-        deathContinent = deathRegion.getContinent();
         Person victim = entry.getVictim();
         victimName = victim.getName();
         victimSurname = victim.getSurname();

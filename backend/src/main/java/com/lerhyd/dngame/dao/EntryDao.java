@@ -14,8 +14,8 @@ import java.util.Optional;
 @Repository
 public interface EntryDao extends JpaRepository<Entry, Integer> {
 
-    @Query("select e from Entry e WHERE e.kira.id = :kiraId")
-    Collection<Entry> findAllByKira(@Param("kiraId") int kiraId);
+    @Query("select e from Entry e WHERE e.kira.id = :kiraId and e.pageNumber=:numPage")
+    Collection<Entry> findAllByKira(@Param("kiraId") int kiraId, @Param("numPage") int numPage);
 
     @Transactional
     @Modifying

@@ -16,12 +16,12 @@
         <option v-for="continent in this.$store.getters.continents" v-bind:value="continent">{{continent}}</option>
       </select>
       <br>
-      <select class="form-control" v-model="gameRegion.country" v-if="gameRegion.continent!=null" @click="getRegionsWithCountries()">
+      <select class="form-control" v-model="gameRegion.country" v-if="gameRegion.continent!=null">
         <option>Choose Country</option>
         <option v-for="country in this.$store.getters.countries" v-bind:value="country">{{country}}</option>
       </select>
       <br>
-      <select class="form-control" v-model="gameRegion.city" v-if="gameRegion.country!=null" @click="getRegionsWithCities()">
+      <select class="form-control" v-model="gameRegion.city" v-if="gameRegion.country!=null">
         <option>Choose City</option>
         <option v-for="city in this.$store.getters.cities" v-bind:value="city">{{city}}</option>
       </select>
@@ -55,6 +55,8 @@
       },
       getRegionsWithCities(){
         this.$store.dispatch('getRegionsWithCities', {country: this.gameRegion.country}).then()
+      },
+      getRegionId(){
         this.$store.dispatch('getRegionId', {city: this.gameRegion.city}).then()
       },
       classChoose() {
@@ -70,6 +72,18 @@
     mounted() {
       this.getRegionsWithContinents();
       this.setDefaultStatusOfChoosing();
+    },
+    watch: {
+      'gameRegion.continent': function (val) {
+        this.getRegionsWithCountries()
+      },
+      'gameRegion.country': function (val) {
+        this.getRegionsWithCities()
+      },
+      'gameRegion.city': function (val) {
+        console.log('')
+        this.getRegionId()
+      }
     }
   }
 </script>

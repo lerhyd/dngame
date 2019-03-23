@@ -83,7 +83,7 @@
                 <datetime v-model="entryForm.deathDate" type="datetime" format="yyyy-MM-dd HH:mm:ss"></datetime>
               </label>
               <p id="fail-message">
-                <a v-else-if="this.$store.getters.entryStatus == 4">Death date is before then current date</a>
+                <a v-if="this.$store.getters.entryStatus == 4">Death date is before then current date</a>
                 <a v-else-if="this.$store.getters.entryStatus == 8">Kira committed suicide</a>
                 <a v-else-if="this.$store.getters.entryStatus == 9">The victim with the ID has already died</a>
                 <a v-else-if="this.$store.getters.entryStatus == 10">The entry with the victim already exists</a>

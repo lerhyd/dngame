@@ -127,22 +127,6 @@
     color: grey;
   }
 
-
-  .theme-orange .vdatetime-popup__header,
-  .theme-orange .vdatetime-calendar__month__day--selected > span > span,
-  .theme-orange .vdatetime-calendar__month__day--selected:hover > span > span {
-    background: #FF9800;
-    /*color: green;*/
-  }
-
-  .theme-orange .vdatetime-year-picker__item--selected,
-  .theme-orange .vdatetime-time-picker__item--selected,
-  .theme-orange .vdatetime-popup__actions__button {
-    color: #ff9800;
-    /*color: grey;*/
-  }
-
-
   .center-on-page {
     font-family: 'Hand';
     position: absolute;

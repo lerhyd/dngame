@@ -40,6 +40,9 @@ public class MainController {
     @Autowired
     private RegionDao regionDao;
 
+    @Autowired
+    private EntryDao entryDao;
+
     /**
      * Create profile of the user.
      * @param personReq Form of the person.
@@ -117,6 +120,54 @@ public class MainController {
         else {
             return true;
         }
+    }
+
+    /**
+     * Drawn game.
+     * @param userLogin ID of the user.
+     * @param isKira function executes from kira's side.
+     * @return Status:
+     * 0 -- The function was executed correctly.
+     */
+    @PostMapping("/game/drawn")
+    public int drawnGame(@RequestParam("userLogin") String userLogin, @RequestParam("isKira") boolean isKira){
+        int id;
+        try {
+            if (isKira)
+                id = userDao.getOne(userLogin).getKira().getId();
+            else
+                id = userDao.getOne(userLogin).getAgent().getNews().get(0).getKira().getId();
+        } catch (Exception e) {
+            return 0;
+        }
+
+
+        Kira k = kiraDao.getOne(id);
+        int agentId = k.getNews().get(0).getAgent().getId();
+        Agent a = agentDao.getOne(agentId);
+
+        newsDao.deleteAllByKiraIdAndAgentId(id, agentId);
+        personDao.deleteAllByFake();
+        entryDao.deleteAllByKiraId(id);
+
+        k.setLvl(0);
+        k.setPoints(0);
+        k.setNumberOfKills(0);
+        k.setEntries(null);
+        k.setNews(null);
+        k.setRank(null);
+
+        a.setLvl(0);
+        a.setPoints(0);
+        a.setNumberOfCaughtKillers(0);
+        a.setNews(null);
+        a.setRank(null);
+        a.setRequests(null);
+        k.setNumberOfWins(k.getNumberOfWins() - 1);
+        a.setNumberOfLoses(a.getNumberOfLoses() - 1);
+        kiraDao.save(k);
+        agentDao.save(a);
+        return 0;
     }
 
     /**

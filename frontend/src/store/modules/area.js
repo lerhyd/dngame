@@ -12,10 +12,13 @@ export default {
     noPersons: false,
     numPage: 1,
     entryPages: null,
-    entryStatus: null,
     actionId: null,
     actionPlaceId: null,
-
+    entryStatus: null,
+    kiraWinStatus: null,
+    matchEnded: false,
+    isKiraWin: undefined,
+    isGameDrawn: false
   },
 
   mutations: {
@@ -51,6 +54,18 @@ export default {
     },
     setNumPage(state, data) {
       state.numPage = data
+    },
+    setKiraWinStatus(state, data) {
+      state.kiraWinStatus = data
+    },
+    setMatchEnded(state, data) {
+      state.matchEnded = data
+    },
+    setIsKiraWin(state, data) {
+      state.isKiraWin = data
+    },
+    setIsGameDrawn(state, data) {
+      state.isGameDrawn = data
     }
   },
 
@@ -60,12 +75,16 @@ export default {
     noPersons: state => state.noPerson,
     entryPages: state => state.entryPages,
     entry: state => state.entry,
-    getEntryStatus: state => state.entryStatus,
+    entryStatus: state => state.entryStatus,
     actionId: state => state.actionId,
     actionPlaceId: state => state.actionPlaceId,
     action: state => state.action,
     actionPlace: state => state.actionPlace,
-    numPage: state => state.numPage
+    numPage: state => state.numPage,
+    kiraWinStatus: state => state.kiraWinStatus,
+    matchEnded: state => state.matchEnded,
+    isKiraWin: state => state.isKiraWin,
+    isGameDrawn: state => stte.isGameDrawn
   },
 
   actions: {
@@ -132,6 +151,7 @@ export default {
         },
         method: 'GET'
       }).then(response => {
+        console.log(response.data)
         context.commit('setEntryPages', response.data)
       })
         .catch(error => {
@@ -165,11 +185,17 @@ export default {
         actionPlaceId: credentials.actionPlaceId
       }).then(response => {
         console.log(response.data)
+        if (response.data === 7)
+          context.dispatch('gameDrawn')
+        if (response.data === 8 || response.data === 11 || response.data === 12)
+          context.dispatch('agentWin')
+        if (response.data === 666)
+          context.dispatch('kiraWin')
         context.commit('setEntryStatus', response.data);
         context.dispatch('getKiraStatus')
       })
         .catch(error => {
-          context.commit('setFailed', true);
+          console.log(error)
         })
     },
     getKiraActions(context){
@@ -221,6 +247,49 @@ export default {
         method: 'GET'
       }).then(response => {
         context.commit('setActionPlace', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    kiraWin(context){
+      axios.post('game/kira/win', {
+        userLogin: context.getters.loginName,
+        isKira: context.getters.isKira
+      }).then(response => {
+        console.log(response.data)
+        context.commit('setKiraWinStatus', response.data);
+        context.commit('setMatchEnded', true)
+        context.commit('setIsKiraWin', true)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    agentWin(context){
+      axios.post('game/agent/win', {
+        userLogin: context.getters.loginName,
+        isKira: context.getters.isKira
+      }).then(response => {
+        console.log(response.data)
+        context.commit('setKiraWinStatus', response.data);
+        context.commit('setMatchEnded', true)
+        context.commit('setIsKiraWin', false)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    gameDrawn(context){
+      axios.post('/game/drawn', {
+        userLogin: context.getters.loginName,
+        isKira: context.getters.isKira
+      }).then(response => {
+        console.log(response.data)
+        context.commit('setMatchEnded', true)
+        context.commit('setIsGameDrawn', true)
       })
         .catch(error => {
           console.log(error)

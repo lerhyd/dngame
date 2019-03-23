@@ -30,14 +30,14 @@
           </div>
 
           <div class="select-custom">
-            <select class="region-selector" v-model="gameRegion.country" v-if="gameRegion.continent!=null" @click="getRegionsWithCountries()">
+            <select class="region-selector" v-model="gameRegion.country" v-if="gameRegion.continent!=null">
               <option value="null" disabled>Страна</option>
               <option v-for="country in this.$store.getters.countries" v-bind:value="country">{{country}}</option>
             </select>
           </div>
 
           <div class="select-custom">
-            <select class="region-selector" v-model="gameRegion.city" v-if="gameRegion.country!=null" @click="getRegionsWithCities()">
+            <select class="region-selector" v-model="gameRegion.city" v-if="gameRegion.country!=null">
               <option value="null" disabled>Город</option>
               <option v-for="city in this.$store.getters.cities" v-bind:value="city">{{city}}</option>
             </select>

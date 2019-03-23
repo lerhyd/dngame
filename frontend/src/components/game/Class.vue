@@ -83,6 +83,8 @@
       },
       getRegionsWithCities(){
         this.$store.dispatch('getRegionsWithCities', {country: this.gameRegion.country}).then()
+      },
+      getRegionId(){
         this.$store.dispatch('getRegionId', {city: this.gameRegion.city}).then()
       },
       classChoose() {
@@ -98,6 +100,18 @@
     mounted() {
       this.getRegionsWithContinents();
       this.setDefaultStatusOfChoosing();
+    },
+    watch: {
+      'gameRegion.continent': function (val) {
+        this.getRegionsWithCountries()
+      },
+      'gameRegion.country': function (val) {
+        this.getRegionsWithCities()
+      },
+      'gameRegion.city': function (val) {
+        console.log('')
+        this.getRegionId()
+      }
     }
   }
 </script>

@@ -303,7 +303,7 @@
     watch: {
       numPage: function (val) {
         this.$store.commit('setNumPage', val)
-        getEntries()
+        this.getEntries()
       }
     }
   }

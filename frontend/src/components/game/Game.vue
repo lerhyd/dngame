@@ -4,7 +4,7 @@
     {{hasProfile()}}
     <Header></Header>
     <section class="main-section">
-      <div v-if="this.$store.getters.hasProfile" class="profile-center-on-page">
+      <div v-if="this.$store.getters.profileCreateStatus===0" class="profile-center-on-page">
         <div v-for="profile in this.$store.getters.profile">
           <h1>Ваш профиль</h1>
           <p>ФИО:
@@ -44,16 +44,16 @@
             <label for="woman">Женщина</label>
             <br>
               <datetime
+                v-model="profile.bornDate"
                 :phrases="{ok: 'Подтвердить', cancel: 'Отмена'}"
-                id="date-label" type="date"
-                v-bind:value="profile.bornDate"
+                id="date-label" type="datetime"
                 class="red-theme"
                 :min-datetime="minDatetime"
                 :max-datetime="maxDatetime" auto>
-                <label for="date-label" slot="before" id="birthday-label" >Дата Рождения:</label>
+                <label for="date-label" slot="before" id="birthday-label">Дата Рождения:</label>
               </datetime>
             <br>
-            <button class="submit" type="submit" @click="updateLoginName();hasProfile();getUserInfo()">
+            <button class="submit" type="submit">
               <a>Создать</a>
             </button>
 
@@ -100,6 +100,9 @@
           sex: this.profile.sex,
           bornDate: this.profile.bornDate
         }).then();
+        this.updateLoginName()
+        this.hasProfile()
+        this.getUserInfo()
       },
       getProfile() {
         this.$store.dispatch('getProfile').then();

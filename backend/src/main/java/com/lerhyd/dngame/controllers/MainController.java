@@ -75,6 +75,7 @@ public class MainController {
             return 4;
         Person p = new Person();
         DateTimeFormatter formatter = DateTimeFormatter.ISO_INSTANT;
+        System.out.println(personReq.getBornDate());
         Instant dateInstant = Instant.from(formatter.parse(personReq.getBornDate()));
         p.setName(personReq.getName());
         p.setSurname(personReq.getSurname());

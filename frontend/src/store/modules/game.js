@@ -114,7 +114,6 @@ export default {
     },
 
     createProfile(context, data){
-      console.log(context.getters.loginName)
       axios.post("/game/profile/create", {
           name: data.name,
           surname: data.surname,
@@ -169,7 +168,6 @@ export default {
         },
         method: 'POST'
       }).then(response => {
-        console.log(response.data)
         context.commit('setGameClassChooseStatus', response.data)
       })
         .catch(error => {

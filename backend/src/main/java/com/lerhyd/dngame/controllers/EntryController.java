@@ -66,7 +66,7 @@ public class EntryController {
     @GetMapping("/game/note/pages")
     public List<Integer> getNotePages(@RequestParam("userLogin") String userLogin){
         int kiraId = userDao.getOne(userLogin).getKira().getId();
-        int maxNum = entryDao.findMaxNumPageByKiraId(kiraId).orElse(1);
+        int maxNum = entryDao.findMaxNumPageByKiraId(kiraId).orElse(1) + 1;
         List<Integer> listOfNums = new ArrayList<>();
         for (int i = 1; i<maxNum; i++){
             listOfNums.add(i);
@@ -102,12 +102,12 @@ public class EntryController {
      * 11 -- The Agent won because the Kira's points less than 0,
      * 12 -- The Kira' location was finally declassified,
      * 0 -- The function was executed correctly,
-     * 01 -- The Kira won because he has 300 points or more.
+     * 666 -- The Kira won because he has 300 points or more.
      */
     @PostMapping("/game/entry/add")
     public int addEntry(@RequestBody EntryReq entryReq)
     {
-        int numPage = 0;
+        int numPage;
         int kiraId = userDao.getOne(entryReq.getUserLogin()).getKira().getId();
         int maxNumPage = entryDao.findMaxNumPageByKiraId(kiraId).orElse(0);
         if (maxNumPage == 0)
@@ -115,7 +115,7 @@ public class EntryController {
         else
             numPage = maxNumPage;
         long cntEntriesInPage = entryDao.findCntOfEntriesInOnePage(kiraId, numPage);
-        if (cntEntriesInPage == 10){
+        if (cntEntriesInPage == 5){
             numPage++;
         }
 
@@ -205,39 +205,42 @@ public class EntryController {
 
         int points = kiraDao.findPointsById(kiraId);
         if (points >= 300)
-            return 01;//kira won
+            return 666;//kira won
 
         if (points < 0)
             return 11;//agent won
+        try {
+            if (newsDao.findIfKiraWasFound(guiltyPerson.getId(), kiraId)) {
+                System.out.println("Kira was found");
+                return 12;//agent won
+            }
+        } catch (Exception e) {}
 
-        if (newsDao.findIfKiraWasFound(guiltyPerson.getId(), kiraId)) {
-            System.out.println("Kira was found");
-            return 12;//agent won
-        }
 
         boolean isAgentGenerated = false;
-
-        if (newsDao.findIfNewsIsAgentGenerated(guiltyPerson.getId(), kiraId)){
-            int agentId = kiraDao.getOne(kiraId).getNews().get(0).getAgent().getId();
-            System.out.println("Kira was caught");
-            Agent agentToSave = agentDao.getOne(agentId);
-            agentToSave.setPoints(agentToSave.getPoints()+50);
-            agentDao.save(agentToSave);
-            setRankToAgent(agentId);
-            //Capital ach
-            Achievement capitalAch = achievementDao.getOne("Capital");
-            if (!agentDao.getOne(agentId).getAchievements().contains(capitalAch))
-                if (agentDao.getOne(agentId).getPoints() >= 200){
-                    if (agentToSave.getAchievements() == null){
-                        List<Achievement> achievements = new ArrayList<>();
-                        agentToSave.setAchievements(achievements);
+        try {
+            if (newsDao.findIfNewsIsAgentGenerated(guiltyPerson.getId(), kiraId)){
+                int agentId = kiraDao.getOne(kiraId).getNews().get(0).getAgent().getId();
+                System.out.println("Kira was caught");
+                Agent agentToSave = agentDao.getOne(agentId);
+                agentToSave.setPoints(agentToSave.getPoints()+50);
+                agentDao.save(agentToSave);
+                setRankToAgent(agentId);
+                //Capital ach
+                Achievement capitalAch = achievementDao.getOne("Capital");
+                if (!agentDao.getOne(agentId).getAchievements().contains(capitalAch))
+                    if (agentDao.getOne(agentId).getPoints() >= 200){
+                        if (agentToSave.getAchievements() == null){
+                            List<Achievement> achievements = new ArrayList<>();
+                            agentToSave.setAchievements(achievements);
+                        }
+                        agentToSave.getAchievements().add(capitalAch);
+                        agentDao.save(agentToSave);
+                        emailService.sendMail("DN game.", agentDao.getOne(agentId).getUser(), "Вы получили достижение Capital.");
                     }
-                    agentToSave.getAchievements().add(capitalAch);
-                    agentDao.save(agentToSave);
-                    emailService.sendMail("DN game.", agentDao.getOne(agentId).getUser(), "Вы получили достижение Capital.");
-                }
-            isAgentGenerated = true;
-        }
+                isAgentGenerated = true;
+            }
+        } catch (Exception e){}
         Kira kira = kiraDao.getOne(kiraId);
         if (kira.getNumberOfKills() >= 3){
             if (kira.getNumberOfKills() > 30)

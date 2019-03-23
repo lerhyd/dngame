@@ -38,9 +38,13 @@ public class KiraController {
     @Autowired
     private EmailService emailService;
 
+    @Autowired
+    private UserDao userDao;
+
     /**
      * Ends match when Kira wins.
-     * @param id ID of the Kira.
+     * @param userLogin ID of the user.
+     * @param isKira function executes from kira's side.
      * @return Status:
      * 1 -- There's no Kira with the ID,
      * 2 -- There's no match with the agent's ID,
@@ -50,7 +54,12 @@ public class KiraController {
      * 0 -- The function was executed correctly.
      */
     @PostMapping("game/kira/win")
-    public int endGame(@RequestParam int id){
+    public int endGameByKira(@RequestParam("userLogin") String userLogin, @RequestParam("isKira") boolean isKira){
+        int id;
+        if (isKira)
+            id = userDao.getOne(userLogin).getKira().getId();
+        else
+            id = userDao.getOne(userLogin).getAgent().getNews().get(0).getKira().getId();
         try {
             if (kiraDao.getOne(id) == null)
                 return 1;

@@ -5,8 +5,8 @@
     <section class="left-section">
       <img src="../../assets/img/a1.png"/>
     </section>
-    <section class="main-section">
-      <div class="wrapper">
+    <section class="main-region-section">
+      <div class="center-region-page">
         <p class="p-teg">
           Выбери класс, за который будешь играть
         </p>
@@ -246,32 +246,13 @@
     -webkit-transform: scale(1);
     transform: scale(1);
   }
-  .button16 {
-    display: inline-block;
-    text-decoration: none;
-    padding: 1em;
-    outline: none;
-    border-radius: 10px;
-    font-size: medium;
-    font-family: 'Hand';
-    color: white;
-  }
-  .button16:hover {
-    background-image:
-      radial-gradient(3px 45% at 0% 50%, rgba(255, 255, 255, 0.6), transparent),
-      radial-gradient(3px 45% at 100% 50%, rgba(255,255,255,.6), transparent);
-  }
-  .button16:active {
-    background-image:
-      radial-gradient(50% 50% at 50% 50%, rgba(74, 74, 74, 0.9), rgba(255,255,255,0));
-  }
 
-
-  .wrapper{
+  .center-region-page{
     display: inline-block;
     position: center;
     height: 90%;
-    width: 60%;
+    width: 75%;
+    color: white;
     border: 5px solid rgb(254, 254, 254);
     border-radius: 30px;
   }
@@ -293,7 +274,7 @@
 
   .right-section{float: right;}
 
-  .main-section{
+  .main-region-section{
     width: 45%;
     text-align: center;
     position: absolute;
@@ -307,15 +288,13 @@
 
   @media screen and (max-width: 700px){
 
-    .wrapper{width: 90%;}
-
-    .wrapper ul{width: auto;}
+    .center-region-page{width: 90%;}
 
     .left-section{display: none;}
 
     .right-section{display: none;}
 
-    .main-section{width: 90%;}
+    .main-region-section{width: 90%;}
 
     fieldset::after{right: 21%;}
 
@@ -327,7 +306,7 @@
 
     .right-section{display: none;}
 
-    .main-section{width: 95%;}
+    .main-region-section{width: 95%;}
   }
 
 </style>

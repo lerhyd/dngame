@@ -23,8 +23,8 @@ public class EmailService {
         simpleMailMessage.setFrom("dngameproject@yandex.ru");
         simpleMailMessage.setTo(to.getNeuralEmail());
         simpleMailMessage.setText(text);
-        //if (env.getProperty("PMAIL") != null) javaMailSender.send(simpleMailMessage);
-        javaMailSender.send(simpleMailMessage);
+        if (env.getProperty("PMAIL") != null)
+            javaMailSender.send(simpleMailMessage);
     }
     public void sendMail(String subject, String from, String to, String text){
         SimpleMailMessage simpleMailMessage=new SimpleMailMessage();
@@ -32,8 +32,8 @@ public class EmailService {
         simpleMailMessage.setFrom(from);
         simpleMailMessage.setTo(to);
         simpleMailMessage.setText(text);
-        //if (env.getProperty("PMAIL") != null) javaMailSender.send(simpleMailMessage);
-        javaMailSender.send(simpleMailMessage);
+        if (env.getProperty("PMAIL") != null)
+            javaMailSender.send(simpleMailMessage);
     }
     @RequestMapping(value = "/")
     public String myController() {

@@ -19,7 +19,8 @@ export default {
     loginName: null,
     profileCreateStatus: 666,
     profileDeleteStatus: 666,
-    gameClassChooseStatus: 666
+    gameClassChooseStatus: 666,
+    passwordStatus: null
   },
 
   mutations: {
@@ -73,6 +74,9 @@ export default {
     },
     setIsKira (state, data){
       state.isKira = data
+    },
+    setPasswordStatus (state, data) {
+      state.passwordStatus = data;
     }
   },
 
@@ -95,7 +99,8 @@ export default {
     cities: state => state.cities,
     id: state => state.id,
     criminalPeople: state => state.criminalPeople,
-    isKira: state => state.isKira
+    isKira: state => state.isKira,
+    passwordStatus: state => state.passwordStatus
   },
 
   actions: {
@@ -240,7 +245,6 @@ export default {
     },
 
     getRegionId(context, credentials) {
-      console.log(credentials.city)
       axios.get("/game/regions/id", {
         params: {
           city: credentials.city
@@ -304,6 +308,21 @@ export default {
           method: 'GET'
         }).then(response => {
         context.commit('setAgentAchievements', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    changePass(context, data){
+      axios("changepass", {
+        params: {
+          newPass: data.newPass,
+          userLogin: context.getters.loginName,
+        },
+        method: 'POST'
+      }).then(response => {
+        context.commit('setPasswordStatus', response.data)
       })
         .catch(error => {
           console.log(error)

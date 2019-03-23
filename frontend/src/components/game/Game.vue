@@ -1,28 +1,33 @@
 <template>
   <div>
-    <Header></Header>
     {{updateLoginName()}}
     {{hasProfile()}}
-    <header></header>
+    <Header></Header>
     <section class="main-section">
-      <div v-if="this.$store.getters.hasProfile">
-        <div v-for="user in this.$store.getters.user">
-          <p>{{user.login}} {{user.regDate}}</p>
-        </div>
+      <div v-if="this.$store.getters.hasProfile" class="profile-center-on-page">
         <div v-for="profile in this.$store.getters.profile">
-          <p>{{profile.name}}</p>
-          <p>{{profile.surname}}</p>
-          <p>{{profile.patr}}</p>
-          <p>{{profile.sex}}</p>
-          <p>{{profile.bornDate}}</p>
+          <h1>Ваш профиль</h1>
+          <p>ФИО:
+            <a style="color: #880000">{{profile.surname}} {{profile.name}} {{profile.patr}} Тут ФИО</a>
+          </p>
+          <p>Пол:
+            <a v-if="profile.sex" style="color: #880000">Мужской</a>
+            <a v-if="!profile.sex" style="color: #880000">Женский</a>
+          </p>
+          <p>Дата рождения: <a style="color: #880000">{{profile.bornDate}}</a></p>
         </div>
-        <button class="button16" @click="deleteProfile()">Удалить профиль</button>
-        <br>
-        <router-link class="button16" to="/class">Играть</router-link>
+        <div id="account-block" v-for="user in this.$store.getters.user">
+          <h1>Данные аккаунта</h1>
+          <p>Логин: <a style="color: #880000">{{user.login}}</a></p>
+          <p>Дата регистрации: <a style="color: #880000">{{user.regDate}}</a></p>
+        </div>
+        <button class="submit">
+          <router-link to="/class" style="text-decoration: none; color: #111111">В игру! ༼つ◕_◕ ༽つ</router-link>
+        </button>
+        <button id="delete-profile" @click="deleteProfile()"><a>Удалить профиль</a></button>
       </div>
 
-      <div v-if="!this.$store.getters.hasProfile">
-          <div class="center-on-page">
+      <div v-if="!this.$store.getters.hasProfile" class="center-on-page">
           <form id="profile-form" @submit.prevent="createProfile">
             <h1>Создание профиля</h1>
             <input class="form-profile-input" type="text" placeholder="Имя" v-model="profile.name" pattern="[A-Za-zА-Яа-яЁё]{1,20}" required>
@@ -44,8 +49,7 @@
                 v-bind:value="profile.bornDate"
                 class="red-theme"
                 :min-datetime="minDatetime"
-                :max-datetime="maxDatetime" auto
-              >
+                :max-datetime="maxDatetime" auto>
                 <label for="date-label" slot="before" id="birthday-label" >Дата Рождения:</label>
               </datetime>
             <br>
@@ -54,7 +58,6 @@
             </button>
 
           </form>
-          </div>
       </div>
     </section>
   </div>
@@ -128,6 +131,21 @@
     font-size: 20px;
   }
 
+  #account-block{
+    font-size: large;
+  }
+
+  .profile-center-on-page{
+    font-family: 'Hand';
+    color: white;
+    display: inline-block;
+    position: center;
+    height: 90%;
+    width: 50%;
+    border-radius: 15px;
+    border: 5px solid white;
+  }
+
   .main-section{
     width: 45%;
     text-align: center;
@@ -158,6 +176,29 @@
 
   .submit:hover a {
     font-size: 17px;
+    mix-blend-mode: multiply;
+  }
+
+  #delete-profile{
+    height: 40px;
+    display: inline;
+    margin-left: 30px;
+    width: 140px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-family: 'Hand';
+    font-size: medium;
+    color: #111111;
+    border-radius: 6px;
+    border: 3px solid #cc0000;
+    user-focus: none;
+    background: #cc0000;
+    outline: none;
+    margin-bottom: 30px;
+  }
+
+  #delete-profile:hover a {
+    font-size: small;
     mix-blend-mode: multiply;
   }
 
@@ -288,6 +329,7 @@
 
   .center-on-page{
     font-family: 'Hand';
+    color: white;
     display: inline-block;
     position: center;
     height: 90%;
@@ -299,28 +341,17 @@
     font-size: xx-large;
   }
 
-  input {
-    color: black;
+  @media screen and (max-width: 700px){
+    .main-section{
+      width: 99%;
+    }
+
+    .profile-center-on-page{
+      width: 90%;
+    }
+    .center-on-page{
+      width: 95%;
+    }
+
   }
-
- .button16 {
-   display: inline-block;
-   text-decoration: none;
-   padding: 1em;
-   outline: none;
-   border-radius: 10px;
-   font-size: medium;
-   font-family: 'Hand';
-   color: white;
- }
- .button16:hover {
-   background-image:
-     radial-gradient(3px 45% at 0% 50%, rgba(255, 255, 255, 0.6), transparent),
-     radial-gradient(3px 45% at 100% 50%, rgba(255,255,255,.6), transparent);
- }
- .button16:active {
-   background-image:
-     radial-gradient(50% 50% at 50% 50%, rgba(74, 74, 74, 0.9), rgba(255,255,255,0));
- }
-
 </style>

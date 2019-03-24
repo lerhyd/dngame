@@ -32,6 +32,7 @@
             Old pass is incorrect.
           </p>
         </div>
+        <button class="button16" @click="changePass()">Изменить пароль</button>
       </div>
     </div>
 </template>

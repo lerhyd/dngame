@@ -4,7 +4,7 @@
     {{hasProfile()}}
     <Header></Header>
     <section class="main-section">
-      <div v-if="this.$store.getters.profileCreateStatus===0" class="profile-center-on-page">
+      <div v-if="this.$store.getters.profileCreateStatus===0 || this.$store.getters.hasProfile" class="profile-center-on-page">
         <div v-for="profile in this.$store.getters.profile">
           <h1>Ваш профиль</h1>
           <p>ФИО:

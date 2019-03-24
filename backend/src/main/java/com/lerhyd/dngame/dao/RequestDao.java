@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,9 @@ import java.util.Optional;
 public interface RequestDao extends JpaRepository<Request, Integer> {
 
     List<Request> findAllByAgent_Id(int agentId);
+
+    @Query("select r from Request r WHERE r.agent.id = :agentId and r.pageNumber=:numPage")
+    Collection<Request> findAllByAgent(@Param("agentId") int agentId, @Param("numPage") int numPage);
 
     @Query("select count(r) from Request r where r.agent.id =:agentId and r.pageNumber=:pageNumber")
     int findCntOfRequestInOnePage(@Param("agentId") int agentId, @Param("pageNumber") int pageNumber);

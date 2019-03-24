@@ -11,14 +11,26 @@
           <p><b>Breaking news!</b></p>
           <p>Дата публикации: {{news.pubDate}}</p>
           <p>Заголовок: {{news.description}}</p>
-          <p>Что случилось: {{news.victimSex ? 'мужчина' : 'женщина'}}
+          <p>Что случилось:
             {{news.victimName}} {{news.victimSurname}} {{news.victimPatr}} {{news.actionDesc}}
           </p>
           <p v-if="news.isGuiltyPersonExists == true">Предполагаемый виновный:
-            {{news.guiltyPersonSex ? 'мужчина' : 'женщина'}} {{news.guiltyPersonName}}
+            {{news.guiltyPersonName}}
             {{news.guiltyPersonSername}} {{news.guiltyPersonPatr}}
           </p>
           <p>Место происшествия: {{news.actionPlace}}</p>
+        </div>
+        <!--Errors-->
+        <div v-if="this.$store.getters.entryStatus !== 0">
+          <div v-if="this.$store.getters.entryStatus === 1">
+            <p>Описнаие не может превышать 50 символов</p>
+          </div>
+          <div v-if="this.$store.getters.entryStatus === 4">
+            <p>Uncorrected death date</p>
+          </div>
+          <div v-if="this.$store.getters.entryStatus === 10">
+            <p>Такая запись уже существует</p>
+          </div>
         </div>
       </div>
       <!--Actions-->
@@ -35,7 +47,6 @@
             </select>
             <div v-for="entry in this.$store.getters.entry">
               <p>{{entry.victimName}} {{entry.victimSurname}} {{entry.victimPatr}}
-                {{entry.victimSex ? 'мужчина':'женщина'}}
               </p>
               <p>Описание смерти: {{entry.desc}}</p>
               <p>Причина смерти: {{entry.deathReason}}</p>
@@ -80,12 +91,6 @@
               Дата смерти:
               <datetime v-model="entryForm.deathDate" type="datetime" format="yyyy-MM-dd HH:mm:ss"></datetime>
             </label>
-            <div v-if="this.$store.getters.entryStatus === 4">
-              <p>Uncorrected death date</p>
-            </div>
-            <div v-if="this.$store.getters.entryStatus === 10">
-              <p>Такая запись уже существует</p>
-            </div>
             <div>
               <button type="submit" class="submit" @click="makeEntry();closeEntryForm();clearForm();closeEntries();closeNote()"><a>Сделать запись</a></button>
             </div>
@@ -122,19 +127,84 @@
           <p><b>Breaking news!</b></p>
           <p>Дата публикации: {{news.pubDate}}</p>
           <p>Заголовок: {{news.description}}</p>
-          <p>Что случилось: {{news.victimSex ? 'мужчина' : 'женщина'}}
+          <p>Что случилось:
             {{news.victimName}} {{news.victimSurname}} {{news.victimPatr}} {{news.actionDesc}}
           </p>
           <p v-if="news.isGuiltyPersonExists == true">Предполагаемый виновный:
-            {{news.guiltyPersonSex ? 'мужчина' : 'женщина'}} {{news.guiltyPersonName}}
+            {{news.guiltyPersonName}}
             {{news.guiltyPersonSername}} {{news.guiltyPersonPatr}}
           </p>
           <p>Место происшествия: {{news.actionPlace}}</p>
         </div>
+        <div v-if="this.$store.getters.entryStatus !== 0">
+          <div v-if="this.$store.getters.entryStatus === 7">
+            <p>Такой запрос уже существует.</p>
+          </div>
+          <div v-if="this.$store.getters.entryStatus === 8">
+            <p>There's no person with the identification data</p>
+          </div>
+          <div v-if="this.$store.getters.entryStatus === 9">
+            <p>Идентификация человека не совпадает с базой данных.</p>
+          </div>
+        </div>
       </div>
       <!--Actions-->
-      <div>
 
+      <!--Errors-->
+      <div>
+        <div>
+          <button class="button16" @click="openNote()">Открыть планшет</button>
+          <br>
+          <div v-if="isNoteOpen===true">
+            <button class="button16" @click="getRequestPages();getRequests();openEntries()">Посмотреть запросы в полицию</button>
+            <br>
+            <div v-if="isEntriesOpen===true">
+              <select class="form-control" v-model="numPage">
+                <option>Выберите страницу</option>
+                <option v-for="number in this.$store.getters.entryPages" v-bind:value="number">{{number}}</option>
+              </select>
+              <div v-for="entry in this.$store.getters.entry">
+                <p>{{entry.personName}} {{entry.personSurname}} {{entry.personPatr}}
+                  {{entry.personSex ? 'мужчина':'женщина'}}
+                </p>
+                <p>
+                  {{entry.success ? 'пойман':'не пойман'}}
+                </p>
+              </div>
+              <br>
+              <button class="button16" @click="closeEntries()">Закрыть записи</button>
+            </div>
+            <br>
+            <button class="button16" @click="openEntryForm()">Открыть форму записи</button>
+            <br>
+            <div v-if="isEntryFormOpen===true">
+              <fieldset class="victimName">
+                <input class="form-input" type="text" v-model="entryForm.victimName" placeholder="Имя человека" required>
+              </fieldset>
+              <fieldset class="victimSurname">
+                <input class="form-input" type="text" v-model="entryForm.victimSurname" placeholder="Фамилия человека" required>
+              </fieldset>
+              <fieldset class="victimPatr">
+                <input class="form-input" type="text" v-model="entryForm.victimPatr" placeholder="Отчество человека" required>
+              </fieldset>
+              <select v-model="entryForm.victimSex" required>
+                <option v-bind:value="true">Мужчина</option>
+                <option v-bind:value="false">Женщина</option>
+              </select>
+
+              <div>
+                <button type="submit" class="submit" @click="makeRequest();closeEntryForm();clearForm();closeEntries();closeNote()"><a>Сделать запись</a></button>
+              </div>
+              <br>
+              <div>
+                <button class="button16" @click="closeEntryForm()">Закрыть форму записи</button>
+              </div>
+              <br>
+            </div>
+            <br>
+            <button class="button16" @click="closeNote();closeEntryForm()">Закрыть тетрадь</button>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -206,14 +276,13 @@
       getNews(){
         if (this.$store.getters.isKira) {
           this.$store.dispatch('getKiraNews')
-          console.log('getKiraNews')
         }
         else {
           this.$store.dispatch('getAgentNews')
-          console.log('getAgentNews')
         }
       },
       getStatus(){
+        console.log(this.$store.getters.isKira)
         if (this.$store.getters.isKira)
           this.$store.dispatch('getKiraStatus')
         else
@@ -243,6 +312,12 @@
       getEntries() {
         this.$store.dispatch('getEntries')
       },
+      getRequests() {
+        this.$store.dispatch('getRequests')
+      },
+      getRequestPages() {
+        this.$store.dispatch('getRequestPages')
+      },
       makeEntry() {
         this.$store.dispatch('makeEntry',
           {
@@ -254,6 +329,17 @@
             desc: this.entryForm.desc,
             deathDate: this.entryForm.deathDate,
             actionPlaceId: this.entryForm.actionPlaceId
+          }
+        )
+      },
+
+      makeRequest() {
+        this.$store.dispatch('makeRequest',
+          {
+            victimName: this.entryForm.victimName,
+            victimSurname: this.entryForm.victimSurname,
+            victimPatr: this.entryForm.victimPatr,
+            victimSex: this.entryForm.victimSex,
           }
         )
       },
@@ -297,7 +383,10 @@
     watch: {
       numPage: function (val) {
         this.$store.commit('setNumPage', val)
-        this.getEntries()
+        if (this.$store.getters.isKira())
+          this.getEntries()
+        else
+          this.getRequests()
       }
     }
   }

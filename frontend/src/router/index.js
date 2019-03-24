@@ -15,6 +15,7 @@ import Class from '@/components/game/Class'
 import Test from '@/components/game/Test'
 import FindMatch from '@/components/game/FindMatch'
 import Area from '@/components/game/Area'
+import Achievements from '@/components/game/Achievements'
 
 Vue.use(Router)
 
@@ -46,6 +47,12 @@ export default new Router({
       name: 'Login',
       component: Login
     },
+    {
+      path: '/achievements',
+      name: 'Achievements',
+      component: Achievements
+    },
+
     {
       path: '/recovery',
       name: 'Forgot',

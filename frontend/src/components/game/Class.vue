@@ -7,7 +7,7 @@
     </section>
     <section class="main-region-section">
       <div class="center-region-page">
-        <p class="p-teg">
+        <p class="p-tag">
           Выбери класс, за который будешь играть
         </p>
         <div style="display: inline-block; text-align: left">
@@ -17,7 +17,7 @@
           <input type="radio" id="agent" v-bind:value="false" v-model="gameClass.isKira" name="radio-group-type">
           <label for="agent">Агент</label>
         </div>
-        <p class="p-teg">
+        <p class="p-tag">
           Выбери регион, в котором будет твой персонаж
         </p>
 
@@ -140,7 +140,7 @@
     mix-blend-mode: multiply;
   }
 
-  .p-teg{font-size: large;}
+  .p-tag{font-size: large;}
 
   #center-select{display: inline-block;}
 

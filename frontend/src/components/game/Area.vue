@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Header></Header>
     <!--killer's area-->
     <div v-if="this.$store.getters.isKira && !this.$store.getters.matchEnded">
       <!--User's data-->
@@ -10,7 +11,7 @@
         <div v-for="status in this.$store.getters.status">
           <p>points: {{status.points}}</p>
           <p>lvl: {{status.lvl}}</p>
-          <p>rank: {{status.rank}}</p>
+          <p>rank: {{status.rank}}Даша путешественница</p>
           <p>number of right kills: {{status.numberOfRightKills}}</p>
         </div>
       </div>
@@ -176,8 +177,10 @@
 </template>
 
 <script>
+  import Header from "@/components/main/Header";
   export default {
     name: "Area",
+    components: {Header},
     data() {
       return {
         isNoteOpen: false,

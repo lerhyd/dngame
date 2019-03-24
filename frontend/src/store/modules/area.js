@@ -14,7 +14,7 @@ export default {
     entryPages: null,
     actionId: null,
     actionPlaceId: null,
-    entryStatus: null,
+    entryStatus: 0,
     kiraWinStatus: null,
     matchEnded: false,
     isKiraWin: undefined,
@@ -38,7 +38,7 @@ export default {
       state.entry = data
     },
     setEntryStatus(state, data) {
-      state.entry = data
+      state.entryStatus = data
     },
     setActionId(state, data) {
       state.actionId = data

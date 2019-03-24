@@ -29,18 +29,21 @@
           </p>
           <p>Место происшествия: {{news.actionPlace}}</p>
         </div>
+        <!--Errors-->
+        <div v-if="this.$store.getters.entryStatus !== 0">
+          <div v-if="this.$store.getters.entryStatus === 1">
+            <p>Описнаие не может превышать 50 символов</p>
+          </div>
+          <div v-if="this.$store.getters.entryStatus === 4">
+            <p>Uncorrected death date</p>
+          </div>
+          <div v-if="this.$store.getters.entryStatus === 10">
+            <p>Такая запись уже существует</p>
+          </div>
+        </div>
       </div>
       <!--Actions-->
       <div>
-        <div v-if="this.$store.getters.entryStatus === 1">
-          <p>Описнаие не может превышать 50 символов</p>
-        </div>
-        <div v-if="this.$store.getters.entryStatus === 4">
-          <p>Uncorrected death date</p>
-        </div>
-        <div v-if="this.$store.getters.entryStatus === 10">
-          <p>Такая запись уже существует</p>
-        </div>
         <button class="button16" @click="openNote();getActions();getActionPlaces()">Открыть тетрадь</button>
         <br>
         <div v-if="isNoteOpen===true">
@@ -142,18 +145,22 @@
           </p>
           <p>Место происшествия: {{news.actionPlace}}</p>
         </div>
+        <div v-if="this.$store.getters.entryStatus !== 0">
+          <div v-if="this.$store.getters.entryStatus === 7">
+            <p>Такой запрос уже существует.</p>
+          </div>
+          <div v-if="this.$store.getters.entryStatus === 8">
+            <p>There's no person with the identification data</p>
+          </div>
+          <div v-if="this.$store.getters.entryStatus === 9">
+            <p>Идентификация человека не совпадает с базой данных.</p>
+          </div>
+        </div>
       </div>
       <!--Actions-->
+
+      <!--Errors-->
       <div>
-        <div v-if="this.$store.getters.entryStatus === 7">
-          <p>Такой запрос уже существует.</p>
-        </div>
-        <div v-if="this.$store.getters.entryStatus === 8">
-          <p>There's no person with the identification data</p>
-        </div>
-        <div v-if="this.$store.getters.entryStatus === 9">
-          <p>Идентификация человека не совпадает с базой данных.</p>
-        </div>
         <div>
           <button class="button16" @click="openNote()">Открыть планшет</button>
           <br>

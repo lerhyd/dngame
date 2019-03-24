@@ -13,23 +13,23 @@
       <ObjectId>16386</ObjectId>
       <StateNumber>573</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>36506</IntrospectionStateNumber>
+      <IntrospectionStateNumber>37067</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
-      <Relations>sequence|table|138724|138726|1
-sequence|table|138730|138732|1
-sequence|table|138736|138738|1
-sequence|table|138747|138749|1
-sequence|table|138758|138760|1
-sequence|table|138766|138768|1
-sequence|table|138774|138776|1
-sequence|table|138782|138784|1
-sequence|table|138793|138795|1
-sequence|table|138801|138803|1
-sequence|table|138809|138811|1
-sequence|table|138820|138822|1
-sequence|table|138833|138835|1
-sequence|table|138841|138843|2
+      <Relations>sequence|table|139949|139951|1
+sequence|table|139955|139957|1
+sequence|table|139961|139963|1
+sequence|table|139972|139974|1
+sequence|table|139983|139985|1
+sequence|table|139991|139993|1
+sequence|table|139999|140001|1
+sequence|table|140007|140009|1
+sequence|table|140018|140020|1
+sequence|table|140026|140028|1
+sequence|table|140034|140036|1
+sequence|table|140045|140047|1
+sequence|table|140058|140060|1
+sequence|table|140066|140068|2
 </Relations>
     </database>
     <database id="4" parent="1" name="postgres">
@@ -127,7 +127,7 @@ sequence|table|138841|138843|2
       <Comment>standard public schema</Comment>
       <StateNumber>359</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>36507</IntrospectionStateNumber>
+      <IntrospectionStateNumber>37068</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -196,235 +196,235 @@ sequence|table|138841|138843|2
       <DataType>bigint</DataType>
     </sequence>
     <sequence id="29" parent="20" name="achievements_to_agent_agent_id_seq">
-      <ObjectId>138724</ObjectId>
+      <ObjectId>139949</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36451</StateNumber>
+      <StateNumber>37012</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="30" parent="20" name="achievements_to_kira_kira_id_seq">
-      <ObjectId>138730</ObjectId>
+      <ObjectId>139955</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36452</StateNumber>
+      <StateNumber>37013</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="31" parent="20" name="action_places_id_seq">
-      <ObjectId>138736</ObjectId>
+      <ObjectId>139961</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36453</StateNumber>
+      <StateNumber>37014</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="32" parent="20" name="actions_id_seq">
-      <ObjectId>138747</ObjectId>
+      <ObjectId>139972</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36454</StateNumber>
+      <StateNumber>37015</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="33" parent="20" name="agents_id_seq">
-      <ObjectId>138758</ObjectId>
+      <ObjectId>139983</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36455</StateNumber>
+      <StateNumber>37016</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="34" parent="20" name="entries_id_seq">
-      <ObjectId>138766</ObjectId>
+      <ObjectId>139991</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36456</StateNumber>
+      <StateNumber>37017</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="35" parent="20" name="kiras_id_seq">
-      <ObjectId>138774</ObjectId>
+      <ObjectId>139999</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36457</StateNumber>
+      <StateNumber>37018</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="36" parent="20" name="news_id_seq">
-      <ObjectId>138782</ObjectId>
+      <ObjectId>140007</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="37" parent="20" name="persons_id_seq">
-      <ObjectId>138793</ObjectId>
+      <ObjectId>140018</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36459</StateNumber>
+      <StateNumber>37020</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="38" parent="20" name="ranks_id_seq">
-      <ObjectId>138801</ObjectId>
+      <ObjectId>140026</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36460</StateNumber>
+      <StateNumber>37021</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="39" parent="20" name="regions_id_seq">
-      <ObjectId>138809</ObjectId>
+      <ObjectId>140034</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36461</StateNumber>
+      <StateNumber>37022</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="40" parent="20" name="requests_id_seq">
-      <ObjectId>138820</ObjectId>
+      <ObjectId>140045</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36462</StateNumber>
+      <StateNumber>37023</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="41" parent="20" name="rules_id_seq">
-      <ObjectId>138833</ObjectId>
+      <ObjectId>140058</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36464</StateNumber>
+      <StateNumber>37025</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <sequence id="42" parent="20" name="rules_to_user_rule_id_seq">
-      <ObjectId>138841</ObjectId>
+      <ObjectId>140066</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36465</StateNumber>
+      <StateNumber>37026</StateNumber>
       <SequenceIdentity>1..2147483647</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>integer</DataType>
     </sequence>
     <table id="43" parent="20" name="achievements">
-      <ObjectId>138716</ObjectId>
+      <ObjectId>139941</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36470</StateNumber>
+      <StateNumber>37031</StateNumber>
     </table>
     <table id="44" parent="20" name="achievements_to_agent">
-      <ObjectId>138726</ObjectId>
+      <ObjectId>139951</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36470</StateNumber>
+      <StateNumber>37031</StateNumber>
     </table>
     <table id="45" parent="20" name="achievements_to_kira">
-      <ObjectId>138732</ObjectId>
+      <ObjectId>139957</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36472</StateNumber>
+      <StateNumber>37033</StateNumber>
     </table>
     <table id="46" parent="20" name="action_places">
-      <ObjectId>138738</ObjectId>
+      <ObjectId>139963</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36477</StateNumber>
+      <StateNumber>37038</StateNumber>
     </table>
     <table id="47" parent="20" name="actions">
-      <ObjectId>138749</ObjectId>
+      <ObjectId>139974</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36476</StateNumber>
+      <StateNumber>37037</StateNumber>
     </table>
     <table id="48" parent="20" name="agents">
-      <ObjectId>138760</ObjectId>
+      <ObjectId>139985</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36471</StateNumber>
+      <StateNumber>37032</StateNumber>
     </table>
     <table id="49" parent="20" name="entries">
-      <ObjectId>138768</ObjectId>
+      <ObjectId>139993</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36476</StateNumber>
+      <StateNumber>37037</StateNumber>
     </table>
     <table id="50" parent="20" name="kiras">
-      <ObjectId>138776</ObjectId>
+      <ObjectId>140001</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36473</StateNumber>
+      <StateNumber>37034</StateNumber>
     </table>
     <table id="51" parent="20" name="news">
-      <ObjectId>138784</ObjectId>
+      <ObjectId>140009</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36482</StateNumber>
+      <StateNumber>37043</StateNumber>
     </table>
     <table id="52" parent="20" name="persons">
-      <ObjectId>138795</ObjectId>
+      <ObjectId>140020</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36479</StateNumber>
+      <StateNumber>37040</StateNumber>
     </table>
     <table id="53" parent="20" name="ranks">
-      <ObjectId>138803</ObjectId>
+      <ObjectId>140028</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36474</StateNumber>
+      <StateNumber>37035</StateNumber>
     </table>
     <table id="54" parent="20" name="regions">
-      <ObjectId>138811</ObjectId>
+      <ObjectId>140036</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36475</StateNumber>
+      <StateNumber>37036</StateNumber>
     </table>
     <table id="55" parent="20" name="requests">
-      <ObjectId>138822</ObjectId>
+      <ObjectId>140047</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36490</StateNumber>
+      <StateNumber>37051</StateNumber>
     </table>
     <table id="56" parent="20" name="roles">
-      <ObjectId>138828</ObjectId>
+      <ObjectId>140053</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36496</StateNumber>
+      <StateNumber>37057</StateNumber>
     </table>
     <table id="57" parent="20" name="rules">
-      <ObjectId>138835</ObjectId>
+      <ObjectId>140060</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36494</StateNumber>
+      <StateNumber>37055</StateNumber>
     </table>
     <table id="58" parent="20" name="rules_to_user">
-      <ObjectId>138843</ObjectId>
+      <ObjectId>140068</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36494</StateNumber>
+      <StateNumber>37055</StateNumber>
     </table>
     <table id="59" parent="20" name="user_role">
-      <ObjectId>138847</ObjectId>
+      <ObjectId>140072</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36496</StateNumber>
+      <StateNumber>37057</StateNumber>
     </table>
     <table id="60" parent="20" name="users">
-      <ObjectId>138852</ObjectId>
+      <ObjectId>140077</ObjectId>
       <Owner>lerhyd</Owner>
-      <StateNumber>36495</StateNumber>
+      <StateNumber>37056</StateNumber>
     </table>
     <column id="61" parent="43" name="title">
       <Position>1</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36450</StateNumber>
+      <StateNumber>37011</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="62" parent="43" name="description">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36450</StateNumber>
+      <StateNumber>37011</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="63" parent="43" name="task">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36450</StateNumber>
+      <StateNumber>37011</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="64" parent="43" name="achievements_pkey">
-      <ObjectId>138722</ObjectId>
-      <StateNumber>36450</StateNumber>
+      <ObjectId>139947</ObjectId>
+      <StateNumber>37011</StateNumber>
       <ColNames>title</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="65" parent="43" name="achievements_pkey">
-      <ObjectId>138723</ObjectId>
-      <StateNumber>36450</StateNumber>
+      <ObjectId>139948</ObjectId>
+      <StateNumber>37011</StateNumber>
       <ColNames>title</ColNames>
       <UnderlyingIndexName>achievements_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -433,7 +433,7 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36451</StateNumber>
+      <StateNumber>37012</StateNumber>
       <DefaultExpression>nextval(&apos;achievements_to_agent_agent_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
@@ -441,24 +441,24 @@ sequence|table|138841|138843|2
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36451</StateNumber>
+      <StateNumber>37012</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <foreign-key id="68" parent="44" name="fk8nje0yvvmsm8sw3d95bmd6v74">
-      <ObjectId>138869</ObjectId>
-      <StateNumber>36471</StateNumber>
+      <ObjectId>140094</ObjectId>
+      <StateNumber>37032</StateNumber>
       <ColNames>agent_id</ColNames>
-      <RefTableId>138760</RefTableId>
+      <RefTableId>139985</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>agents</RefTableName>
       <RefKeyName>agents_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="69" parent="44" name="fkgmgjn8g5u58egnj5ndeirdgif">
-      <ObjectId>138864</ObjectId>
-      <StateNumber>36470</StateNumber>
+      <ObjectId>140089</ObjectId>
+      <StateNumber>37031</StateNumber>
       <ColNames>achievements_id</ColNames>
-      <RefTableId>138716</RefTableId>
+      <RefTableId>139941</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>achievements</RefTableName>
       <RefKeyName>achievements_pkey</RefKeyName>
@@ -468,7 +468,7 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36452</StateNumber>
+      <StateNumber>37013</StateNumber>
       <DefaultExpression>nextval(&apos;achievements_to_kira_kira_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
@@ -476,24 +476,24 @@ sequence|table|138841|138843|2
       <Position>2</Position>
       <DataType>varchar(50)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36452</StateNumber>
+      <StateNumber>37013</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <foreign-key id="72" parent="45" name="fk303rqpqyie6355ynhviy298io">
-      <ObjectId>138879</ObjectId>
-      <StateNumber>36473</StateNumber>
+      <ObjectId>140104</ObjectId>
+      <StateNumber>37034</StateNumber>
       <ColNames>kira_id</ColNames>
-      <RefTableId>138776</RefTableId>
+      <RefTableId>140001</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>kiras</RefTableName>
       <RefKeyName>kiras_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="73" parent="45" name="fk4kawu2hi9f9hiw1k4yw4tj59o">
-      <ObjectId>138874</ObjectId>
-      <StateNumber>36472</StateNumber>
+      <ObjectId>140099</ObjectId>
+      <StateNumber>37033</StateNumber>
       <ColNames>achievements_id</ColNames>
-      <RefTableId>138716</RefTableId>
+      <RefTableId>139941</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>achievements</RefTableName>
       <RefKeyName>achievements_pkey</RefKeyName>
@@ -503,44 +503,44 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36453</StateNumber>
+      <StateNumber>37014</StateNumber>
       <DefaultExpression>nextval(&apos;action_places_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="75" parent="46" name="lvl">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36453</StateNumber>
+      <StateNumber>37014</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="76" parent="46" name="action_place">
       <Position>3</Position>
       <DataType>varchar(500)|0s</DataType>
-      <StateNumber>36453</StateNumber>
+      <StateNumber>37014</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="77" parent="46" name="action_places_pkey">
-      <ObjectId>138745</ObjectId>
-      <StateNumber>36453</StateNumber>
+      <ObjectId>139970</ObjectId>
+      <StateNumber>37014</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="78" parent="46" name="uk_3il3ubvgy8va0a4kejimy2pev">
-      <ObjectId>138860</ObjectId>
-      <StateNumber>36468</StateNumber>
+      <ObjectId>140085</ObjectId>
+      <StateNumber>37029</StateNumber>
       <ColNames>action_place</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="79" parent="46" name="action_places_pkey">
-      <ObjectId>138746</ObjectId>
-      <StateNumber>36453</StateNumber>
+      <ObjectId>139971</ObjectId>
+      <StateNumber>37014</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>action_places_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <key id="80" parent="46" name="uk_3il3ubvgy8va0a4kejimy2pev">
-      <ObjectId>138861</ObjectId>
-      <StateNumber>36468</StateNumber>
+      <ObjectId>140086</ObjectId>
+      <StateNumber>37029</StateNumber>
       <ColNames>action_place</ColNames>
       <UnderlyingIndexName>uk_3il3ubvgy8va0a4kejimy2pev</UnderlyingIndexName>
     </key>
@@ -548,31 +548,31 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36454</StateNumber>
+      <StateNumber>37015</StateNumber>
       <DefaultExpression>nextval(&apos;actions_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="82" parent="47" name="description">
       <Position>2</Position>
       <DataType>varchar(500)|0s</DataType>
-      <StateNumber>36454</StateNumber>
+      <StateNumber>37015</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="83" parent="47" name="lvl">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36454</StateNumber>
+      <StateNumber>37015</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="84" parent="47" name="actions_pkey">
-      <ObjectId>138756</ObjectId>
-      <StateNumber>36454</StateNumber>
+      <ObjectId>139981</ObjectId>
+      <StateNumber>37015</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="85" parent="47" name="actions_pkey">
-      <ObjectId>138757</ObjectId>
-      <StateNumber>36454</StateNumber>
+      <ObjectId>139982</ObjectId>
+      <StateNumber>37015</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>actions_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -581,81 +581,81 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36455</StateNumber>
+      <StateNumber>37016</StateNumber>
       <DefaultExpression>nextval(&apos;agents_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="87" parent="48" name="lvl">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36455</StateNumber>
+      <StateNumber>37016</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="88" parent="48" name="number_of_caught_killers">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36455</StateNumber>
+      <StateNumber>37016</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="89" parent="48" name="number_of_loses">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36455</StateNumber>
+      <StateNumber>37016</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="90" parent="48" name="number_of_wins">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36455</StateNumber>
+      <StateNumber>37016</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="91" parent="48" name="points">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36455</StateNumber>
+      <StateNumber>37016</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="92" parent="48" name="rank_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36455</StateNumber>
+      <StateNumber>37016</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="93" parent="48" name="region_id">
       <Position>8</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36455</StateNumber>
+      <StateNumber>37016</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="94" parent="48" name="agents_pkey">
-      <ObjectId>138764</ObjectId>
-      <StateNumber>36455</StateNumber>
+      <ObjectId>139989</ObjectId>
+      <StateNumber>37016</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="95" parent="48" name="agents_pkey">
-      <ObjectId>138765</ObjectId>
-      <StateNumber>36455</StateNumber>
+      <ObjectId>139990</ObjectId>
+      <StateNumber>37016</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>agents_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="96" parent="48" name="fkakqp5k1lh3ggj4o8sxkde1gs6">
-      <ObjectId>138884</ObjectId>
-      <StateNumber>36474</StateNumber>
+      <ObjectId>140109</ObjectId>
+      <StateNumber>37035</StateNumber>
       <ColNames>rank_id</ColNames>
-      <RefTableId>138803</RefTableId>
+      <RefTableId>140028</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>ranks</RefTableName>
       <RefKeyName>ranks_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="97" parent="48" name="fkrltjic7f0rl4uqbaktoxad90v">
-      <ObjectId>138889</ObjectId>
-      <StateNumber>36475</StateNumber>
+      <ObjectId>140114</ObjectId>
+      <StateNumber>37036</StateNumber>
       <ColNames>region_id</ColNames>
-      <RefTableId>138811</RefTableId>
+      <RefTableId>140036</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
@@ -665,101 +665,101 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36456</StateNumber>
+      <StateNumber>37017</StateNumber>
       <DefaultExpression>nextval(&apos;entries_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="99" parent="49" name="death_date">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>36456</StateNumber>
+      <StateNumber>37017</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="100" parent="49" name="description_id">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36456</StateNumber>
+      <StateNumber>37017</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="101" parent="49" name="page_number">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36456</StateNumber>
+      <StateNumber>37017</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="102" parent="49" name="action_id">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36456</StateNumber>
+      <StateNumber>37017</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="103" parent="49" name="action_place_id">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36456</StateNumber>
+      <StateNumber>37017</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="104" parent="49" name="kira_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36456</StateNumber>
+      <StateNumber>37017</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="105" parent="49" name="victim_id">
       <Position>8</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36456</StateNumber>
+      <StateNumber>37017</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="106" parent="49" name="entries_pkey">
-      <ObjectId>138772</ObjectId>
-      <StateNumber>36456</StateNumber>
+      <ObjectId>139997</ObjectId>
+      <StateNumber>37017</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="107" parent="49" name="entries_pkey">
-      <ObjectId>138773</ObjectId>
-      <StateNumber>36456</StateNumber>
+      <ObjectId>139998</ObjectId>
+      <StateNumber>37017</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>entries_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="108" parent="49" name="fkibxsps9o4p0p2ibv9ygvhkob9">
-      <ObjectId>138894</ObjectId>
-      <StateNumber>36476</StateNumber>
+      <ObjectId>140119</ObjectId>
+      <StateNumber>37037</StateNumber>
       <ColNames>action_id</ColNames>
-      <RefTableId>138749</RefTableId>
+      <RefTableId>139974</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>actions</RefTableName>
       <RefKeyName>actions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="109" parent="49" name="fkdps41ea1ubx6lqjliwwgap93d">
-      <ObjectId>138899</ObjectId>
-      <StateNumber>36477</StateNumber>
+      <ObjectId>140124</ObjectId>
+      <StateNumber>37038</StateNumber>
       <ColNames>action_place_id</ColNames>
-      <RefTableId>138738</RefTableId>
+      <RefTableId>139963</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>action_places</RefTableName>
       <RefKeyName>action_places_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="110" parent="49" name="fkgs0b3evl2ds8qyhcijn95pduc">
-      <ObjectId>138904</ObjectId>
-      <StateNumber>36478</StateNumber>
+      <ObjectId>140129</ObjectId>
+      <StateNumber>37039</StateNumber>
       <ColNames>kira_id</ColNames>
-      <RefTableId>138776</RefTableId>
+      <RefTableId>140001</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>kiras</RefTableName>
       <RefKeyName>kiras_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="111" parent="49" name="fkkidth9dreyr9p63hjpv4gcdmw">
-      <ObjectId>138909</ObjectId>
-      <StateNumber>36479</StateNumber>
+      <ObjectId>140134</ObjectId>
+      <StateNumber>37040</StateNumber>
       <ColNames>victim_id</ColNames>
-      <RefTableId>138795</RefTableId>
+      <RefTableId>140020</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>persons</RefTableName>
       <RefKeyName>persons_pkey</RefKeyName>
@@ -769,81 +769,81 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36457</StateNumber>
+      <StateNumber>37018</StateNumber>
       <DefaultExpression>nextval(&apos;kiras_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="113" parent="50" name="lvl">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36457</StateNumber>
+      <StateNumber>37018</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="114" parent="50" name="number_of_kills">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36457</StateNumber>
+      <StateNumber>37018</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="115" parent="50" name="number_of_loses">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36457</StateNumber>
+      <StateNumber>37018</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="116" parent="50" name="number_of_wins">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36457</StateNumber>
+      <StateNumber>37018</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="117" parent="50" name="points">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36457</StateNumber>
+      <StateNumber>37018</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="118" parent="50" name="rank_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36457</StateNumber>
+      <StateNumber>37018</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="119" parent="50" name="region_id">
       <Position>8</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36457</StateNumber>
+      <StateNumber>37018</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="120" parent="50" name="kiras_pkey">
-      <ObjectId>138780</ObjectId>
-      <StateNumber>36457</StateNumber>
+      <ObjectId>140005</ObjectId>
+      <StateNumber>37018</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="121" parent="50" name="kiras_pkey">
-      <ObjectId>138781</ObjectId>
-      <StateNumber>36457</StateNumber>
+      <ObjectId>140006</ObjectId>
+      <StateNumber>37018</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>kiras_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="122" parent="50" name="fk6w1m4wrcnlrvcq1kypwt8998c">
-      <ObjectId>138914</ObjectId>
-      <StateNumber>36480</StateNumber>
+      <ObjectId>140139</ObjectId>
+      <StateNumber>37041</StateNumber>
       <ColNames>rank_id</ColNames>
-      <RefTableId>138803</RefTableId>
+      <RefTableId>140028</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>ranks</RefTableName>
       <RefKeyName>ranks_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="123" parent="50" name="fki8od4ynfw1rbqd4k9sfwdpg9">
-      <ObjectId>138919</ObjectId>
-      <StateNumber>36481</StateNumber>
+      <ObjectId>140144</ObjectId>
+      <StateNumber>37042</StateNumber>
       <ColNames>region_id</ColNames>
-      <RefTableId>138811</RefTableId>
+      <RefTableId>140036</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
@@ -853,201 +853,201 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <DefaultExpression>nextval(&apos;news_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="125" parent="51" name="is_agent">
       <Position>2</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="126" parent="51" name="what">
       <Position>3</Position>
       <DataType>varchar(500)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="127" parent="51" name="is_die">
       <Position>4</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="128" parent="51" name="is_fake">
       <Position>5</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="129" parent="51" name="is_from_entry">
       <Position>6</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="130" parent="51" name="guilty_person_exists">
       <Position>7</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="131" parent="51" name="publication_date">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="132" parent="51" name="is_published_for_agent">
       <Position>9</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="133" parent="51" name="is_published_for_kira">
       <Position>10</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="134" parent="51" name="action_id">
       <Position>11</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="135" parent="51" name="action_place">
       <Position>12</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="136" parent="51" name="agent_id">
       <Position>13</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="137" parent="51" name="common_region_id">
       <Position>14</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="138" parent="51" name="distribution_region_id">
       <Position>15</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="139" parent="51" name="guilty_person_id">
       <Position>16</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="140" parent="51" name="kira_id">
       <Position>17</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="141" parent="51" name="victim_id">
       <Position>18</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36458</StateNumber>
+      <StateNumber>37019</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="142" parent="51" name="news_pkey">
-      <ObjectId>138791</ObjectId>
-      <StateNumber>36458</StateNumber>
+      <ObjectId>140016</ObjectId>
+      <StateNumber>37019</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="143" parent="51" name="news_pkey">
-      <ObjectId>138792</ObjectId>
-      <StateNumber>36458</StateNumber>
+      <ObjectId>140017</ObjectId>
+      <StateNumber>37019</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>news_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="144" parent="51" name="fkiw08x09qbtsv16sifya9m50pp">
-      <ObjectId>138924</ObjectId>
-      <StateNumber>36482</StateNumber>
+      <ObjectId>140149</ObjectId>
+      <StateNumber>37043</StateNumber>
       <ColNames>action_id</ColNames>
-      <RefTableId>138749</RefTableId>
+      <RefTableId>139974</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>actions</RefTableName>
       <RefKeyName>actions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="145" parent="51" name="fkilcwc8277ndn8gbgdjya06ucw">
-      <ObjectId>138929</ObjectId>
-      <StateNumber>36483</StateNumber>
+      <ObjectId>140154</ObjectId>
+      <StateNumber>37044</StateNumber>
       <ColNames>action_place</ColNames>
-      <RefTableId>138738</RefTableId>
+      <RefTableId>139963</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>action_places</RefTableName>
       <RefKeyName>action_places_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="146" parent="51" name="fk5eegodw92q2via5bn1ndmuwes">
-      <ObjectId>138934</ObjectId>
-      <StateNumber>36484</StateNumber>
+      <ObjectId>140159</ObjectId>
+      <StateNumber>37045</StateNumber>
       <ColNames>agent_id</ColNames>
-      <RefTableId>138760</RefTableId>
+      <RefTableId>139985</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>agents</RefTableName>
       <RefKeyName>agents_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="147" parent="51" name="fkqjmgefs2xcstsmrim7m5b8q0k">
-      <ObjectId>138939</ObjectId>
-      <StateNumber>36485</StateNumber>
+      <ObjectId>140164</ObjectId>
+      <StateNumber>37046</StateNumber>
       <ColNames>common_region_id</ColNames>
-      <RefTableId>138811</RefTableId>
+      <RefTableId>140036</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="148" parent="51" name="fk9bi3ngs9emed10xns5qcuubi5">
-      <ObjectId>138944</ObjectId>
-      <StateNumber>36486</StateNumber>
+      <ObjectId>140169</ObjectId>
+      <StateNumber>37047</StateNumber>
       <ColNames>distribution_region_id</ColNames>
-      <RefTableId>138811</RefTableId>
+      <RefTableId>140036</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="149" parent="51" name="fk8ml5x1vtnavo4on1sbwbjl13m">
-      <ObjectId>138949</ObjectId>
-      <StateNumber>36487</StateNumber>
+      <ObjectId>140174</ObjectId>
+      <StateNumber>37048</StateNumber>
       <ColNames>guilty_person_id</ColNames>
-      <RefTableId>138795</RefTableId>
+      <RefTableId>140020</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>persons</RefTableName>
       <RefKeyName>persons_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="150" parent="51" name="fk42a9jkdqp2r9xd5390afg39cw">
-      <ObjectId>138954</ObjectId>
-      <StateNumber>36488</StateNumber>
+      <ObjectId>140179</ObjectId>
+      <StateNumber>37049</StateNumber>
       <ColNames>kira_id</ColNames>
-      <RefTableId>138776</RefTableId>
+      <RefTableId>140001</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>kiras</RefTableName>
       <RefKeyName>kiras_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="151" parent="51" name="fkj2r1rbbqvt06xpc1jtxbgifvh">
-      <ObjectId>138959</ObjectId>
-      <StateNumber>36489</StateNumber>
+      <ObjectId>140184</ObjectId>
+      <StateNumber>37050</StateNumber>
       <ColNames>victim_id</ColNames>
-      <RefTableId>138795</RefTableId>
+      <RefTableId>140020</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>persons</RefTableName>
       <RefKeyName>persons_pkey</RefKeyName>
@@ -1057,7 +1057,7 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36459</StateNumber>
+      <StateNumber>37020</StateNumber>
       <DefaultExpression>nextval(&apos;persons_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
@@ -1065,55 +1065,55 @@ sequence|table|138841|138843|2
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36459</StateNumber>
+      <StateNumber>37020</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="154" parent="52" name="is_criminal">
       <Position>3</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36459</StateNumber>
+      <StateNumber>37020</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="155" parent="52" name="is_fake">
       <Position>4</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36459</StateNumber>
+      <StateNumber>37020</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="156" parent="52" name="name">
       <Position>5</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36459</StateNumber>
+      <StateNumber>37020</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="157" parent="52" name="patronymic">
       <Position>6</Position>
       <DataType>varchar(20)|0s</DataType>
-      <StateNumber>36459</StateNumber>
+      <StateNumber>37020</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="158" parent="52" name="sex">
       <Position>7</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36459</StateNumber>
+      <StateNumber>37020</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="159" parent="52" name="surname">
       <Position>8</Position>
       <DataType>varchar(20)|0s</DataType>
-      <StateNumber>36459</StateNumber>
+      <StateNumber>37020</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="160" parent="52" name="persons_pkey">
-      <ObjectId>138799</ObjectId>
-      <StateNumber>36459</StateNumber>
+      <ObjectId>140024</ObjectId>
+      <StateNumber>37020</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="161" parent="52" name="persons_pkey">
-      <ObjectId>138800</ObjectId>
-      <StateNumber>36459</StateNumber>
+      <ObjectId>140025</ObjectId>
+      <StateNumber>37020</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>persons_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -1122,38 +1122,38 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36460</StateNumber>
+      <StateNumber>37021</StateNumber>
       <DefaultExpression>nextval(&apos;ranks_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="163" parent="53" name="is_kira">
       <Position>2</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36460</StateNumber>
+      <StateNumber>37021</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="164" parent="53" name="points">
       <Position>3</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36460</StateNumber>
+      <StateNumber>37021</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="165" parent="53" name="rank">
       <Position>4</Position>
       <DataType>varchar(50)|0s</DataType>
-      <StateNumber>36460</StateNumber>
+      <StateNumber>37021</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="166" parent="53" name="ranks_pkey">
-      <ObjectId>138807</ObjectId>
-      <StateNumber>36460</StateNumber>
+      <ObjectId>140032</ObjectId>
+      <StateNumber>37021</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="167" parent="53" name="ranks_pkey">
-      <ObjectId>138808</ObjectId>
-      <StateNumber>36460</StateNumber>
+      <ObjectId>140033</ObjectId>
+      <StateNumber>37021</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>ranks_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -1162,43 +1162,43 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36461</StateNumber>
+      <StateNumber>37022</StateNumber>
       <DefaultExpression>nextval(&apos;regions_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="169" parent="54" name="city">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36461</StateNumber>
+      <StateNumber>37022</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="170" parent="54" name="continent">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36461</StateNumber>
+      <StateNumber>37022</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="171" parent="54" name="country">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36461</StateNumber>
+      <StateNumber>37022</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="172" parent="54" name="planet">
       <Position>5</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36461</StateNumber>
+      <StateNumber>37022</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="173" parent="54" name="regions_pkey">
-      <ObjectId>138818</ObjectId>
-      <StateNumber>36461</StateNumber>
+      <ObjectId>140043</ObjectId>
+      <StateNumber>37022</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="174" parent="54" name="regions_pkey">
-      <ObjectId>138819</ObjectId>
-      <StateNumber>36461</StateNumber>
+      <ObjectId>140044</ObjectId>
+      <StateNumber>37022</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>regions_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -1207,7 +1207,7 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36462</StateNumber>
+      <StateNumber>37023</StateNumber>
       <DefaultExpression>nextval(&apos;requests_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
@@ -1215,87 +1215,87 @@ sequence|table|138841|138843|2
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36462</StateNumber>
+      <StateNumber>37023</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="177" parent="55" name="is_success">
       <Position>3</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36462</StateNumber>
+      <StateNumber>37023</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="178" parent="55" name="action_id">
       <Position>4</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36462</StateNumber>
+      <StateNumber>37023</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="179" parent="55" name="agent_id">
       <Position>5</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36462</StateNumber>
+      <StateNumber>37023</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="180" parent="55" name="crime_person_id">
       <Position>6</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36462</StateNumber>
+      <StateNumber>37023</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="181" parent="55" name="crime_region_id">
       <Position>7</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36462</StateNumber>
+      <StateNumber>37023</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="182" parent="55" name="requests_pkey">
-      <ObjectId>138826</ObjectId>
-      <StateNumber>36462</StateNumber>
+      <ObjectId>140051</ObjectId>
+      <StateNumber>37023</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="183" parent="55" name="requests_pkey">
-      <ObjectId>138827</ObjectId>
-      <StateNumber>36462</StateNumber>
+      <ObjectId>140052</ObjectId>
+      <StateNumber>37023</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>requests_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="184" parent="55" name="fkejcjd0e86395kwlsrfdho5p3d">
-      <ObjectId>138964</ObjectId>
-      <StateNumber>36490</StateNumber>
+      <ObjectId>140189</ObjectId>
+      <StateNumber>37051</StateNumber>
       <ColNames>action_id</ColNames>
-      <RefTableId>138749</RefTableId>
+      <RefTableId>139974</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>actions</RefTableName>
       <RefKeyName>actions_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="185" parent="55" name="fk85e1xyebwtvxhhv77peja0mp1">
-      <ObjectId>138969</ObjectId>
-      <StateNumber>36491</StateNumber>
+      <ObjectId>140194</ObjectId>
+      <StateNumber>37052</StateNumber>
       <ColNames>agent_id</ColNames>
-      <RefTableId>138760</RefTableId>
+      <RefTableId>139985</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>agents</RefTableName>
       <RefKeyName>agents_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="186" parent="55" name="fkscq2dqb6bqc6e7l2673a1bydi">
-      <ObjectId>138974</ObjectId>
-      <StateNumber>36492</StateNumber>
+      <ObjectId>140199</ObjectId>
+      <StateNumber>37053</StateNumber>
       <ColNames>crime_person_id</ColNames>
-      <RefTableId>138795</RefTableId>
+      <RefTableId>140020</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>persons</RefTableName>
       <RefKeyName>persons_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="187" parent="55" name="fkho81e27m0co9m6sa75pms0kq4">
-      <ObjectId>138979</ObjectId>
-      <StateNumber>36493</StateNumber>
+      <ObjectId>140204</ObjectId>
+      <StateNumber>37054</StateNumber>
       <ColNames>crime_region_id</ColNames>
-      <RefTableId>138811</RefTableId>
+      <RefTableId>140036</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>regions</RefTableName>
       <RefKeyName>regions_pkey</RefKeyName>
@@ -1305,18 +1305,18 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>varchar(8)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36463</StateNumber>
+      <StateNumber>37024</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="189" parent="56" name="roles_pkey">
-      <ObjectId>138831</ObjectId>
-      <StateNumber>36463</StateNumber>
+      <ObjectId>140056</ObjectId>
+      <StateNumber>37024</StateNumber>
       <ColNames>role</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="190" parent="56" name="roles_pkey">
-      <ObjectId>138832</ObjectId>
-      <StateNumber>36463</StateNumber>
+      <ObjectId>140057</ObjectId>
+      <StateNumber>37024</StateNumber>
       <ColNames>role</ColNames>
       <UnderlyingIndexName>roles_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
@@ -1325,38 +1325,38 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36464</StateNumber>
+      <StateNumber>37025</StateNumber>
       <DefaultExpression>nextval(&apos;rules_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <column id="192" parent="57" name="description">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36464</StateNumber>
+      <StateNumber>37025</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="193" parent="57" name="rules_pkey">
-      <ObjectId>138839</ObjectId>
-      <StateNumber>36464</StateNumber>
+      <ObjectId>140064</ObjectId>
+      <StateNumber>37025</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
     </index>
     <index id="194" parent="57" name="uk_ijbudtpsxby634taeqpl8fngd">
-      <ObjectId>138862</ObjectId>
-      <StateNumber>36469</StateNumber>
+      <ObjectId>140087</ObjectId>
+      <StateNumber>37030</StateNumber>
       <ColNames>description</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="195" parent="57" name="rules_pkey">
-      <ObjectId>138840</ObjectId>
-      <StateNumber>36464</StateNumber>
+      <ObjectId>140065</ObjectId>
+      <StateNumber>37025</StateNumber>
       <ColNames>id</ColNames>
       <UnderlyingIndexName>rules_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <key id="196" parent="57" name="uk_ijbudtpsxby634taeqpl8fngd">
-      <ObjectId>138863</ObjectId>
-      <StateNumber>36469</StateNumber>
+      <ObjectId>140088</ObjectId>
+      <StateNumber>37030</StateNumber>
       <ColNames>description</ColNames>
       <UnderlyingIndexName>uk_ijbudtpsxby634taeqpl8fngd</UnderlyingIndexName>
     </key>
@@ -1364,32 +1364,32 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36465</StateNumber>
+      <StateNumber>37026</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="198" parent="58" name="rule_id">
       <Position>2</Position>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36465</StateNumber>
+      <StateNumber>37026</StateNumber>
       <DefaultExpression>nextval(&apos;rules_to_user_rule_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>23</TypeId>
     </column>
     <foreign-key id="199" parent="58" name="fkd8x57wb16ilxy18k52gv3nsed">
-      <ObjectId>138989</ObjectId>
-      <StateNumber>36495</StateNumber>
+      <ObjectId>140214</ObjectId>
+      <StateNumber>37056</StateNumber>
       <ColNames>user_id</ColNames>
-      <RefTableId>138852</RefTableId>
+      <RefTableId>140077</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>login</RefColNames>
     </foreign-key>
     <foreign-key id="200" parent="58" name="fk65tx12r962rt3bq0lkedichcv">
-      <ObjectId>138984</ObjectId>
-      <StateNumber>36494</StateNumber>
+      <ObjectId>140209</ObjectId>
+      <StateNumber>37055</StateNumber>
       <ColNames>rule_id</ColNames>
-      <RefTableId>138835</RefTableId>
+      <RefTableId>140060</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>rules</RefTableName>
       <RefKeyName>rules_pkey</RefKeyName>
@@ -1399,46 +1399,46 @@ sequence|table|138841|138843|2
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36466</StateNumber>
+      <StateNumber>37027</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="202" parent="59" name="role">
       <Position>2</Position>
       <DataType>varchar(8)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36466</StateNumber>
+      <StateNumber>37027</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <index id="203" parent="59" name="user_role_pkey">
-      <ObjectId>138850</ObjectId>
-      <StateNumber>36466</StateNumber>
+      <ObjectId>140075</ObjectId>
+      <StateNumber>37027</StateNumber>
       <ColNames>login
 role</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="204" parent="59" name="user_role_pkey">
-      <ObjectId>138851</ObjectId>
-      <StateNumber>36466</StateNumber>
+      <ObjectId>140076</ObjectId>
+      <StateNumber>37027</StateNumber>
       <ColNames>login
 role</ColNames>
       <UnderlyingIndexName>user_role_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="205" parent="59" name="fkk67cu8t2bbsnws6t9yx6rlsju">
-      <ObjectId>138999</ObjectId>
-      <StateNumber>36497</StateNumber>
+      <ObjectId>140224</ObjectId>
+      <StateNumber>37058</StateNumber>
       <ColNames>login</ColNames>
-      <RefTableId>138852</RefTableId>
+      <RefTableId>140077</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>login</RefColNames>
     </foreign-key>
     <foreign-key id="206" parent="59" name="fkfhq23r1o3cqe0n8jdi4vyv4s8">
-      <ObjectId>138994</ObjectId>
-      <StateNumber>36496</StateNumber>
+      <ObjectId>140219</ObjectId>
+      <StateNumber>37057</StateNumber>
       <ColNames>role</ColNames>
-      <RefTableId>138828</RefTableId>
+      <RefTableId>140053</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>roles</RefTableName>
       <RefKeyName>roles_pkey</RefKeyName>
@@ -1448,120 +1448,120 @@ role</ColNames>
       <Position>1</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="208" parent="60" name="confirmed">
       <Position>2</Position>
       <DataType>boolean|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>16</TypeId>
     </column>
     <column id="209" parent="60" name="email">
       <Position>3</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="210" parent="60" name="googleemail">
       <Position>4</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="211" parent="60" name="last_visit_timestamp">
       <Position>5</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="212" parent="60" name="neutral_email">
       <Position>6</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="213" parent="60" name="password">
       <Position>7</Position>
       <DataType>varchar(255)|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="214" parent="60" name="registration_date">
       <Position>8</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="215" parent="60" name="token">
       <Position>9</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="216" parent="60" name="vk_id">
       <Position>10</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="217" parent="60" name="agent_id">
       <Position>11</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="218" parent="60" name="kira_id">
       <Position>12</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <column id="219" parent="60" name="profile_id">
       <Position>13</Position>
       <DataType>integer|0s</DataType>
-      <StateNumber>36467</StateNumber>
+      <StateNumber>37028</StateNumber>
       <TypeId>23</TypeId>
     </column>
     <index id="220" parent="60" name="users_pkey">
-      <ObjectId>138858</ObjectId>
-      <StateNumber>36467</StateNumber>
+      <ObjectId>140083</ObjectId>
+      <StateNumber>37028</StateNumber>
       <ColNames>login</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="221" parent="60" name="users_pkey">
-      <ObjectId>138859</ObjectId>
-      <StateNumber>36467</StateNumber>
+      <ObjectId>140084</ObjectId>
+      <StateNumber>37028</StateNumber>
       <ColNames>login</ColNames>
       <UnderlyingIndexName>users_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="222" parent="60" name="fk9lv8y3pid6g0tiuqnfj74q2o">
-      <ObjectId>139004</ObjectId>
-      <StateNumber>36498</StateNumber>
+      <ObjectId>140229</ObjectId>
+      <StateNumber>37059</StateNumber>
       <ColNames>agent_id</ColNames>
-      <RefTableId>138760</RefTableId>
+      <RefTableId>139985</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>agents</RefTableName>
       <RefKeyName>agents_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="223" parent="60" name="fkip4it4p86y110k5djq0krrwd">
-      <ObjectId>139009</ObjectId>
-      <StateNumber>36499</StateNumber>
+      <ObjectId>140234</ObjectId>
+      <StateNumber>37060</StateNumber>
       <ColNames>kira_id</ColNames>
-      <RefTableId>138776</RefTableId>
+      <RefTableId>140001</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>kiras</RefTableName>
       <RefKeyName>kiras_pkey</RefKeyName>
       <RefColNames>id</RefColNames>
     </foreign-key>
     <foreign-key id="224" parent="60" name="fkrsjlh42c8ymbhf9sq2dxridca">
-      <ObjectId>139014</ObjectId>
-      <StateNumber>36500</StateNumber>
+      <ObjectId>140239</ObjectId>
+      <StateNumber>37061</StateNumber>
       <ColNames>profile_id</ColNames>
-      <RefTableId>138795</RefTableId>
+      <RefTableId>140020</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>persons</RefTableName>
       <RefKeyName>persons_pkey</RefKeyName>

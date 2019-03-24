@@ -20,11 +20,11 @@
           <p><b>Breaking news!</b></p>
           <p>Дата публикации: {{news.pubDate}}</p>
           <p>Заголовок: {{news.description}}</p>
-          <p>Что случилось: {{news.victimSex ? 'мужчина' : 'женщина'}}
+          <p>Что случилось:
             {{news.victimName}} {{news.victimSurname}} {{news.victimPatr}} {{news.actionDesc}}
           </p>
           <p v-if="news.isGuiltyPersonExists == true">Предполагаемый виновный:
-            {{news.guiltyPersonSex ? 'мужчина' : 'женщина'}} {{news.guiltyPersonName}}
+            {{news.guiltyPersonName}}
             {{news.guiltyPersonSername}} {{news.guiltyPersonPatr}}
           </p>
           <p>Место происшествия: {{news.actionPlace}}</p>
@@ -32,6 +32,15 @@
       </div>
       <!--Actions-->
       <div>
+        <div v-if="this.$store.getters.entryStatus === 1">
+          <p>Описнаие не может превышать 50 символов</p>
+        </div>
+        <div v-if="this.$store.getters.entryStatus === 4">
+          <p>Uncorrected death date</p>
+        </div>
+        <div v-if="this.$store.getters.entryStatus === 10">
+          <p>Такая запись уже существует</p>
+        </div>
         <button class="button16" @click="openNote();getActions();getActionPlaces()">Открыть тетрадь</button>
         <br>
         <div v-if="isNoteOpen===true">
@@ -88,15 +97,6 @@
               Дата смерти:
               <datetime v-model="entryForm.deathDate" type="datetime" format="yyyy-MM-dd HH:mm:ss"></datetime>
             </label>
-            <div v-if="this.$store.getters.entryStatus === 1">
-              <p>Описнаие не может превышать 50 символов</p>
-            </div>
-            <div v-if="this.$store.getters.entryStatus === 4">
-              <p>Uncorrected death date</p>
-            </div>
-            <div v-if="this.$store.getters.entryStatus === 10">
-              <p>Такая запись уже существует</p>
-            </div>
             <div>
               <button type="submit" class="submit" @click="makeEntry();closeEntryForm();clearForm();closeEntries();closeNote()"><a>Сделать запись</a></button>
             </div>
@@ -145,6 +145,15 @@
       </div>
       <!--Actions-->
       <div>
+        <div v-if="this.$store.getters.entryStatus === 7">
+          <p>Такой запрос уже существует.</p>
+        </div>
+        <div v-if="this.$store.getters.entryStatus === 8">
+          <p>There's no person with the identification data</p>
+        </div>
+        <div v-if="this.$store.getters.entryStatus === 9">
+          <p>Идентификация человека не совпадает с базой данных.</p>
+        </div>
         <div>
           <button class="button16" @click="openNote()">Открыть планшет</button>
           <br>
@@ -161,7 +170,7 @@
                   {{entry.personSex ? 'мужчина':'женщина'}}
                 </p>
                 <p>
-                  {{entry.success}}
+                  {{entry.success ? 'пойман':'не пойман'}}
                 </p>
               </div>
               <br>
@@ -184,12 +193,7 @@
                 <option v-bind:value="true">Мужчина</option>
                 <option v-bind:value="false">Женщина</option>
               </select>
-              <div v-if="this.$store.getters.entryStatus === 7">
-                <p>Такой запрос уже существует.</p>
-              </div>
-              <div v-if="this.$store.getters.entryStatus === 9">
-                <p>Идентификация человека не совпадает с базой данных.</p>
-              </div>
+
               <div>
                 <button type="submit" class="submit" @click="makeRequest();closeEntryForm();clearForm();closeEntries();closeNote()"><a>Сделать запись</a></button>
               </div>

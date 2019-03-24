@@ -193,6 +193,7 @@ export default {
         },
         method: 'GET'
       }).then(response => {
+        console.log(response.data)
         context.commit('setEntry', response.data)
       })
         .catch(error => {

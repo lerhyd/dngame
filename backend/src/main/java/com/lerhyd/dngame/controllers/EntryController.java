@@ -195,7 +195,7 @@ public class EntryController {
                 deletePointsOfKira(kiraId, 10);
                 System.out.println("delete 10 point from Kira");
             } else {
-                addPointsOfKira(kiraId, 15);
+                addPointsOfKira(kiraId, 20);
                 addNumberOfKills(kiraId);
                 System.out.println("add 15 points to kira and addNumberOfKills");
             }

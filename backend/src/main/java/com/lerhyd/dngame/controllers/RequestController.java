@@ -47,6 +47,9 @@ public class RequestController {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private ActionPlaceDao actionPlaceDao;
+
     private final int policeActionId = 1;
     private final int worldRegionId = 1;
 
@@ -155,6 +158,7 @@ public class RequestController {
                 request.setSuccess(true);
                 addNumberOfCaughtKillers(agentId);
             }
+            request.setPageNumber(numPage);
             request.setAgent(agentDao.getOne(agentId));
             request.setCrimePerson(guiltyPerson);
             request.setAction(actionDao.getOne(policeActionId));
@@ -365,7 +369,7 @@ public class RequestController {
         news.setDistributionRegion(regionDao.findById(worldRegionId));
         news.setAction(request.getAction());
         news.setGuiltyPerson(request.getCrimePerson());
-        news.setCommonRegion(request.getCrimeRegion());
+        news.setCommonRegion(regionDao.findAllRegionsInRandomOrder().get(0));
         news.setPublicationDate(LocalDateTime.now().plusSeconds(50));
         news.setAgent(request.getAgent());
         news.setKira(request.getAgent().getNews().get(0).getKira());
@@ -373,6 +377,7 @@ public class RequestController {
         news.setFake(false);
         news.setGuiltyPersonExists(true);
         news.setVictim(null);
+        news.setActionPlace(actionPlaceDao.findAllActionPlacesInRandomOrder().get(0));
         news.setDescription("Police Department News");
         return news;
     }

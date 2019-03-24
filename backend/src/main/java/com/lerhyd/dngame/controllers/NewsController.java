@@ -55,24 +55,31 @@ public class NewsController {
      * 5 -- There's no match between the Agent and the Kira,
      * 6 -- All persons were used in News,
      * 7 -- The Kira won because the Agent's points less than 0,
+     * 666 -- The length of description is more than 50 symbols,
      * 0 -- The function was executed correctly.
      */
     @PostMapping("/game/news/add")
     public int addNews(@RequestBody NewsReq newsReq){
-        if (agentDao.getOne(newsReq.getAgentId()) == null)
+
+        int agentId = userDao.getOne(newsReq.getUserLogin()).getAgent().getId();
+        int kiraId = userDao.getOne(newsReq.getUserLogin()).getAgent().getNews().get(0).getKira().getId();
+
+        if (agentDao.getOne(agentId) == null)
             return 1;
-        if (agentDao.getOne(newsReq.getAgentId()).getUser() == null)
+        if (agentDao.getOne(agentId).getUser() == null)
             return 2;
-        if (agentDao.getOne(newsReq.getAgentId()).getUser().getProfile() == null)
+        if (agentDao.getOne(agentId).getUser().getProfile() == null)
             return 3;
-        if (kiraDao.getOne(newsReq.getKiraId()) == null)
+        if (kiraDao.getOne(agentId) == null)
             return 4;
-        if (agentDao.getOne(newsReq.getAgentId()).getNews().get(0).getKira() == null)
+        if (agentDao.getOne(agentId).getNews().get(0).getKira() == null)
             return 5;
-        int kiraIdToCheck = agentDao.getOne(newsReq.getAgentId()).getNews().get(0).getKira().getId();
-        if (newsDao.cntVictimsThatUsedInNews(kiraIdToCheck, newsReq.getAgentId()) == personDao.cntAllPersonsWithoutFake())
+        int kiraIdToCheck = agentDao.getOne(agentId).getNews().get(0).getKira().getId();
+        if (newsDao.cntVictimsThatUsedInNews(kiraIdToCheck, agentId) == personDao.cntAllPersonsWithoutFake())
             return 6;
-        Agent agentToSave = agentDao.getOne(newsReq.getAgentId());
+        if (newsReq.getDesc().length() > 50)
+            return 666;
+        Agent agentToSave = agentDao.getOne(agentId);
         agentToSave.setPoints(agentToSave.getPoints() - 40);
         agentDao.save(agentToSave);
 
@@ -89,21 +96,21 @@ public class NewsController {
                 victimExists,
                 true,
                 true,
-                newsReq.isDie(),
+                false,
                 newsReq.getDesc(),
                 LocalDateTime.parse(newsReq.getPubDate(), formatter),
                     actionDao.findById(newsReq.getActionId()),
                     actionPlaceDao.findById(newsReq.getActionPlaceId()),
                     victim,
-                    agentDao.findById(newsReq.getAgentId()),
-                    kiraDao.findById(newsReq.getKiraId()),
+                    agentDao.findById(agentId),
+                    kiraDao.findById(kiraId),
                     regionDao.findById(newsReq.getDistRegionId()),
                     regionDao.findById(newsReq.getCommonRegionId()),
                     personDao.findById(newsReq.getGuiltyPersonId())
                 );
 
         newsDao.save(news);
-        int points = agentDao.findPointsById(newsReq.getAgentId());
+        int points = agentDao.findPointsById(agentId);
         if (points < 0)
             return 7;//kira wins
         return 0;

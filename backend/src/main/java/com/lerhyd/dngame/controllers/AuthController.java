@@ -166,7 +166,7 @@ public class AuthController {
      * 0 -- The function was executed correctly.
      */
     @PostMapping("/changepass")
-    public int changePass(@RequestParam("newPass") String newPass, @RequestParam("login") String login) {
+    public int changePass(@@RequestParam("newPass") String newPass, @RequestParam("login") String login) {
         if (userDao.findById(login) == null)
             return 1;
         if (newPass.length() < 8)

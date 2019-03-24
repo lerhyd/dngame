@@ -79,21 +79,23 @@ public class NewsController {
             return 6;
         if (newsReq.getDesc().length() > 50)
             return 666;
+        if (newsReq.getPubDate() == "")
+            return 444;
         Agent agentToSave = agentDao.getOne(agentId);
         agentToSave.setPoints(agentToSave.getPoints() - 40);
         agentDao.save(agentToSave);
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        boolean victimExists = personDao.getOne(newsReq.getVictimId()) != null ? true : false;
-        Person victim = null;
-        if (victimExists){
-            victim = personDao.findById(newsReq.getVictimId());
+        boolean guiltyPersonExists = personDao.getOne(newsReq.getGuiltyPersonId()) != null ? true : false;
+        Person guiltyPerson = null;
+        if (guiltyPersonExists){
+            guiltyPerson = personDao.findById(newsReq.getVictimId());
         }
         News news = new News(
                 false,
                 false,
                 false,
-                victimExists,
+                guiltyPersonExists,
                 true,
                 true,
                 false,
@@ -101,7 +103,7 @@ public class NewsController {
                 LocalDateTime.parse(newsReq.getPubDate(), formatter),
                     actionDao.findById(newsReq.getActionId()),
                     actionPlaceDao.findById(newsReq.getActionPlaceId()),
-                    victim,
+                    guiltyPerson,
                     agentDao.findById(agentId),
                     kiraDao.findById(kiraId),
                     regionDao.findById(newsReq.getDistRegionId()),

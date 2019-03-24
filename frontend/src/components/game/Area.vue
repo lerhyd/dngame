@@ -172,10 +172,10 @@
                 </p>
               </div>
               <br>
-              <button class="button16" @click="closeEntries()">Закрыть записи</button>
+              <button class="button16" @click="closeEntries()">Закрыть запросы в полицию</button>
             </div>
             <br>
-            <button class="button16" @click="openEntryForm()">Открыть форму записи</button>
+            <button class="button16" @click="openEntryForm()">Открыть форму запроса</button>
             <br>
             <div v-if="isEntryFormOpen===true">
               <fieldset class="victimName">
@@ -197,12 +197,12 @@
               </div>
               <br>
               <div>
-                <button class="button16" @click="closeEntryForm()">Закрыть форму записи</button>
+                <button class="button16" @click="closeEntryForm()">Закрыть форму запроса</button>
               </div>
               <br>
             </div>
             <br>
-            <button class="button16" @click="closeNote();closeEntryForm()">Закрыть тетрадь</button>
+            <button class="button16" @click="closeNote();closeEntryForm()">Закрыть планшет</button>
           </div>
         </div>
       </div>
@@ -210,10 +210,10 @@
 
     <div v-if="this.$store.getters.matchEnded">
       <div v-if="this.$store.getters.isKira">
-        <div v-if="this.$store.getters.isKiraWin && this.$store.getters.isGameDrawn">
+        <div v-if="this.$store.getters.isKiraWin && !this.$store.getters.isGameDrawn">
           Вы победили.
         </div>
-        <div v-if="!this.$store.getters.isKiraWin && this.$store.getters.isGameDrawn">
+        <div v-if="!this.$store.getters.isKiraWin && !this.$store.getters.isGameDrawn">
           Вы проиграли.
         </div>
         <div v-if="this.$store.getters.isGameDrawn">
@@ -221,10 +221,10 @@
         </div>
       </div>
       <div v-if="!this.$store.getters.isKira">
-        <div v-if="!this.$store.getters.isKiraWin && this.$store.getters.isGameDrawn">
+        <div v-if="!this.$store.getters.isKiraWin && !this.$store.getters.isGameDrawn">
           Вы победили.
         </div>
-        <div v-if="this.$store.getters.isKiraWin && this.$store.getters.isGameDrawn">
+        <div v-if="this.$store.getters.isKiraWin && !this.$store.getters.isGameDrawn">
           Вы проиграли.
         </div>
         <div v-if="this.$store.getters.isGameDrawn">

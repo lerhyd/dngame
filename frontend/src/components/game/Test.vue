@@ -19,7 +19,7 @@
         </div>
       </div>
 
-    <section>
+    <section id="main-control-section">
       <button class="menu-buttons"><a>Перезайти</a></button>
       <button class="menu-buttons"><a>Перезайти</a></button>
       <button class="menu-buttons"><a>Перезайти</a></button>
@@ -30,6 +30,7 @@
     </section>
 
 
+    <aside id="main-aside">
       <div id="notebook-paper">
         <!--<h1>Fancy Title</h1>-->
         <div id="content">
@@ -46,6 +47,7 @@
           </div>
         </div>
       </div>
+    </aside>
 
 
 
@@ -180,18 +182,19 @@
   html{
     background-image: url(../../assets/img/computer3.png);
     background-size: 100%;
+    background-color: #111111;
     background-repeat: no-repeat;
        /*background-color: #585858;*/
      }
 
-  section {
+  #main-control-section {
     float: left;
     margin: 0 1%;
     width: 15%;
     border: 1px solid blue;
 
   }
-  aside {
+  #main-aside {
     float: right;
     /*margin: 0 1%;*/
     width: 80%;

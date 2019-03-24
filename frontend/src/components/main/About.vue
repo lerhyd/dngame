@@ -3,7 +3,7 @@
       <Header></Header>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
       <section class="left-section-about">
-        <div class="main">
+        <div class="main-about-div">
           <agile :infinite="false" :dots="false" :arrows="false" :autoplay="true" :speed="1700"
                  :timing="'linear'" :fade="true" :pauseOnHover="false" :autoplaySpeed="4500">
             <div class="slides slides--1"></div>

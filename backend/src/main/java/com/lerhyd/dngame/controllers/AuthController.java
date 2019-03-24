@@ -164,24 +164,27 @@ public class AuthController {
      * 1 -- User with the login does not exist,
      * 2 -- Password's length is less than 6,
      * 3 -- Password contains non-Latin letters,
-     * 4 -- Old pass is incorrect
+     * 4 -- Password does not match with retype password,
+     * 5 -- Old pass is incorrect
      * 0 -- The function was executed correctly.
      */
     @PostMapping("/changepass")
-    public int changePass(@RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass, @RequestParam("login") String login) {
+    public int changePass(@RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass, @RequestParam("retypeNewPass") String retypeNewPass, @RequestParam("login") String login) {
         if (userDao.findById(login) == null)
             return 1;
         if (newPass.length() < 6 || oldPass.length() < 6)
             return 2;
         if (!newPass.matches("^[a-zA-Z0-9]+$"))
             return 3;
+        if (newPass != retypeNewPass)
+            return 4;
         User user = userDao.getOne(login);
         if (encoder.encode(oldPass) == user.getPassword()) {
             user.setPassword(encoder.encode(newPass));
             userDao.save(user);
             return 0;
         } else {
-            return 4;
+            return 5;
         }
     }
 
@@ -236,7 +239,7 @@ public class AuthController {
             return 2;
         if (!user.getRoles().contains(userRole))
             return 3;
-        changePass(user.getPassword(), password, user.getLogin());
+        changePass(user.getPassword(), password, password, user.getLogin());
         emailService.sendMail("DN game", user, "Ваш новый пароль: " + password);
 
         return 0;

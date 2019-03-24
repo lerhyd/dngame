@@ -319,6 +319,7 @@ export default {
         params: {
           oldPass: data.oldPass,
           newPass: data.newPass,
+          retypeNewPass: data.retypeNewPass,
           userLogin: context.getters.loginName,
         },
         method: 'POST'

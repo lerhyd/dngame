@@ -3,12 +3,14 @@
     <Header></Header>
     <section id="achieve-main-section">
       <div> <!-- Пропиши тут v-for цикл для ачивок. В title достижение-->
+        <!--
         <div v-for="achieve in this.$store.getters.kiraAchievements">
           <Achievement title="{{achieve.title}} {{achieve.task}} {{achieve.desc}}"></Achievement>
         </div>
         <div v-for="achieve in this.$store.getters.agentAchievements">
           <Achievement title="{{achieve.title}} {{achieve.task}} {{achieve.desc}}"></Achievement>
         </div>
+        -->
       </div>
     </section>
   </div>

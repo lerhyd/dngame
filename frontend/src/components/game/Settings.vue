@@ -7,6 +7,10 @@
       <fieldset class="newPass">
         <input class="form-input" type="password" v-model="newPass" placeholder="Новый пароль" required>
       </fieldset>
+      <fieldset class="retypeNewPass">
+        <input class="form-input" type="password" v-model="retypeNewPass" placeholder="Снова введите новый пароль" required>
+      </fieldset>
+
       <div class="errors" v-if="this.$store.getters.passwordStatus !== 0">
         <div v-if="this.$store.getters.passwordStatus === 2">
           <p>
@@ -19,6 +23,11 @@
           </p>
         </div>
         <div v-if="this.$store.getters.passwordStatus === 4">
+          <p>
+            Password does not match with retype password.
+          </p>
+        </div>
+        <div v-if="this.$store.getters.passwordStatus === 5">
           <p>
             Old pass is incorrect.
           </p>
@@ -33,14 +42,16 @@
     data() {
       return {
         oldPass: '',
-        newPass: ''
+        newPass: '',
+        retypeNewPass: ''
       }
     },
     methods: {
       changePass(){
         this.$store.dispatch('changePass', {
           oldPass: this.oldPass,
-          newPass: this.newPass
+          newPass: this.newPass,
+          retypeNewPass: this.retypeNewPass
         })
       }
     }

@@ -95,6 +95,8 @@ public class MainController {
         return new ModelAndView("index.html");
     }
 
+
+
     /**
      * Delete the user's profile.
      * @param userLogin ID of the user.

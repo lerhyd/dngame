@@ -29,7 +29,7 @@
 
     </section>
 
-    <aside>
+
       <div id="notebook-paper">
         <!--<h1>Fancy Title</h1>-->
         <div id="content">
@@ -46,7 +46,7 @@
           </div>
         </div>
       </div>
-    </aside>
+
 
 
     <!--<footer id="game-footer">-->

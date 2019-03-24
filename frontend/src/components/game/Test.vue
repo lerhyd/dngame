@@ -2,21 +2,53 @@
   <div id="main-div">
     <Header></Header>
     <UserData></UserData>
-    <div>
       <div id="news-area" v-bind:style="styleObject" >
-
-      </div>
-    </div>
-
-    <div id="notebook-paper">
-        <h1>Fancy Title</h1>
-      <div id="content">
-        <div class="hipsum">
-          <p>Intelligentsia lo-fi pug Austin.  Shabby chic asymmetrical jean shorts, twee stumptown
-          </p>
+        <!--<div v-for="news in this.$store.getters.news">-->
+        <div>
+          <p><b>Свежайшие новости!</b></p>
+          <a>Дата публикации: 21.11.1200:00.00.00</a>
+          <br><br>
+          <a>Заголовок: FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</a>
+          <br><br>
+          <a>Что случилось: мужчина Имя Фамилия Отччество убил гггггггггггггггг
+          </a><br><br>
+          <a>Предполагаемый виновный:
+            мужчина Имя Фамилия Отччество гггггггггггггггг
+          </a><br><br>
+          <a>Место происшествия: ггггггггггггггггггггггг</a>
         </div>
       </div>
-    </div>
+
+    <section>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+
+    </section>
+
+    <aside>
+      <div id="notebook-paper">
+        <!--<h1>Fancy Title</h1>-->
+        <div id="content">
+          <div class="hipsum">
+            <p>Адриан Ильич Шашков мужчина<br>
+            Описание смерти: 1<br>
+            Причина смерти: был(-а) зарезан(-а)<br>
+            Место смерти: на восточном рынке<br>
+            Время смерти: 2019-03-31T13:22<br>
+
+            </p>
+            <p>Intelligentsia lo-fi pug Austin.  Shabby chic asymmetrical jean shorts, twee stumptown</p>
+            <p>Intelligentsia lo-fi pug Austin.  Shabby chic asymmetrical jean shorts, twee stumptown</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+
     <!--<footer id="game-footer">-->
       <!--refd-->
 
@@ -38,7 +70,7 @@
           width: window.innerWidth*0.36+'px',
           top: window.innerHeight*0.16+'px',
           left: window.innerWidth*0.207+'px',
-          border: 'red 2px solid'
+          // border: 'red 2px solid'
         },
       }
     }
@@ -50,21 +82,49 @@
 
 <style>
 
-  * {
+  .menu-buttons{
+    height: 40px;
+    display: inline;
+    width: 160px;
+    margin-top: 15px;
+    cursor: pointer;
+    font-family: 'Hand';
+    font-size: large;
+    color: #111111;
+    border-radius: 6px;
+    border: 1px solid #fdfefd;
+    user-focus: none;
+    background: whitesmoke;
+    outline: none;
+  }
+
+  .menu-buttons a{
+    text-decoration: none;
+    color: #111111;
+  }
+
+  .menu-buttons:hover a {
+    font-size: 17px;
+    mix-blend-mode: multiply;
+  }
+
+  #news-area{
+    font-family: 'Arial';
+    padding-left: 6px;
+  }
+
+
+  #notebook-paper {
     -webkit-box-sizing:border-box;
     -moz-box-sizing:border-box;
     -ms-box-sizing:border-box;
     -o-box-sizing:border-box;
     box-sizing:border-box;
-  }
-
-
-  #notebook-paper {
     background: #f1f1f1;
     font-family:helvetica neue, helvetica, arial, sans-serif;
     font-weight:200;
-    width:50%;
-    height:100%;
+    width:95%;
+    height:500px;
     background: linear-gradient(to bottom,white 29px,#00b0d7 1px);
     margin:0px auto;
     background-size: 100% 30px;
@@ -85,14 +145,14 @@
      position:absolute;
      z-index:1;
      top:0;
-     left:15%;
+     left:7%;
      height:100%;
      width:1px;
      background:#db4034;
    }
 
   #content {
-    margin-top:67px;
+    margin-top:5px;
     font-size:20px;
     line-height:30px;}
 
@@ -118,7 +178,6 @@
   }
 
   html{
-    /*background-image: url('../../assets/img/computer3.png');*/
     background-image: url(../../assets/img/computer3.png);
     background-size: 100%;
     background-repeat: no-repeat;
@@ -128,13 +187,16 @@
   section {
     float: left;
     margin: 0 1%;
-    width: 48%;
+    width: 15%;
+    border: 1px solid blue;
 
   }
   aside {
     float: right;
-    margin: 0 1%;
-    width: 48%;
+    /*margin: 0 1%;*/
+    width: 80%;
+    border: 1px solid red;
+
   }
 
 

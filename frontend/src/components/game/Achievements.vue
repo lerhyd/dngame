@@ -3,8 +3,12 @@
     <Header></Header>
     <section id="achieve-main-section">
       <div> <!-- Пропиши тут v-for цикл для ачивок. В title достижение-->
-        <Achievement title="Titvk"></Achievement>
-        <Achievement title="Titvk"></Achievement>
+        <div v-for="achieve in this.$store.getters.kiraAchievements">
+          <Achievement title="{{achieve.title}} {{achieve.task}} {{achieve.desc}}"></Achievement>
+        </div>
+        <div v-for="achieve in this.$store.getters.agentAchievements">
+          <Achievement title="{{achieve.title}} {{achieve.task}} {{achieve.desc}}"></Achievement>
+        </div>
       </div>
     </section>
   </div>
@@ -15,7 +19,19 @@
   import Header from "@/components/main/Header";
   export default {
     name: "Achievements",
-    components: {Header, Achievement}
+    components: {Header, Achievement},
+    methods: {
+      getKiraAchievements(){
+        this.$store.dispatch('getKiraAchievements')
+      },
+      getAgentAchievements(){
+        this.$store.dispatch('getAgentAchievements')
+      }
+    },
+    mounted() {
+      this.getKiraAchievements
+      this.getAgentAchievements
+    }
   }
 </script>
 

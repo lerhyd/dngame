@@ -16,6 +16,7 @@ import Test from '@/components/game/Test'
 import FindMatch from '@/components/game/FindMatch'
 import Area from '@/components/game/Area'
 import Achievements from '@/components/game/Achievements'
+import Settings from '@/components/game/Settings'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/',
       name: 'Main',
       component: Main
+    },
+    {
+      path: '/settings',
+      name: 'Settings',
+      component: Settings
     },
     {
       path: '/about',

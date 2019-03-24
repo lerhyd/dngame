@@ -1,40 +1,40 @@
 <template>
   <div>
     <Header></Header>
-    <section class="main-section">
-      <div class="main">
+    <section class="main-page-section">
+      <div class="main-wrapper">
       <!--To use it you have to install library using command 'npm install sass-loader node-sass --save-dev'-->
       <!--And this one 'npm install vue-agile'-->
           <agile :infinite="false" :dots="false" :arrows="false" :autoplay="true" :speed="1700"
           :timing="'linear'" :fade="true" :pauseOnHover="false" :autoplaySpeed="6500">
             <div class="slide slide--1">
-              <div><h3>Добро пожаловать в онлайн головоломку по известной манге Death Note (Тетрадь смерти),
+              <div class="text-on-slide"><h3>Добро пожаловать в онлайн головоломку по известной манге Death Note (Тетрадь смерти),
                 а также выпущенных на её основе анимационные сериал и фильмы. Выбери свою сторону.
               </h3></div>
             </div>
             <div class="slide slide--2">
-              <div><h3>В Death Note game представлено два типа персонажей на выбор. Играй за гениального агнета L
+              <div class="text-on-slide"><h3>В Death Note game представлено два типа персонажей на выбор. Играй за гениального агнета L
                 или за безумного убийцу Киру. Победи соперника и открывай ачивки.
               </h3></div>
             </div>
             <div class="slide slide--3">
-              <div><h3>Играя за агента L определи местоположение своего противника и застань его врасплох.
+              <div class="text-on-slide"><h3>Играя за агента L определи местоположение своего противника и застань его врасплох.
                 Учи страны вместе с нами и порази учительницу географии своими знаниями. Теперь ты
                 действительно учишься играя в компунктер.
               </h3></div>
             </div>
             <div class="slide slide--4">
-              <div><h3>Генерируй новости криминального мира, лови Киру на ошибках и веди себя к
+              <div class="text-on-slide"><h3>Генерируй новости криминального мира, лови Киру на ошибках и веди себя к
                  победе в сражении. Делай невероятные серии побед и докажи всем, что ты лучший детектив.
               </h3></div>
             </div>
             <div class="slide slide--5">
-              <div><h3>Играя за Киру ты сможешь проявить всю свою фантазию, убивая преступников.
+              <div class="text-on-slide"><h3>Играя за Киру ты сможешь проявить всю свою фантазию, убивая преступников.
                 Опиши все обстоятельства смерти так, чтобы никто и никогда не смог тебя заподозрить.
               </h3></div>
             </div>
             <div class="slide slide--6">
-              <div><h3>Выбери удобный для тебя регион и обыграй соперника за наименьшее число ходов.
+              <div class="text-on-slide"><h3>Выбери удобный для тебя регион и обыграй соперника за наименьшее число ходов.
                 Победи всех агентов и докажи, что мир, который ты создаешь, становится все совершеннее
                 и совершеннее.
               </h3></div>
@@ -55,11 +55,12 @@
 
 <style lang="scss" type="text/scss">
 
-  .main-section{
+  .main-page-section{
     width: 100%;
     text-align: center;
     position: absolute;
     top: 50%;
+    /*border: 1px red solid;*/
     left: 50%;
     -moz-transform: translateX(-50%) translateY(-50%);
     -webkit-transform: translateX(-50%) translateY(-50%);
@@ -67,8 +68,9 @@
     font-family: 'Hand';
   }
 
-  .main {
+  .main-wrapper {
     width: 95%;
+    /*border: solid 1px blue;*/
     height: 100%;
     display: inline-block;
     position: center;
@@ -91,7 +93,7 @@
       width: 100%;
     }
 
-    div{
+    .text-on-slide{
       position: absolute;
       width: 35%;
       background: #dddddd;
@@ -99,7 +101,7 @@
       border-radius: 5px;
     }
 
-    h3 {
+    .text-on-slide h3 {
       font-size: x-large;
       text-align: center;
       padding-left: 5px;
@@ -147,7 +149,7 @@
 
     .slide {
 
-      div{
+      .text-on-slide{
         position: absolute;
         width: 95%;
         background: #dddddd;
@@ -155,7 +157,7 @@
         border-radius: 3px;
       }
 
-      h3 {
+      .text-on-slide h3 {
         font-size: large;
         text-align: center;
         padding-left: 2px;
@@ -195,6 +197,4 @@
     }
 
   }
-
-
 </style>

@@ -7,7 +7,7 @@
       <img src="../../assets/img/k13.png"/>
     </section>
     <section class="main-section">
-      <div class="wrapper">
+      <div class="contacts-center-on-page">
         <div class="questions-list">
         <ul>
           <li><a>Есть предложения по улучшению?</a></li>
@@ -164,7 +164,7 @@
     background: #24282D;
   }
 
-  .wrapper{
+  .contacts-center-on-page{
     display: inline-block;
     position: center;
     height: 90%;
@@ -279,7 +279,7 @@
 
   @media screen and (max-width: 700px){
 
-    .wrapper{
+    .contacts-center-on-page{
       width: 95%;
       box-shadow: none;
       border-radius: 20px;
@@ -337,7 +337,7 @@
       list-style-position: inside;
     }
 
-    .wrapper{width: 80%;}
+    .contacts-center-on-page{width: 80%;}
 
     .questions-list{width: 60%;}
   }

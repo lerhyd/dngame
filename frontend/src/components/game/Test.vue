@@ -1,222 +1,203 @@
 <template>
-
-  <div>
+  <div id="main-div">
     <Header></Header>
+    <UserData></UserData>
+      <div id="news-area" v-bind:style="styleObject" >
+        <!--<div v-for="news in this.$store.getters.news">-->
+        <div>
+          <p><b>Свежайшие новости!</b></p>
+          <a>Дата публикации: 21.11.1200:00.00.00</a>
+          <br><br>
+          <a>Заголовок: FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF</a>
+          <br><br>
+          <a>Что случилось: мужчина Имя Фамилия Отччество убил гггггггггггггггг
+          </a><br><br>
+          <a>Предполагаемый виновный:
+            мужчина Имя Фамилия Отччество гггггггггггггггг
+          </a><br><br>
+          <a>Место происшествия: ггггггггггггггггггггггг</a>
+        </div>
+      </div>
+
     <section>
-      {{updateLoginName()}}
-      {{hasProfile()}}
-      {{getUserInfo()}}
-      <div v-if="this.$store.getters.hasProfile">
-        {{getProfile()}}
-        <div v-for="user in this.$store.getters.user">
-          <p>{{user.login}}</p>
-          <p>{{user.regDate}}</p>
-        </div>
-        <!--<div v-for="profile in this.$store.getters.profile">-->
-        <!--<p>{{profile.name}}</p>-->
-        <!--<p>{{profile.surname}}</p>-->
-        <!--<p>{{profile.patr}}</p>-->
-        <!--<p>{{profile.sex}}</p>-->
-        <!--<p>{{profile.bornDate}}</p>-->
-        <!--</div>-->
-        <button class="button16" @click="deleteProfile()" value="Удалить профиль"></button>
-        <br>
-        <router-link class="button16" to="/class">Играть</router-link>
-      </div>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+      <button class="menu-buttons"><a>Перезайти</a></button>
+      <button class="menu-buttons"><a>Перезайти</a></button>
 
-      <div v-if="!this.$store.getters.hasProfile">
-        <div class="center-on-page">
-          <form @submit.prevent="createProfile">
-            <h1>Выбери себе Имя</h1>
-            <div class="select">
-              <select id="selector">
-                <option class="name-options">༼つ◕_◕༽つ</option>
-                <option class="name-options" v-for="item in this.$store.getters.criminalPeople" v-bind="item.id">{{item.id}} {{item.surname}} {{item.name}} {{item.patr}}</option>
-              </select>
-            </div>
-            <datetime type="datetime" v-model="datetimeTheming" class="theme-orange"></datetime>
-            <input class="sub" type="submit" value="Создать" @click="updateLoginName();hasProfile()"/>
-            <!--<label class="first_label">-->
-            <!--Имя:-->
-            <!--<input type="text" v-model="profile.name">-->
-            <!--</label>-->
-            <!--<br>-->
-            <!--<label class="second_label">-->
-            <!--Фамилия:-->
-            <!--<input type="text" v-model="profile.surname">-->
-            <!--</label>-->
-            <!--<br>-->
-            <!--<label class="third_label">-->
-            <!--Отчество:-->
-            <!--<input type="text" v-model="profile.patr">-->
-            <!--</label>-->
-            <!--<br>-->
-            <!--<label class="fourth_label">-->
-            <!--Пол:-->
-            <!--<select v-model="profile.sex">-->
-            <!--<option disabled value="">Пожалуйста, выберите пол</option>-->
-            <!--<option v-bind:value="true">Мужчина</option>-->
-            <!--<option v-bind:value="false">Женщина</option>-->
-            <!--</select>-->
-            <!--</label>-->
-            <!--<br>-->
-            <!--<label class="fifth_label">-->
-            <!--Дата Рождения:-->
-
-            <!--<datetime v-model="profile.bornDate" type="datetime" format="yyyy-MM-dd HH:mm:ss"></datetime>-->
-            <!--</label>-->
-            <br>
-          </form>
-        </div>
-      </div>
     </section>
+
+    <aside>
+      <div id="notebook-paper">
+        <!--<h1>Fancy Title</h1>-->
+        <div id="content">
+          <div class="hipsum">
+            <p>Адриан Ильич Шашков мужчина<br>
+            Описание смерти: 1<br>
+            Причина смерти: был(-а) зарезан(-а)<br>
+            Место смерти: на восточном рынке<br>
+            Время смерти: 2019-03-31T13:22<br>
+
+            </p>
+            <p>Intelligentsia lo-fi pug Austin.  Shabby chic asymmetrical jean shorts, twee stumptown</p>
+            <p>Intelligentsia lo-fi pug Austin.  Shabby chic asymmetrical jean shorts, twee stumptown</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+
+    <!--<footer id="game-footer">-->
+      <!--refd-->
+
+    <!--</footer>-->
   </div>
 </template>
 
 <script>
   import Header from "@/components/main/Header";
+  import UserData from "@/components/game/UserData";
   export default {
-    components: {Header},
+    components: {UserData, Header},
     name: "Test",
-    data () {
+    data() {
       return {
-        id: null,
-      }
-    },
-    mounted: function() {
-      this.$store.dispatch('getRandomPeople').then();
-    },
-    methods: {
-      send () {
-        this.$store.dispatch('sendToken').then();
-      },
-      checkIfConfirmed() {
-        this.$store.dispatch('checkIfConfirmed').then();
-      },
-      getUserInfo() {
-        this.$store.dispatch('getUser').then();
-      },
-      createProfile() {
-        this.$store.dispatch('createProfile', {
-          id: this.id,
-        }).then();
-      },
-      getProfile() {
-        this.$store.dispatch('getProfile').then();
-      },
-      deleteProfile() {
-        this.$store.dispatch('deleteProfile').then();
-      },
-      hasProfile() {
-        this.$store.dispatch('hasProfile').then();
-      },
-      updateLoginName() {
-        this.$store.dispatch('getLoginName').then();
+        styleObject: {
+          position: 'absolute',
+          height: window.innerHeight*0.42+'px',
+          width: window.innerWidth*0.36+'px',
+          top: window.innerHeight*0.16+'px',
+          left: window.innerWidth*0.207+'px',
+          // border: 'red 2px solid'
+        },
       }
     }
+
+
+
   }
 </script>
 
-<style lang="scss" type="text/scss">
+<style>
 
-  .theme-orange .vdatetime-popup {
-    color: #440d0b;
-  }
-
-  .theme-orange {
-    color: grey;
-  }
-
-  .center-on-page {
-    font-family: 'Hand';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-  }
-  h1 {
-    text-align: center;
-  }
-
-  .name-options{
-    font-family: 'Hand';
-    font-size: xx-large;
-  }
-  /* Reset Select */
-  #selector {
-     -webkit-appearance: none;
-     -moz-appearance: none;
-     -ms-appearance: none;
-    appearance: none;
-    outline: 0;
-    box-shadow: none;
-    border: 0 !important;
-    background: #2c3e50;
-    background-image: none;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0 0 0 .5em;
-    color: #fff;
+  .menu-buttons{
+    height: 40px;
+    display: inline;
+    width: 160px;
+    margin-top: 15px;
     cursor: pointer;
-  }
-  /* Custom Select */
-  .select {
-    position: relative;
-    display: block;
-    width: 20em;
-    height: 3em;
-    line-height: 3;
-    background: #2c3e50;
-    overflow: hidden;
-    border-radius: .25em;
-  }
-  #selector::-ms-expand {
-    display: none;
-  }
-  /* Arrow */
-  .select::after {
-    content: '\25BC';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    padding: 0 1em;
-    background: #34495e;
-    pointer-events: none;
-  }
-  /* Transition */
-  .select:hover::after {
-    color: #62000c;
-  }
-  .select::after {
-     -webkit-transition: .25s all ease;
-     -o-transition: .25s all ease;
-    transition: .25s all ease;
-  }
-
-  input {
-    color: black;
-  }
-
-  .button16 {
-    display: inline-block;
-    text-decoration: none;
-    padding: 1em;
-    outline: none;
-    border-radius: 10px;
-    font-size: medium;
     font-family: 'Hand';
-    color: white;
+    font-size: large;
+    color: #111111;
+    border-radius: 6px;
+    border: 1px solid #fdfefd;
+    user-focus: none;
+    background: whitesmoke;
+    outline: none;
   }
-  .button16:hover {
-    background-image:
-      radial-gradient(3px 45% at 0% 50%, rgba(255, 255, 255, 0.6), transparent),
-      radial-gradient(3px 45% at 100% 50%, rgba(255,255,255,.6), transparent);
+
+  .menu-buttons a{
+    text-decoration: none;
+    color: #111111;
   }
-  .button16:active {
-    background-image:
-      radial-gradient(50% 50% at 50% 50%, rgba(74, 74, 74, 0.9), rgba(255,255,255,0));
+
+  .menu-buttons:hover a {
+    font-size: 17px;
+    mix-blend-mode: multiply;
   }
+
+  #news-area{
+    font-family: 'Arial';
+    padding-left: 6px;
+  }
+
+
+  #notebook-paper {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -o-box-sizing:border-box;
+    box-sizing:border-box;
+    background: #f1f1f1;
+    font-family:helvetica neue, helvetica, arial, sans-serif;
+    font-weight:200;
+    width:95%;
+    height:500px;
+    background: linear-gradient(to bottom,white 29px,#00b0d7 1px);
+    margin:0px auto;
+    background-size: 100% 30px;
+    position:relative;
+    padding-left:8%;
+    padding-right:20px;
+    overflow-y: scroll;
+    border-radius:5px;
+    -webkit-box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);
+    -moz-box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);
+    -ms-box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);
+    -o-box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);
+    box-shadow:3px 3px 3px rgba(0,0,0,.2),0px 0px 6px rgba(0,0,0,.2);}
+
+  #notebook-paper:before {
+     content:'';
+     display:block;
+     position:absolute;
+     z-index:1;
+     top:0;
+     left:7%;
+     height:100%;
+     width:1px;
+     background:#db4034;
+   }
+
+  #content {
+    margin-top:5px;
+    font-size:20px;
+    line-height:30px;}
+
+  #content p {
+    margin:0 0 30px 0;
+  }
+
+  #game-footer{
+    border: 1px red solid;
+    display: inline-block;
+    position: absolute;
+    margin-bottom: 5px;
+    /*padding-bottom: 5px;*/
+  }
+
+  #main-div{
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Chrome/Safari/Opera */
+    -khtml-user-select: none;    /* Konqueror */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: none;
+  }
+
+  html{
+    background-image: url(../../assets/img/computer3.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+       /*background-color: #585858;*/
+     }
+
+  section {
+    float: left;
+    margin: 0 1%;
+    width: 15%;
+    border: 1px solid blue;
+
+  }
+  aside {
+    float: right;
+    /*margin: 0 1%;*/
+    width: 80%;
+    border: 1px solid red;
+
+  }
+
 
 </style>

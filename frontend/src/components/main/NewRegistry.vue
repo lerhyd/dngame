@@ -98,9 +98,11 @@
     position: center;
     height: 90%;
     width: 60%;
-    border: 5px solid;
-    border-image: linear-gradient(90deg, #d6d6d6 0%, #1e1e1e 100%);
-    border-image-slice: 1;
+    /*border: 5px solid;*/
+    /*border-image: linear-gradient(90deg, #d6d6d6 0%, #1e1e1e 100%);*/
+    /*border-image-slice: 1;*/
+    border: 5px solid rgb(254, 254, 254);
+    border-radius: 30px;
   }
 
   .submit{

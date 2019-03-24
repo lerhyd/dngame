@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <section class="main-section">
+    <section class="main-error-section">
       <div id="header">
-        <router-link to="/" class="close"></router-link>
+        <router-link to="/" class="close-to-main"></router-link>
       </div>
-      <div class="wrapper">
+      <div class="center-error-page">
         <div id="error-number">404</div>
         <div id="error-title">Page Not Found</div>
         <div id="error-text"> Упс. Что-то пошло не так.<br>Впрочем, ничего нового. Го на
@@ -43,7 +43,7 @@
   }
 
 
-  .wrapper{
+  .center-error-page{
     font-family: 'Hand';
     color: #111111;
     display: inline-block;
@@ -82,7 +82,7 @@
   }
 
 
-  .main-section{
+  .main-error-section{
     width: 50%;
     text-align: center;
     position: absolute;
@@ -96,7 +96,7 @@
     transform: translateX(-50%) translateY(-50%);
   }
 
-  .close {
+  .close-to-main {
     position: absolute;
     right: 10px;
     top: 15px;
@@ -107,11 +107,11 @@
     /*border: 1px red solid;*/
   }
 
-  .close:hover {
+  .close-to-main:hover {
     background: #880000;
   }
 
-  .close:before, .close:after {
+  .close-to-main:before, .close-to-main:after {
     position: absolute;
     left: 10px;
     content: ' ';
@@ -119,15 +119,15 @@
     width: 2px;
     background-color: #010000;
   }
-  .close:before {
+  .close-to-main:before {
     transform: rotate(45deg);
   }
-  .close:after {
+  .close-to-main:after {
     transform: rotate(-45deg);
   }
 
   @media screen and (max-width: 700px) {
-    .main-section{
+    .main-error-section{
       width: 95%;
     }
   }

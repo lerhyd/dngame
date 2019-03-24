@@ -8,7 +8,7 @@
         <div v-for="profile in this.$store.getters.profile">
           <h1>Ваш профиль</h1>
           <p>ФИО:
-            <a style="color: #880000">{{profile.surname}} {{profile.name}} {{profile.patr}} Тут ФИО</a>
+            <a style="color: #880000">{{profile.surname}} {{profile.name}} {{profile.patr}}</a>
           </p>
           <p>Пол:
             <a v-if="profile.sex" style="color: #880000">Мужской</a>
@@ -22,7 +22,7 @@
           <p>Дата регистрации: <a style="color: #880000">{{user.regDate}}</a></p>
         </div>
         <button class="submit">
-          <router-link to="/class" style="text-decoration: none; color: #111111">В игру! ༼つ◕_◕ ༽つ</router-link>
+          <router-link to="/class" style="text-decoration: none; color: #111111">В игру!</router-link>
         </button>
         <button id="delete-profile" @click="deleteProfile()"><a>Удалить профиль</a></button>
       </div>
@@ -144,7 +144,7 @@
     display: inline-block;
     position: center;
     height: 90%;
-    width: 50%;
+    width: 90%;
     border-radius: 15px;
     border: 5px solid white;
   }
@@ -336,7 +336,7 @@
     display: inline-block;
     position: center;
     height: 90%;
-    width: 60%;
+    width: 90%;
   }
 
   h1 {

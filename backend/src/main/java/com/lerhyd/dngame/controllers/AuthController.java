@@ -157,26 +157,32 @@ public class AuthController {
     /**
      * Change the user password.
      *
+     * @param oldPass The old password.
      * @param newPass The new password.
      * @param login   ID of user.
      * @return Status:
      * 1 -- User with the login does not exist,
-     * 2 -- Password's length is less than 8,
+     * 2 -- Password's length is less than 6,
      * 3 -- Password contains non-Latin letters,
+     * 4 -- Old pass is incorrect
      * 0 -- The function was executed correctly.
      */
     @PostMapping("/changepass")
-    public int changePass(@@RequestParam("newPass") String newPass, @RequestParam("login") String login) {
+    public int changePass(@RequestParam("oldPass") String oldPass, @RequestParam("newPass") String newPass, @RequestParam("login") String login) {
         if (userDao.findById(login) == null)
             return 1;
-        if (newPass.length() < 8)
+        if (newPass.length() < 6 || oldPass.length() < 6)
             return 2;
         if (!newPass.matches("^[a-zA-Z0-9]+$"))
             return 3;
         User user = userDao.getOne(login);
-        user.setPassword(encoder.encode(newPass));
-        userDao.save(user);
-        return 0;
+        if (encoder.encode(oldPass) == user.getPassword()) {
+            user.setPassword(encoder.encode(newPass));
+            userDao.save(user);
+            return 0;
+        } else {
+            return 4;
+        }
     }
 
     @GetMapping("/auth/check")
@@ -230,7 +236,7 @@ public class AuthController {
             return 2;
         if (!user.getRoles().contains(userRole))
             return 3;
-        changePass(password, user.getLogin());
+        changePass(user.getPassword(), password, user.getLogin());
         emailService.sendMail("DN game", user, "Ваш новый пароль: " + password);
 
         return 0;

@@ -20,7 +20,7 @@ export default {
     profileCreateStatus: 666,
     profileDeleteStatus: 666,
     gameClassChooseStatus: 666,
-    passwordStatus: null
+    passwordStatus: 0
   },
 
   mutations: {
@@ -317,6 +317,7 @@ export default {
     changePass(context, data){
       axios("changepass", {
         params: {
+          oldPass: data.oldPass,
           newPass: data.newPass,
           userLogin: context.getters.loginName,
         },

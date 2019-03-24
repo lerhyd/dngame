@@ -158,8 +158,35 @@ export default {
           console.log(error)
         })
     },
+    getRequestPages(context) {
+      axios("/game/request/pages", {
+        params: {
+          userLogin: context.getters.loginName
+        },
+        method: 'GET'
+      }).then(response => {
+        context.commit('setEntryPages', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
     getEntries(context) {
       axios("/game/entry", {
+        params: {
+          userLogin: context.getters.loginName,
+          numPage: context.getters.numPage
+        },
+        method: 'GET'
+      }).then(response => {
+        context.commit('setEntry', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    getRequests(context) {
+      axios("/game/request", {
         params: {
           userLogin: context.getters.loginName,
           numPage: context.getters.numPage
@@ -193,6 +220,29 @@ export default {
           context.dispatch('kiraWin')
         context.commit('setEntryStatus', response.data);
         context.dispatch('getKiraStatus')
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    makeRequest(context, credentials){
+      axios.post('/game/request/add', {
+        userLogin: context.getters.loginName,
+        personName: credentials.victimName,
+        personSurname: credentials.victimSurname,
+        personPatr: credentials.victimPatr,
+        personSex: credentials.victimSex,
+      }).then(response => {
+        console.log(response.data)
+        if (response.data === 6)
+          context.dispatch('gameDrawn')
+        if (response.data === 9)
+          context.dispatch('kiraWin')
+        if (response.data === 666)
+          context.dispatch('agentWin')
+        context.commit('setEntryStatus', response.data);
+        context.dispatch('getAgentStatus')
       })
         .catch(error => {
           console.log(error)

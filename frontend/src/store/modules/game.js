@@ -14,7 +14,7 @@ export default {
     isKira: undefined,
     kiraAchievements: [],
     agentAchievements: [],
-    hasProfile:undefined,
+    hasProfile:false,
     criminalPeople: [],
     loginName: null,
     profileCreateStatus: 666,

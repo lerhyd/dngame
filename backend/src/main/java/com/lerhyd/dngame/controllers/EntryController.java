@@ -71,6 +71,7 @@ public class EntryController {
         for (int i = 1; i<maxNum; i++){
             listOfNums.add(i);
         }
+        System.out.println(listOfNums);
         return listOfNums;
     }
 
@@ -89,7 +90,7 @@ public class EntryController {
      * Add new death note's entry.
      * @param entryReq Form of entry from request.
      * @return Status:
-     * 1 -- The entry does not fit on this page,
+     * 1 -- There's more then 50 symbols
      * 2 -- Trying to make an entry by skipping an empty page,
      * 3 -- Kira with the ID does not exist,
      * 4 -- Death date is before then current date,
@@ -118,6 +119,9 @@ public class EntryController {
         if (cntEntriesInPage == 5){
             numPage++;
         }
+
+        if (entryReq.getDesc().length()>50)
+            return 1;
 
         if (!kiraDao.existsById(kiraId)){
             return 3;

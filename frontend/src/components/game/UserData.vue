@@ -2,20 +2,20 @@
     <div>
       <span id="user-data-main">
           <!--<p>{{this.$store.getters.user.login}}Тут логин</p>-->
-          <h3 id="nick">CO8ECTb</h3>
-        <!--<div v-for="status in this.$store.getters.status">-->
-        <div id="game-info">
-          <a>Очки: </a> 99999<!--{{status.points}} -->
+          <h3 id="nick">{{this.$store.getters.user.login}}</h3>
+        <div id="game-info" v-for="status in this.$store.getters.status">
+        <!--<div id="game-info">-->
+          <a>Очки: </a>{{status.points}}
           <br><br>
-          <a>Уровень: </a>999<!--{{status.lvl}} -->
+          <a>Уровень: </a>{{status.lvl}}
           <br><br>
-          <a>Звание: </a>Даша путешественница <!--{{status.rank}} -->
+          <a>Звание: </a>{{status.rank}}
           <br><br>
           <div v-if="this.$store.getters.isKira">
-            <a >Убийств: </a>99999 <!--{{status.numberOfRightKills}}99999</p>-->
+            <a >Убийств: </a>{{status.numberOfRightKills}}
           </div>
           <div v-if="!this.$store.getters.isKira">
-            <a>Поймано убийц: </a>999999<!--{{status.numberOfCaughtKillers}}-->
+            <a>Поймано убийц: </a>{{status.numberOfCaughtKillers}}
           </div>
         </div>
       </span>

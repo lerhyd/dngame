@@ -45,7 +45,7 @@
               <datetime
                 v-model="profile.bornDate"
                 :phrases="{ok: 'Подтвердить', cancel: 'Отмена'}"
-                id="date-label" type="datetime"
+                id="date-label" type="date"
                 class="red-theme"
                 :min-datetime="minDatetime"
                 :max-datetime="maxDatetime" auto>

@@ -18,9 +18,9 @@
             <div>
               <button type="submit" class="submit-settings"><a>Сменить пароль</a></button>
             </div>
-            <p id="ok-message">
-              <a v-if="this.$store.getters.passwordStatus === 0 && this.status">Подтверждающее письмо<br> отправлено на почту</a>
-            </p>
+            <!--<p id="ok-message">-->
+              <!--<a v-if="this.$store.getters.passwordStatus === 0 && this.status">Подтверждающее письмо<br> отправлено на почту</a>-->
+            <!--</p>-->
             <p id="fail-message" v-if="this.$store.getters.passwordStatus !== 0">
               <a v-if="this.$store.getters.passwordStatus === 2">Длина пароля меньше<br> 6 символов</a>
               <a v-if="this.$store.getters.passwordStatus === 3">Пароль содержит недопустимые символы</a>

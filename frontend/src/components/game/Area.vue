@@ -23,7 +23,7 @@
         <!--Errors-->
         <div v-if="this.$store.getters.entryStatus !== 0">
           <div v-if="this.$store.getters.entryStatus === 1">
-            <p>Описнаие не может превышать 50 символов</p>
+            <p>Описание не может превышать 50 символов</p>
           </div>
           <div v-if="this.$store.getters.entryStatus === 4">
             <p>Uncorrected death date</p>
@@ -110,17 +110,7 @@
     <div v-if="!this.$store.getters.isKira && !this.$store.getters.matchEnded">
 
       <!--User's data-->
-      <div>
-        <div v-for="user in this.$store.getters.user">
-          <p>{{user.login}}</p>
-        </div>
-        <div v-for="status in this.$store.getters.status">
-          <p>points: {{status.points}}</p>
-          <p>lvl: {{status.lvl}}</p>
-          <p>rank: {{status.rank}}</p>
-          <p>number Of Caught Killers: {{status.numberOfCaughtKillers}}</p>
-        </div>
-      </div>
+      <UserData></UserData>
       <!--News-->
       <div>
         <div v-for="news in this.$store.getters.news">

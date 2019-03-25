@@ -12,11 +12,12 @@ import NotFound from '@/components/main/NotFound'
 import About from '@/components/main/About'
 import NotConfirmEmailMessage from '@/components/messages/NotConfirmEmailMessage'
 import Class from '@/components/game/Class'
-import Test from '@/components/game/Test'
+import Kira from '@/components/game/Kira'
 import FindMatch from '@/components/game/FindMatch'
 import Area from '@/components/game/Area'
 import Achievements from '@/components/game/Achievements'
 import Settings from '@/components/game/Settings'
+import Agent from '@/components/game/Agent'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/',
       name: 'Main',
       component: Main
+    },
+    {
+      path: '/agent',
+      name: 'Agent',
+      component: Agent
     },
     {
       path: '/settings',
@@ -70,9 +76,9 @@ export default new Router({
       component: Game
     },
     {
-      path: '/test',
-      name: 'Test',
-      component: Test
+      path: '/kira',
+      name: 'Kira',
+      component: Kira
     },
     {
       path: '/confirm',

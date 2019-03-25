@@ -6,12 +6,12 @@
         <!--<div v-if="this.$store.getters.kiraAchievements === 0">-->
           <!--У тебя пока нет достижений. Ничего страшного, скоро все будет )-->
         <!--</div>-->
-        <div v-for="achieve in this.$store.getters.kiraAchievements">
-          <Achievement title="{{achieve.title}} {{achieve.task}} {{achieve.desc}}"></Achievement>
-        </div>
-        <div v-for="achieve in this.$store.getters.agentAchievements">
-          <Achievement title="{{achieve.title}} {{achieve.task}} {{achieve.desc}}"></Achievement>
-        </div>
+        <!--<div v-for="achieve in this.$store.getters.kiraAchievements">-->
+          <!--<Achievement title="{{achieve.title}} {{achieve.task}} {{achieve.desc}}"></Achievement>-->
+        <!--</div>-->
+        <!--<div v-for="achieve in this.$store.getters.agentAchievements">-->
+          <!--<Achievement title="{{achieve.title}} {{achieve.task}} {{achieve.desc}}"></Achievement>-->
+        <!--</div>-->
       </div>
     </section>
   </div>

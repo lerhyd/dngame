@@ -24,7 +24,6 @@
         <button class="submit">
           <router-link to="/class" style="text-decoration: none; color: #111111">В игру!</router-link>
         </button>
-        <button id="delete-profile" @click="deleteProfile()"><a>Удалить профиль</a></button>
       </div>
 
       <div v-if="!this.$store.getters.hasProfile" class="center-on-page">

@@ -10,6 +10,7 @@ export default {
     action: [],
     actionPlace: [],
     persons: [],
+    oldPersonId: null,
     noPersons: false,
     numPage: 1,
     entryPages: null,
@@ -20,7 +21,8 @@ export default {
     kiraWinStatus: null,
     matchEnded: false,
     isKiraWin: undefined,
-    isGameDrawn: false
+    isGameDrawn: false,
+    victimPersons: []
   },
 
   mutations: {
@@ -74,6 +76,12 @@ export default {
     },
     setFakeNewsStatus(state, data) {
       state.fakeNewsStatus = data
+    },
+    setOldPersonId(state, data) {
+      state.oldPersonId = data
+    },
+    setVictimPersons(state, data) {
+      state.victimPersons = data
     }
   },
 
@@ -94,7 +102,9 @@ export default {
     isKiraWin: state => state.isKiraWin,
     isGameDrawn: state => stte.isGameDrawn,
     persons: state => state.persons,
-    fakeNewsStatus: state => state.fakeNewsStatus
+    fakeNewsStatus: state => state.fakeNewsStatus,
+    oldPersonId: state => state.oldPersonId,
+    victimPersons: state => state.victimPersons
   },
 
   actions: {
@@ -314,6 +324,8 @@ export default {
         })
     },
     kiraWin(context){
+      console.log(context.getters.loginName)
+      console.log(context.getters.isKira)
       axios.post('game/kira/win', {
         userLogin: context.getters.loginName,
         isKira: context.getters.isKira
@@ -359,13 +371,24 @@ export default {
     getPersons(context, credentials){
       axios("/game/persons", {
         params: {
-          userLogin: context.getters.loginName,
-          usedPersonId: credentials.usedPersonId
+          usedPerson: credentials.usedPerson
         },
         method: 'GET'
       }).then(response => {
-        console.log(response.data)
         context.commit('setPersons', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    getVictimPersons(context, credentials){
+      axios("/game/persons", {
+        params: {
+          usedPerson: credentials.usedPerson
+        },
+        method: 'GET'
+      }).then(response => {
+        context.commit('setVictimPersons', response.data)
       })
         .catch(error => {
           console.log(error)

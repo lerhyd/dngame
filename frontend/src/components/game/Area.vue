@@ -191,7 +191,7 @@
               </div>
               <br>
             </div>
-            <button class="button16" @click="openFakeNews();getActions();getActionPlaces()">Создать фальшивую новость</button>
+            <button class="button16" @click="openFakeNews();getActions();getActionPlaces();getPersons()">Создать фальшивую новость</button>
             <!--Fake news:start-->
             <div v-if="isFakeNewsOpen===true">
               <fieldset class="desc">
@@ -269,6 +269,28 @@
                   </div>
                 </div>
               </div>
+              <p>
+                Выберите виновного.
+              </p>
+              <div>
+                <select class="region-selector" v-model="newsForm.guiltyPersonId">
+                  <option v-for="person in this.$store.getters.persons" v-bind:value="person.id">
+                    {{person.name}} {{person.surname}} {{person.patr}}
+                  </option>
+                </select>
+              </div>
+              <p v-if="newsForm.guiltyPersonId !== 0">
+                Выберите пострадавшего(не обязательно).
+              </p>
+              <div v-if="newsForm.guiltyPersonId !== 0">
+                <select class="region-selector" v-model="newsForm.victimId">
+                  <option v-for="person in this.$store.getters.victimPersons" v-bind:value="person.id">
+                    {{person.name}} {{person.surname}} {{person.patr}}
+                  </option>
+                </select>
+              </div>
+              <button class="button16" @click="createFakeNews();closeFakeNews();clearNews()">Создать новость</button>
+              <button class="button16" @click="closeFakeNews();clearNews()">Закрыть раздел создания новостей</button>
             </div>
             <!--Fake news:end-->
             <br>
@@ -334,8 +356,8 @@
         },
         newsForm: {
           distRegionId: null,
-          victimId: null,
-          guiltyPersonId: null
+          victimId: 0,
+          guiltyPersonId: 0
         },
         commonRegion: {
           regionId: null,
@@ -475,7 +497,14 @@
       getPersons(){
         this.$store.dispatch('getPersons',
           {
-            usedPersonId: this.newsForm.guiltyPersonId
+            usedPerson: this.newsForm.guiltyPersonId
+          }
+        )
+      },
+      getVictimPersons(){
+        this.$store.dispatch('getVictimPersons',
+          {
+            usedPerson: this.newsForm.guiltyPersonId
           }
         )
       },
@@ -532,7 +561,7 @@
         this.newsForm.commonRegionId = null
         this.newsForm.distRegionId = null
         this.newsForm.victimId = null
-        this.newsForm.guiltyPersonId = null
+        this.newsForm.guiltyPersonId = 0
       }
     },
     mounted() {
@@ -575,6 +604,9 @@
       'distRegion.city': function (val) {
         console.log('')
         this.getFullRegionId()
+      },
+      'newsForm.guiltyPersonId': function (val) {
+        this.getVictimPersons()
       }
     }
   }

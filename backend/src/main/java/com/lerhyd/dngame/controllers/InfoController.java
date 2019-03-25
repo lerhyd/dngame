@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
@@ -116,13 +117,15 @@ public class InfoController {
 
     /**
      * Get all alive persons.
-     * @param userLogin ID of the Agent.
+     * @param usedPersonId ID of the used person.
      * @return Stream of person info.
      */
     @GetMapping("/game/persons")
-    public Stream<PersonInfo> getPersons(@RequestParam("userLogin") String userLogin, @RequestParam("usedPerson") int usedPersonId){
-        int agentId = userDao.getOne(userLogin).getAgent().getId();
-        List<Person> people = personDao.findAllAlivePersonsByAgentId(agentId, usedPersonId);
+    public Stream<PersonInfo> getPersons(@RequestParam("usedPerson") int usedPersonId){
+        List<Person> people = new ArrayList<>();
+        List<Person> findPeople = personDao.findAllPersons(usedPersonId);
+        for (int i = 0; i<5; i++)
+            people.add(findPeople.get(i));
         return people.stream().map(PersonInfo::new);
     }
 

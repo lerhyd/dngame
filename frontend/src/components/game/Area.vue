@@ -269,9 +269,6 @@
                   </div>
                 </div>
               </div>
-
-
-              <button class="button16" @click="closeFakeNews();clearNews()">Закрыть раздел создания новостей</button>
             </div>
             <!--Fake news:end-->
             <br>

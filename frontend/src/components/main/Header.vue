@@ -1,7 +1,7 @@
 <template>
     <div id="app">
       <header>
-        <div class="titleDN">Death Note</div>
+        <div class="titleDN" >Death Note</div>
         <div>
           {{checkIfLogged()}}
           {{checkIfLoggedIn()}}
@@ -41,6 +41,7 @@
 <style scoped>
   .titleDN{
     cursor: default;
+    font-family: 'DeathNote';
     color: white;
   }
 

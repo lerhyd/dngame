@@ -1,5 +1,6 @@
 <template>
   <div id="main-div">
+    <!--<img src="../../assets/img/computer3.png">-->
     <Header></Header>
     <UserData></UserData>
       <div id="news-area" v-bind:style="styleObject" >
@@ -28,7 +29,6 @@
       <button class="menu-buttons" v-if="isEntryFormOpen===true" @click="closeEntryForm()">Закрыть форму записи</button>
     </section>
 
-
     <aside id="main-aside">
       <div id="notebook-paper" v-if="isNoteOpen===true">
         <div id="content">
@@ -40,14 +40,14 @@
           </div>
           <div v-if="isEntryFormOpen===true">
             Введите ФИО человека, которого хотите убить<br><br>
-            <input class="form-input" type="text" v-model="entryForm.victimSurname" placeholder="Фамилия человека" pattern="[A-Za-zА-Яа-яЁё]" required>
-            <input class="form-input" type="text" v-model="entryForm.victimName" placeholder="Имя человека" pattern="[A-Za-zА-Яа-яЁё]" required>
-            <input class="form-input" id="patr-field" type="text" v-model="entryForm.victimPatr" placeholder="Отчество человека" pattern="[A-Za-zА-Яа-яЁё]" required>
+            <input class="form-note-input" type="text" v-model="entryForm.victimSurname" placeholder="Фамилия человека" pattern="[A-Za-zА-Яа-яЁё]" required>
+            <input class="form-note-input" type="text" v-model="entryForm.victimName" placeholder="Имя человека" pattern="[A-Za-zА-Яа-яЁё]" required>
+            <input class="form-note-input" id="patr-field" type="text" v-model="entryForm.victimPatr" placeholder="Отчество человека" pattern="[A-Za-zА-Яа-яЁё]" required>
             <input type="radio" id="man" name="radio-group" v-model="entryForm.victimSex" v-bind:value="true" required>
             <label for="man">Мужчина</label>
             <input type="radio" id="woman" name="radio-group" v-model="entryForm.victimSex" v-bind:value="false">
             <label for="woman">Женщина</label>
-            <input class="form-input" id="death-description" type="text" v-model="entryForm.desc" placeholder="Описание смерти" required>
+            <input class="form-note-input" id="death-description" type="text" v-model="entryForm.desc" placeholder="Описание смерти" required>
             <br>
             <datetime
               v-model="entryForm.deathDate"
@@ -382,6 +382,7 @@
     -moz-user-select: none;      /* Firefox */
     -ms-user-select: none;       /* Internet Explorer/Edge */
     user-select: none;
+
   }
 
   html{
@@ -391,7 +392,7 @@
     background-repeat: no-repeat;
   }
 
-  .form-input{
+  .form-note-input{
     border: transparent;
     display: block;
     width: 100%;
@@ -405,17 +406,13 @@
     /*font-weight: lighter;*/
   }
 
-  .form-input::placeholder{
+  .form-note-input::placeholder{
     font-size: 20px;
     font-family:helvetica neue, helvetica, arial, sans-serif;
     color: black;
     /*text-decoration: none;*/
     font-weight: 200;
   }
-
-  /*.form-input::-moz-placeholder {*/
-    /*font-weight: normal;*/
-  /*}*/
 
   #main-control-section {
     float: left;

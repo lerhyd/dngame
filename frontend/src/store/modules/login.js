@@ -8,6 +8,7 @@ export default {
     isFailed: false,
     loginStatus: true,
     role: null,
+    social: false,
     logged: undefined
   },
 
@@ -24,8 +25,11 @@ export default {
     setLogged (state, data){
       state.logged = data
     },
-    setRole (state, date){
-      state.role = date
+    setRole (state, data){
+      state.role = data
+    },
+    setSocial (state, data){
+      state.social = data
     }
   },
 
@@ -34,7 +38,8 @@ export default {
     login: state => state.login,
     loginStatus: state => state.loginStatus,
     role: state => state.role,
-    logged: state => state.logged
+    logged: state => state.logged,
+    social: state => state.social
   },
 
   actions: {
@@ -85,8 +90,10 @@ export default {
         },
         method: 'GET'
       }).then(response => {
-        if (context.getters.role[0].authority == "vk" || context.getters.role[0].authority == "google")
+        if (context.getters.role[0].authority == "vk" || context.getters.role[0].authority == "google") {
           context.commit('setLoginStatus', true)
+          context.commit('setSocial', true)
+        }
         else {
           console.log(response.data)
           context.commit('setLoginStatus', response.data)

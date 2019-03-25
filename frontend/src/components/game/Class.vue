@@ -104,9 +104,12 @@
     watch: {
       'gameRegion.continent': function (val) {
         this.getRegionsWithCountries()
+        this.gameRegion.country = null
+        this.gameRegion.city = null
       },
       'gameRegion.country': function (val) {
         this.getRegionsWithCities()
+        this.gameRegion.city = null
       },
       'gameRegion.city': function (val) {
         console.log('')

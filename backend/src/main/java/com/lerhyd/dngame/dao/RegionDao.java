@@ -27,4 +27,13 @@ public interface RegionDao extends JpaRepository<Region, Integer> {
 
     @Query("select r.id from Region r where r.city = :city")
     int findRegionIdByCity(@Param("city") String city);
+
+    @Query("select r.id from Region r where r.city = :city and r.country=:country and r.continent=:continent")
+    int findRegionId(@Param("city") String city, @Param("country") String country, @Param("continent") String continent);
+
+    @Query("select r.id from Region r where r.city is null and r.country is null and r.continent=:continent")
+    int findRegionIdwithoutCountry(@Param("continent") String continent);
+
+    @Query("select r.id from Region r where r.city is null and r.country=:country and r.continent=:continent")
+    int findRegionIdwithoutCity(@Param("country") String country, @Param("continent") String continent);
 }

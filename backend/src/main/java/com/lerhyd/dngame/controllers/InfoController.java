@@ -100,6 +100,19 @@ public class InfoController {
         return regionDao.findRegionIdByCity(city);
     }
 
+    /**
+     * Get full region id.
+     * @param city City.
+     * @return Region ID.
+     */
+    @GetMapping("/game/regions/id/full")
+    public int getRegionId(@RequestParam("continent") String continent, @RequestParam("country") String country, @RequestParam("city") String city){
+        if (country.equals(String.valueOf(0)))
+            return regionDao.findRegionIdwithoutCountry(continent);
+        if (city.equals(String.valueOf(0)))
+            return regionDao.findRegionIdwithoutCity(country, continent);
+        return regionDao.findRegionId(city, country, continent);
+    }
 
     /**
      * Get all alive persons.
@@ -107,9 +120,9 @@ public class InfoController {
      * @return Stream of person info.
      */
     @GetMapping("/game/persons")
-    public Stream<PersonInfo> getPersons(@RequestParam("userLogin") String userLogin){
+    public Stream<PersonInfo> getPersons(@RequestParam("userLogin") String userLogin, @RequestParam("usedPerson") int usedPersonId){
         int agentId = userDao.getOne(userLogin).getAgent().getId();
-        List<Person> people = personDao.findAllAlivePersonsByAgentId(agentId);
+        List<Person> people = personDao.findAllAlivePersonsByAgentId(agentId, usedPersonId);
         return people.stream().map(PersonInfo::new);
     }
 

@@ -9,12 +9,14 @@ export default {
     entry: [],
     action: [],
     actionPlace: [],
+    persons: [],
     noPersons: false,
     numPage: 1,
     entryPages: null,
     actionId: null,
     actionPlaceId: null,
     entryStatus: 0,
+    fakeNewsStatus: 0,
     kiraWinStatus: null,
     matchEnded: false,
     isKiraWin: undefined,
@@ -66,6 +68,12 @@ export default {
     },
     setIsGameDrawn(state, data) {
       state.isGameDrawn = data
+    },
+    setPersons(state, data) {
+      state.persons = data
+    },
+    setFakeNewsStatus(state, data) {
+      state.fakeNewsStatus = data
     }
   },
 
@@ -84,7 +92,9 @@ export default {
     kiraWinStatus: state => state.kiraWinStatus,
     matchEnded: state => state.matchEnded,
     isKiraWin: state => state.isKiraWin,
-    isGameDrawn: state => stte.isGameDrawn
+    isGameDrawn: state => stte.isGameDrawn,
+    persons: state => state.persons,
+    fakeNewsStatus: state => state.fakeNewsStatus
   },
 
   actions: {
@@ -341,6 +351,44 @@ export default {
         console.log(response.data)
         context.commit('setMatchEnded', true)
         context.commit('setIsGameDrawn', true)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    getPersons(context, credentials){
+      axios("/game/persons", {
+        params: {
+          userLogin: context.getters.loginName,
+          usedPersonId: credentials.usedPersonId
+        },
+        method: 'GET'
+      }).then(response => {
+        console.log(response.data)
+        context.commit('setPersons', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+    createFakeNews(context, data){
+      axios.post('/game/news/add', {
+        userLogin: context.getters.loginName,
+        desc: data.desc,
+        pubDate: data.pubDate,
+        actionId: data.actionId,
+        actionPlaceId: data.actionPlaceId,
+        commonRegionId: data.commonRegionId,
+        distRegionId: data.distRegionId,
+        victimId: data.victimId,
+        guiltyPersonId: data.guiltyPersonId
+      }).then(response => {
+        console.log(response.data)
+        if (response.data === 6)
+          context.dispatch('gameDrawn')
+        if (response.data === 7)
+          context.dispatch('kiraWin')
+        context.commit('setFakeNewsStatus', response.data);
       })
         .catch(error => {
           console.log(error)

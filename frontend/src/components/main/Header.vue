@@ -13,7 +13,7 @@
           <router-link class="button16" to="/registry" @click="checkIfLogged();checkIfConfirmed()" v-if="!this.$store.getters.logged">Зарегистрироваться</router-link>
           <router-link class="button16" to="/game" @click="checkIfLogged();checkIfConfirmed()" v-if="this.$store.getters.logged && this.$store.getters.loginStatus">В игру</router-link>
           <router-link class="button16" to="/achievements" @click="checkIfLogged();checkIfConfirmed()" v-if="this.$store.getters.logged && this.$store.getters.loginStatus">Мои достижения</router-link>
-          <router-link class="button16" to="/settings" @click="checkIfLogged();checkIfConfirmed()" v-if="this.$store.getters.logged && this.$store.getters.loginStatus">Настройки</router-link>
+          <router-link class="button16" to="/settings" @click="checkIfLogged();checkIfConfirmed()" v-if="this.$store.getters.logged && this.$store.getters.loginStatus && !this.$store.getters.social">Настройки</router-link>
           <a class="button16" href="/logout" @click="checkIfLogged();checkIfConfirmed()" v-if="this.$store.getters.logged">Выйти</a>
         </div>
       </header>

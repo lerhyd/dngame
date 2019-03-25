@@ -10,7 +10,11 @@ export default {
     continents: [],
     countries: [],
     cities: [],
+    distContinents: [],
+    distCountries: [],
+    distCities: [],
     id: null,
+    distId: null,
     isKira: undefined,
     kiraAchievements: [],
     agentAchievements: [],
@@ -69,8 +73,20 @@ export default {
     setCities (state, data) {
       state.cities = data
     },
+    setDistContinents (state, data) {
+      state.distContinents = data
+    },
+    setDistCountries (state, data) {
+      state.distCountries = data
+    },
+    setDistCities (state, data) {
+      state.distCities = data
+    },
     setId (state, data) {
       state.id = data
+    },
+    setDistId (state, data) {
+      state.distId = data
     },
     setIsKira (state, data){
       state.isKira = data
@@ -96,8 +112,12 @@ export default {
     country: state => state.country,
     continents: state => state.continents,
     countries: state => state.countries,
+    distCountries: state => state.distCountries,
+    distCities: state => state.distCities,
+    distContinents: state => state.distContinents,
     cities: state => state.cities,
     id: state => state.id,
+    distId: state => state.distId,
     criminalPeople: state => state.criminalPeople,
     isKira: state => state.isKira,
     passwordStatus: state => state.passwordStatus
@@ -251,6 +271,61 @@ export default {
         }
       }).then(response => {
         context.commit('setId', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    getFullRegionId(context, data) {
+      axios.get("/game/regions/id/full", {
+        params: {
+          continent: data.continent,
+          country: data.country,
+          city: data.city
+        }
+      }).then(response => {
+        console.log(response.data)
+        context.commit('setDistId', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    getDistContinents(context) {
+      axios("/game/regions/continents", {
+        method: 'GET'
+      }).then(response => {
+        context.commit('setDistContinents', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    getDistRegionsWithCountries(context, credentials) {
+      axios("/game/regions/countries", {
+        params: {
+          continent: credentials.continent
+        },
+        method: 'GET'
+      }).then(response => {
+        context.commit('setDistCountries', response.data)
+      })
+        .catch(error => {
+          console.log(error)
+        })
+    },
+
+    getDistRegionsWithCities(context, credentials) {
+      axios("/game/regions/cities", {
+        params: {
+          country: credentials.country
+        },
+        method: 'GET'
+      }).then(response => {
+        context.commit('setDistCities', response.data)
       })
         .catch(error => {
           console.log(error)

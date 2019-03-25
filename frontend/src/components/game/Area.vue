@@ -201,6 +201,89 @@
               </div>
               <br>
             </div>
+            <button class="button16" @click="openFakeNews();getActions();getActionPlaces()">Создать фальшивую новость</button>
+            <!--Fake news:start-->
+            <div v-if="isFakeNewsOpen===true">
+              <fieldset class="desc">
+                <input class="form-input" type="text" v-model="entryForm.desc" placeholder="Описание новости" required>
+              </fieldset>
+              <br>
+              <label class="pubDateLabel">
+                Дата публикации:
+                <datetime v-model="entryForm.deathDate" type="datetime" format="yyyy-MM-dd HH:mm:ss"></datetime>
+              </label>
+              <br>
+              <p>Choose Action</p>
+              <select class="form-control" v-model="entryForm.actionId" required>
+                <option v-for="action in this.$store.getters.action" v-bind:value="action.id">{{action.desc}}</option>
+              </select>
+              <br>
+              <p>Choose ActionPlace</p>
+              <select class="form-control" v-model="entryForm.actionPlaceId" required>
+                <option v-for="actionPlace in this.$store.getters.actionPlace" v-bind:value="actionPlace.id">{{actionPlace.place}}</option>
+              </select>
+              <br>
+              <p>
+                Выберете регион, где всё произошло.
+              </p>
+              <div class="common_region">
+                <div id="center-select-1">
+                  <div class="select-custom">
+                    <select class="region-selector" v-model="commonRegion.continent">
+                      <option value="null" disabled>Континент</option>
+                      <option v-for="continent in this.$store.getters.continents" v-bind:value="continent">{{continent}}</option>
+                    </select>
+                  </div>
+
+                  <div class="select-custom">
+                    <select class="region-selector" v-model="commonRegion.country" v-if="commonRegion.continent!=null">
+                      <option value="null" disabled>Страна</option>
+                      <option v-for="country in this.$store.getters.countries" v-bind:value="country">{{country}}</option>
+                    </select>
+                  </div>
+
+                  <div class="select-custom">
+                    <select class="region-selector" v-model="commonRegion.city" v-if="commonRegion.country!=null">
+                      <option value="null" disabled>Город</option>
+                      <option v-for="city in this.$store.getters.cities" v-bind:value="city">{{city}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <p>
+                Выберете регион, на который будут распространяться новости.
+              </p>
+              <div class="dist_region">
+                <div id="center-select-2">
+                  <div class="select-custom">
+                    <select class="region-selector" v-model="distRegion.continent">
+                      <option value="null" disabled>Континент</option>
+                      <option v-for="continent in this.$store.getters.distContinents" v-bind:value="continent">{{continent}}</option>
+                    </select>
+                  </div>
+
+                  <div class="select-custom">
+                    <select class="region-selector" v-model="distRegion.country" v-if="distRegion.continent!=null">
+                      <option value="null" disabled>Страна</option>
+                      <option v-bind:value="0">Нет</option>
+                      <option v-for="country in this.$store.getters.distCountries" v-bind:value="country">{{country}}</option>
+                    </select>
+                  </div>
+
+                  <div class="select-custom">
+                    <select class="region-selector" v-model="distRegion.city" v-if="distRegion.country!=null">
+                      <option value="null" disabled>Город</option>
+                      <option v-bind:value="0">Нет</option>
+                      <option v-for="city in this.$store.getters.distCities" v-bind:value="city">{{city}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+
+              <button class="button16" @click="closeFakeNews();clearNews()">Закрыть раздел создания новостей</button>
+            </div>
+            <!--Fake news:end-->
             <br>
             <button class="button16" @click="closeNote();closeEntryForm()">Закрыть планшет</button>
           </div>
@@ -237,6 +320,7 @@
 </template>
 
 <script>
+  import router from '../../router'
   import Header from "@/components/main/Header";
   import UserData from "@/components/game/UserData";
   export default {
@@ -247,16 +331,36 @@
         isNoteOpen: false,
         isEntriesOpen: false,
         isEntryFormOpen: false,
+        isFakeNewsOpen: false,
+        distRegionStatus: true,
         numPage: 1,
         entryForm: {
+          desc: '',
+          deathDate: null,
           actionId: null,
+          actionPlaceId: null,
+
           victimName: '',
           victimSurname: '',
           victimPatr: '',
-          victimSex: undefined,
-          desc: '',
-          deathDate: null,
-          actionPlaceId: null
+          victimSex: undefined
+        },
+        newsForm: {
+          distRegionId: null,
+          victimId: null,
+          guiltyPersonId: null
+        },
+        commonRegion: {
+          regionId: null,
+          country: null,
+          continent: null,
+          city: null
+        },
+        distRegion: {
+          regionId: null,
+          country: null,
+          continent: null,
+          city: null
         }
       }
     },
@@ -305,6 +409,12 @@
       },
       closeEntries(){
         this.isEntriesOpen = false
+      },
+      openFakeNews(){
+        this.isFakeNewsOpen = true
+      },
+      closeFakeNews(){
+        this.isFakeNewsOpen = false
       },
       getEntryPages() {
         this.$store.dispatch('getEntryPages')
@@ -373,12 +483,76 @@
       },
       exit(){
         router.push("/game")
-      }
+      },
 
+      getPersons(){
+        this.$store.dispatch('getPersons',
+          {
+            usedPersonId: this.newsForm.guiltyPersonId
+          }
+        )
+      },
+      createFakeNews(){
+        this.$store.dispatch('createFakeNews',
+          {
+            desc: this.entryForm.desc,
+            pubDate: this.entryForm.deathDate,
+            actionId: this.entryForm.actionId,
+            actionPlaceId: this.entryForm.actionPlaceId,
+            commonRegionId: this.$store.getters.id,
+            distRegionId: this.$store.getters.distId,
+            victimId: this.newsForm.victimId,
+            guiltyPersonId: this.newsForm.guiltyPersonId
+          }
+        )
+      },
+      getCommonRegionsWithContinents(){
+        this.$store.dispatch('getRegionsWithContinents').then()
+      },
+      getCommonRegionsWithCountries(){
+        this.$store.dispatch('getRegionsWithCountries', {continent: this.commonRegion.continent}).then()
+      },
+      getCommonRegionsWithCities(){
+        this.$store.dispatch('getRegionsWithCities', {country: this.commonRegion.country}).then()
+      },
+      getCommonRegionId(){
+        this.$store.dispatch('getRegionId', {city: this.commonRegion.city}).then()
+      },
+
+      getDistRegionsWithContinents(){
+        this.$store.dispatch('getDistContinents').then()
+      },
+      getDistRegionsWithCountries(){
+        this.$store.dispatch('getDistRegionsWithCountries', {continent: this.distRegion.continent}).then()
+      },
+      getDistRegionsWithCities(){
+        this.$store.dispatch('getDistRegionsWithCities', {country: this.distRegion.country}).then()
+      },
+      getFullRegionId(){
+        this.$store.dispatch('getFullRegionId',
+          {
+            city: this.distRegion.city,
+            country: this.distRegion.country,
+            continent: this.distRegion.continent
+          }
+        )
+      },
+      clearNews(){
+        this.entryForm.desc = ''
+        this.entryForm.pubDate = null
+        this.entryForm.actionId = null
+        this.entryForm.actionPlaceId = null
+        this.newsForm.commonRegionId = null
+        this.newsForm.distRegionId = null
+        this.newsForm.victimId = null
+        this.newsForm.guiltyPersonId = null
+      }
     },
     mounted() {
       this.getStatus()
       this.getNews()
+      this.getCommonRegionsWithContinents();
+      this.getDistRegionsWithContinents();
     },
     watch: {
       numPage: function (val) {
@@ -387,6 +561,33 @@
           this.getEntries()
         else
           this.getRequests()
+      },
+      'commonRegion.continent': function (val) {
+        this.commonRegion.country = null
+        this.commonRegion.city = null
+        this.getCommonRegionsWithCountries()
+      },
+      'commonRegion.country': function (val) {
+        this.commonRegion.city = null
+        this.getCommonRegionsWithCities()
+
+      },
+      'commonRegion.city': function (val) {
+        console.log('')
+        this.getCommonRegionId()
+      },
+      'distRegion.continent': function (val) {
+        this.distRegion.country = 0
+        this.distRegion.city = 0
+        this.getDistRegionsWithCountries()
+      },
+      'distRegion.country': function (val) {
+        this.distRegion.city = 0
+        this.getDistRegionsWithCities()
+      },
+      'distRegion.city': function (val) {
+        console.log('')
+        this.getFullRegionId()
       }
     }
   }

@@ -51,8 +51,8 @@ public interface PersonDao extends JpaRepository<Person, Integer> {
     @Query("select count(p) from Person p where p.criminal=false ")
     int cntNonCriminalPersons();
 
-    @Query("select p from Person p left join p.newsVictim n where n.id = :agentId and n.die is not null and n.agentGenerated=false and n.fake=false")
-    List<Person> findAllAlivePersonsByAgentId(@Param("agentId") int agentId);
+    @Query("select p from Person p left join p.newsVictim n where n.id = :agentId and n.die is not null and n.agentGenerated=false and n.fake=false and n.id<>:usedPersonId")
+    List<Person> findAllAlivePersonsByAgentId(@Param("agentId") int agentId, @Param("usedPersonId") int usedPersonId);
 
     @Query("select count(p) from Person p where p.fake=false")
     int cntAllPersonsWithoutFake();
